@@ -28,18 +28,28 @@ import kotlin.math.abs
 class PriceChartView(c: Context, a: AttributeSet? = null) : View(c, a) {
     var candles: List<Candle> = emptyList()
         set(value) {
-            field = OhlcvResampler.sanitize(value)
+            val previous = field
+            val incoming = OhlcvResampler.sanitize(value)
+            // Preserve the user's viewport only for a genuine append to the same series.
+            // Replacements, symbol switches and timeframe switches still reset it.
+            val appendOnly = previous.isNotEmpty() && incoming.size >= previous.size &&
+                previous.indices.all { previous[it].timestamp == incoming[it].timestamp }
+            val oldZoom = zoomScale
+            val oldPan = panBars
+            val oldSelectedTime = selectedCandle?.timestamp
+            field = incoming
             supportResistance = null // Never retain another symbol/timeframe's levels.
             series = ChartIndicators.calculate(field, intraday)
             legacy20 = ChartIndicators.ema(field.map { it.close }, 20)
             legacy50 = ChartIndicators.ema(field.map { it.close }, 50)
             legacy200 = ChartIndicators.ema(field.map { it.close }, 200)
-            zoomScale = (field.size / 80f).coerceIn(1f, 100f)
-            panBars = 0
-            selectedAbsoluteIndex = null
+            zoomScale = if (appendOnly) oldZoom else (field.size / 80f).coerceIn(1f, 100f)
+            panBars = if (appendOnly) (oldPan + field.size - previous.size).coerceIn(0, max(0, field.size - 1)) else 0
+            selectedAbsoluteIndex = if (appendOnly && oldSelectedTime != null)
+                field.indexOfFirst { it.timestamp == oldSelectedTime }.takeIf { it >= 0 } else null
             lastVisibleCount = 0
             contentDescription = if (field.isEmpty()) "OHLCV verisi yok. Grafik temizlendi." else "Gerçek OHLCV grafiği, ${field.size} mum"
-            onCandleSelected?.invoke(null)
+            onCandleSelected?.invoke(selectedCandle)
             invalidate()
         }
 
@@ -168,8 +178,8 @@ class PriceChartView(c: Context, a: AttributeSet? = null) : View(c, a) {
         override fun onDoubleTap(e: MotionEvent): Boolean { zoomIn(); selectAt(e.x); return true }
         override fun onSingleTapConfirmed(e: MotionEvent): Boolean { selectAt(e.x); return true }
         override fun onLongPress(e: MotionEvent) {
-            if (onRequestFullscreen != null) onRequestFullscreen?.invoke()
-            else { inspecting = true; selectAt(e.x) }
+            // Long-press is inspection only; fullscreen requires its explicit button.
+            inspecting = true; selectAt(e.x)
         }
         override fun onScroll(e1: MotionEvent?, e2: MotionEvent, distanceX: Float, distanceY: Float): Boolean {
             if (lastVisibleCount <= 1 || lastRight <= lastLeft) return false
@@ -185,8 +195,8 @@ class PriceChartView(c: Context, a: AttributeSet? = null) : View(c, a) {
     override fun onTouchEvent(event: MotionEvent): Boolean {
         parent?.requestDisallowInterceptTouchEvent(event.actionMasked != MotionEvent.ACTION_UP && event.actionMasked != MotionEvent.ACTION_CANCEL)
         scaleDetector.onTouchEvent(event)
-        gestureDetector.onTouchEvent(event)
-        if (event.actionMasked == MotionEvent.ACTION_MOVE && !scaleDetector.isInProgress) selectAt(event.x)
+        if (!scaleDetector.isInProgress && event.pointerCount == 1) gestureDetector.onTouchEvent(event)
+        if (event.actionMasked == MotionEvent.ACTION_MOVE && inspecting && !scaleDetector.isInProgress) selectAt(event.x)
         if (event.actionMasked == MotionEvent.ACTION_UP) { inspecting = false; performClick() }
         if (event.actionMasked == MotionEvent.ACTION_CANCEL) inspecting = false
         return true
