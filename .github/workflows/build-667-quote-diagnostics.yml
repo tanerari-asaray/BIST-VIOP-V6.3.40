@@ -1,0 +1,76 @@
+name: Build 667 verified diagnostic APK
+on:
+  workflow_dispatch:
+  push:
+    branches: [build/apk667-quote-diagnostics]
+    paths:
+      - 'android-v6323/**'
+      - 'server/**'
+      - 'ci/**'
+      - '.github/workflows/build-667-quote-diagnostics.yml'
+      - 'BUILD667-CHANGE-NOTES.md'
+permissions:
+  contents: read
+jobs:
+  verified-apk:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      BORSA_BACKEND_URL: https://bist-viop-gateway-v1-production.up.railway.app
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: '1.4.3'
+      - uses: android-actions/setup-android@v3
+        with:
+          packages: platform-tools
+          log-accepted-android-sdk-licenses: false
+      - run: sdkmanager 'platforms;android-35' 'build-tools;35.0.0'
+      - uses: gradle/actions/wrapper-validation@v4
+      - uses: gradle/actions/setup-gradle@v4
+      - name: Gateway and real local WebSocket tests
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p apk667-evidence
+          python3 server/build_railway_bundle.py --check
+          node --test --test-reporter=tap server/tests/*.test.mjs > apk667-evidence/gateway-tests.tap
+          NO_COLOR=1 bun test server/tests/websocket.bun.test.ts > apk667-evidence/websocket-tests.log 2>&1
+      - name: Full native tests, Android test compilation and Lint
+        working-directory: android-v6323
+        shell: bash
+        run: |
+          set -euo pipefail
+          bash ./gradlew --no-daemon --stacktrace --max-workers=2 '-Dorg.gradle.jvmargs=-Xmx2048m -XX:MaxMetaspaceSize=768m' :app:testDiagnosticUnitTest :app:compileDiagnosticAndroidTestKotlin :app:lintDiagnostic 2>&1 | tee ../apk667-evidence/native.log
+      - name: Reject failed, skipped or missing tests
+        run: python3 ci/build667-artifacts.py tests
+      - name: Embed source identity
+        run: python3 ci/build667-artifacts.py prepare
+      - name: Assemble the authorized diagnostic APK
+        working-directory: android-v6323
+        run: bash ./gradlew --no-daemon --stacktrace --max-workers=2 :app:assembleDiagnostic
+      - name: Verify signature, manifest, alignment, DEX and source identity
+        run: python3 ci/build667-artifacts.py package
+      - uses: actions/upload-artifact@v4
+        with:
+          name: BIST-VIOP-V6.3.37-BUILD667-VERIFIED-DELIVERY
+          path: apk667-delivery/
+          if-no-files-found: error
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: BUILD667-TEST-AND-FAILURE-EVIDENCE
+          path: |
+            apk667-evidence/
+            android-v6323/app/build/test-results/
+            android-v6323/app/build/reports/lint-results-diagnostic.*
+          if-no-files-found: warn
+

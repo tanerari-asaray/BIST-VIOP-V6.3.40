@@ -1,0 +1,8 @@
+Command: java -jar /mnt/data/build668-new-timeframes-smoke.jar
+Exit: 0
+PASS 30m_complete
+PASS 30m_missing_bar_refused
+PASS monthly_from_real_bars
+PASS timeframe_contract
+PASS invalid_ohlcv_refused
+

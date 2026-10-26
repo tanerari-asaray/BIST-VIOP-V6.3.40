@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Stock detail only: consistent icon paths, 72dp tap targets, no OEM glyph dependence. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/bottomNav" android:layout_width="match_parent" android:layout_height="72dp"
+    android:orientation="horizontal" android:gravity="center" android:background="@color/bottom_nav" android:elevation="12dp">
+    <TextView android:id="@+id/navHome" style="@style/StockDetailNavItem" android:text="Ana Sayfa" android:drawableTop="@drawable/ic_sd_nav_home" android:contentDescription="Ana sayfa"/>
+    <TextView android:id="@+id/navBist" style="@style/StockDetailNavItem" android:text="Hisseler" android:textColor="@color/sd_accent_cyan" android:textStyle="bold" android:drawableTop="@drawable/ic_sd_nav_stocks_active" android:contentDescription="Hisseler"/>
+    <TextView android:id="@+id/navViop" style="@style/StockDetailNavItem" android:text="VİOP" android:drawableTop="@drawable/ic_sd_nav_viop" android:contentDescription="VİOP"/>
+    <TextView android:id="@+id/navFav" style="@style/StockDetailNavItem" android:text="Favoriler" android:drawableTop="@drawable/ic_sd_nav_fav" android:contentDescription="Favoriler"/>
+    <TextView android:id="@+id/navSettings" style="@style/StockDetailNavItem" android:text="Ayarlar" android:drawableTop="@drawable/ic_sd_nav_settings" android:contentDescription="Ayarlar"/>
+</LinearLayout>

@@ -1,0 +1,11 @@
+# BIST/VIOP V6.2.3 — legal provider integration checklist
+
+The gateway is **NOT LIVE** until a licensed provider adapter is supplied and verified. Mobile terminal subscriptions alone do not establish API or algorithmic non-display rights.
+
+1. Obtain written quotes and conditions for personal, automated non-display usage of BIST/VIOP contracts (quotes, instrument metadata, 5-minute OHLCV, exchange timestamps; optional streams) from a licensed distributor. Ask separately whether Android display, cloud processing, and use by one named user are permitted. Obtain a test environment and documented contract identifiers. Do not share or scrape another app's feed.
+2. Deploy `server.viop_gateway:app` behind HTTPS/WSS after installing provider-specific adapter package, setting `BORSA_VIOP_ADAPTER_FACTORY=your_module:create_adapter` and `BORSA_GATEWAY_APP_KEY` as server-managed secrets. Keep the provider's upstream credentials server-side. Protect mobile gateway tokens with revocation/rotation, short lifecycle and per-account restrictions.
+3. Verify with real exchange data: `/v1/health` (configuration only), `/v1/viop/contracts` (genuine expiry/tick/multiplier), `/v1/viop/quote/{symbol}` (fresh exchange timestamp, real price), `/v1/viop/history/{symbol}?range=5d&interval=5m` (closed candles), optional `/v1/viop/live` WebSocket. Status 503 means not live; NEVER transform failures into 0 signals or fall back to unlicensed quotes.
+4. In Android Settings, set the HTTPS gateway base URL and a restricted gateway client access token (not the upstream provider secret). Run readiness checks. Keep delayed BIST *underlying trend* separate from VIOP futures signals, and mark source/delay clearly.
+5. Enable POST_NOTIFICATIONS, manage Android battery restrictions with user consent, and validate real device uptime and reconnection. Run an end-to-end synthetic connectivity test before any licensed data, then a live test only with approved credentials.
+
+Minimum acceptance: provider right confirmed in writing; real contract IDs resolved; quote freshness/staleness alarm working; non-display license verified if applicable; signals disabled on bad data; 720 Android unit tests investigated (10 failures recorded in build 622); no fake 'live' signal.

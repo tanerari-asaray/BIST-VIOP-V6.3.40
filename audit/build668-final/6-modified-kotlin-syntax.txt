@@ -1,0 +1,4 @@
+Command: java -cp /root/.sdkman/candidates/kotlin/current/lib/*:/mnt/data/b668-kotlin-audit.jar KotlinSyntaxAuditKt /mnt/data/B668-VERIFIED-UPDATE/android-v6323/app/src/main/java/tr/borsatakip/v5/ui/FullscreenChartActivity.kt /mnt/data/B668-VERIFIED-UPDATE/android-v6323/app/src/main/java/tr/borsatakip/v5/ui/StockDetailActivity.kt /mnt/data/B668-VERIFIED-UPDATE/android-v6323/app/src/main/java/tr/borsatakip/v5/analysis/ChartTimeframe.kt /mnt/data/B668-VERIFIED-UPDATE/android-v6323/app/src/main/java/tr/borsatakip/v5/data/ChartHistoryRepository.kt /mnt/data/B668-VERIFIED-UPDATE/android-v6323/app/src/test/java/tr/borsatakip/v5/analysis/Build668NewTimeframesTest.kt /mnt/data/B668-VERIFIED-UPDATE/android-v6323/app/src/androidTest/java/tr/borsatakip/v5/ui/Build668VisualScreenshotTest.kt
+Exit: 0
+KOTLIN_PARSER_FILES=6 ERRORS=0
+

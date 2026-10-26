@@ -1,0 +1,579 @@
+--- a/android-v6323/app/src/main/res/layout/activity_stock_detail.xml
++++ b/android-v6323/app/src/main/res/layout/activity_stock_detail.xml
+@@ -20,6 +20,7 @@
+         </LinearLayout>
+         <TextView android:id="@+id/subtitle" android:layout_width="match_parent" android:layout_height="wrap_content" android:visibility="gone"/>
+       </LinearLayout>
++      <include layout="@layout/include_stock_detail_extended_metrics" />
+       <LinearLayout android:id="@+id/multiTimeframeSummary" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="6dp" android:orientation="vertical" android:background="@android:color/transparent" android:padding="0dp">
+         <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="ÇOKLU ZAMAN DİLİMİ • TREND ÖZETİ" android:textColor="@color/green" android:textStyle="bold" android:textSize="14sp" android:visibility="gone"/>
+         <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginTop="0dp">
+@@ -152,6 +153,7 @@
+         </LinearLayout>
+         <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/planDisclaimer" android:text="Bu ekran yatırım tavsiyesi değildir. Veri doğrulanmadığında işleme giriş/çıkış önerisi verilmez." android:layout_marginTop="12dp" android:textSize="12sp" android:textColor="@color/text_secondary"/>
+       </LinearLayout>
++      <include layout="@layout/include_stock_detail_extended_panels" />
+       <include layout="@layout/include_stock_easy_explanation" />
+     </LinearLayout>
+   </ScrollView>
+--- /dev/null
++++ b/android-v6323/app/src/main/res/layout/include_stock_detail_extended_metrics.xml
+@@ -0,0 +1,17 @@
++<?xml version='1.0' encoding='utf-8'?>
++<LinearLayout xmlns:ns0="http://schemas.android.com/apk/res/android" ns0:layout_width="match_parent" ns0:layout_height="wrap_content" ns0:orientation="vertical" ns0:id="@+id/expMetricSection" ns0:layout_marginTop="9dp">
++  <TextView ns0:layout_width="match_parent" ns0:layout_height="wrap_content" ns0:text="GÜNLÜK FİYAT VE TEMEL VERİLER" ns0:textSize="16sp" ns0:textStyle="bold" ns0:textColor="@color/white" ns0:fontFamily="sans-serif-medium" ns0:layout_marginTop="14dp" ns0:layout_marginBottom="6dp" />
++  <HorizontalScrollView ns0:layout_width="match_parent" ns0:layout_height="wrap_content" ns0:fillViewport="false" ns0:horizontalScrollBarEnabled="false" ns0:contentDescription="Sekiz veri kartı; yatay kaydırın">
++    <LinearLayout ns0:layout_width="wrap_content" ns0:layout_height="wrap_content" ns0:orientation="horizontal">
++      <TextView ns0:id="@+id/expDailyLow" ns0:layout_width="128dp" ns0:layout_height="wrap_content" ns0:textColor="@color/text_primary" ns0:textSize="12sp" ns0:fontFamily="sans-serif-medium" ns0:includeFontPadding="false" ns0:padding="10dp" ns0:background="@drawable/bg_stock_outline" ns0:minHeight="68dp" ns0:gravity="center_vertical" ns0:contentDescription="Günlük En Düşük&#10;—" ns0:text="Günlük En Düşük&#10;—" ns0:layout_marginEnd="6dp" />
++      <TextView ns0:id="@+id/expDailyHigh" ns0:layout_width="128dp" ns0:layout_height="wrap_content" ns0:textColor="@color/text_primary" ns0:textSize="12sp" ns0:fontFamily="sans-serif-medium" ns0:includeFontPadding="false" ns0:padding="10dp" ns0:background="@drawable/bg_stock_outline" ns0:minHeight="68dp" ns0:gravity="center_vertical" ns0:contentDescription="Günlük En Yüksek&#10;—" ns0:text="Günlük En Yüksek&#10;—" ns0:layout_marginEnd="6dp" />
++      <TextView ns0:id="@+id/expDailyOpen" ns0:layout_width="128dp" ns0:layout_height="wrap_content" ns0:textColor="@color/text_primary" ns0:textSize="12sp" ns0:fontFamily="sans-serif-medium" ns0:includeFontPadding="false" ns0:padding="10dp" ns0:background="@drawable/bg_stock_outline" ns0:minHeight="68dp" ns0:gravity="center_vertical" ns0:contentDescription="Açılış&#10;—" ns0:text="Açılış&#10;—" ns0:layout_marginEnd="6dp" />
++      <TextView ns0:id="@+id/expPrevClose" ns0:layout_width="128dp" ns0:layout_height="wrap_content" ns0:textColor="@color/text_primary" ns0:textSize="12sp" ns0:fontFamily="sans-serif-medium" ns0:includeFontPadding="false" ns0:padding="10dp" ns0:background="@drawable/bg_stock_outline" ns0:minHeight="68dp" ns0:gravity="center_vertical" ns0:contentDescription="Önceki Kapanış&#10;—" ns0:text="Önceki Kapanış&#10;—" ns0:layout_marginEnd="6dp" />
++      <TextView ns0:id="@+id/expDailyVolume" ns0:layout_width="128dp" ns0:layout_height="wrap_content" ns0:textColor="@color/text_primary" ns0:textSize="12sp" ns0:fontFamily="sans-serif-medium" ns0:includeFontPadding="false" ns0:padding="10dp" ns0:background="@drawable/bg_stock_outline" ns0:minHeight="68dp" ns0:gravity="center_vertical" ns0:contentDescription="Hacim&#10;—" ns0:text="Hacim&#10;—" ns0:layout_marginEnd="6dp" />
++      <TextView ns0:id="@+id/expMarketCap" ns0:layout_width="128dp" ns0:layout_height="wrap_content" ns0:textColor="@color/text_primary" ns0:textSize="12sp" ns0:fontFamily="sans-serif-medium" ns0:includeFontPadding="false" ns0:padding="10dp" ns0:background="@drawable/bg_stock_outline" ns0:minHeight="68dp" ns0:gravity="center_vertical" ns0:contentDescription="Piyasa Değeri&#10;—" ns0:text="Piyasa Değeri&#10;—" ns0:layout_marginEnd="6dp" />
++      <TextView ns0:id="@+id/expPe" ns0:layout_width="128dp" ns0:layout_height="wrap_content" ns0:textColor="@color/text_primary" ns0:textSize="12sp" ns0:fontFamily="sans-serif-medium" ns0:includeFontPadding="false" ns0:padding="10dp" ns0:background="@drawable/bg_stock_outline" ns0:minHeight="68dp" ns0:gravity="center_vertical" ns0:contentDescription="F/K&#10;—" ns0:text="F/K&#10;—" ns0:layout_marginEnd="6dp" />
++      <TextView ns0:id="@+id/expPb" ns0:layout_width="128dp" ns0:layout_height="wrap_content" ns0:textColor="@color/text_primary" ns0:textSize="12sp" ns0:fontFamily="sans-serif-medium" ns0:includeFontPadding="false" ns0:padding="10dp" ns0:background="@drawable/bg_stock_outline" ns0:minHeight="68dp" ns0:gravity="center_vertical" ns0:contentDescription="PD/DD&#10;—" ns0:text="PD/DD&#10;—" ns0:layout_marginEnd="6dp" />
++    </LinearLayout>
++  </HorizontalScrollView>
++  <TextView ns0:id="@+id/expMetricSource" ns0:layout_width="match_parent" ns0:layout_height="wrap_content" ns0:text="Günlük OHLCV ve finansal veriler doğrulanıyor. Eksik oranlar boş bırakılır." ns0:textColor="@color/text_secondary" ns0:textSize="11sp" ns0:layout_marginTop="4dp" />
++</LinearLayout>--- /dev/null
++++ b/android-v6323/app/src/main/res/layout/include_stock_detail_extended_panels.xml
+@@ -0,0 +1,52 @@
++<?xml version='1.0' encoding='utf-8'?>
++<LinearLayout xmlns:ns0="http://schemas.android.com/apk/res/android" ns0:layout_width="match_parent" ns0:layout_height="wrap_content" ns0:orientation="vertical" ns0:id="@+id/expExpandedPanel" ns0:layout_marginTop="12dp">
++  <TextView ns0:layout_width="match_parent" ns0:layout_height="wrap_content" ns0:text="TREND YÖNÜ • 6 ZAMAN DİLİMİ" ns0:textSize="16sp" ns0:textStyle="bold" ns0:textColor="@color/white" ns0:fontFamily="sans-serif-medium" ns0:layout_marginTop="14dp" ns0:layout_marginBottom="6dp" />
++  <TextView ns0:layout_width="match_parent" ns0:layout_height="wrap_content" ns0:text="Her zaman dilimi kendi kapanmış OHLCV mumlarıyla hesaplanır." ns0:textColor="@color/text_secondary" ns0:textSize="11sp" ns0:layout_marginBottom="5dp" />
++  <TextView ns0:id="@+id/expTrendFive" ns0:layout_width="match_parent" ns0:layout_height="wrap_content" ns0:textColor="@color/text_primary" ns0:textSize="12sp" ns0:fontFamily="sans-serif-medium" ns0:includeFontPadding="false" ns0:padding="8dp" ns0:background="@drawable/bg_stock_outline" ns0:minHeight="48dp" ns0:gravity="center_vertical" ns0:contentDescription="5 Dakika trend; dokunup grafiği açın" ns0:text="5 Dakika    —  Veri bekleniyor" ns0:layout_marginBottom="4dp" ns0:clickable="true" ns0:focusable="true" ns0:drawableEnd="@drawable/ic_stock_detail_chevron" ns0:drawablePadding="7dp" />
++  <TextView ns0:id="@+id/expTrendTen" ns0:layout_width="match_parent" ns0:layout_height="wrap_content" ns0:textColor="@color/text_primary" ns0:textSize="12sp" ns0:fontFamily="sans-serif-medium" ns0:includeFontPadding="false" ns0:padding="8dp" ns0:background="@drawable/bg_stock_outline" ns0:minHeight="48dp" ns0:gravity="center_vertical" ns0:contentDescription="10 Dakika trend; dokunup grafiği açın" ns0:text="10 Dakika    —  Veri bekleniyor" ns0:layout_marginBottom="4dp" ns0:clickable="true" ns0:focusable="true" ns0:drawableEnd="@drawable/ic_stock_detail_chevron" ns0:drawablePadding="7dp" />
++  <TextView ns0:id="@+id/expTrendHour" ns0:layout_width="match_parent" ns0:layout_height="wrap_content" ns0:textColor="@color/text_primary" ns0:textSize="12sp" ns0:fontFamily="sans-serif-medium" ns0:includeFontPadding="false" ns0:padding="8dp" ns0:background="@drawable/bg_stock_outline" ns0:minHeight="48dp" ns0:gravity="center_vertical" ns0:contentDescription="1 Saat trend; dokunup grafiği açın" ns0:text="1 Saat    —  Veri bekleniyor" ns0:layout_marginBottom="4dp" ns0:clickable="true" ns0:focusable="true" ns0:drawableEnd="@drawable/ic_stock_detail_chevron" ns0:drawablePadding="7dp" />
++  <TextView ns0:id="@+id/expTrendDaily" ns0:layout_width="match_parent" ns0:layout_height="wrap_content" ns0:textColor="@color/text_primary" ns0:textSize="12sp" ns0:fontFamily="sans-serif-medium" ns0:includeFontPadding="false" ns0:padding="8dp" ns0:background="@drawable/bg_stock_outline" ns0:minHeight="48dp" ns0:gravity="center_vertical" ns0:contentDescription="Günlük trend; dokunup grafiği açın" ns0:text="Günlük    —  Veri bekleniyor" ns0:layout_marginBottom="4dp" ns0:clickable="true" ns0:focusable="true" ns0:drawableEnd="@drawable/ic_stock_detail_chevron" ns0:drawablePadding="7dp" />
++  <TextView ns0:id="@+id/expTrendWeekly" ns0:layout_width="match_parent" ns0:layout_height="wrap_content" ns0:textColor="@color/text_primary" ns0:textSize="12sp" ns0:fontFamily="sans-serif-medium" ns0:includeFontPadding="false" ns0:padding="8dp" ns0:background="@drawable/bg_stock_outline" ns0:minHeight="48dp" ns0:gravity="center_vertical" ns0:contentDescription="Haftalık trend; dokunup grafiği açın" ns0:text="Haftalık    —  Veri bekleniyor" ns0:layout_marginBottom="4dp" ns0:clickable="true" ns0:focusable="true" ns0:drawableEnd="@drawable/ic_stock_detail_chevron" ns0:drawablePadding="7dp" />
++  <TextView ns0:id="@+id/expTrendMonthly" ns0:layout_width="match_parent" ns0:layout_height="wrap_content" ns0:textColor="@color/text_primary" ns0:textSize="12sp" ns0:fontFamily="sans-serif-medium" ns0:includeFontPadding="false" ns0:padding="8dp" ns0:background="@drawable/bg_stock_outline" ns0:minHeight="48dp" ns0:gravity="center_vertical" ns0:contentDescription="Aylık trend; dokunup grafiği açın" ns0:text="Aylık    —  Veri bekleniyor" ns0:layout_marginBottom="4dp" ns0:clickable="true" ns0:focusable="true" ns0:drawableEnd="@drawable/ic_stock_detail_chevron" ns0:drawablePadding="7dp" />
++  <TextView ns0:layout_width="match_parent" ns0:layout_height="wrap_content" ns0:text="TEKNİK GÖSTERGELER • SEÇİLİ GRAFİK DÖNEMİ" ns0:textSize="16sp" ns0:textStyle="bold" ns0:textColor="@color/white" ns0:fontFamily="sans-serif-medium" ns0:layout_marginTop="14dp" ns0:layout_marginBottom="6dp" />
++  <TextView ns0:id="@+id/expRsi" ns0:layout_width="match_parent" ns0:layout_height="wrap_content" ns0:textColor="@color/text_primary" ns0:textSize="12sp" ns0:fontFamily="sans-serif-medium" ns0:includeFontPadding="false" ns0:padding="8dp" ns0:background="@drawable/bg_stock_outline" ns0:minHeight="48dp" ns0:gravity="center_vertical" ns0:contentDescription="RSI (14)    —  Veri bekleniyor" ns0:text="RSI (14)    —  Veri bekleniyor" ns0:layout_marginBottom="4dp" />
++  <TextView ns0:id="@+id/expMacd" ns0:layout_width="match_parent" ns0:layout_height="wrap_content" ns0:textColor="@color/text_primary" ns0:textSize="12sp" ns0:fontFamily="sans-serif-medium" ns0:includeFontPadding="false" ns0:padding="8dp" ns0:background="@drawable/bg_stock_outline" ns0:minHeight="48dp" ns0:gravity="center_vertical" ns0:contentDescription="MACD (12,26,9)    —  Veri bekleniyor" ns0:text="MACD (12,26,9)    —  Veri bekleniyor" ns0:layout_marginBottom="4dp" />
++  <TextView ns0:id="@+id/expStochastic" ns0:layout_width="match_parent" ns0:layout_height="wrap_content" ns0:textColor="@color/text_primary" ns0:textSize="12sp" ns0:fontFamily="sans-serif-medium" ns0:includeFontPadding="false" ns0:padding="8dp" ns0:background="@drawable/bg_stock_outline" ns0:minHeight="48dp" ns0:gravity="center_vertical" ns0:contentDescription="Stokastik %K (14)    —  Veri bekleniyor" ns0:text="Stokastik %K (14)    —  Veri bekleniyor" ns0:layout_marginBottom="4dp" />
++  <TextView ns0:id="@+id/expCci" ns0:layout_width="match_parent" ns0:layout_height="wrap_content" ns0:textColor="@color/text_primary" ns0:textSize="12sp" ns0:fontFamily="sans-serif-medium" ns0:includeFontPadding="false" ns0:padding="8dp" ns0:background="@drawable/bg_stock_outline" ns0:minHeight="48dp" ns0:gravity="center_vertical" ns0:contentDescription="CCI (20)    —  Veri bekleniyor" ns0:text="CCI (20)    —  Veri bekleniyor" ns0:layout_marginBottom="4dp" />
++  <TextView ns0:id="@+id/expAdx" ns0:layout_width="match_parent" ns0:layout_height="wrap_content" ns0:textColor="@color/text_primary" ns0:textSize="12sp" ns0:fontFamily="sans-serif-medium" ns0:includeFontPadding="false" ns0:padding="8dp" ns0:background="@drawable/bg_stock_outline" ns0:minHeight="48dp" ns0:gravity="center_vertical" ns0:contentDescription="ADX (14)    —  Veri bekleniyor" ns0:text="ADX (14)    —  Veri bekleniyor" ns0:layout_marginBottom="4dp" />
++  <TextView ns0:id="@+id/expMomentum" ns0:layout_width="match_parent" ns0:layout_height="wrap_content" ns0:textColor="@color/text_primary" ns0:textSize="12sp" ns0:fontFamily="sans-serif-medium" ns0:includeFontPadding="false" ns0:padding="8dp" ns0:background="@drawable/bg_stock_outline" ns0:minHeight="48dp" ns0:gravity="center_vertical" ns0:contentDescription="Momentum (10)    —  Veri bekleniyor" ns0:text="Momentum (10)    —  Veri bekleniyor" ns0:layout_marginBottom="4dp" />
++  <TextView ns0:id="@+id/expIndicatorSource" ns0:layout_width="match_parent" ns0:layout_height="wrap_content" ns0:text="Gösterge hesapları son teyitsiz mumu içermez." ns0:textColor="@color/text_secondary" ns0:textSize="11sp" ns0:layout_marginTop="4dp" />
++  <TextView ns0:layout_width="match_parent" ns0:layout_height="wrap_content" ns0:text="DESTEK VE DİRENÇ • 3 + GÜNCEL FİYAT + 3" ns0:textSize="16sp" ns0:textStyle="bold" ns0:textColor="@color/white" ns0:fontFamily="sans-serif-medium" ns0:layout_marginTop="14dp" ns0:layout_marginBottom="6dp" />
++  <TextView ns0:id="@+id/expRes3" ns0:layout_width="match_parent" ns0:layout_height="wrap_content" ns0:textColor="@color/red" ns0:textSize="12sp" ns0:fontFamily="sans-serif-medium" ns0:includeFontPadding="false" ns0:padding="8dp" ns0:background="@drawable/bg_stock_outline" ns0:minHeight="48dp" ns0:gravity="center_vertical" ns0:contentDescription="Direnç 3    —" ns0:text="Direnç 3    —" ns0:layout_marginBottom="4dp" />
++  <TextView ns0:id="@+id/expRes2" ns0:layout_width="match_parent" ns0:layout_height="wrap_content" ns0:textColor="@color/red" ns0:textSize="12sp" ns0:fontFamily="sans-serif-medium" ns0:includeFontPadding="false" ns0:padding="8dp" ns0:background="@drawable/bg_stock_outline" ns0:minHeight="48dp" ns0:gravity="center_vertical" ns0:contentDescription="Direnç 2    —" ns0:text="Direnç 2    —" ns0:layout_marginBottom="4dp" />
++  <TextView ns0:id="@+id/expRes1" ns0:layout_width="match_parent" ns0:layout_height="wrap_content" ns0:textColor="@color/red" ns0:textSize="12sp" ns0:fontFamily="sans-serif-medium" ns0:includeFontPadding="false" ns0:padding="8dp" ns0:background="@drawable/bg_stock_outline" ns0:minHeight="48dp" ns0:gravity="center_vertical" ns0:contentDescription="Direnç 1    —" ns0:text="Direnç 1    —" ns0:layout_marginBottom="4dp" />
++  <TextView ns0:id="@+id/expLastPrice" ns0:layout_width="match_parent" ns0:layout_height="wrap_content" ns0:textColor="@color/white" ns0:textSize="12sp" ns0:fontFamily="sans-serif-medium" ns0:includeFontPadding="false" ns0:padding="8dp" ns0:background="@drawable/bg_stock_outline" ns0:minHeight="48dp" ns0:gravity="center_vertical" ns0:contentDescription="Son Fiyat    —" ns0:text="Son Fiyat    —" ns0:layout_marginBottom="4dp" />
++  <TextView ns0:id="@+id/expSup1" ns0:layout_width="match_parent" ns0:layout_height="wrap_content" ns0:textColor="@color/green" ns0:textSize="12sp" ns0:fontFamily="sans-serif-medium" ns0:includeFontPadding="false" ns0:padding="8dp" ns0:background="@drawable/bg_stock_outline" ns0:minHeight="48dp" ns0:gravity="center_vertical" ns0:contentDescription="Destek 1    —" ns0:text="Destek 1    —" ns0:layout_marginBottom="4dp" />
++  <TextView ns0:id="@+id/expSup2" ns0:layout_width="match_parent" ns0:layout_height="wrap_content" ns0:textColor="@color/green" ns0:textSize="12sp" ns0:fontFamily="sans-serif-medium" ns0:includeFontPadding="false" ns0:padding="8dp" ns0:background="@drawable/bg_stock_outline" ns0:minHeight="48dp" ns0:gravity="center_vertical" ns0:contentDescription="Destek 2    —" ns0:text="Destek 2    —" ns0:layout_marginBottom="4dp" />
++  <TextView ns0:id="@+id/expSup3" ns0:layout_width="match_parent" ns0:layout_height="wrap_content" ns0:textColor="@color/green" ns0:textSize="12sp" ns0:fontFamily="sans-serif-medium" ns0:includeFontPadding="false" ns0:padding="8dp" ns0:background="@drawable/bg_stock_outline" ns0:minHeight="48dp" ns0:gravity="center_vertical" ns0:contentDescription="Destek 3    —" ns0:text="Destek 3    —" ns0:layout_marginBottom="4dp" />
++  <TextView ns0:id="@+id/expLevelSource" ns0:layout_width="match_parent" ns0:layout_height="wrap_content" ns0:text="Yalnız kapanmış mumlardan seçilen yerel destek ve dirençler gösterilir." ns0:textColor="@color/text_secondary" ns0:textSize="11sp" ns0:layout_marginTop="4dp" />
++  <TextView ns0:layout_width="match_parent" ns0:layout_height="wrap_content" ns0:text="FİYAT HEDEFLERİ • ANALİST KONSENSÜSÜ" ns0:textSize="16sp" ns0:textStyle="bold" ns0:textColor="@color/white" ns0:fontFamily="sans-serif-medium" ns0:layout_marginTop="14dp" ns0:layout_marginBottom="6dp" />
++  <TextView ns0:id="@+id/expTargetShort" ns0:layout_width="match_parent" ns0:layout_height="wrap_content" ns0:textColor="@color/yellow" ns0:textSize="12sp" ns0:fontFamily="sans-serif-medium" ns0:includeFontPadding="false" ns0:padding="8dp" ns0:background="@drawable/bg_stock_outline" ns0:minHeight="62dp" ns0:gravity="center_vertical" ns0:contentDescription="Kısa Vadeli (1–3 ay)&#10;—  • Doğrulanmış analist verisi yok" ns0:text="Kısa Vadeli (1–3 ay)&#10;—  • Doğrulanmış analist verisi yok" ns0:layout_marginBottom="5dp" />
++  <TextView ns0:id="@+id/expTargetMedium" ns0:layout_width="match_parent" ns0:layout_height="wrap_content" ns0:textColor="@color/yellow" ns0:textSize="12sp" ns0:fontFamily="sans-serif-medium" ns0:includeFontPadding="false" ns0:padding="8dp" ns0:background="@drawable/bg_stock_outline" ns0:minHeight="62dp" ns0:gravity="center_vertical" ns0:contentDescription="Orta Vadeli (3–6 ay)&#10;—  • Doğrulanmış analist verisi yok" ns0:text="Orta Vadeli (3–6 ay)&#10;—  • Doğrulanmış analist verisi yok" ns0:layout_marginBottom="5dp" />
++  <TextView ns0:id="@+id/expTargetLong" ns0:layout_width="match_parent" ns0:layout_height="wrap_content" ns0:textColor="@color/yellow" ns0:textSize="12sp" ns0:fontFamily="sans-serif-medium" ns0:includeFontPadding="false" ns0:padding="8dp" ns0:background="@drawable/bg_stock_outline" ns0:minHeight="62dp" ns0:gravity="center_vertical" ns0:contentDescription="Uzun Vadeli (6–12 ay)&#10;—  • Doğrulanmış analist verisi yok" ns0:text="Uzun Vadeli (6–12 ay)&#10;—  • Doğrulanmış analist verisi yok" ns0:layout_marginBottom="5dp" />
++  <TextView ns0:id="@+id/expAnalystSource" ns0:layout_width="match_parent" ns0:layout_height="wrap_content" ns0:text="Hedefler teknik seviyelerden türetilmez. Bağımsız ve tarihli analist konsensüsü kaynağı gereklidir." ns0:textColor="@color/text_secondary" ns0:textSize="11sp" ns0:layout_marginBottom="5dp" />
++  <TextView ns0:layout_width="match_parent" ns0:layout_height="wrap_content" ns0:text="HİSSE BİLGİLERİ VE İŞLEMLER" ns0:textSize="16sp" ns0:textStyle="bold" ns0:textColor="@color/white" ns0:fontFamily="sans-serif-medium" ns0:layout_marginTop="14dp" ns0:layout_marginBottom="6dp" />
++  <LinearLayout ns0:layout_width="match_parent" ns0:layout_height="wrap_content" ns0:orientation="horizontal" ns0:layout_marginBottom="5dp">
++    <TextView ns0:id="@+id/expNavGraph" ns0:layout_width="0dp" ns0:layout_height="wrap_content" ns0:textColor="@color/white" ns0:textSize="12sp" ns0:fontFamily="sans-serif-medium" ns0:includeFontPadding="false" ns0:padding="8dp" ns0:background="@drawable/bg_stock_outline" ns0:minHeight="55dp" ns0:gravity="center" ns0:contentDescription="Grafik" ns0:text="Grafik" ns0:layout_weight="1" ns0:layout_marginEnd="5dp" ns0:clickable="true" ns0:focusable="true" />
++    <TextView ns0:id="@+id/expNavCompany" ns0:layout_width="0dp" ns0:layout_height="wrap_content" ns0:textColor="@color/white" ns0:textSize="12sp" ns0:fontFamily="sans-serif-medium" ns0:includeFontPadding="false" ns0:padding="8dp" ns0:background="@drawable/bg_stock_outline" ns0:minHeight="55dp" ns0:gravity="center" ns0:contentDescription="Şirket Bilgileri" ns0:text="Şirket Bilgileri" ns0:layout_weight="1" ns0:layout_marginEnd="5dp" ns0:clickable="true" ns0:focusable="true" />
++  </LinearLayout>
++  <LinearLayout ns0:layout_width="match_parent" ns0:layout_height="wrap_content" ns0:orientation="horizontal" ns0:layout_marginBottom="5dp">
++    <TextView ns0:id="@+id/expNavFinancial" ns0:layout_width="0dp" ns0:layout_height="wrap_content" ns0:textColor="@color/white" ns0:textSize="12sp" ns0:fontFamily="sans-serif-medium" ns0:includeFontPadding="false" ns0:padding="8dp" ns0:background="@drawable/bg_stock_outline" ns0:minHeight="55dp" ns0:gravity="center" ns0:contentDescription="Finansal Tablolar" ns0:text="Finansal Tablolar" ns0:layout_weight="1" ns0:layout_marginEnd="5dp" ns0:clickable="true" ns0:focusable="true" />
++    <TextView ns0:id="@+id/expNavNews" ns0:layout_width="0dp" ns0:layout_height="wrap_content" ns0:textColor="@color/white" ns0:textSize="12sp" ns0:fontFamily="sans-serif-medium" ns0:includeFontPadding="false" ns0:padding="8dp" ns0:background="@drawable/bg_stock_outline" ns0:minHeight="55dp" ns0:gravity="center" ns0:contentDescription="Haberler" ns0:text="Haberler" ns0:layout_weight="1" ns0:layout_marginEnd="5dp" ns0:clickable="true" ns0:focusable="true" />
++  </LinearLayout>
++  <LinearLayout ns0:layout_width="match_parent" ns0:layout_height="wrap_content" ns0:orientation="horizontal" ns0:layout_marginBottom="5dp">
++    <TextView ns0:id="@+id/expNavDividend" ns0:layout_width="0dp" ns0:layout_height="wrap_content" ns0:textColor="@color/white" ns0:textSize="12sp" ns0:fontFamily="sans-serif-medium" ns0:includeFontPadding="false" ns0:padding="8dp" ns0:background="@drawable/bg_stock_outline" ns0:minHeight="55dp" ns0:gravity="center" ns0:contentDescription="Temettü" ns0:text="Temettü" ns0:layout_weight="1" ns0:layout_marginEnd="5dp" ns0:clickable="true" ns0:focusable="true" />
++    <TextView ns0:id="@+id/expNavOwnership" ns0:layout_width="0dp" ns0:layout_height="wrap_content" ns0:textColor="@color/white" ns0:textSize="12sp" ns0:fontFamily="sans-serif-medium" ns0:includeFontPadding="false" ns0:padding="8dp" ns0:background="@drawable/bg_stock_outline" ns0:minHeight="55dp" ns0:gravity="center" ns0:contentDescription="Ortaklık Yapısı" ns0:text="Ortaklık Yapısı" ns0:layout_weight="1" ns0:layout_marginEnd="5dp" ns0:clickable="true" ns0:focusable="true" />
++  </LinearLayout>
++  <LinearLayout ns0:layout_width="match_parent" ns0:layout_height="wrap_content" ns0:orientation="horizontal" ns0:layout_marginBottom="5dp">
++    <TextView ns0:id="@+id/expNavLegislation" ns0:layout_width="0dp" ns0:layout_height="wrap_content" ns0:textColor="@color/white" ns0:textSize="12sp" ns0:fontFamily="sans-serif-medium" ns0:includeFontPadding="false" ns0:padding="8dp" ns0:background="@drawable/bg_stock_outline" ns0:minHeight="55dp" ns0:gravity="center" ns0:contentDescription="Resmî Mevzuat" ns0:text="Resmî Mevzuat" ns0:layout_weight="1" ns0:layout_marginEnd="5dp" ns0:clickable="true" ns0:focusable="true" />
++    <TextView ns0:id="@+id/expNavAnalyst" ns0:layout_width="0dp" ns0:layout_height="wrap_content" ns0:textColor="@color/white" ns0:textSize="12sp" ns0:fontFamily="sans-serif-medium" ns0:includeFontPadding="false" ns0:padding="8dp" ns0:background="@drawable/bg_stock_outline" ns0:minHeight="55dp" ns0:gravity="center" ns0:contentDescription="Analist Raporları" ns0:text="Analist Raporları" ns0:layout_weight="1" ns0:layout_marginEnd="5dp" ns0:clickable="true" ns0:focusable="true" />
++  </LinearLayout>
++  <TextView ns0:id="@+id/expNavigationInfo" ns0:layout_width="match_parent" ns0:layout_height="wrap_content" ns0:text="Menüler mevcut hizmetlere yönlendirir; kaynak yoksa açıkça bilgi verir." ns0:textColor="@color/text_secondary" ns0:textSize="12sp" ns0:padding="10dp" ns0:background="@drawable/bg_stock_outline" />
++  <FrameLayout ns0:id="@+id/expFinancialContainer" ns0:layout_width="match_parent" ns0:layout_height="wrap_content" ns0:visibility="gone" />
++</LinearLayout>--- a/android-v6323/app/src/main/java/tr/borsatakip/v5/ui/StockDetailActivity.kt
++++ b/android-v6323/app/src/main/java/tr/borsatakip/v5/ui/StockDetailActivity.kt
+@@ -21,6 +21,11 @@
+ import kotlinx.coroutines.withTimeout
+ import tr.borsatakip.v5.analysis.ChartIndicators
+ import tr.borsatakip.v5.analysis.ChartTimeframe
++import tr.borsatakip.v5.analysis.ExtendedStockEvidence
++import tr.borsatakip.v5.analysis.OhlcvResampler
++import tr.borsatakip.v5.data.FundamentalsBatchClient
++import tr.borsatakip.v5.scan.FundamentalValuationEngine
++import android.widget.FrameLayout
+ import tr.borsatakip.v5.analysis.LinearTrendAnalyzer
+ import tr.borsatakip.v5.data.favorites.FavoriteRepository
+ import tr.borsatakip.v5.data.ChartHistoryRepository
+@@ -61,6 +66,7 @@
+             findViewById<TextView>(R.id.dataBadge).text = "GÜNCEL DEĞİL"
+             findViewById<TextView>(R.id.quoteSource).text = "⚠ ESKİ VERİ\nYenileme gerekli"
+             liveConnectionStatus.text = quoteFailure ?: "ESKİ VERİ • fiyat yenilenmeli • işlem onayı yok"
++            findViewById<TextView>(R.id.expLastPrice).text = "Son Fiyat    —  Güncel veri doğrulanamadı"
+             liveQuote.text = liveQuote.text.toString().replace("CANLI/DOĞRULANMIŞ", "ESKİ/DOĞRULANMAMIŞ")
+         }
+     }
+@@ -101,6 +107,7 @@
+     private lateinit var liveTradingViewSignal: TextView
+     private val favoriteRepository by lazy { FavoriteRepository.get(this) }
+     private var selectedDetailTab = "Grafik"
++    private var expandedFinancialPanel: ChartFinancialPanel? = null
+     private val df = SimpleDateFormat("dd.MM.yyyy HH:mm:ss", Locale("tr","TR"))
+ 
+     override fun onCreate(savedInstanceState: Bundle?) {
+@@ -133,6 +140,9 @@
+         }
+         bindCompactHeader(x.price, x.dailyChangePct, x.source, x.isRealtime, x.exchangeTimestamp, true)
+         bindEasyInfoCards()
++        bindExtendedPanels()
++        loadExtendedDailyMetrics()
++        loadExtendedFinancialMetrics()
+         bindDetailTabs(savedInstanceState?.getString("detailTab") ?: "Grafik")
+         bindDetailedNavigation()
+         configureResponsiveChart()
+@@ -268,6 +278,7 @@
+         }
+         liveQuote.setTextColor(directionColor(changePct))
+         bindCompactHeader(price, changePct, source, realtime, timestamp, false)
++        renderExpandedQuote(price, source, timestamp)
+     }
+ 
+     private fun startUnifiedLiveChannel() {
+@@ -485,9 +496,13 @@
+             Triple(R.id.trend5m, ChartTimeframe.FIVE_MIN, "5 DK"),
+             Triple(R.id.trend15m, ChartTimeframe.TEN_MIN, "10 DK"),
+             Triple(R.id.trend1h, ChartTimeframe.ONE_HOUR, "1 SAAT"),
+-            Triple(R.id.trend1d, ChartTimeframe.ONE_DAY, "GÜNLÜK")
++            Triple(R.id.trend1d, ChartTimeframe.ONE_DAY, "GÜNLÜK"),
++            Triple(R.id.expTrendWeekly, ChartTimeframe.ONE_WEEK, "HAFTALIK"),
++            Triple(R.id.expTrendMonthly, ChartTimeframe.ONE_MONTH, "AYLIK")
+         )
+         specs.forEach { (id, _, label) -> findViewById<TextView>(id).text = "$label • Veri bekleniyor" }
++        for (id in listOf(R.id.expTrendFive, R.id.expTrendTen, R.id.expTrendHour, R.id.expTrendDaily))
++            findViewById<TextView>(id).text = "Veri bekleniyor • —"
+         findViewById<TextView>(R.id.timeframeConflict).text = "Zaman dilimleri doğrulanmış mum verisiyle karşılaştırılıyor; eksik veri için tahmin yapılmaz."
+         lifecycleScope.launch {
+             val results = specs.map { (id, timeframe, label) ->
+@@ -496,8 +511,9 @@
+                         val candles = withTimeout(20_000) { chartRepository.load(x.symbol, timeframe, x.candles) }
+                         val clean = tr.borsatakip.v5.analysis.OhlcvResampler.sanitize(candles)
+                         // Do not treat an unconfirmed final candle as a closed trend.
+-                        val trend = LinearTrendAnalyzer.analyze(clean.dropLast(1))
+-                        val closes = clean.map { it.close }
++                        val confirmed = clean.dropLast(1)
++                        val trend = LinearTrendAnalyzer.analyze(confirmed)
++                        val closes = confirmed.map { it.close }
+                         val e20 = ChartIndicators.ema(closes, 20).lastOrNull()
+                         val e50 = ChartIndicators.ema(closes, 50).lastOrNull()
+                         val close = closes.lastOrNull()
+@@ -507,7 +523,7 @@
+                             close < e20 && close < e50 -> "Fiyat EMA20 ve EMA50 altında; kısa ortalamalara göre zayıf."
+                             else -> "EMA20 ve EMA50 arasında; ortalamalar yönü teyit etmiyor."
+                         }
+-                        TimeframeEvidence(trend, emaExplanation, clean.lastOrNull()?.timestamp)
++                        TimeframeEvidence(trend, emaExplanation, confirmed.lastOrNull()?.timestamp)
+                     }.getOrNull()
+                     Triple(id, label, evidence)
+                 }
+@@ -529,6 +545,22 @@
+                         "$label  $glyph ${result.main.direction.label}\n${result.main.strength.label}    $bars"
+                     }
+                 }
++                val extendedId = when (id) {
++                    R.id.trend5m -> R.id.expTrendFive
++                    R.id.trend15m -> R.id.expTrendTen
++                    R.id.trend1h -> R.id.expTrendHour
++                    R.id.trend1d -> R.id.expTrendDaily
++                    else -> id
++                }
++                findViewById<TextView>(extendedId).apply {
++                    text = card.text.toString().replace("\n", "   •   ")
++                    contentDescription = "${text}. Dokunarak $label grafiğini aç."
++                    setTextColor(when (result?.main?.direction) {
++                        LinearTrendAnalyzer.Direction.UP -> getColor(R.color.green)
++                        LinearTrendAnalyzer.Direction.DOWN -> getColor(R.color.red)
++                        else -> getColor(R.color.text_primary)
++                    })
++                }
+                 card.contentDescription = "${card.text}. Dokunarak $label grafiğini aç."
+                 card.setBackgroundResource(when (result?.main?.direction) {
+                     LinearTrendAnalyzer.Direction.UP -> R.drawable.bg_stock_green
+@@ -539,21 +571,23 @@
+                     R.id.trend5m -> R.id.tech5m
+                     R.id.trend15m -> R.id.tech10m
+                     R.id.trend1h -> R.id.tech1h
+-                    else -> R.id.tech1d
++                    R.id.trend1d -> R.id.tech1d
++                    else -> null
+                 }
+                 val explanation = when {
+                     result?.main == null || result.candleCount < 8 -> "$label • Yeterli, doğrulanmış mum verisi yok. Yön yorumu yapılamıyor."
+                     else -> "$label • ${result.main.direction.label} (${result.main.strength.label.lowercase(Locale("tr", "TR"))}). ${result.candleCount} mum üzerinden eğim hesaplandı. ${evidence?.emaExplanation.orEmpty()} ${evidence?.candleTimestamp?.let { time -> if (System.currentTimeMillis() - time > 30 * 60_000L) "Son mum güncel değil. " else "" } ?: ""}Trend puanı ${result.main.strengthScore}/100; bu puan kazanç olasılığı değildir."
+                 }
+-                findViewById<TextView>(detailId).apply {
++                detailId?.let { detail -> findViewById<TextView>(detail).apply {
+                     text = explanation
+                     contentDescription = "$explanation. Dokunarak $label grafiğini aç."
+                 }
+-                findViewById<TextView>(detailId).setBackgroundResource(when (result?.main?.direction) {
++                findViewById<TextView>(detail).setBackgroundResource(when (result?.main?.direction) {
+                     LinearTrendAnalyzer.Direction.UP -> R.drawable.bg_stock_green
+                     LinearTrendAnalyzer.Direction.DOWN -> R.drawable.bg_stock_red
+                     else -> R.drawable.bg_stock_outline
+                 })
++                }
+                 findViewById<TextView>(id).setTextColor(when {
+                     result?.main?.direction == LinearTrendAnalyzer.Direction.UP -> getColor(R.color.green)
+                     result?.main?.direction == LinearTrendAnalyzer.Direction.DOWN -> getColor(R.color.red)
+@@ -686,7 +720,13 @@
+             R.id.trend5m to ChartTimeframe.FIVE_MIN,
+             R.id.trend15m to ChartTimeframe.TEN_MIN,
+             R.id.trend1h to ChartTimeframe.ONE_HOUR,
+-            R.id.trend1d to ChartTimeframe.ONE_DAY
++            R.id.trend1d to ChartTimeframe.ONE_DAY,
++            R.id.expTrendFive to ChartTimeframe.FIVE_MIN,
++            R.id.expTrendTen to ChartTimeframe.TEN_MIN,
++            R.id.expTrendHour to ChartTimeframe.ONE_HOUR,
++            R.id.expTrendDaily to ChartTimeframe.ONE_DAY,
++            R.id.expTrendWeekly to ChartTimeframe.ONE_WEEK,
++            R.id.expTrendMonthly to ChartTimeframe.ONE_MONTH
+         )) {
+             findViewById<TextView>(id).setOnClickListener {
+                 showDetailTab("Grafik")
+@@ -815,6 +855,7 @@
+         findViewById<TextView>(R.id.metricAtr).text = "ATR%\n—"
+         findViewById<TextView>(R.id.plainExplanation).text = "Geçerli mum verileri bekleniyor. Yeterli veri gelmeden yön, destek ve direnç yorumu yapılmaz."
+         resetEasyMarketCards()
++        clearExpandedTechnical()
+     }
+ 
+     private fun bindSelectedAnalysis(timeframe: ChartTimeframe, candles: List<tr.borsatakip.v5.model.Candle>, result: LinearTrendAnalyzer.Result) {
+@@ -844,6 +885,7 @@
+         findViewById<TextView>(R.id.metricRsi).text = "RSI14\n" + (rsi?.let { "%.0f".format(it) } ?: "—")
+         findViewById<TextView>(R.id.metricVolume).text = "Hacim\n" + (volumeRatio?.let { "%.1fx".format(it) } ?: "—")
+         findViewById<TextView>(R.id.metricAtr).text = "ATR%\n" + (atr?.let { "%.1f".format(it / price * 100) } ?: "—")
++        renderExpandedTechnical(timeframe, candles.dropLast(1), price)
+         val direction = result.main.direction
+         val understanding = when (direction) {
+             LinearTrendAnalyzer.Direction.UP -> "Bu dönemin son alınan mumlarında fiyatın genel yönü yukarı."
+@@ -873,6 +915,169 @@
+             "Tarama kaynağı: ${x.source} • Grafik: ${timeframe.label} • İncelenen son geçmiş mum: ${df.format(Date(last.timestamp))}. " +
+             "En yeni mum teyitsiz; yatırım tavsiyesi değildir."
+         findViewById<TextView>(R.id.techDataCaution).text = "${timeframe.label} • ${candles.size} sağlayıcı mumu • Son mum kapanmış olmayabilir • Teknik izleme, yatırım tavsiyesi değildir."
++    }
++
++
++    /** Wide ASELS reference panels, adapted to portrait scrolling without changing existing tabs. */
++    private fun bindExtendedPanels() {
++        // No claim of an analyst consensus until a validated, dated provider is connected.
++        findViewById<TextView>(R.id.expAnalystSource).text =
++            "Analist konsensüsü kaynağı bağlı değil; 1–3, 3–6 ve 6–12 ay hedefleri tahmin edilmez."
++        for ((id, label) in listOf(
++            R.id.expTargetShort to "Kısa Vadeli (1–3 ay)",
++            R.id.expTargetMedium to "Orta Vadeli (3–6 ay)",
++            R.id.expTargetLong to "Uzun Vadeli (6–12 ay)"
++        )) findViewById<TextView>(id).apply {
++            text = "$label\n— • Doğrulanmış analist verisi yok"
++            contentDescription = text
++        }
++        findViewById<TextView>(R.id.expNavGraph).setOnClickListener {
++            showDetailTab("Grafik"); focusDetailTabs()
++        }
++        fun navMessage(message: String) {
++            findViewById<TextView>(R.id.expNavigationInfo).apply { text = message; requestFocus() }
++        }
++        fun openOfficial(url: String) {
++            runCatching { startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url))) }
++                .onFailure { navMessage("Tarayıcı açılamadı. Resmî site adresi: $url") }
++        }
++        findViewById<TextView>(R.id.expNavCompany).setOnClickListener {
++            navMessage("Şirket: ${x.companyName ?: "Ad doğrulanamadı"} • Sembol: ${x.symbol}. Faaliyet alanı ve şirket bildirimleri resmî KAP'tan doğrulanmalıdır.")
++            openOfficial("https://www.kap.org.tr/tr/bist-sirketler")
++        }
++        findViewById<TextView>(R.id.expNavFinancial).setOnClickListener {
++            val frame = findViewById<FrameLayout>(R.id.expFinancialContainer)
++            frame.visibility = View.VISIBLE
++            if (expandedFinancialPanel == null) {
++                expandedFinancialPanel = ChartFinancialPanel(this, x.symbol, "BIST", lifecycleScope)
++                frame.addView(expandedFinancialPanel, FrameLayout.LayoutParams(-1, -2))
++            }
++            expandedFinancialPanel?.load()
++            navMessage("Finansal tablolar: doğrulanmış KAP kayıtları varsa aşağıdaki finansal panelde gösterilir.")
++        }
++        findViewById<TextView>(R.id.expNavNews).setOnClickListener {
++            startActivity(Intent(this, NewsActivity::class.java).putExtra("opportunity", x))
++        }
++        findViewById<TextView>(R.id.expNavDividend).setOnClickListener {
++            navMessage("Temettü: Bu sembol için doğrulanmış temettü takvimi bağlı değil. KAP bildirimleri açılıyor.")
++            openOfficial("https://www.kap.org.tr/tr/bist-sirketler")
++        }
++        findViewById<TextView>(R.id.expNavOwnership).setOnClickListener {
++            navMessage("Ortaklık yapısı: Tarihli ve doğrulanmış pay oranları henüz bağlı değil. KAP sayfasını açın.")
++            openOfficial("https://www.kap.org.tr/tr/bist-sirketler")
++        }
++        findViewById<TextView>(R.id.expNavLegislation).setOnClickListener {
++            navMessage("Resmî mevzuat için devletin mevzuat portalı açılıyor.")
++            openOfficial("https://www.mevzuat.gov.tr/")
++        }
++        findViewById<TextView>(R.id.expNavAnalyst).setOnClickListener {
++            navMessage("Analist raporları: Kaynağı, yayın tarihi ve analist sayısı doğrulanmadığından hedef fiyatlar gösterilmiyor.")
++            val target = findViewById<View>(R.id.expTargetShort)
++            findViewById<android.widget.ScrollView>(R.id.detailScrollView).post {
++                findViewById<android.widget.ScrollView>(R.id.detailScrollView).smoothScrollTo(0, target.top)
++            }
++        }
++    }
++
++    private fun renderExpandedQuote(price: Double, source: String, timestamp: Long) {
++        val valid = price.takeIf { it.isFinite() && it > 0.0 && timestamp in 1_000_000_000_000L..System.currentTimeMillis() }
++        findViewById<TextView>(R.id.expLastPrice).text = "Son Fiyat  " + (valid?.let(::money) ?: "—")
++        findViewById<TextView>(R.id.expLevelSource).text = if (valid == null)
++            "Son fiyat doğrulanamadı; referans seviyeler kapanmış mumlara dayanır." else
++            "Son fiyat: ${source.take(36)} • ${df.format(Date(timestamp))}. Destek/direnç ayrı seçili mum dönemine aittir."
++    }
++
++    private fun loadExtendedDailyMetrics() {
++        for ((id, label) in listOf(
++            R.id.expDailyLow to "Günlük En Düşük", R.id.expDailyHigh to "Günlük En Yüksek",
++            R.id.expDailyOpen to "Açılış", R.id.expPrevClose to "Önceki Kapanış", R.id.expDailyVolume to "Hacim"
++        )) findViewById<TextView>(id).text = "$label\n—"
++        findViewById<TextView>(R.id.expMetricSource).text = "Günlük veriler doğrulanıyor; eksik veri tahmin edilmiyor."
++        lifecycleScope.launch {
++            val confirmed = try {
++                val bars = withTimeout(30_000) { chartRepository.load(x.symbol, ChartTimeframe.ONE_DAY, x.candles) }
++                OhlcvResampler.sanitize(bars).dropLast(1)
++            } catch (cancel: kotlinx.coroutines.CancellationException) { throw cancel }
++              catch (_: Exception) { emptyList() }
++            if (isFinishing || isDestroyed) return@launch
++            val last = confirmed.lastOrNull()
++            if (last == null) {
++                findViewById<TextView>(R.id.expMetricSource).text = "Doğrulanmış kapanmış günlük mum yok; fiyat kutuları boş bırakıldı."
++                return@launch
++            }
++            fun set(id: Int, name: String, value: String) { findViewById<TextView>(id).text = "$name\n$value" }
++            set(R.id.expDailyLow, "Günlük En Düşük", money(last.low))
++            set(R.id.expDailyHigh, "Günlük En Yüksek", money(last.high))
++            set(R.id.expDailyOpen, "Açılış", money(last.open))
++            set(R.id.expPrevClose, "Önceki Kapanış", last.close.let(::money))
++            set(R.id.expDailyVolume, "Hacim", String.format(Locale("tr", "TR"), "%,.0f", last.volume))
++            findViewById<TextView>(R.id.expMetricSource).text =
++                "Kapanmış günlük mum: ${df.format(Date(last.timestamp))} • Grafik kaynağı, finansal oranlardan farklı olabilir."
++        }
++    }
++
++    private fun loadExtendedFinancialMetrics() {
++        for ((id, label) in listOf(R.id.expMarketCap to "Piyasa Değeri", R.id.expPe to "F/K", R.id.expPb to "PD/DD"))
++            findViewById<TextView>(id).text = "$label\n—"
++        lifecycleScope.launch {
++            val assessment = try {
++                val client = FundamentalsBatchClient(applicationContext)
++                val batch = withTimeout(40_000) { if (client.hasLocalImport()) client.loadLocal() else client.load() }
++                withContext(Dispatchers.Default) {
++                    FundamentalValuationEngine.scan(
++                        (batch.items.map { it.symbol } + x.symbol).distinct(), batch.items, System.currentTimeMillis()
++                    ).firstOrNull { it.symbol == x.symbol }
++                }
++            } catch (cancel: kotlinx.coroutines.CancellationException) { throw cancel }
++              catch (_: Exception) { null }
++            if (isFinishing || isDestroyed) return@launch
++            val snapshot = assessment?.snapshot?.takeIf { it.symbol == x.symbol &&
++                FundamentalValuationEngine.validate(it, System.currentTimeMillis()) == null }
++            val multiples = snapshot?.let(FundamentalValuationEngine::multiples)
++            val fmt = { d: Double? -> d?.takeIf { it.isFinite() && it > 0 }?.let { String.format(Locale("tr", "TR"), "%.2f", it) } ?: "—" }
++            findViewById<TextView>(R.id.expMarketCap).text = "Piyasa Değeri\n" +
++                (snapshot?.marketCapTry?.let { String.format(Locale("tr", "TR"), "%.2f Mr TL", it / 1_000_000_000) } ?: "—")
++            findViewById<TextView>(R.id.expPe).text = "F/K\n${fmt(multiples?.pe)}"
++            findViewById<TextView>(R.id.expPb).text = "PD/DD\n${fmt(multiples?.pb)}"
++            if (snapshot != null) findViewById<TextView>(R.id.expMetricSource).append(
++                "\nKAP finansal dönemi: ${df.format(Date(snapshot.financialPeriodEndMs))} • Piyasa gözlemi: ${df.format(Date(snapshot.marketObservedAtMs))}."
++            )
++        }
++    }
++
++    private fun clearExpandedTechnical() {
++        for ((id,label) in listOf(R.id.expRsi to "RSI (14)", R.id.expMacd to "MACD", R.id.expStochastic to "Stokastik (14)",
++            R.id.expCci to "CCI (20)", R.id.expAdx to "ADX (14)", R.id.expMomentum to "Momentum (10)"))
++            findViewById<TextView>(id).apply { text = "$label    —"; contentDescription = text }
++        for ((id,label) in listOf(R.id.expRes1 to "Direnç 1",R.id.expRes2 to "Direnç 2",R.id.expRes3 to "Direnç 3",
++            R.id.expSup1 to "Destek 1",R.id.expSup2 to "Destek 2",R.id.expSup3 to "Destek 3"))
++            findViewById<TextView>(id).apply { text = "$label    —"; contentDescription = text }
++        findViewById<TextView>(R.id.expIndicatorSource).text = "Seçili zaman diliminde doğrulanmış mum verisi bekleniyor."
++    }
++
++    private fun renderExpandedTechnical(timeframe: ChartTimeframe, closed: List<tr.borsatakip.v5.model.Candle>, close: Double) {
++        val data = ExtendedStockEvidence.indicators(closed, !timeframe.daily)
++        fun metric(id: Int, label: String, value: Double?, suffix: String = "") {
++            findViewById<TextView>(id).apply {
++                text = "$label    " + (value?.takeIf { it.isFinite() }?.let { String.format(Locale("tr", "TR"), "%.2f", it) + suffix } ?: "—")
++                contentDescription = text
++            }
++        }
++        metric(R.id.expRsi, "RSI (14)", data.rsi14)
++        metric(R.id.expMacd, "MACD (12,26,9)", data.macd)
++        metric(R.id.expStochastic, "Stokastik %K (14)", data.stochastic14)
++        metric(R.id.expCci, "CCI (20)", data.cci20)
++        metric(R.id.expAdx, "ADX (14)", data.adx14)
++        metric(R.id.expMomentum, "Momentum (10)", data.momentum10Pct, "%")
++        val ladder = ExtendedStockEvidence.ladder(closed, close)
++        for (index in 0 until 3) {
++            findViewById<TextView>(listOf(R.id.expRes1,R.id.expRes2,R.id.expRes3)[index]).text =
++                "Direnç ${index+1}    " + (ladder.resistances.getOrNull(index)?.let(::money) ?: "—")
++            findViewById<TextView>(listOf(R.id.expSup1,R.id.expSup2,R.id.expSup3)[index]).text =
++                "Destek ${index+1}    " + (ladder.supports.getOrNull(index)?.let(::money) ?: "—")
++        }
++        findViewById<TextView>(R.id.expIndicatorSource).text =
++            "${timeframe.label} • ${closed.size} kapanmış/son teyitsiz mum dışlanmış OHLCV gözlemi. Hesaplanamayan gösterge boş bırakılır."
+     }
+ 
+     private fun openFullscreenChart() {
+--- /dev/null
++++ b/android-v6323/app/src/main/java/tr/borsatakip/v5/analysis/ExtendedStockEvidence.kt
+@@ -0,0 +1,96 @@
++package tr.borsatakip.v5.analysis
++
++import tr.borsatakip.v5.model.Candle
++import kotlin.math.abs
++import kotlin.math.max
++import kotlin.math.min
++
++/** Technical-only facts based on *confirmed* and sanitized candles.
++ * No provider quotes, balance sheet ratios, analyst targets or trading instructions are synthesized here.
++ */
++object ExtendedStockEvidence {
++    data class Indicators(
++        val rsi14: Double?, val macd: Double?, val stochastic14: Double?,
++        val cci20: Double?, val adx14: Double?, val momentum10Pct: Double?
++    )
++    data class Ladder(val resistances: List<Double>, val supports: List<Double>)
++
++    fun indicators(confirmed: List<Candle>, intraday: Boolean): Indicators {
++        val rows = OhlcvResampler.sanitize(confirmed)
++        if (rows.isEmpty()) return Indicators(null, null, null, null, null, null)
++        val base = ChartIndicators.calculate(rows, intraday)
++        val close = rows.last().close
++        val previous = rows.getOrNull(rows.size - 11)?.close?.takeIf { it > 0.0 }
++        val stochastic = rows.takeLast(14).takeIf { it.size == 14 }?.let { w ->
++            val hi = w.maxOf { it.high }; val lo = w.minOf { it.low }
++            if (hi > lo) (close - lo) / (hi - lo) * 100.0 else null
++        }
++        val cci = rows.takeLast(20).takeIf { it.size == 20 }?.let { w ->
++            val typical = w.map { (it.high + it.low + it.close) / 3.0 }
++            val mean = typical.average()
++            val deviation = typical.map { abs(it - mean) }.average()
++            if (deviation > 0) (typical.last() - mean) / (0.015 * deviation) else null
++        }
++        return Indicators(base.rsi.lastOrNull()?.takeIf { it.isFinite() },
++            base.macd.lastOrNull()?.takeIf { it.isFinite() },
++            stochastic?.takeIf { it.isFinite() }, cci?.takeIf { it.isFinite() },
++            adx(rows)?.takeIf { it.isFinite() },
++            previous?.let { ((close / it) - 1.0) * 100.0 }?.takeIf { it.isFinite() })
++    }
++
++    /** Wilder's ADX(14): 14 DX values are needed after the 14-period DI seed. */
++    fun adx(rows: List<Candle>, period: Int = 14): Double? {
++        if (period < 2 || rows.size < period * 2 + 1) return null
++        val tr = DoubleArray(rows.size)
++        val posDm = DoubleArray(rows.size)
++        val negDm = DoubleArray(rows.size)
++        for (i in 1 until rows.size) {
++            val up = rows[i].high - rows[i - 1].high
++            val down = rows[i - 1].low - rows[i].low
++            posDm[i] = if (up > down && up > 0) up else 0.0
++            negDm[i] = if (down > up && down > 0) down else 0.0
++            tr[i] = max(rows[i].high - rows[i].low, max(abs(rows[i].high - rows[i-1].close), abs(rows[i].low - rows[i-1].close)))
++        }
++        var smoothTr = (1..period).sumOf { tr[it] }
++        var smoothPos = (1..period).sumOf { posDm[it] }
++        var smoothNeg = (1..period).sumOf { negDm[it] }
++        fun dx(): Double {
++            if (smoothTr <= 0) return 0.0
++            val diPos = 100.0 * smoothPos / smoothTr
++            val diNeg = 100.0 * smoothNeg / smoothTr
++            return if (diPos + diNeg > 0) 100.0 * abs(diPos - diNeg) / (diPos + diNeg) else 0.0
++        }
++        val dxValues = mutableListOf(dx())
++        for (i in period+1 until rows.size) {
++            smoothTr = smoothTr - smoothTr / period + tr[i]
++            smoothPos = smoothPos - smoothPos / period + posDm[i]
++            smoothNeg = smoothNeg - smoothNeg / period + negDm[i]
++            dxValues.add(dx())
++        }
++        if (dxValues.size < period) return null
++        var value = dxValues.take(period).average()
++        for (i in period until dxValues.size) value = (value * (period-1) + dxValues[i]) / period
++        return value.takeIf { it.isFinite() && it in 0.0..100.0 }
++    }
++
++    /** Only real pivot highs/lows at least two confirmed candles on each side. No guessed levels. */
++    fun ladder(confirmed: List<Candle>, referencePrice: Double): Ladder {
++        val rows = OhlcvResampler.sanitize(confirmed)
++        if (rows.size < 7 || !referencePrice.isFinite() || referencePrice <= 0.0) return Ladder(emptyList(), emptyList())
++        val highs = mutableListOf<Double>(); val lows = mutableListOf<Double>()
++        for (i in 2 until rows.size - 2) {
++            if ((i-2..i+2).all { it == i || rows[i].high > rows[it].high }) highs.add(rows[i].high)
++            if ((i-2..i+2).all { it == i || rows[i].low < rows[it].low }) lows.add(rows[i].low)
++        }
++        fun distinctLevels(values: List<Double>, ascending: Boolean): List<Double> {
++            val ordered = if (ascending) values.filter { it > referencePrice }.sorted() else values.filter { it < referencePrice }.sortedDescending()
++            val result = mutableListOf<Double>()
++            for (value in ordered) {
++                if (result.none { abs(it - value) / referencePrice < 0.003 }) result.add(value)
++                if (result.size == 3) break
++            }
++            return result
++        }
++        return Ladder(distinctLevels(highs, true), distinctLevels(lows, false))
++    }
++}
+--- /dev/null
++++ b/android-v6323/app/src/test/java/tr/borsatakip/v5/analysis/ExtendedStockEvidenceTest.kt
+@@ -0,0 +1,51 @@
++package tr.borsatakip.v5.analysis
++
++import org.junit.Assert.assertEquals
++import org.junit.Assert.assertNotNull
++import org.junit.Assert.assertNull
++import org.junit.Assert.assertTrue
++import org.junit.Test
++import tr.borsatakip.v5.model.Candle
++
++class ExtendedStockEvidenceTest {
++    private fun observations(n: Int) = (0 until n).map { i ->
++        val close = 50.0 + i * 0.15 + (i % 7) * 0.25
++        Candle(1_786_000_000_000L + i * 300_000L, close - 0.2, close + 0.65, close - 0.85, close, 1_000.0+i)
++    }
++
++    @Test fun indicatorsNeedRealHistory() {
++        val item = ExtendedStockEvidence.indicators(observations(4), true)
++        assertNull(item.macd)
++        assertNull(item.rsi14)
++        assertNull(item.adx14)
++        assertNull(item.cci20)
++    }
++
++    @Test fun independentIndicatorsUseVerifiedCandles() {
++        val indicators = ExtendedStockEvidence.indicators(observations(110), true)
++        assertNotNull(indicators.rsi14)
++        assertNotNull(indicators.macd)
++        assertTrue(indicators.stochastic14!! in 0.0..100.0)
++        assertTrue(indicators.adx14!! in 0.0..100.0)
++        assertTrue(indicators.momentum10Pct!!.isFinite())
++    }
++
++    @Test fun levelsDoNotInventMissingPivots() {
++        assertEquals(ExtendedStockEvidence.Ladder(emptyList(), emptyList()),
++            ExtendedStockEvidence.ladder(observations(4), 50.0))
++        assertEquals(ExtendedStockEvidence.Ladder(emptyList(), emptyList()),
++            ExtendedStockEvidence.ladder(observations(110), Double.NaN))
++    }
++
++    @Test fun levelsAreOnTheCorrectSideOfTheReferencePrice() {
++        val bars = (0 until 65).map { i ->
++            val high = if (i % 6 == 2) 125.0 + i * 0.1 else 107.0
++            val low = if (i % 6 == 5) 75.0 - i * 0.1 else 95.0
++            Candle(1_786_000_000_000L + i * 300_000L, 101.0, high, low, 101.0, 100.0)
++        }
++        val levels = ExtendedStockEvidence.ladder(bars, 101.0)
++        assertTrue(levels.resistances.all { it > 101.0 })
++        assertTrue(levels.supports.all { it < 101.0 })
++        assertTrue(levels.resistances.size <= 3 && levels.supports.size <= 3)
++    }
++}

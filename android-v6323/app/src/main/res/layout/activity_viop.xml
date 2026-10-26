@@ -1,0 +1,98 @@
+<?xml version="1.0" ?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:background="@color/market_bg">
+    <androidx.coordinatorlayout.widget.CoordinatorLayout android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1">
+        <com.google.android.material.appbar.AppBarLayout android:id="@+id/marketAppBar" android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@color/market_bg" android:stateListAnimator="@null" android:elevation="6dp" app:elevation="6dp">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:paddingHorizontal="16dp" android:paddingTop="4dp" android:paddingBottom="4dp" app:layout_scrollFlags="scroll|enterAlways">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical">
+                    <LinearLayout android:layout_height="wrap_content" android:orientation="vertical" android:layout_width="0dp" android:layout_weight="1">
+                        <TextView android:id="@+id/viopTitle" style="@style/MarketText" android:text="@string/ui_label_26ea918c1c58" android:textSize="28sp" android:textColor="@color/market_ink" android:fontFamily="sans-serif-medium"/>
+                        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical">
+                            <TextView android:id="@+id/providerDot" style="@style/MarketText" android:text="@string/ui_label_5f9e6a3696c4" android:textColor="@color/market_amber" android:layout_marginEnd="5dp" android:textSize="12sp"/>
+                            <TextView android:id="@+id/providerTitle" style="@style/MarketText" android:text="@string/ui_label_17fb3ca9b2b3" android:textColor="@color/market_amber" android:textSize="12sp"/>
+                            <TextView android:id="@+id/providerLastUpdate" style="@style/MarketText" android:text="@string/ui_label_bda050585a00" android:visibility="gone"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                    <TextView android:id="@+id/openFavorites" style="@style/MarketIcon" android:text="@string/ui_label_b7927b5baee9" android:contentDescription="@string/ui_label_13e9f8c058c9"/>
+                    <TextView android:id="@+id/openSettings" style="@style/MarketIcon" android:text="@string/ui_label_e5235a4a75e6" android:contentDescription="@string/ui_label_bb6111a12fe3"/>
+                    <TextView android:id="@+id/openNotifications" style="@style/MarketIcon" android:text="@string/ui_label_6d67cab95d71" android:contentDescription="@string/ui_label_fc2cbca9acbe"/>
+                </LinearLayout>
+                <TextView android:id="@+id/providerStatus" style="@style/MarketText" android:text="@string/ui_label_ab6332e37a91" android:layout_width="match_parent" android:maxLines="2" android:ellipsize="end" android:layout_marginTop="4dp" android:layout_marginBottom="8dp"/>
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:background="@drawable/bg_market_panel">
+                    <TextView android:id="@+id/summaryLong" style="@style/MarketText" android:text="@string/ui_label_9af340a83d34" android:layout_width="0dp" android:layout_weight="1" android:gravity="center" android:paddingVertical="6dp" android:textSize="13sp" android:textColor="@color/market_mint"/>
+                    <TextView android:id="@+id/summaryShort" style="@style/MarketText" android:text="@string/ui_label_ebb2e502fd2f" android:layout_width="0dp" android:layout_weight="1" android:gravity="center" android:paddingVertical="6dp" android:textSize="13sp" android:textColor="@color/red"/>
+                    <TextView android:id="@+id/summaryWatch" style="@style/MarketText" android:text="@string/ui_label_ef38042b60bb" android:layout_width="0dp" android:layout_weight="1" android:gravity="center" android:paddingVertical="6dp" android:textSize="13sp" android:textColor="@color/market_ink"/>
+                </LinearLayout>
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:layout_marginTop="8dp">
+                    <EditText android:id="@+id/viopSearch" style="@style/MarketSearch" android:hint="@string/ui_label_df462b806c94" android:importantForAutofill="no" android:inputType="textCapCharacters"/>
+                    <ImageButton android:id="@+id/viopSort" style="@style/MarketIcon" android:layout_marginStart="6dp" android:contentDescription="@string/ui_label_2c65cdef2fa1" android:src="@drawable/ic_market_filter" android:padding="10dp" android:background="@drawable/bg_market_input"/>
+                </LinearLayout>
+                <HorizontalScrollView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="6dp" android:scrollbars="none" android:fillViewport="true">
+                    <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical">
+                        <Button android:id="@+id/filterAll" style="@style/MarketChip" android:text="@string/ui_label_f43a65ad8268"/>
+                        <Button android:id="@+id/filterLong" style="@style/MarketChip" android:text="@string/ui_label_a8f3862b9630"/>
+                        <Button android:id="@+id/filterShort" style="@style/MarketChip" android:text="@string/ui_label_1bf63c90337e"/>
+                        <Button android:id="@+id/filterIndex" style="@style/MarketChip" android:text="@string/ui_label_92c558791a10"/>
+                        <Button android:id="@+id/filterFx" style="@style/MarketChip" android:text="@string/ui_label_5ad6017db306"/>
+                        <Button android:id="@+id/filterCommodity" style="@style/MarketChip" android:text="@string/ui_label_a2b45fe1e0eb"/>
+                        <Button android:id="@+id/filterRate" style="@style/MarketChip" android:text="@string/ui_label_a7c29fd73173"/>
+                    </LinearLayout>
+                </HorizontalScrollView>
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:layout_marginTop="6dp">
+                    <Button android:id="@+id/openContracts" style="@style/MarketChip" android:text="@string/ui_label_637a6f8416d4" android:layout_width="0dp" android:layout_weight="1" android:paddingHorizontal="4dp" android:minWidth="0dp"/>
+                    <Button android:id="@+id/openAnalysis" style="@style/MarketChip" android:text="@string/ui_label_34d14d6a2aa3" android:layout_width="0dp" android:layout_weight="1" android:paddingHorizontal="4dp" android:minWidth="0dp"/>
+                    <Button android:id="@+id/openSignals" style="@style/MarketChip" android:text="@string/ui_label_c4a350cd0bd2" android:layout_width="0dp" android:layout_weight="1" android:paddingHorizontal="4dp" android:minWidth="0dp"/>
+                </LinearLayout>
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:id="@+id/viopScanCard" android:layout_marginTop="6dp" android:background="@drawable/bg_market_scan" android:paddingHorizontal="12dp" android:paddingVertical="4dp">
+                    <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/ic_market_radar" android:importantForAccessibility="no"/>
+                    <LinearLayout android:layout_height="wrap_content" android:orientation="vertical" android:layout_width="0dp" android:layout_weight="1" android:layout_marginStart="10dp">
+                        <TextView android:id="@+id/viopScanTitle" style="@style/MarketText" android:text="@string/ui_label_df1b3f94e399" android:textColor="@color/market_ink" android:textSize="13sp" android:textStyle="bold"/>
+                        <TextView android:id="@+id/viopScanSubtitle" style="@style/MarketText" android:text="@string/ui_label_f3d2e20b8da6"/>
+                    </LinearLayout>
+                    <Button android:id="@+id/refresh" style="@style/MarketChip" android:text="@string/ui_label_2bdc5998ebf7" android:layout_marginEnd="0dp" android:textColor="@color/market_mint" android:minWidth="84dp" android:paddingHorizontal="10dp"/>
+                </LinearLayout>
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:layout_marginTop="4dp">
+                    <TextView android:id="@+id/heroExpiry" style="@style/MarketText" android:text="@string/ui_label_55974589634f" android:layout_width="0dp" android:layout_weight="1" android:gravity="center" android:textSize="12sp" android:paddingVertical="8dp"/>
+                    <TextView android:id="@+id/metricVolume" style="@style/MarketText" android:text="@string/ui_label_b9e101f69936" android:layout_width="0dp" android:layout_weight="1" android:gravity="center" android:textSize="12sp" android:paddingVertical="8dp"/>
+                    <TextView android:id="@+id/metricOi" style="@style/MarketText" android:text="@string/ui_label_efd58f08cc2e" android:layout_width="0dp" android:layout_weight="1" android:gravity="center" android:textSize="12sp" android:paddingVertical="8dp"/>
+                </LinearLayout>
+                <ProgressBar android:id="@+id/viopScanProgress" style="?android:attr/progressBarStyleHorizontal" android:layout_width="match_parent" android:layout_height="3dp" android:layout_marginTop="4dp" android:indeterminate="true" android:indeterminateTint="@color/market_mint" android:visibility="gone" android:contentDescription="@string/ui_label_4e3d7b10ebcb"/>
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
+                    <TextView android:id="@+id/signalSummary" style="@style/MarketText" android:text="@string/ui_label_2fa2360fe6c4" android:layout_width="match_parent" android:maxLines="1" android:ellipsize="end" android:minHeight="24dp" android:gravity="center_vertical"/>
+                    <TextView android:id="@+id/status" style="@style/MarketText" android:text="@string/ui_label_3e436a600f3b" android:layout_width="match_parent" android:maxLines="2" android:ellipsize="end" android:minHeight="24dp" android:gravity="center_vertical" android:contentDescription="@string/ui_label_3570aca9b77e"/>
+                    <TextView android:id="@+id/signalLastUpdate" style="@style/MarketText" android:text="@string/ui_label_bda050585a00" android:visibility="gone"/>
+                </LinearLayout>
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:id="@+id/heroCard" android:visibility="gone">
+                    <TextView android:id="@+id/providerDataAge" style="@style/MarketText" android:text=""/>
+                    <TextView android:id="@+id/providerLatency" style="@style/MarketText" android:text=""/>
+                    <TextView android:id="@+id/heroTitle" style="@style/MarketText" android:text=""/>
+                    <TextView android:id="@+id/heroContract" style="@style/MarketText" android:text=""/>
+                    <TextView android:id="@+id/heroPrice" style="@style/MarketText" android:text=""/>
+                    <TextView android:id="@+id/heroChange" style="@style/MarketText" android:text=""/>
+                    <TextView android:id="@+id/metricOpen" style="@style/MarketText" android:text=""/>
+                    <TextView android:id="@+id/metricHigh" style="@style/MarketText" android:text=""/>
+                    <TextView android:id="@+id/metricLow" style="@style/MarketText" android:text=""/>
+                    <TextView android:id="@+id/metricBid" style="@style/MarketText" android:text=""/>
+                    <TextView android:id="@+id/metricAsk" style="@style/MarketText" android:text=""/>
+                    <TextView android:id="@+id/metricBasis" style="@style/MarketText" android:text=""/>
+                    <TextView android:id="@+id/marketContracts" style="@style/MarketText" android:text=""/>
+                    <TextView android:id="@+id/marketSignals" style="@style/MarketText" android:text=""/>
+                    <TextView android:id="@+id/marketTrend" style="@style/MarketText" android:text=""/>
+                    <tr.borsatakip.v5.ui.ViopSparklineView android:id="@+id/heroSparkline" android:layout_width="1dp" android:layout_height="1dp"/>
+                    <Button android:id="@+id/openExpiries" style="@style/MarketChip" android:text="@string/ui_label_3097d26bd2e9"/>
+                </LinearLayout>
+            </LinearLayout>
+        </com.google.android.material.appbar.AppBarLayout>
+        <FrameLayout android:layout_width="match_parent" android:layout_height="match_parent" app:layout_behavior="@string/appbar_scrolling_view_behavior">
+            <androidx.recyclerview.widget.RecyclerView android:id="@+id/list" android:layout_width="match_parent" android:layout_height="match_parent" android:paddingHorizontal="16dp" android:paddingBottom="12dp" android:clipToPadding="false" android:scrollbars="vertical"/>
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:id="@+id/viopEmptyState" android:gravity="center" android:padding="12dp" android:visibility="gone">
+                <TextView android:id="@+id/viopEmptyIcon" style="@style/MarketText" android:text="@string/ui_label_c19732df495e" android:visibility="gone"/>
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical">
+                    <TextView android:id="@+id/viopEmptyTitle" style="@style/MarketText" android:text="@string/ui_label_e3ee7aa7da46" android:layout_width="0dp" android:layout_weight="1" android:textSize="15sp" android:textColor="@color/market_ink"/>
+                    <Button android:id="@+id/viopEmptyAction" style="@style/MarketChip" android:text="@string/ui_label_762b794fc042" android:layout_marginStart="8dp"/>
+                </LinearLayout>
+                <TextView android:id="@+id/emptySignals" style="@style/MarketText" android:text="@string/ui_label_3ca8cdfa413d" android:layout_width="match_parent" android:gravity="center" android:layout_marginTop="8dp"/>
+            </LinearLayout>
+        </FrameLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+    <include layout="@layout/include_bottom_nav"/>
+</LinearLayout>

@@ -1,0 +1,26 @@
+{
+  "date": "2026-10-22",
+  "checks": {
+    "xml_well_formed": true,
+    "unique_android_ids": true,
+    "all_original_contract_ids": true,
+    "tradingview_on_top": true,
+    "three_functioning_tabs": true,
+    "four_timeframe_chips": true,
+    "all_4_periods_requested": true,
+    "distinct_10_minute_aggregation": true,
+    "reference_indicators_bound": true,
+    "levels_and_scenarios_from_chart": true,
+    "plain_language_at_technical_end": true,
+    "no_sample_price_embedded": true,
+    "stale_quote_disclosure": true,
+    "favoriting_uses_repository": true,
+    "preserves_tab_state": true,
+    "all_drawables_exist": true,
+    "source_ref_has_no_unknown_ids": true
+  },
+  "passed": 17,
+  "total": 17,
+  "android_apk": "NOT_BUILT",
+  "device_screenshots": "NOT_TESTED"
+}

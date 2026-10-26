@@ -1,0 +1,288 @@
+{
+  "total": 70,
+  "passed": 70,
+  "failed": [],
+  "xml_errors": [],
+  "checks": [
+    {
+      "name": "XML parse activity_stock_detail.xml",
+      "ok": true
+    },
+    {
+      "name": "XML parse include_stock_detail_extended_metrics.xml",
+      "ok": true
+    },
+    {
+      "name": "XML parse include_stock_detail_extended_panels.xml",
+      "ok": true
+    },
+    {
+      "name": "XML parse include_stock_easy_explanation.xml",
+      "ok": true
+    },
+    {
+      "name": "XML parse include_stock_detail_bottom_nav.xml",
+      "ok": true
+    },
+    {
+      "name": "No duplicate view IDs across included layouts",
+      "ok": true
+    },
+    {
+      "name": "All prior StockDetailActivity IDs preserved",
+      "ok": true
+    },
+    {
+      "name": "All views for 8 price/financial tiles",
+      "ok": true
+    },
+    {
+      "name": "All views for 6 timeframes",
+      "ok": true
+    },
+    {
+      "name": "All views for 6 technical indicators",
+      "ok": true
+    },
+    {
+      "name": "All views for 3 resistance + current + 3 support",
+      "ok": true
+    },
+    {
+      "name": "All views for 3 target labels",
+      "ok": true
+    },
+    {
+      "name": "All views for 8 navigation actions",
+      "ok": true
+    },
+    {
+      "name": "Source references expDailyLow",
+      "ok": true
+    },
+    {
+      "name": "Source references expDailyHigh",
+      "ok": true
+    },
+    {
+      "name": "Source references expDailyOpen",
+      "ok": true
+    },
+    {
+      "name": "Source references expPrevClose",
+      "ok": true
+    },
+    {
+      "name": "Source references expDailyVolume",
+      "ok": true
+    },
+    {
+      "name": "Source references expMarketCap",
+      "ok": true
+    },
+    {
+      "name": "Source references expPe",
+      "ok": true
+    },
+    {
+      "name": "Source references expPb",
+      "ok": true
+    },
+    {
+      "name": "Source references expTrendFive",
+      "ok": true
+    },
+    {
+      "name": "Source references expTrendTen",
+      "ok": true
+    },
+    {
+      "name": "Source references expTrendHour",
+      "ok": true
+    },
+    {
+      "name": "Source references expTrendDaily",
+      "ok": true
+    },
+    {
+      "name": "Source references expTrendWeekly",
+      "ok": true
+    },
+    {
+      "name": "Source references expTrendMonthly",
+      "ok": true
+    },
+    {
+      "name": "Source references expRsi",
+      "ok": true
+    },
+    {
+      "name": "Source references expMacd",
+      "ok": true
+    },
+    {
+      "name": "Source references expStochastic",
+      "ok": true
+    },
+    {
+      "name": "Source references expCci",
+      "ok": true
+    },
+    {
+      "name": "Source references expAdx",
+      "ok": true
+    },
+    {
+      "name": "Source references expMomentum",
+      "ok": true
+    },
+    {
+      "name": "Source references expRes1",
+      "ok": true
+    },
+    {
+      "name": "Source references expRes2",
+      "ok": true
+    },
+    {
+      "name": "Source references expRes3",
+      "ok": true
+    },
+    {
+      "name": "Source references expLastPrice",
+      "ok": true
+    },
+    {
+      "name": "Source references expSup1",
+      "ok": true
+    },
+    {
+      "name": "Source references expSup2",
+      "ok": true
+    },
+    {
+      "name": "Source references expSup3",
+      "ok": true
+    },
+    {
+      "name": "Source references expTargetShort",
+      "ok": true
+    },
+    {
+      "name": "Source references expTargetMedium",
+      "ok": true
+    },
+    {
+      "name": "Source references expTargetLong",
+      "ok": true
+    },
+    {
+      "name": "Source references expNavGraph",
+      "ok": true
+    },
+    {
+      "name": "Source references expNavCompany",
+      "ok": true
+    },
+    {
+      "name": "Source references expNavFinancial",
+      "ok": true
+    },
+    {
+      "name": "Source references expNavNews",
+      "ok": true
+    },
+    {
+      "name": "Source references expNavDividend",
+      "ok": true
+    },
+    {
+      "name": "Source references expNavOwnership",
+      "ok": true
+    },
+    {
+      "name": "Source references expNavLegislation",
+      "ok": true
+    },
+    {
+      "name": "Source references expNavAnalyst",
+      "ok": true
+    },
+    {
+      "name": "Clickable action expNavGraph",
+      "ok": true
+    },
+    {
+      "name": "Clickable action expNavCompany",
+      "ok": true
+    },
+    {
+      "name": "Clickable action expNavFinancial",
+      "ok": true
+    },
+    {
+      "name": "Clickable action expNavNews",
+      "ok": true
+    },
+    {
+      "name": "Clickable action expNavDividend",
+      "ok": true
+    },
+    {
+      "name": "Clickable action expNavOwnership",
+      "ok": true
+    },
+    {
+      "name": "Clickable action expNavLegislation",
+      "ok": true
+    },
+    {
+      "name": "Clickable action expNavAnalyst",
+      "ok": true
+    },
+    {
+      "name": "Original chart and TradingView maintained",
+      "ok": true
+    },
+    {
+      "name": "6 distinct OHLCV timeframes in coroutine summary",
+      "ok": true
+    },
+    {
+      "name": "No fake analyst prices in layout",
+      "ok": true
+    },
+    {
+      "name": "Analyst consensus explicitly unknown",
+      "ok": true
+    },
+    {
+      "name": "Technical closes exclude last unverified candle",
+      "ok": true
+    },
+    {
+      "name": "Fundamental source validated",
+      "ok": true
+    },
+    {
+      "name": "Financial chart retains source provenance",
+      "ok": true
+    },
+    {
+      "name": "All xml referenced local drawables exist",
+      "ok": true
+    },
+    {
+      "name": "All expanded R.id refs resolve",
+      "ok": true
+    },
+    {
+      "name": "Version 668 retained",
+      "ok": true
+    },
+    {
+      "name": "All Android res/*.xml syntactically valid",
+      "ok": true
+    }
+  ]
+}

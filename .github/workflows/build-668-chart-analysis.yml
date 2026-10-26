@@ -1,0 +1,65 @@
+name: Build 668 chart analysis verification
+on:
+  workflow_dispatch:
+  push:
+    branches: [build/apk668-chart-readable-analysis]
+    paths:
+      - 'android-v6323/**'
+      - 'ci/build668-quality.py'
+      - '.github/workflows/build-668-chart-analysis.yml'
+permissions:
+  contents: read
+jobs:
+  android-verification:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: android-actions/setup-android@v3
+        with:
+          packages: platform-tools
+          log-accepted-android-sdk-licenses: false
+      - run: sdkmanager 'platforms;android-35' 'build-tools;35.0.0'
+      - uses: gradle/actions/wrapper-validation@v4
+      - uses: gradle/actions/setup-gradle@v4
+      - name: Compile native app, unit tests, Android tests, and lint
+        working-directory: android-v6323
+        run: |
+          bash ./gradlew --no-daemon --max-workers=2 '-Dorg.gradle.jvmargs=-Xmx2048m -XX:MaxMetaspaceSize=768m' \
+            :app:testDiagnosticUnitTest :app:compileDiagnosticAndroidTestKotlin :app:lintDiagnostic :app:assembleDiagnostic
+      - name: Emulator screenshots - test fixture and no-data
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 35
+          arch: x86_64
+          profile: pixel_4
+          disable-animations: true
+          emulator-boot-timeout: 600
+          script: |
+            cd android-v6323
+            ./gradlew --no-daemon :app:connectedDiagnosticAndroidTest \
+              -Pandroid.testInstrumentationRunnerArguments.class=tr.borsatakip.v5.ui.Build668VisualScreenshotTest
+            mkdir -p ../build668-device-screens
+            adb pull /data/local/tmp/build668-screens ../build668-device-screens
+      - name: Upload emulator screenshots for visual inspection
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: BIST-BUILD668-ANDROID-SCREENSHOTS
+          path: build668-device-screens/**
+          if-no-files-found: warn
+      - name: Verify current unit test and APK outputs
+        run: python3 ci/build668-quality.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: BIST-VIOP-BUILD668-ANDROID-TEST-AND-APK
+          path: |
+            android-v6323/app/build/outputs/apk/diagnostic/*.apk
+            android-v6323/app/build/test-results/testDiagnosticUnitTest/*.xml
+            android-v6323/app/build/reports/lint-results-diagnostic.*
+          if-no-files-found: warn

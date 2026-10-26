@@ -1,0 +1,135 @@
+name: BIST VIOP V6.2.2 APK
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'BIST-VIOP-V6.2.2-KAYNAK-ONARIM-ASAMA3.zip'
+      - '.github/workflows/build-apk.yml'
+jobs:
+  android-apk:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - name: Extract application source
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f BIST-VIOP-V6.2.2-KAYNAK-ONARIM-ASAMA3.zip
+          unzip -q -o BIST-VIOP-V6.2.2-KAYNAK-ONARIM-ASAMA3.zip -d app-source
+          test -f app-source/gradlew
+          test -f app-source/app/build.gradle.kts
+      - name: Configure JDK 17
+        uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: '17'
+      - name: Use preinstalled Android SDK
+        run: |
+          echo "ANDROID_HOME=$ANDROID_HOME"
+          SDKMANAGER=$(find "$ANDROID_HOME/cmdline-tools" -type f -name sdkmanager | head -n 1)
+          echo "SDKMANAGER=$SDKMANAGER" >> "$GITHUB_ENV"
+          "$SDKMANAGER" --version
+      - name: Install Android 35 tools
+        run: '"$SDKMANAGER" "platforms;android-35" "build-tools;35.0.0"'
+      - name: Validate Gradle wrapper
+        uses: gradle/actions/wrapper-validation@v4
+        with:
+          root-path: app-source
+      - name: Verify Aşama 3 source corrections
+        working-directory: app-source
+        run: |
+          test -f ASAMA3-DUZELTME-RAPORU.md
+          grep -q 'DELAYED_RESULTS_NOT_TRADE_ELIGIBLE' app/src/main/java/tr/borsatakip/v5/scan/IndependentScanAudit.kt
+      - name: Apply exact Aşama 4 changes
+        shell: bash
+        run: |
+          set -euo pipefail
+          cp PATCHES/asama4/CheapStockTrendPolicy.kt app-source/app/src/main/java/tr/borsatakip/v5/scan/CheapStockTrendPolicy.kt
+          cd app-source
+          python3 ../PATCHES/asama4/apply_a4.py
+          echo 'c33d26f34847fa0e324cf20ac54993a3d594afea13f2523d0e4b00ae694c6eea  app/src/main/java/tr/borsatakip/v5/ui/CheapStockScanActivity.kt' | sha256sum -c -
+          echo 'c02007e7d3028bc807119454f58166bbae1ee0e147ee88e2ed046c9e9a32ff95  app/src/main/java/tr/borsatakip/v5/scan/CheapStockTrendPolicy.kt' | sha256sum -c -
+      - name: Apply Aşama 5 history and chart fixes
+        run: python3 ../PATCHES/asama5/apply_a5.py
+        working-directory: app-source
+      # A6 source verification correction: validated bars count
+      - name: Apply and verify Aşama 6 source
+        working-directory: app-source
+        run: |
+          python3 ../PATCHES/asama6/apply_a6.py
+          cp ../PATCHES/asama6/CheapStockTrendPolicy.kt app/src/main/java/tr/borsatakip/v5/scan/CheapStockTrendPolicy.kt
+          # Avoid 'tr' locale variable shadowing Kotlin package path in A6 UI source.
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path("app/src/main/java/tr/borsatakip/v5/ui/CheapStockScanActivity.kt")
+          s=p.read_text()
+          assert "tr.borsatakip.v5.analysis.TrendUiState" in s
+          s=s.replace("tr.borsatakip.v5.analysis.TrendUiState","TrendUiState")
+          s=s.replace("import android.os.Bundle", "import android.os.Bundle\nimport tr.borsatakip.v5.analysis.TrendUiState",1)
+          p.write_text(s)
+          PY
+
+          grep -q 'Yükseliş: $upCount' app/src/main/java/tr/borsatakip/v5/ui/CheapStockScanActivity.kt
+          grep -q 'assessments.getValue(row.stock.symbol)' app/src/main/java/tr/borsatakip/v5/ui/CheapStockScanActivity.kt
+          sha256sum app/src/main/java/tr/borsatakip/v5/ui/CheapStockScanActivity.kt
+          echo '99014bf95d1472b2815b30551ce109d573de607ae3ac62a06574c3fd3015a909  app/src/main/java/tr/borsatakip/v5/scan/CheapStockTrendPolicy.kt' | sha256sum -c -
+      - name: Apply Aşama 7 and increment version
+        working-directory: app-source
+        run: |
+          python3 ../PATCHES/asama7/apply_a7_v623.py
+          grep -q 'versionCode = 623' app/build.gradle.kts
+          grep -q 'versionName = "6.2.3"' app/build.gradle.kts
+      - name: Apply V6.2.4 home and VIOP fixes
+        working-directory: app-source
+        run: |
+          python3 ../PATCHES/asama8/apply_v624.py
+          grep -q 'versionCode = 624' app/build.gradle.kts
+          grep -q 'versionName = "6.2.4"' app/build.gradle.kts
+          python3 -c 'import xml.etree.ElementTree as ET; ET.parse("app/src/main/res/layout/activity_main.xml")'
+      - name: Build diagnostic APK
+        working-directory: app-source
+        shell: bash
+        run: |
+          chmod +x gradlew
+          ./gradlew --no-daemon --stacktrace :app:assembleDiagnostic
+      - name: Run unit tests
+        if: success()
+        working-directory: app-source
+        run: ./gradlew --no-daemon :app:testDebugUnitTest
+      - name: Package exact V6.2.4 source
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f app-source/app/build.gradle.kts
+          grep -q 'versionCode = 624' app-source/app/build.gradle.kts
+          grep -q 'versionName = "6.2.4"' app-source/app/build.gradle.kts
+          cd app-source
+          zip -qr ../BIST-VIOP-V6.2.4-BUILD624-TAM-KAYNAK.zip . -x '*/build/*' '.gradle/*' '.git/*'
+          cd ..
+          sha256sum BIST-VIOP-V6.2.4-BUILD624-TAM-KAYNAK.zip
+      - name: Upload source ZIP
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: BIST-VIOP-V6.2.4-BUILD624-TAM-KAYNAK
+          path: BIST-VIOP-V6.2.4-BUILD624-TAM-KAYNAK.zip
+          if-no-files-found: error
+      - name: Upload APK
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: BIST-VIOP-V6.2.4-APK
+          path: app-source/app/build/outputs/apk/diagnostic/*.apk
+          if-no-files-found: warn
+      - name: Upload test reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: BIST-VIOP-V6.2.4-test-reports
+          path: app-source/app/build/reports/tests/
+          if-no-files-found: ignore

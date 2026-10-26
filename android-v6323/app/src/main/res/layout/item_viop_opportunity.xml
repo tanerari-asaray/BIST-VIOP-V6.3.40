@@ -1,0 +1,22 @@
+<?xml version="1.0" ?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="88dp" android:orientation="vertical" android:paddingVertical="6dp" android:paddingHorizontal="6dp" android:background="@drawable/bg_market_row" android:foreground="?attr/selectableItemBackground">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical">
+        <LinearLayout android:layout_height="wrap_content" android:orientation="vertical" android:layout_width="0dp" android:layout_weight="1" android:layout_marginEnd="6dp">
+            <TextView android:id="@+id/viopSymbol" style="@style/MarketText" android:text="" android:textColor="@color/market_ink" android:textSize="16sp" android:textStyle="bold" android:maxLines="1" android:ellipsize="end"/>
+            <TextView android:id="@+id/viopSubtitle" style="@style/MarketText" android:text="" android:layout_width="match_parent" android:maxLines="1" android:ellipsize="end" android:layout_marginTop="4dp"/>
+            <TextView android:id="@+id/viopDirection" style="@style/MarketText" android:text="" android:textSize="12sp" android:layout_marginTop="4dp"/>
+        </LinearLayout>
+        <tr.borsatakip.v5.ui.ViopSparklineView android:id="@+id/viopMiniChart" android:layout_width="58dp" android:layout_height="32dp" android:importantForAccessibility="no"/>
+        <LinearLayout android:layout_height="wrap_content" android:orientation="vertical" android:layout_width="100dp" android:layout_marginStart="6dp">
+            <TextView android:id="@+id/viopPrice" style="@style/MarketText" android:text="" android:layout_width="match_parent" android:gravity="end" android:textColor="@color/market_ink" android:textSize="17sp" android:textStyle="bold"/>
+            <TextView android:id="@+id/viopChange" style="@style/MarketText" android:text="" android:layout_width="match_parent" android:gravity="end" android:textSize="12sp" android:layout_marginTop="4dp"/>
+        </LinearLayout>
+        <TextView android:id="@+id/viopDetailButton" style="@style/MarketText" android:text="@string/ui_label_7bb37df5cb36" android:layout_width="24dp" android:layout_height="44dp" android:gravity="end" android:textSize="23sp"/>
+    </LinearLayout>
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:layout_marginTop="6dp">
+        <TextView android:id="@+id/viopScores" style="@style/MarketText" android:text="" android:layout_width="0dp" android:layout_weight="1" android:textSize="12sp" android:maxLines="1" android:ellipsize="end"/>
+        <TextView android:id="@+id/viopLevels" style="@style/MarketText" android:text="" android:textSize="12sp"/>
+    </LinearLayout>
+    <TextView android:id="@+id/viopClass" style="@style/MarketText" android:text="" android:visibility="gone"/>
+    <TextView android:id="@+id/viopReason" style="@style/MarketText" android:text="" android:visibility="gone"/>
+</LinearLayout>

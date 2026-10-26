@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:orientation="vertical" android:layout_marginTop="12dp" android:paddingBottom="12dp">
+    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:text="BU HİSSEYİ KOLAYCA ANLAYALIM" android:textColor="@color/white"
+        android:textSize="17sp" android:textStyle="bold" android:fontFamily="sans-serif-medium"
+        android:padding="8dp" android:contentDescription="Bu hisseyi kolayca anlayalım; altı açıklama kartı" />
+    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:text="Bu bölüm, yalnız doğrulanabilen geçmiş verileri açıklar; yatırım tavsiyesi değildir."
+        android:textSize="11sp" android:textColor="@color/text_secondary" android:padding="6dp" />
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="horizontal" android:layout_marginTop="6dp">
+      <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+          android:layout_weight="1" android:layout_marginEnd="3dp" android:padding="10dp"
+          android:orientation="vertical" android:background="@drawable/bg_stock_outline">
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="Fiyat nasıl hareket ediyor?" android:textSize="13sp" android:textStyle="bold"
+            android:fontFamily="sans-serif-medium" android:includeFontPadding="false"
+            android:textColor="@color/blue" />
+        <TextView android:id="@+id/easyPriceMovement" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:layout_marginTop="6dp"
+            android:text="Doğrulanmış bilgi bekleniyor."
+            android:textSize="12sp" android:textColor="@color/text_primary"
+            android:lineSpacingExtra="2dp" />
+      </LinearLayout>
+      <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+          android:layout_weight="1" android:layout_marginEnd="3dp" android:padding="10dp"
+          android:orientation="vertical" android:background="@drawable/bg_stock_outline">
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="Hangi seviyeler önemli?" android:textSize="13sp" android:textStyle="bold"
+            android:fontFamily="sans-serif-medium" android:includeFontPadding="false"
+            android:textColor="@color/green" />
+        <TextView android:id="@+id/easyImportantLevels" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:layout_marginTop="6dp"
+            android:text="Doğrulanmış bilgi bekleniyor."
+            android:textSize="12sp" android:textColor="@color/text_primary"
+            android:lineSpacingExtra="2dp" />
+      </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="horizontal" android:layout_marginTop="6dp">
+      <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+          android:layout_weight="1" android:layout_marginEnd="3dp" android:padding="10dp"
+          android:orientation="vertical" android:background="@drawable/bg_stock_outline">
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="Bu yorum ne zaman değişir?" android:textSize="13sp" android:textStyle="bold"
+            android:fontFamily="sans-serif-medium" android:includeFontPadding="false"
+            android:textColor="@color/yellow" />
+        <TextView android:id="@+id/easyChangeConditions" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:layout_marginTop="6dp"
+            android:text="Doğrulanmış bilgi bekleniyor."
+            android:textSize="12sp" android:textColor="@color/text_primary"
+            android:lineSpacingExtra="2dp" />
+      </LinearLayout>
+      <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+          android:layout_weight="1" android:layout_marginEnd="3dp" android:padding="10dp"
+          android:orientation="vertical" android:background="@drawable/bg_stock_outline">
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="Kısaca ne iş yapıyor?" android:textSize="13sp" android:textStyle="bold"
+            android:fontFamily="sans-serif-medium" android:includeFontPadding="false"
+            android:textColor="@color/white" />
+        <TextView android:id="@+id/easyCompany" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:layout_marginTop="6dp"
+            android:text="Doğrulanmış bilgi bekleniyor."
+            android:textSize="12sp" android:textColor="@color/text_primary"
+            android:lineSpacingExtra="2dp" />
+      </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="horizontal" android:layout_marginTop="6dp">
+      <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+          android:layout_weight="1" android:layout_marginEnd="3dp" android:padding="10dp"
+          android:orientation="vertical" android:background="@drawable/bg_stock_outline">
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="Neden ilgi görüyor?" android:textSize="13sp" android:textStyle="bold"
+            android:fontFamily="sans-serif-medium" android:includeFontPadding="false"
+            android:textColor="@color/blue" />
+        <TextView android:id="@+id/easyWhyInterest" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:layout_marginTop="6dp"
+            android:text="Doğrulanmış bilgi bekleniyor."
+            android:textSize="12sp" android:textColor="@color/text_primary"
+            android:lineSpacingExtra="2dp" />
+      </LinearLayout>
+      <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+          android:layout_weight="1" android:layout_marginEnd="3dp" android:padding="10dp"
+          android:orientation="vertical" android:background="@drawable/bg_stock_outline">
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="Dikkat edilmesi gerekenler" android:textSize="13sp" android:textStyle="bold"
+            android:fontFamily="sans-serif-medium" android:includeFontPadding="false"
+            android:textColor="@color/red" />
+        <TextView android:id="@+id/easyRisks" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:layout_marginTop="6dp"
+            android:text="Doğrulanmış bilgi bekleniyor."
+            android:textSize="12sp" android:textColor="@color/text_primary"
+            android:lineSpacingExtra="2dp" />
+      </LinearLayout>
+    </LinearLayout>
+    <TextView android:id="@+id/easyDataSource" android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:layout_marginTop="6dp"
+        android:padding="8dp" android:textSize="11sp" android:textColor="@color/text_secondary"
+        android:text="Veri bekleniyor. Teyitsiz fiyat veya yön yorumu gösterilmez." />
+</LinearLayout>

@@ -1,0 +1,34 @@
+Command: python ci/verify_hisse_detail_pixel_contract.py
+Exit: 0
+PASS xml_valid
+PASS reference_indicators_order
+PASS all_six_indicators_same_row
+PASS single_horizontal_scroll_indicator_group
+PASS bollinger_event_bound
+PASS advanced_controls_hidden_initially
+PASS advanced_controls_disclosure_click
+PASS four_technical_cards_have_chevron
+PASS chevron_vector_present
+PASS tech_cards_are_clickable
+PASS tech_cards_connect_to_actual_periods
+PASS tech_card_action_loads_real_chart
+PASS technical_card_accessible
+PASS detailed_commentary_cta_visible_in_chart
+PASS detailed_commentary_cta_functional
+PASS technical_plain_language_retained
+PASS responsive_chart_frame
+PASS fullscreen_on_timeframe_row
+PASS timeframe_touch_targets_44dp
+PASS typography_rule_all_tabs
+PASS chart_icon_accessibility
+PASS screen_still_has_bottom_navigation
+PASS tradingview_retained
+PASS data_protection_unchanged
+PASS no_fake_prices
+PASS trend_strength_4_bars
+PASS current_timeframe_10min
+PASS card_accessibility_follows_data
+PASS no_duplicate_ids
+PASS no_dead_kotlin_id_references
+RESULT 30 / 30
+

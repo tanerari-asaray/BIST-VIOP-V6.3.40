@@ -1,0 +1,386 @@
+{
+  "schemaVersion": "BIST-VIOP-SOURCE-FIX-VALIDATION/1",
+  "sourceCommit": "0f971b039b251f7a04b4aaa79e7b462fb395b950",
+  "baseCommit": "9c42087616e5f2faf32ba3488d7e64318bc3229c",
+  "branch": "fix/deep-audit-no-apk",
+  "status": "SOURCE_IMPLEMENTED_NATIVE_VALIDATION_BLOCKED",
+  "productionReady": false,
+  "liveTradingVerified": false,
+  "deliveryApproved": false,
+  "apkProduced": false,
+  "findings": [
+    {
+      "id": "F01",
+      "severity": "P1",
+      "issue": "Tarama başlamadan iptal edilince BIST kilidinin bırakılmaması",
+      "fix": "Kilit bırakma işlemi coroutine gövdesinden Job tamamlanmasına taşındı. Başlatma/iptal eşzamanlılaştırıldı; kurulum ve son kayıt hataları da yakalanıyor.",
+      "sources": [
+        "android-v6323/app/src/main/java/tr/borsatakip/v5/scan/LeasedBistJob.kt",
+        "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/FullUniverseScanRuntime.kt"
+      ],
+      "tests": [
+        "android-v6323/app/src/test/java/tr/borsatakip/v5/scan/LeasedBistJobTest.kt"
+      ],
+      "status": "IMPLEMENTED_NATIVE_VERIFICATION_BLOCKED"
+    },
+    {
+      "id": "F02",
+      "severity": "P1",
+      "issue": "Yanıt gövdesi okuma hatasında isteğin askıda kalması",
+      "fix": "Ortak asenkron taşıma; gövde okuma/kapatma/başlatma hatalarında devam nesnesini tamamlıyor. Toplam süre sınırı, soket iptali ve yanıt boyutu sınırı uygulandı.",
+      "sources": [
+        "android-v6323/app/src/main/java/tr/borsatakip/v5/data/BackendHttpTransport.kt",
+        "android-v6323/app/src/main/java/tr/borsatakip/v5/data/MobileMarketDataProvider.kt"
+      ],
+      "tests": [
+        "android-v6323/app/src/test/java/tr/borsatakip/v5/data/BackendHttpTransportTest.kt"
+      ],
+      "status": "IMPLEMENTED_NATIVE_VERIFICATION_BLOCKED"
+    },
+    {
+      "id": "F03",
+      "severity": "P1",
+      "issue": "İptal, hata veya süreç kaybından sonra TESTING durumunda kalma",
+      "fix": "Test sahipliği ve toplam süre sınırı eklendi. İptal finally ile temizleniyor; sahibi bulunmayan/eski TESTING durumu yeniden test edilebilir CONFIGURED durumuna dönüyor. Eski test yeni testin durumunu değiştiremiyor.",
+      "sources": [
+        "android-v6323/app/src/main/java/tr/borsatakip/v5/data/ProviderProbeGate.kt",
+        "android-v6323/app/src/main/java/tr/borsatakip/v5/data/ProviderReadinessService.kt"
+      ],
+      "tests": [
+        "android-v6323/app/src/test/java/tr/borsatakip/v5/data/ProviderProbeGateTest.kt"
+      ],
+      "deviceTests": [
+        "cancelledTestReturnsToConfiguredAndCanBeTestedAgain",
+        "persistedTestingWithoutLiveOwnerIsRecovered"
+      ],
+      "status": "IMPLEMENTED_NATIVE_VERIFICATION_BLOCKED"
+    },
+    {
+      "id": "F04",
+      "severity": "P1",
+      "issue": "Eski sunucu adresiyle yeni anahtarın karışması ve eski sonucun kaydedilmesi",
+      "fix": "URL, anahtar ve ayar sürümü tek kilit altında yakalanıyor. İstek zinciri sabit bağlantı bilgisi kullanıyor; sonuçlar yalnız hâlâ aynı ayar sürümüne aitse kaydediliyor. Aynı origin üzerinde anahtar yenileme ve A→B→A geçişleri de sürümü değiştiriyor.",
+      "sources": [
+        "android-v6323/app/src/main/java/tr/borsatakip/v5/data/BackendConnectionConfig.kt",
+        "android-v6323/app/src/main/java/tr/borsatakip/v5/data/SettingsStore.kt",
+        "android-v6323/app/src/main/java/tr/borsatakip/v5/data/BackendPreflightClient.kt"
+      ],
+      "tests": [
+        "android-v6323/app/src/test/java/tr/borsatakip/v5/data/BackendUrlPolicyTest.kt",
+        "android-v6323/app/src/test/java/tr/borsatakip/v5/data/ProviderProbeGateTest.kt"
+      ],
+      "deviceTests": [
+        "concurrentConfigurationChangesNeverPairKeyWithAnotherOrigin",
+        "oldSnapshotCannotPublishAfterKeyRotationOrOriginRoundTrip",
+        "oldTestCannotOverwriteNewConfigurationReadiness"
+      ],
+      "status": "IMPLEMENTED_NATIVE_VERIFICATION_BLOCKED"
+    },
+    {
+      "id": "F05",
+      "severity": "P2",
+      "issue": "COMPLETE/COMPLETED farkı nedeniyle hatalı otomatik tarama uyarısı",
+      "fix": "İki rapor aynı AutoScanUiPolicy.isCompleted kuralını kullanıyor. Yalnız gerçek COMPLETED sonucu tam başarı sayılıyor; PARTIAL ve SKIPPED_BUSY ayrı kalıyor.",
+      "sources": [
+        "android-v6323/app/src/main/java/tr/borsatakip/v5/worker/AutoScanUiPolicy.kt",
+        "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/SystemReportV2.kt",
+        "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/SettingsDetailActivity.kt"
+      ],
+      "tests": [
+        "android-v6323/app/src/test/java/tr/borsatakip/v5/worker/AutoScanCompletionTest.kt"
+      ],
+      "status": "IMPLEMENTED_NATIVE_VERIFICATION_BLOCKED"
+    },
+    {
+      "id": "F06",
+      "severity": "P2",
+      "issue": "Gizleme işleminin JSON tırnaklarını ve yapısını bozması",
+      "fix": "JSON önce nesne/dizi olarak ayrıştırılıyor; gizli alanlar ve metin değerleri temizlendikten sonra serileştiriliyor. TXT temizliği ayrı uygulanıyor. Gerçek org.json JVM test bağımlılığı eklendi.",
+      "sources": [
+        "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/ReportRedactor.kt",
+        "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/SystemReportV2.kt"
+      ],
+      "tests": [
+        "android-v6323/app/src/test/java/tr/borsatakip/v5/ui/ReportRedactorTest.kt",
+        "android-v6323/app/src/test/java/tr/borsatakip/v5/ui/DeepAuditJsonRedactionTest.kt"
+      ],
+      "status": "IMPLEMENTED_NATIVE_VERIFICATION_BLOCKED"
+    },
+    {
+      "id": "F07",
+      "severity": "P2",
+      "issue": "SHORT MFE yüzdesinde yanlış payda",
+      "fix": "İki motordaki üç hesap noktası giriş fiyatını payda olarak kullanıyor: (giriş − en düşük fiyat) / giriş × 100. 100→80 örneği %20. LONG MFE ve SHORT MAE kontrol beklentileri korundu.",
+      "sources": [
+        "android-v6323/app/src/main/java/tr/borsatakip/v5/analysis/TradeForwardEngine.kt",
+        "android-v6323/app/src/main/java/tr/borsatakip/v5/analysis/v540/backtest/V540BacktestEngine.kt"
+      ],
+      "tests": [
+        "android-v6323/app/src/test/java/tr/borsatakip/v5/analysis/DeepAuditShortExcursionTest.kt"
+      ],
+      "status": "IMPLEMENTED_NATIVE_VERIFICATION_BLOCKED"
+    },
+    {
+      "id": "F08",
+      "severity": "P2",
+      "issue": "BIST sağlayıcı hatasının kaybolması ve 403'ün yanlış anahtar hatası sayılması",
+      "fix": "Gerçek BIST çağrıları HTTP durumu, uç nokta, izin verilen sağlayıcı kodu/aşaması ve upstream durumunu ProviderException içinde koruyor. PROVIDER_AUTH ile GATEWAY_AUTH ayrılıyor.",
+      "sources": [
+        "android-v6323/app/src/main/java/tr/borsatakip/v5/data/BackendFailurePolicy.kt",
+        "android-v6323/app/src/main/java/tr/borsatakip/v5/data/MobileMarketDataProvider.kt",
+        "android-v6323/app/src/main/java/tr/borsatakip/v5/data/BackendHttpDiagnostic.kt"
+      ],
+      "tests": [
+        "android-v6323/app/src/test/java/tr/borsatakip/v5/data/BackendHttpTransportTest.kt"
+      ],
+      "status": "IMPLEMENTED_NATIVE_VERIFICATION_BLOCKED"
+    },
+    {
+      "id": "F09",
+      "severity": "P2",
+      "issue": "VİOP sonucu eskidiğinde LONG/SHORT sayaçlarının güncel kalmaması",
+      "fix": "Ham adaylardan aynı nowMs ile yeniden uygunluk değerlendirmesi yapılıyor; liste ve sayaçlar aynı anı gösteriyor. Periyodik yenileme süresi dolan adayı çıkarıyor; kaydırma konumu korunuyor.",
+      "sources": [
+        "android-v6323/app/src/main/java/tr/borsatakip/v5/analysis/ViopDashboardPolicy.kt",
+        "android-v6323/app/src/main/java/tr/borsatakip/v5/analysis/ViopV6Policy.kt",
+        "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/ViopActivity.kt",
+        "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/ViopOpportunityAdapter.kt"
+      ],
+      "tests": [
+        "android-v6323/app/src/test/java/tr/borsatakip/v5/analysis/ViopDashboardPolicyTest.kt"
+      ],
+      "status": "IMPLEMENTED_NATIVE_VERIFICATION_BLOCKED"
+    },
+    {
+      "id": "F10",
+      "severity": "P2",
+      "issue": "HTTPS doğrulaması ve uç nokta üretiminin tutarsız olması",
+      "fix": "Ortak URL kuralı query, fragment ve URL içi kimlik bilgisini reddediyor; şema/host/default port/trailing slash normalize ediliyor. HTTP ve WebSocket istemcileri aynı adres kuralına geçirildi.",
+      "sources": [
+        "android-v6323/app/src/main/java/tr/borsatakip/v5/data/BackendConnectionConfig.kt",
+        "android-v6323/app/src/main/java/tr/borsatakip/v5/data/BackendPreflightClient.kt",
+        "android-v6323/app/src/main/java/tr/borsatakip/v5/data/BackendHealthClient.kt"
+      ],
+      "tests": [
+        "android-v6323/app/src/test/java/tr/borsatakip/v5/data/BackendUrlPolicyTest.kt"
+      ],
+      "status": "IMPLEMENTED_NATIVE_VERIFICATION_BLOCKED"
+    },
+    {
+      "id": "F11",
+      "severity": "P2",
+      "issue": "Kayıtlı taramanın farklı sağlayıcı/anahtar ayarlarıyla devam edebilmesi",
+      "fix": "Checkpoint kaynak kimliği ve ayar sürümüyle kaydediliyor. Kaynaksız eski kayıt, farklı kaynak/sürüm, farklı mod, süresi dolmuş veya gelecek tarihli kayıt devam amacıyla reddediliyor. Etkin backend ayarı değişirse tam evren taraması iptal ediliyor.",
+      "sources": [
+        "android-v6323/app/src/main/java/tr/borsatakip/v5/data/ObservationSourcePolicy.kt",
+        "android-v6323/app/src/main/java/tr/borsatakip/v5/data/ObservationCheckpoint.kt",
+        "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/FullUniverseScanRuntime.kt"
+      ],
+      "tests": [
+        "android-v6323/app/src/test/java/tr/borsatakip/v5/data/ObservationSourcePolicyTest.kt"
+      ],
+      "status": "IMPLEMENTED_NATIVE_VERIFICATION_BLOCKED"
+    }
+  ],
+  "executed": {
+    "javascriptDiagnostics": {
+      "runtime": "V8 exact production JS module, not Node HTTP integration",
+      "passed": 27,
+      "total": 27,
+      "failed": []
+    },
+    "healthMatrix": {
+      "marketScenarios": 108,
+      "upstreamHttpScenarios": 400,
+      "failures": []
+    },
+    "kotlinSourceExpressions": {
+      "execution": "V8 expression reproduction only; NOT Kotlin/JVM execution",
+      "redactionVerification": "NATIVE_JVM_TESTS_REQUIRED_NOT_EXECUTED_BY_THIS_SCRIPT",
+      "shortExcursion": [
+        {
+          "path": "analysis/TradeForwardEngine.kt",
+          "site": "favorable",
+          "entry": 100,
+          "low": 80,
+          "expectedPct": 20,
+          "actualPct": 20,
+          "conventionalEntryNotionalCorrect": true
+        },
+        {
+          "path": "analysis/v540/backtest/V540BacktestEngine.kt",
+          "site": "fav",
+          "entry": 100,
+          "low": 80,
+          "expectedPct": 20,
+          "actualPct": 20,
+          "conventionalEntryNotionalCorrect": true
+        },
+        {
+          "path": "analysis/v540/backtest/V540BacktestEngine.kt",
+          "site": "favorable",
+          "entry": 100,
+          "low": 80,
+          "expectedPct": 20,
+          "actualPct": 20,
+          "conventionalEntryNotionalCorrect": true
+        }
+      ]
+    },
+    "kotlinSourceContracts": {
+      "automaticSuccess": {
+        "reportExpected": "COMPLETED",
+        "workerOutcomes": [
+          "COMPLETED",
+          "PARTIAL",
+          "NO_DATA",
+          "RETRYABLE_ERROR",
+          "CONFIG_ERROR",
+          "STOPPED",
+          "SKIPPED_BUSY"
+        ],
+        "reportUsesSharedPolicy": true,
+        "reportAcceptsAWorkerOutcome": true
+      }
+    },
+    "staticExistingSourceAssertions": {
+      "checked": 177,
+      "failures": [],
+      "dynamicAssertionsNotEvaluated": 12,
+      "execution": "V8 replay of simple existing source assertions, NOT JVM test execution"
+    },
+    "lexicalSourceCheck": {
+      "execution": "V8 lexical delimiter/literal check only, NOT a Kotlin parser or compiler",
+      "checked": 408,
+      "failures": []
+    }
+  },
+  "native": {
+    "jvmTestDeclarations": 961,
+    "addedJvmTestDeclarations": 51,
+    "addedDeviceTests": 5,
+    "executedJvmTests": 0,
+    "androidCompilation": "NOT_EXECUTED",
+    "androidResources": "NOT_EXECUTED",
+    "instrumentationCompilation": "NOT_EXECUTED",
+    "deviceTests": "NOT_EXECUTED",
+    "attempts": [
+      {
+        "id": 39502523032,
+        "sha": "0f971b039b251f7a04b4aaa79e7b462fb395b950",
+        "status": "completed",
+        "conclusion": "failure",
+        "url": "https://github.com/ferittasbek-png/BIST-VIOP-V6.2.2/actions/runs/39502523032"
+      },
+      {
+        "id": 39502224162,
+        "sha": "db3ad5d49aa251278483389aa2cbe9eb0529ca49",
+        "status": "completed",
+        "conclusion": "failure",
+        "url": "https://github.com/ferittasbek-png/BIST-VIOP-V6.2.2/actions/runs/39502224162"
+      },
+      {
+        "id": 39501587503,
+        "sha": "071e07c4c9219b7cbdbeb4ccb67cb671b46b162c",
+        "status": "completed",
+        "conclusion": "failure",
+        "url": "https://github.com/ferittasbek-png/BIST-VIOP-V6.2.2/actions/runs/39501587503"
+      }
+    ],
+    "latestAttempt": {
+      "sourceCommit": "0f971b039b251f7a04b4aaa79e7b462fb395b950",
+      "runId": 39502523032,
+      "url": "https://github.com/ferittasbek-png/BIST-VIOP-V6.2.2/actions/runs/39502523032",
+      "status": "completed",
+      "conclusion": "failure",
+      "jobs": [
+        {
+          "id": 118903305135,
+          "runnerName": "",
+          "runnerId": 0,
+          "steps": [],
+          "conclusion": "failure"
+        }
+      ]
+    }
+  },
+  "alternativeRunner": {
+    "service": "bist-viop-source-validation",
+    "serviceId": "d2832e5d-c636-4e25-9e78-3d8e7c1ef8c4",
+    "latestDeployment": null,
+    "requestedSourceCommit": "db3ad5d49aa251278483389aa2cbe9eb0529ca49",
+    "result": "User does not have access to the repo"
+  },
+  "limitations": [
+    "No local shell runtime was available.",
+    "GitHub Actions jobs ended before runner assignment, with zero steps.",
+    "Railway GitHub integration could not access the private repository.",
+    "Native compilation, JVM test success, device behavior and live licensed feed are not verified."
+  ],
+  "modifiedFiles": [
+    ".github/workflows/build-v6323.yml",
+    "android-v6323/app/build.gradle.kts",
+    "android-v6323/app/src/androidTest/java/tr/borsatakip/v5/data/ConnectionLifecycleInstrumentedTest.kt",
+    "android-v6323/app/src/main/java/tr/borsatakip/v5/analysis/TradeForwardEngine.kt",
+    "android-v6323/app/src/main/java/tr/borsatakip/v5/analysis/ViopDashboardPolicy.kt",
+    "android-v6323/app/src/main/java/tr/borsatakip/v5/analysis/ViopV6Policy.kt",
+    "android-v6323/app/src/main/java/tr/borsatakip/v5/analysis/v540/backtest/V540BacktestEngine.kt",
+    "android-v6323/app/src/main/java/tr/borsatakip/v5/data/BackendConnectionConfig.kt",
+    "android-v6323/app/src/main/java/tr/borsatakip/v5/data/BackendFailurePolicy.kt",
+    "android-v6323/app/src/main/java/tr/borsatakip/v5/data/BackendHealthClient.kt",
+    "android-v6323/app/src/main/java/tr/borsatakip/v5/data/BackendHttpDiagnostic.kt",
+    "android-v6323/app/src/main/java/tr/borsatakip/v5/data/BackendHttpTransport.kt",
+    "android-v6323/app/src/main/java/tr/borsatakip/v5/data/BackendPreflightClient.kt",
+    "android-v6323/app/src/main/java/tr/borsatakip/v5/data/BackendProvider.kt",
+    "android-v6323/app/src/main/java/tr/borsatakip/v5/data/FundamentalsBatchClient.kt",
+    "android-v6323/app/src/main/java/tr/borsatakip/v5/data/LiveMarketSocket.kt",
+    "android-v6323/app/src/main/java/tr/borsatakip/v5/data/MobileMarketDataProvider.kt",
+    "android-v6323/app/src/main/java/tr/borsatakip/v5/data/ObservationCheckpoint.kt",
+    "android-v6323/app/src/main/java/tr/borsatakip/v5/data/ObservationSourcePolicy.kt",
+    "android-v6323/app/src/main/java/tr/borsatakip/v5/data/ProviderProbeGate.kt",
+    "android-v6323/app/src/main/java/tr/borsatakip/v5/data/ProviderReadinessService.kt",
+    "android-v6323/app/src/main/java/tr/borsatakip/v5/data/ProviderRouter.kt",
+    "android-v6323/app/src/main/java/tr/borsatakip/v5/data/RealtimeScannerClient.kt",
+    "android-v6323/app/src/main/java/tr/borsatakip/v5/data/RealtimeScannerSocket.kt",
+    "android-v6323/app/src/main/java/tr/borsatakip/v5/data/ResearchApiClient.kt",
+    "android-v6323/app/src/main/java/tr/borsatakip/v5/data/SettingsStore.kt",
+    "android-v6323/app/src/main/java/tr/borsatakip/v5/data/StocksReferenceRepository.kt",
+    "android-v6323/app/src/main/java/tr/borsatakip/v5/data/TradingViewSignalClient.kt",
+    "android-v6323/app/src/main/java/tr/borsatakip/v5/data/ValuationSourceGate.kt",
+    "android-v6323/app/src/main/java/tr/borsatakip/v5/data/ViopLiveSocket.kt",
+    "android-v6323/app/src/main/java/tr/borsatakip/v5/data/ViopRepository.kt",
+    "android-v6323/app/src/main/java/tr/borsatakip/v5/data/WatchlistDataResolver.kt",
+    "android-v6323/app/src/main/java/tr/borsatakip/v5/scan/LeasedBistJob.kt",
+    "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/BistScanActivity.kt",
+    "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/FullUniverseScanActivity.kt",
+    "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/FullUniverseScanRuntime.kt",
+    "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/MainActivity.kt",
+    "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/MarketInstrumentDetailActivity.kt",
+    "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/OpportunityActivity.kt",
+    "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/ReportRedactor.kt",
+    "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/SettingsDetailActivity.kt",
+    "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/StocksActivity.kt",
+    "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/SystemReportV2.kt",
+    "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/ViopActivity.kt",
+    "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/ViopAnalysisActivity.kt",
+    "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/ViopOpportunityAdapter.kt",
+    "android-v6323/app/src/main/java/tr/borsatakip/v5/worker/AutoScanForegroundService.kt",
+    "android-v6323/app/src/main/java/tr/borsatakip/v5/worker/AutoScanUiPolicy.kt",
+    "android-v6323/app/src/main/java/tr/borsatakip/v5/worker/AutomaticScanRunner.kt",
+    "android-v6323/app/src/main/java/tr/borsatakip/v5/worker/RealtimeAlertService.kt",
+    "android-v6323/app/src/test/java/tr/borsatakip/v5/analysis/DeepAuditShortExcursionTest.kt",
+    "android-v6323/app/src/test/java/tr/borsatakip/v5/analysis/ViopDashboardPolicyTest.kt",
+    "android-v6323/app/src/test/java/tr/borsatakip/v5/data/BackendHttpTransportTest.kt",
+    "android-v6323/app/src/test/java/tr/borsatakip/v5/data/BackendUrlPolicyTest.kt",
+    "android-v6323/app/src/test/java/tr/borsatakip/v5/data/ObservationSourcePolicyTest.kt",
+    "android-v6323/app/src/test/java/tr/borsatakip/v5/data/ProviderProbeGateTest.kt",
+    "android-v6323/app/src/test/java/tr/borsatakip/v5/integration/FullUniverseContinuitySourceTest.kt",
+    "android-v6323/app/src/test/java/tr/borsatakip/v5/scan/LeasedBistJobTest.kt",
+    "android-v6323/app/src/test/java/tr/borsatakip/v5/ui/ReportRedactorTest.kt",
+    "android-v6323/app/src/test/java/tr/borsatakip/v5/worker/AutoScanCompletionTest.kt",
+    "audit/deep-audit-core.mjs",
+    "audit/run-deep-audit.mjs",
+    "ci-verify-source-only.py",
+    "ci/railway-verification-report.mjs"
+  ]
+}

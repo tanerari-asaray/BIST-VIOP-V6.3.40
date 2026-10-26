@@ -1,0 +1,72 @@
+name: Provider diagnostics - source checks only - NO APK
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - fix/trend-strength-source-only
+      - fix/provider-connection-diagnostics-no-apk
+      - audit/deep-source-review-20261020
+      - fix/deep-audit-no-apk
+permissions:
+  contents: read
+jobs:
+  source-checks:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    defaults:
+      run:
+        working-directory: android-v6323
+        shell: bash
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Check the self-contained Railway deployment bundle
+        run: python3 ../server/build_railway_bundle.py --check
+      - name: Gateway tests
+        run: |
+          mkdir -p ../source-checks
+          node --test --test-reporter=tap ../server/tests/*.test.mjs | tee ../source-checks/gateway-tests.tap
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+      - name: WebSocket tests
+        run: bun test ../server/tests/websocket.bun.test.ts
+      - uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: android-actions/setup-android@v3
+        with:
+          packages: platform-tools
+          log-accepted-android-sdk-licenses: false
+      - run: sdkmanager 'platforms;android-35' 'build-tools;35.0.0'
+      - uses: gradle/actions/wrapper-validation@v4
+      - uses: gradle/actions/setup-gradle@v4
+      - name: Verify APK task guard without executing packaging tasks
+        run: |
+          chmod +x gradlew
+          if ./gradlew --no-daemon -I ../ci-source-only.init.gradle :app:assembleDiagnostic --dry-run > ../source-checks/apk-guard.log 2>&1; then
+            echo 'APK task guard did not reject packaging'; exit 1
+          fi
+          grep -q SOURCE_ONLY_APK_BLOCKED ../source-checks/apk-guard.log
+      - name: Unit tests, Android test compilation, resources and lint - no packaging
+        run: |
+          ./gradlew --no-daemon --stacktrace --continue -I ../ci-source-only.init.gradle :app:testDiagnosticUnitTest :app:compileDiagnosticAndroidTestKotlin :app:processDiagnosticResources :app:lintDiagnostic
+      - name: Print native audit evidence even for failed tests
+        if: always()
+        run: python3 ../ci/deep-audit-jvm-report.py
+      - name: Validate complete unit reports and absence of APK/AAB files
+        if: always()
+        run: python3 ../ci-verify-source-only.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: PROVIDER-DIAGNOSTICS-SOURCE-TEST-EVIDENCE-NO-APK
+          path: |
+            source-checks/
+            android-v6323/app/build/reports/tests/
+            android-v6323/app/build/test-results/
+            android-v6323/app/build/reports/lint-results-diagnostic.*
+          if-no-files-found: error

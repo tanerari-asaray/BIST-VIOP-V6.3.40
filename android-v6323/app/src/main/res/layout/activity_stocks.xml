@@ -1,0 +1,86 @@
+<?xml version="1.0" ?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:background="@color/market_bg">
+    <androidx.coordinatorlayout.widget.CoordinatorLayout android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1">
+        <com.google.android.material.appbar.AppBarLayout android:id="@+id/marketAppBar" android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@color/market_bg" android:stateListAnimator="@null" android:elevation="6dp" app:elevation="6dp">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:paddingHorizontal="16dp" android:paddingTop="4dp" android:paddingBottom="4dp" app:layout_scrollFlags="scroll|enterAlways">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:layout_marginBottom="3dp">
+                    <TextView android:id="@+id/stocksTitle" style="@style/MarketText" android:text="@string/ui_label_e6e558fd6e4f" android:layout_width="0dp" android:layout_weight="1" android:textSize="28sp" android:textColor="@color/market_ink" android:fontFamily="sans-serif-medium"/>
+                    <TextView android:id="@+id/stocksFavorites" style="@style/MarketIcon" android:text="@string/ui_label_b7927b5baee9" android:contentDescription="@string/ui_label_13e9f8c058c9"/>
+                    <TextView android:id="@+id/stocksSettings" style="@style/MarketIcon" android:text="@string/ui_label_e5235a4a75e6" android:contentDescription="@string/ui_label_80ad54ad05fa"/>
+                    <TextView android:id="@+id/stocksNotifications" style="@style/MarketIcon" android:text="@string/ui_label_6d67cab95d71" android:contentDescription="@string/ui_label_fc2cbca9acbe"/>
+                </LinearLayout>
+                <TextView android:id="@+id/stocksMarketLabel" style="@style/MarketText" android:text="@string/ui_label_bc2e65dce1ec" android:letterSpacing="0.08" android:textSize="12sp" android:layout_marginBottom="12dp"/>
+                <LinearLayout android:baselineAligned="false" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:background="@drawable/bg_market_panel">
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:paddingHorizontal="10dp" android:paddingVertical="6dp">
+                        <TextView android:id="@+id/index100Label" style="@style/MarketText" android:text="@string/ui_label_e813df49d76e"/>
+                        <TextView android:id="@+id/index100Value" style="@style/MarketText" android:text="@string/ui_label_bda050585a00" android:textColor="@color/market_ink" android:textSize="17sp" android:textStyle="bold"/>
+                        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical">
+                            <TextView android:id="@+id/index100Change" style="@style/MarketText" android:text="@string/ui_label_bda050585a00" android:layout_width="0dp" android:layout_weight="1"/>
+                            <tr.borsatakip.v5.ui.StockSparklineView android:id="@+id/index100Chart" android:layout_width="34dp" android:layout_height="16dp"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:paddingHorizontal="10dp" android:paddingVertical="6dp">
+                        <TextView android:id="@+id/index30Label" style="@style/MarketText" android:text="@string/ui_label_1008c76aa95f"/>
+                        <TextView android:id="@+id/index30Value" style="@style/MarketText" android:text="@string/ui_label_bda050585a00" android:textColor="@color/market_ink" android:textSize="17sp" android:textStyle="bold"/>
+                        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical">
+                            <TextView android:id="@+id/index30Change" style="@style/MarketText" android:text="@string/ui_label_bda050585a00" android:layout_width="0dp" android:layout_weight="1"/>
+                            <tr.borsatakip.v5.ui.StockSparklineView android:id="@+id/index30Chart" android:layout_width="34dp" android:layout_height="16dp"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:paddingHorizontal="10dp" android:paddingVertical="6dp">
+                        <TextView android:id="@+id/indexAllLabel" style="@style/MarketText" android:text="@string/ui_label_cee0e443904f"/>
+                        <TextView android:id="@+id/indexAllValue" style="@style/MarketText" android:text="@string/ui_label_bda050585a00" android:textColor="@color/market_ink" android:textSize="17sp" android:textStyle="bold"/>
+                        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical">
+                            <TextView android:id="@+id/indexAllChange" style="@style/MarketText" android:text="@string/ui_label_bda050585a00" android:layout_width="0dp" android:layout_weight="1"/>
+                            <tr.borsatakip.v5.ui.StockSparklineView android:id="@+id/indexAllChart" android:layout_width="34dp" android:layout_height="16dp"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical">
+                    <TextView android:id="@+id/stocksIndexNotice" style="@style/MarketText" android:layout_width="0dp" android:layout_weight="1" android:text="@string/ui_label_c58ca88a3e45" android:layout_marginTop="6dp" android:textColor="@color/market_amber" android:maxLines="2" android:ellipsize="end" android:contentDescription="@string/ui_label_9aed00e03fbb"/>
+                    <Button android:id="@+id/stocksDataRefresh" style="@style/MarketChip" android:text="@string/ui_label_6faa30887015" android:textColor="@color/market_mint" android:minWidth="0dp" android:paddingHorizontal="8dp"/>
+                    <Button android:id="@+id/stocksQuoteRefresh" style="@style/MarketChip" android:layout_width="96dp" android:layout_height="44dp" android:minWidth="0dp" android:maxLines="2" android:text="@string/ui_label_245b6f10b625" android:textAllCaps="false" android:contentDescription="@string/ui_label_ea0eebee66d0" android:textColor="@color/market_mint" android:paddingHorizontal="6dp" />
+                </LinearLayout>
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:layout_marginTop="8dp">
+                    <EditText android:id="@+id/stocksSearch" style="@style/MarketSearch" android:hint="@string/ui_label_7c11f72804b5" android:importantForAutofill="no" android:inputType="textCapCharacters"/>
+                    <ImageButton android:id="@+id/stocksSort" style="@style/MarketIcon" android:layout_marginStart="6dp" android:contentDescription="@string/ui_label_2c65cdef2fa1" android:src="@drawable/ic_market_filter" android:padding="10dp" android:background="@drawable/bg_market_input"/>
+                </LinearLayout>
+                <HorizontalScrollView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="6dp" android:scrollbars="none" android:fillViewport="true">
+                    <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical">
+                        <Button android:id="@+id/stocksFilterAll" style="@style/MarketChip" android:text="@string/ui_label_f43a65ad8268"/>
+                        <Button android:id="@+id/stocksFilterLong" style="@style/MarketChip" android:text="@string/ui_label_e974c810d4dd"/>
+                        <Button android:id="@+id/stocksFilterShort" style="@style/MarketChip" android:text="@string/ui_label_34860dbd40fb"/>
+                        <Button android:id="@+id/stocksFilterBist30" style="@style/MarketChip" android:text="@string/ui_label_d4550fa1ebdc"/>
+                        <Button android:id="@+id/stocksFilterTrendUp" style="@style/MarketChip" android:text="@string/ui_label_22d8def0bf0b" android:contentDescription="@string/ui_label_162c9d8dbaab"/>
+                        <Button android:id="@+id/stocksFilterTrendDown" style="@style/MarketChip" android:text="@string/ui_label_82217e243b1a" android:contentDescription="@string/ui_label_6e6a7acebd3c"/>
+                        <Button android:id="@+id/stocksFilterBank" style="@style/MarketChip" android:text="@string/ui_label_9efe92a604c2"/>
+                        <Button android:id="@+id/stocksFilterIndustry" style="@style/MarketChip" android:text="@string/ui_label_4b7a81a5dcc8"/>
+                        <Button android:id="@+id/stocksFilterTech" style="@style/MarketChip" android:text="@string/ui_label_0efe9b55589e"/>
+                    </LinearLayout>
+                </HorizontalScrollView>
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:id="@+id/stocksScanCard" android:layout_marginTop="8dp" android:background="@drawable/bg_market_scan" android:paddingHorizontal="12dp" android:paddingVertical="4dp" android:clickable="true" android:focusable="true">
+                    <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/ic_market_radar" android:importantForAccessibility="no"/>
+                    <LinearLayout android:layout_height="wrap_content" android:orientation="vertical" android:layout_width="0dp" android:layout_weight="1" android:layout_marginStart="10dp">
+                        <TextView android:id="@+id/stocksScanTitle" style="@style/MarketText" android:text="@string/ui_label_cb3d82b6ff65" android:textColor="@color/market_ink" android:textStyle="bold" android:textSize="13sp"/>
+                        <TextView android:id="@+id/stocksScanSubtitle" style="@style/MarketText" android:text="@string/ui_label_2e1daec2ec82"/>
+                    </LinearLayout>
+                    <TextView android:id="@+id/stocksScanAction" style="@style/MarketText" android:text="@string/ui_label_efe91c2a2749" android:minHeight="44dp" android:gravity="center" android:paddingStart="8dp" android:textColor="@color/market_mint" android:textStyle="bold" android:paddingEnd="0dp"/>
+                </LinearLayout>
+                <TextView android:id="@+id/stocksDataSummary" style="@style/MarketText" android:layout_width="match_parent" android:text="@string/ui_label_76314a6cba5b" android:layout_marginTop="6dp"/>
+                <TextView android:id="@+id/stocksStatus" style="@style/MarketText" android:text="@string/ui_label_fe477dc4fe9f" android:layout_width="match_parent" android:layout_marginTop="4dp" android:minHeight="24dp" android:gravity="center_vertical" android:contentDescription="@string/ui_label_fcd31bf76016"/>
+            </LinearLayout>
+        </com.google.android.material.appbar.AppBarLayout>
+        <FrameLayout android:layout_width="match_parent" android:layout_height="match_parent" app:layout_behavior="@string/appbar_scrolling_view_behavior">
+            <androidx.recyclerview.widget.RecyclerView android:id="@+id/stocksList" android:layout_width="match_parent" android:layout_height="match_parent" android:paddingHorizontal="16dp" android:paddingBottom="12dp" android:clipToPadding="false" android:scrollbars="vertical"/>
+            <androidx.core.widget.NestedScrollView android:id="@+id/stocksEmptyState" android:layout_width="match_parent" android:layout_height="match_parent" android:fillViewport="true" android:visibility="gone">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:gravity="center" android:padding="24dp">
+                <TextView android:id="@+id/stocksEmptyIcon" style="@style/MarketText" android:text="@string/ui_label_c19732df495e" android:textSize="32sp" android:textColor="@color/market_mint"/>
+                <TextView android:id="@+id/stocksEmptyTitle" style="@style/MarketText" android:text="@string/ui_label_3c0f3e902f1e" android:textSize="17sp" android:textColor="@color/market_ink" android:layout_marginTop="8dp"/>
+                <TextView android:id="@+id/stocksEmptyMessage" style="@style/MarketText" android:text="@string/ui_label_f03be4b5d457" android:gravity="center" android:layout_marginTop="8dp"/>
+                <Button android:id="@+id/stocksEmptyAction" style="@style/MarketChip" android:text="@string/ui_label_227fcd6eaa83" android:layout_marginTop="8dp"/>
+            </LinearLayout>
+            </androidx.core.widget.NestedScrollView>
+        </FrameLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+    <include layout="@layout/include_bottom_nav"/>
+</LinearLayout>

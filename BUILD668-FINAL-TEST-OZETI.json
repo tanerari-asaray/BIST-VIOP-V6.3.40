@@ -1,0 +1,27 @@
+{
+  "30-screen-source-contract": {
+    "exit": 0,
+    "last_line": "RESULT 30 / 30"
+  },
+  "19-delivery-source-contract": {
+    "exit": 0,
+    "last_line": "FINAL 19 / 19"
+  },
+  "198-old-offline-calculation-regression": {
+    "exit": 0,
+    "last_line": "RESULT 198 PASS 0 FAIL"
+  },
+  "5-new-timeframe-smoke": {
+    "exit": 0,
+    "last_line": "PASS invalid_ohlcv_refused"
+  },
+  "6-modified-kotlin-syntax": {
+    "exit": 0,
+    "last_line": "KOTLIN_PARSER_FILES=6 ERRORS=0"
+  },
+  "23-typography-static-contract": {
+    "passed": 23,
+    "total": 23,
+    "source": "verify_final_visual668.py run in this turn"
+  }
+}

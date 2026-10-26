@@ -1,0 +1,2496 @@
+{
+  "sourceCommit": "e9f32f7c9a84e89ae4c0b16006d0196f2b17d0b5",
+  "files": [
+    {
+      "path": ".github/workflows/build-v6323.yml",
+      "sha": "179fbd8e51d5fa18cfdfe66fd5a1805e6c58bd5e",
+      "characters": 2573
+    },
+    {
+      "path": "android-v6323/app/build.gradle.kts",
+      "sha": "899a395fd3691b612c23cead6312891b22790bac",
+      "characters": 6806
+    },
+    {
+      "path": "android-v6323/app/src/androidTest/java/tr/borsatakip/v5/ui/Build653RuntimeTest.kt",
+      "sha": "cf0cafdcef14ce3cd51b030ebdf53d3283e1a56f",
+      "characters": 4568
+    },
+    {
+      "path": "android-v6323/app/src/androidTest/java/tr/borsatakip/v5/ui/Build660RuntimeTest.kt",
+      "sha": "42084a12dc4e7710f99fd46ca491ccb3754085e4",
+      "characters": 5878
+    },
+    {
+      "path": "android-v6323/app/src/androidTest/java/tr/borsatakip/v5/ui/ChartFinancialRuntimeTest.kt",
+      "sha": "e8638f34e5d7abe527b7e823beb5b6b5cc2e1d6c",
+      "characters": 8766
+    },
+    {
+      "path": "android-v6323/app/src/androidTest/java/tr/borsatakip/v5/ui/CompactMarketScreensRuntimeTest.kt",
+      "sha": "739087c7916e70fe6cfa812570c22cf17a6bc44f",
+      "characters": 26480
+    },
+    {
+      "path": "android-v6323/app/src/androidTest/java/tr/borsatakip/v5/ui/MarketTouchRuntimeTest.kt",
+      "sha": "8e1df7997998079c4354a8a4ec0256ec94aa87e2",
+      "characters": 21273
+    },
+    {
+      "path": "android-v6323/app/src/androidTest/java/tr/borsatakip/v5/ui/ProfessionalChartRuntimeTest.kt",
+      "sha": "ef4f3f257770eefcaa706df0abd71407754004a0",
+      "characters": 18965
+    },
+    {
+      "path": "android-v6323/app/src/androidTest/java/tr/borsatakip/v5/ui/StocksReferencesRuntimeTest.kt",
+      "sha": "a046d4e2e54cdf65d5d0d42e2c8042dade446a9f",
+      "characters": 17377
+    },
+    {
+      "path": "android-v6323/app/src/androidTest/java/tr/borsatakip/v5/ui/ViopAnalysisRuntimeTest.kt",
+      "sha": "ef5629a8eb94b55780ea504cc245c51b6a67e378",
+      "characters": 11000
+    },
+    {
+      "path": "android-v6323/app/src/androidTest/kotlin/tr/borsatakip/v5/data/ViopManualLedgerInstrumentedTest.kt",
+      "sha": "6d9485ec551dc271038beb4f3e7cf79fc2854d66",
+      "characters": 3027
+    },
+    {
+      "path": "android-v6323/app/src/androidTest/kotlin/tr/borsatakip/v5/ui/BistScanActivityRuntimeTest.kt",
+      "sha": "97f687a3d116ec62db3fba9c6ba7d879adb63bf9",
+      "characters": 2160
+    },
+    {
+      "path": "android-v6323/app/src/androidTest/kotlin/tr/borsatakip/v5/ui/Build648RuntimeTest.kt",
+      "sha": "8e6bc56d8f7591cec6c2bd22a362e2281e760f0a",
+      "characters": 4079
+    },
+    {
+      "path": "android-v6323/app/src/androidTest/kotlin/tr/borsatakip/v5/ui/MainVersionSynchronizationTest.kt",
+      "sha": "59524cdf19da4ee5455d5562ec29539859770d02",
+      "characters": 946
+    },
+    {
+      "path": "android-v6323/app/src/androidTest/kotlin/tr/borsatakip/v5/ui/SystemReportV2RuntimeTest.kt",
+      "sha": "1a6db63822dd1953a8525cdac91953c117e8abc8",
+      "characters": 5717
+    },
+    {
+      "path": "android-v6323/app/src/androidTest/kotlin/tr/borsatakip/v5/ui/VisualScreenshotTest.kt",
+      "sha": "284cd9a61847f36e72b0c76b6ba8d26a634a5c6c",
+      "characters": 4398
+    },
+    {
+      "path": "android-v6323/app/src/main/AndroidManifest.xml",
+      "sha": "4a97045647bafcc178a6a5b73560a85289c1ac75",
+      "characters": 3945
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/BorsaTakipApp.kt",
+      "sha": "319440c736aa5b6c7c5ad98471f08ea36d271daa",
+      "characters": 1151
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/analysis/BistPublicationPolicy.kt",
+      "sha": "4bb8abeaa80282293deb989472028cacd4815196",
+      "characters": 6441
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/analysis/BreakoutVolumeEngine.kt",
+      "sha": "4ae9787448d0a49f05b378ecf9171162d9e4714f",
+      "characters": 1410
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/analysis/ChartIndicators.kt",
+      "sha": "9943d8432194d2caea635307fbd393cf1ba6d952",
+      "characters": 4729
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/analysis/ChartTimeframe.kt",
+      "sha": "79555d553dc44fe630f16221fcbba83f13614c87",
+      "characters": 4685
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/analysis/DecisionPricePolicy.kt",
+      "sha": "70a7e8f9bb0c2535b5da3b4733bccb3ea4d291ec",
+      "characters": 662
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/analysis/LinearTrendAnalyzer.kt",
+      "sha": "414acdcbc769aab1b19c0a00c37597cd98bc5f9d",
+      "characters": 11157
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/analysis/MarketRegimeEngine.kt",
+      "sha": "8281264ee67310c6fdb1614e78394bdb56835c82",
+      "characters": 3177
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/analysis/MtfConsensusEngine.kt",
+      "sha": "a09aafda5b5c15c98afbc640dc7b00b561305111",
+      "characters": 2738
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/analysis/MultiTimeframeSignalAnalyzer.kt",
+      "sha": "e272b17fea05ecf79b553b67319de209f93dc7d6",
+      "characters": 14932
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/analysis/Opportunity2Presentation.kt",
+      "sha": "4fa42edaa86d0929b8ea6d66299773d6fb353dc0",
+      "characters": 1342
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/analysis/OpportunityDiscoveryPresentation.kt",
+      "sha": "b5d79acbea55c0564e39464c9cfac5f2bdca15b7",
+      "characters": 7830
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/analysis/OpportunityEngine.kt",
+      "sha": "800ae98046f96d0f93ab6297df096a85378f962d",
+      "characters": 25290
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/analysis/OpportunityFilterPolicy.kt",
+      "sha": "219926b0d19fdf38e7449cf11d1069b334bd4f56",
+      "characters": 2677
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/analysis/OpportunityPublicationPolicy.kt",
+      "sha": "8b09e3e80b90aa835f7aa090ea353f57ad3d7881",
+      "characters": 1860
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/analysis/OpportunityRankingPolicy.kt",
+      "sha": "7a5da0c2615f6efa6aac3c25b818d1617b1f6d24",
+      "characters": 2671
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/analysis/OpportunityTrendPresentation.kt",
+      "sha": "17b35c1f3190e13863385a1cfa7ea5e5fe5b06d6",
+      "characters": 2870
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/analysis/SignalVisualPolicy.kt",
+      "sha": "d8e8465974a6f252b0be150e357f849b783983ea",
+      "characters": 2205
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/analysis/StrategyComparisonMath.kt",
+      "sha": "1a991c1dfd6f055a9777d05a589e4c0ec2fddb2c",
+      "characters": 1298
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/analysis/StrategyOptimizationEngine.kt",
+      "sha": "c4c944d7fba1407ce6bb7aedec1a09214cde3f76",
+      "characters": 9564
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/analysis/StrategyProfileEngine.kt",
+      "sha": "95bb10920b1bbde913726ea9381e18e26117b35a",
+      "characters": 8264
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/analysis/TechnicalAnalyzer.kt",
+      "sha": "db13d23f48443216f2f5587842d23e48840d0049",
+      "characters": 6545
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/analysis/TradeForwardEngine.kt",
+      "sha": "d4920d4d6b3b022eb47c299707318645b6cd315b",
+      "characters": 10167
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/analysis/TrendUiPolicy.kt",
+      "sha": "cee9599bc7d594b99a7605b7000abebd90f7f308",
+      "characters": 4311
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/analysis/V539FinalDecisionFlow.kt",
+      "sha": "eb36719515f2e05faa1719ec5377edcde301fde2",
+      "characters": 8644
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/analysis/V540FinalDecisionFlow.kt",
+      "sha": "9cfae24aafa0dc3a95b2a32f01521b88e988bb57",
+      "characters": 12073
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/analysis/ViopAnalysisCatalog.kt",
+      "sha": "853a619bbea59fa072f928b403ab217ecab61746",
+      "characters": 1883
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/analysis/ViopBreakoutPolicy.kt",
+      "sha": "6b28fa22dc7e05b60991ee3c7f896945c00f05b8",
+      "characters": 552
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/analysis/ViopContractCategoryPolicy.kt",
+      "sha": "14586486bdbb45b06603c33b39d24ecd1dd7cce7",
+      "characters": 1806
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/analysis/ViopContractSearch.kt",
+      "sha": "ecb252cccfb31de9057e7f17484fa9be1212cfd5",
+      "characters": 6340
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/analysis/ViopFinalQuotePolicy.kt",
+      "sha": "4579e7af0297e589ec1f3c303a75a8eaaa2a3538",
+      "characters": 1217
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/analysis/ViopRiskRewardPolicy.kt",
+      "sha": "65b487804cf415f98f52a1306ca0a4eab5289db5",
+      "characters": 371
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/analysis/ViopScanner.kt",
+      "sha": "e8b7fc709336ad7138d59ad235e396bf5db914f9",
+      "characters": 32305
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/analysis/ViopUnderlyingScanner.kt",
+      "sha": "a82fc7fcbb1d739c709671e13b70480e00942814",
+      "characters": 3385
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/analysis/ViopV6Policy.kt",
+      "sha": "53d13c453c39c9064a3c2d19ace9a06d11bb718b",
+      "characters": 9067
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/analysis/v531/ConfidenceEngine.kt",
+      "sha": "93f9d49c3723b095c4a92fb262f812cdcac19b4d",
+      "characters": 2629
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/analysis/v531/MomentumEngine.kt",
+      "sha": "2e0ccc79b69c0af4d316c8e1b3c625507e98ade1",
+      "characters": 2082
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/analysis/v531/MultiTimeframeEngine.kt",
+      "sha": "ccd766ddbca18154839220781205824596bfdb49",
+      "characters": 524
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/analysis/v531/OpenInterestEngine.kt",
+      "sha": "311ea7a1e1e18d08fc12e04c5b5f024d5dee24df",
+      "characters": 2466
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/analysis/v531/RemoteEngineContract.kt",
+      "sha": "3287571e86b81a47f0ccd6bfc82618f12172dd58",
+      "characters": 11270
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/analysis/v531/RiskEngine.kt",
+      "sha": "b3895a20cb0a774f2590e096ffef5c427d1df6d2",
+      "characters": 3089
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/analysis/v531/ScoreNormalizer.kt",
+      "sha": "ba696b7e306d6f98cf348cfd04be143b5941cd4e",
+      "characters": 1150
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/analysis/v531/ScoringConfig.kt",
+      "sha": "b21b19e9fcaa525ece35f9c9d4c2b039365dedf3",
+      "characters": 1154
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/analysis/v531/SignalDecisionEngine.kt",
+      "sha": "0e1719b40b31983b238996c189889714514ee069",
+      "characters": 3266
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/analysis/v531/SignalModels.kt",
+      "sha": "d46e2a2bb0b7c67376aca857eb92d84f747a2951",
+      "characters": 3187
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/analysis/v531/StructureEngine.kt",
+      "sha": "0bce0f4a36ae020d0011addc7eae8188de1163c3",
+      "characters": 1776
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/analysis/v531/TrendEngine.kt",
+      "sha": "44ad8d0e4e3a4d788af371b9fa5c461263384bd7",
+      "characters": 1402
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/analysis/v531/V531CalculationEngine.kt",
+      "sha": "aab3ef000d3c0124d4c4d21fb548c81f49e3a430",
+      "characters": 6432
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/analysis/v531/V531ContextEngine.kt",
+      "sha": "1d4f6a4c78e10682c499da9aa4f9f85f228960ba",
+      "characters": 1452
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/analysis/v531/VolatilityEngine.kt",
+      "sha": "ac09a7e2c1d1b6b283b487f3155695bf03cee940",
+      "characters": 1447
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/analysis/v531/VolumeEngine.kt",
+      "sha": "93e1051501ea31361c7fdf90d26ff93f789f5c68",
+      "characters": 1975
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/analysis/v533/V533AuditHash.kt",
+      "sha": "2dc762537bece21784ed2afce598cfd928a223db",
+      "characters": 6138
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/analysis/v533/V533RemoteSemanticInvariant.kt",
+      "sha": "99d0ca6999e7efdbc41753853a0e807989618961",
+      "characters": 1435
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/analysis/v533/V533SnapshotInvariant.kt",
+      "sha": "896cf013bad2208a8a29d9ec6bd674fcbfcf7240",
+      "characters": 5019
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/analysis/v533/V533TemporalCausality.kt",
+      "sha": "1e7c3742803664e8e613bcdcd3ad6d80c47b5d0c",
+      "characters": 1747
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/analysis/v534/V534RemoteInputHash.kt",
+      "sha": "4ff2361638cb6b3fb8ba2ea1fe5d617ded154e4f",
+      "characters": 4944
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/analysis/v535/V535RemoteIntegrity.kt",
+      "sha": "406cf735db0c08857cb0ab7c69135c55caeb52db",
+      "characters": 12474
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/analysis/v535/V535ServerAttestation.kt",
+      "sha": "7cd0bb3a12d3710f3644953f9eb69ebb9355a8d3",
+      "characters": 861
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/analysis/v536/V536CalculationOutputSchema.kt",
+      "sha": "4a08f612595b80570bae23db043ef668fd7360b8",
+      "characters": 1236
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/analysis/v536/V536ClockIntegrity.kt",
+      "sha": "45b5965067fa4ac24dc3810da1f1663312664d09",
+      "characters": 3359
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/analysis/v536/V536Observability.kt",
+      "sha": "89c5bcace75fc511160b9913b04ef100be426c73",
+      "characters": 1075
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/analysis/v536/V536ReplayProtection.kt",
+      "sha": "a9e28ce7dac88acdc50ea950bb1e7b5083401253",
+      "characters": 2032
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/analysis/v536/V536ServerAttestation.kt",
+      "sha": "f29e41d795d88f9f40d55d06281b2f87502d492a",
+      "characters": 4667
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/analysis/v537/V537ReplayProtection.kt",
+      "sha": "e45a7b9191a2ba8ec32d7e48f3eca81c4550f9f4",
+      "characters": 4836
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/analysis/v537/V537ServerAttestation.kt",
+      "sha": "bb13d5eb155affb645fc689cf39d611f46737889",
+      "characters": 5864
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/analysis/v537/V537TrustedTime.kt",
+      "sha": "91b568b75c34f6dea5f06c364ae98d6fe916ac9a",
+      "characters": 1319
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/analysis/v538/V538ReplayProtection.kt",
+      "sha": "b5d19168eae4ebf00586f7648831c72256fc92ba",
+      "characters": 6288
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/analysis/v538/V538ServerAttestation.kt",
+      "sha": "95ca2c90ca031aa1fe5e53f4adf1256c17c7e1ba",
+      "characters": 7388
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/analysis/v538/V538TrustedTime.kt",
+      "sha": "2ecaf346f1786a03dc670cb3d0aad4f4214b8453",
+      "characters": 1951
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/analysis/v539/V539CalculationOutputSchema.kt",
+      "sha": "188236fad6af04671f77e45b23e732cee7f4fcce",
+      "characters": 898
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/analysis/v539/V539RiskRewardGate.kt",
+      "sha": "615a301620f580f10e9d2bfdc8b09a1996c62d2d",
+      "characters": 1177
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/analysis/v540/V540CalculationOutputSchema.kt",
+      "sha": "17efe8e83b2bc251f5b2146e6a57c5b6d02893b1",
+      "characters": 1309
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/analysis/v540/V540FreshnessPolicy.kt",
+      "sha": "a659709a07c1d8f2962fc608221faf7916071491",
+      "characters": 989
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/analysis/v540/V540LiquidityEngine.kt",
+      "sha": "7dfbb70359c492fa756f5cade587b5e22e2a2d74",
+      "characters": 2032
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/analysis/v540/V540RankingEngine.kt",
+      "sha": "d11b5bcca7f1f811af3c8cd1065213ccb5aeb3cb",
+      "characters": 3075
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/analysis/v540/backtest/V540BacktestEngine.kt",
+      "sha": "3fd388d396745121a101a82de4756744a27f3630",
+      "characters": 28384
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/analysis/v540/backtest/V540BacktestModels.kt",
+      "sha": "aa501f6065dc0cb66befb52d32bde1b288bfae01",
+      "characters": 11026
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/analysis/v540/backtest/V540SignalDecayEngine.kt",
+      "sha": "a6179d069cb783179dea959be958a1b4114d906f",
+      "characters": 2860
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/analysis/v540/backtest/V540WalkForwardEngine.kt",
+      "sha": "a3e68b93d51e56628163236a6cf69a850961640a",
+      "characters": 8415
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/analysis/v540/backtest/V541ValidationModels.kt",
+      "sha": "5283f90d4bee9ed2a124b3857911a1368e3d4b04",
+      "characters": 1399
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/data/AlertEventStore.kt",
+      "sha": "a7b21ae24fb9e9d5a43b022904ab5005352374fe",
+      "characters": 9892
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/data/BackendApiRouteFailure.kt",
+      "sha": "301afe65e3807f7b1b81f529a61de2702b4e8ae1",
+      "characters": 951
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/data/BackendHealthClient.kt",
+      "sha": "8250ea18d3a0569c7b7a8cc035293e1f2ba5c053",
+      "characters": 3946
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/data/BackendHttpDiagnostic.kt",
+      "sha": "38f02a5d29550ee96d9bcb2d7b88b58760bb8830",
+      "characters": 6681
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/data/BackendPreflightClient.kt",
+      "sha": "99f90ba527620fd95d8a3ce8574bb00bae582997",
+      "characters": 19978
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/data/BackendProvider.kt",
+      "sha": "1580a3005d06da4e0604593a7c0611b3f1f94d7b",
+      "characters": 19652
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/data/BackendUnavailableDiagnostic.kt",
+      "sha": "7812300afb818f08937f79a1641efd6f176275f0",
+      "characters": 1797
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/data/BistBootstrapCatalog.kt",
+      "sha": "7067ca18b923e11c1a4bb800df080e858e9fee0c",
+      "characters": 1318
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/data/BistSymbolMatcher.kt",
+      "sha": "a15f1f00403380a67484deedca0dc4c333f0ab3c",
+      "characters": 2345
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/data/CandleReadinessPolicy.kt",
+      "sha": "01656cd6d959ff44cb0aad30bf8db159d13f8251",
+      "characters": 2652
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/data/ChartHistoryRepository.kt",
+      "sha": "78f9f90a3b9793a898f386493596ffd4882df276",
+      "characters": 2157
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/data/ConnectionProbeStore.kt",
+      "sha": "b9ea5f25288644a324f85779783bb15a0c341313",
+      "characters": 2162
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/data/DeepDiagnosticCollector.kt",
+      "sha": "1e2c6936a6bc5675d2b4d02be01df71a971ca215",
+      "characters": 21084
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/data/DeepDiagnosticEngine.kt",
+      "sha": "928b06738942cab098fc507a4b2f588288591d70",
+      "characters": 6616
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/data/DelayedQuoteMergePolicy.kt",
+      "sha": "a9f50eeb2122a33b2b3ffe1e28a7651079f923ab",
+      "characters": 990
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/data/DelayedScanScope.kt",
+      "sha": "2a2840071df7b18c02e5f6bd21b836dd7c178654",
+      "characters": 747
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/data/DiagnosticJournal.kt",
+      "sha": "0cd2115c83461dba03d19e6a3b44bf21be4afd48",
+      "characters": 6518
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/data/DiagnosticOverlapAudit.kt",
+      "sha": "060258848c4126dd175af02a28f3fc89007047ca",
+      "characters": 1293
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/data/DiagnosticStallPolicy.kt",
+      "sha": "12893e9ab9e8c484defad90fb701de3d4af7b448",
+      "characters": 1250
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/data/ForwardOutcomeMatcher.kt",
+      "sha": "8f68d0ab2322743d03068b5ae692d8ec11cfa9ad",
+      "characters": 2459
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/data/FullUniversePolicy.kt",
+      "sha": "73d905d4ddaa3da2d87dfa72cf97c2b8a9657d85",
+      "characters": 4992
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/data/FullUniverseScanSnapshotStore.kt",
+      "sha": "f35eaab32512734b5cd5783cbd4c2ddc47003007",
+      "characters": 5237
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/data/FundamentalsBatchClient.kt",
+      "sha": "0cf5e4f47e8748a43cef80d1f06c41b8f956f185",
+      "characters": 6558
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/data/FundamentalsEndpointDiagnostic.kt",
+      "sha": "6a733371c32ef46cd787c8729fc161b85800e23e",
+      "characters": 1477
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/data/IntervalMarketDataProvider.kt",
+      "sha": "f5e17ed5f90b6e0c4dc3ef9b316dfb62f8915547",
+      "characters": 19289
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/data/KapStockDirectoryParser.kt",
+      "sha": "1789fe60ab9434365baea928cf8bf04b799007f4",
+      "characters": 3023
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/data/LastSuccessfulScanStore.kt",
+      "sha": "fc6e685d9e05ad1951783801cf26a65985248bfe",
+      "characters": 13982
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/data/LiveMarketSocket.kt",
+      "sha": "fb99d52229c0f58ece34e2064205808489010e1c",
+      "characters": 10978
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/data/MarketDataProvider.kt",
+      "sha": "bd7621ecdee9701fcb5e9e614c6a27c5183cdb4e",
+      "characters": 1967
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/data/MobileMarketDataProvider.kt",
+      "sha": "d2b8098f7c34ed9097654c97dbf087670b37c284",
+      "characters": 21393
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/data/MtfHistoryCache.kt",
+      "sha": "5f5e2d3a8dc2d17f6401a3d61267aaea59918acc",
+      "characters": 6248
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/data/NewsRepository.kt",
+      "sha": "5eac26eaeda8bd1ae166bfa5ac4983d98156be73",
+      "characters": 10554
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/data/ObservationAnalysis.kt",
+      "sha": "da395ee9a0b830cfaf580160f9e9ff5700e3632c",
+      "characters": 2364
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/data/ObservationCheckpoint.kt",
+      "sha": "feb11cd829c39c753cf644efabe9209edf7ac1c8",
+      "characters": 3452
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/data/ProviderProbePresentation.kt",
+      "sha": "f97ea123218cf22ed647eb76a852196875bca368",
+      "characters": 2312
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/data/ProviderReadinessService.kt",
+      "sha": "b17644e9180d8ad5d018237f69b7ead3dcf5d8df",
+      "characters": 12313
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/data/ProviderRouter.kt",
+      "sha": "2d09bf238984c0e3ea7325ae1942197e83651954",
+      "characters": 8912
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/data/RealTimeIntegrityPolicy.kt",
+      "sha": "cd18c46881b859ccb91b93779f8440840a0e9094",
+      "characters": 5725
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/data/RealtimeScannerClient.kt",
+      "sha": "a69e6af9c87022a2616c56ec68401296339c9ce4",
+      "characters": 47525
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/data/RealtimeScannerSocket.kt",
+      "sha": "5b8f2a57f9a2905ec4eecb3171420beca3ea03eb",
+      "characters": 6234
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/data/ResearchApiClient.kt",
+      "sha": "b5ffd00f7d438ae482425afacaefe3db187874c7",
+      "characters": 8290
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/data/ResearchFoundationRepository.kt",
+      "sha": "264d57bf18e25a7245cc9fe67b76ab70153640ac",
+      "characters": 1500
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/data/RuntimeReadinessDiagnostics.kt",
+      "sha": "20edfcc99d59888c167e109fde4b4f7ad5f00ed7",
+      "characters": 3729
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/data/ScanTelemetry.kt",
+      "sha": "b41eec98ee0d11f3d4e89a1fddbf058364f7261e",
+      "characters": 863
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/data/ScanTimeframe.kt",
+      "sha": "4df8e6d06f2a8e08ecea317d65346f10644ed112",
+      "characters": 1942
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/data/SettingsStore.kt",
+      "sha": "22a0293194c284ec6b775520896a2cbfc36354a4",
+      "characters": 17856
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/data/SignalHistoryPolicy.kt",
+      "sha": "a9861c5bcb4c493751da7a5157b5ad86dd357946",
+      "characters": 584
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/data/SignalHistoryRecorder.kt",
+      "sha": "f667d9b5ed2ae033325be30680e31fcc226b5a19",
+      "characters": 4140
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/data/SignalHistoryStore.kt",
+      "sha": "e3edf2fd72aad4f75130c98a97a7e2f25c65e2b7",
+      "characters": 28736
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/data/StockQuotePolicy.kt",
+      "sha": "c117afd891e808f3de6ab13cba971c575980fa71",
+      "characters": 2245
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/data/StocksReferenceModels.kt",
+      "sha": "f39b3be027c0a3ba87874849105a1db15e1c504d",
+      "characters": 2035
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/data/StocksReferenceRepository.kt",
+      "sha": "51b2e7e3d829470587b985391dfe9e0bd4f8f389",
+      "characters": 9509
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/data/StrategyWeightStore.kt",
+      "sha": "2377fe0d3654d44eef51641d5b7c33295a9e32f2",
+      "characters": 1505
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/data/SymbolUniverseTools.kt",
+      "sha": "177f9161c039d10280f2ae1ab12f598ef119b4f2",
+      "characters": 1415
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/data/TradingViewSignalClient.kt",
+      "sha": "03537ceb811b6c47a137f8d57d10a76a06ac44a7",
+      "characters": 5612
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/data/UserSymbolListStore.kt",
+      "sha": "24d82e59cc92232eacb9001378c76c23e874e414",
+      "characters": 1259
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/data/ValuationSourceGate.kt",
+      "sha": "5a55874fe2f3ada4d73601664da8777c26739a6e",
+      "characters": 646
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/data/ViopAlertDeliveryStore.kt",
+      "sha": "baf4dc39e548354cb9a9613d2fadc02e57d1ff21",
+      "characters": 1029
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/data/ViopBuiltinContractCatalog.kt",
+      "sha": "afac0c77b88a67b7a92db201b5c5e70ee6860e75",
+      "characters": 3306
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/data/ViopContractSelector.kt",
+      "sha": "7ea44efce82ea31e12bc7c50d78ca7a5283f5065",
+      "characters": 1561
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/data/ViopHistoryIntegrityPolicy.kt",
+      "sha": "23f1c0a6f5f6186417cf8efb26c902bd8ca048cc",
+      "characters": 4099
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/data/ViopLiveSocket.kt",
+      "sha": "68d95e2db401cbbf975a444f6bc36f52332d227f",
+      "characters": 4589
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/data/ViopLocalStore.kt",
+      "sha": "6fdf40b5814d85ba26f1a8883136c3544fcfda7e",
+      "characters": 3030
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/data/ViopManualPositionStore.kt",
+      "sha": "428bb75cfeaf94d547d94647f4c6964c11613fee",
+      "characters": 13914
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/data/ViopRepository.kt",
+      "sha": "c82df7691484d6a91cad79a75cc14a32fdc4efe0",
+      "characters": 3327
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/data/ViopStrategyDecisionService.kt",
+      "sha": "7086e29ff842510ddb29d72d46bb5dc340710bd1",
+      "characters": 2983
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/data/ViopStrategyHistoryStore.kt",
+      "sha": "acd3e020f79581ce315703f3bee90b65d3ee22c1",
+      "characters": 8961
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/data/ViopWatchlistStore.kt",
+      "sha": "53686f69aeacc9ce9df09e9bbe461689b9bdd946",
+      "characters": 5543
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/data/WatchlistDataResolver.kt",
+      "sha": "70e2ffccc8817f230835a98f8f0a739e015f9963",
+      "characters": 3952
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/data/YahooFallbackProvider.kt",
+      "sha": "178e82f95c897d887f9089d57f284d8c54fbc4d4",
+      "characters": 24323
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/data/YahooQuotePairPolicy.kt",
+      "sha": "f99b52725feb3237613fdfd03b1aebb402e82b9d",
+      "characters": 821
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/data/favorites/BistWatchlistStore.kt",
+      "sha": "6e8acc324eab665a1f27c7e0b552e688e06fc0f7",
+      "characters": 1819
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/data/favorites/FavoriteDao.kt",
+      "sha": "573d33e319d9ec5c7e0c40f3668f66a024d61552",
+      "characters": 874
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/data/favorites/FavoriteRepository.kt",
+      "sha": "63b2bf14a3d38f0948432f43d967d3d77be026ba",
+      "characters": 3230
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/data/favorites/FavoriteStock.kt",
+      "sha": "5b7a3be6ade43120fbdb78d5441fcfbfe4244799",
+      "characters": 472
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/data/favorites/FavoritesDatabase.kt",
+      "sha": "cf798d96d3e2853f0055d22f7897928b11e9c7e8",
+      "characters": 2357
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/data/v536/V536ObservabilityStore.kt",
+      "sha": "db405cc23021e38af4c0300003b0dcd11e297533",
+      "characters": 1239
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/data/v536/V536ReplayStore.kt",
+      "sha": "c0e57c2cf6d248caeb1ef5987016e0027034b7cd",
+      "characters": 2682
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/data/v537/V537ObservabilityStore.kt",
+      "sha": "a3ac1d6bd7967411d55cb2e8796012ff0f4ea359",
+      "characters": 1308
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/data/v537/V537ReplayStore.kt",
+      "sha": "7caaeb5b318f4f293e6cb023b7e335bbe452926a",
+      "characters": 4156
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/data/v538/V538ObservabilityStore.kt",
+      "sha": "06a6f9a867685f97634975c0298836ad8e838488",
+      "characters": 1158
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/data/v538/V538ReplayStore.kt",
+      "sha": "2ef3bb352ce107bffbee962d622e91d9282b0caf",
+      "characters": 4409
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/model/Models.kt",
+      "sha": "1f9b473d57e2f75c29a4036326fb6f6e4945166a",
+      "characters": 12398
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/research/NewsResearchAdapter.kt",
+      "sha": "380ae6cb8880f2db42e14d76b4ce8490001539bf",
+      "characters": 1219
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/research/ResearchFoundationEngine.kt",
+      "sha": "e08466c53287f228d5e62a3b182021aa88b6f2db",
+      "characters": 9624
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/research/ResearchModels.kt",
+      "sha": "a00c18d5f5f89b920d906b299d013a2dcdb42096",
+      "characters": 4167
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/research/ResearchPolicies.kt",
+      "sha": "8f3174b893629e482be94e4d192780dbcba856d4",
+      "characters": 17041
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/scan/BistScanGate.kt",
+      "sha": "cb55bdb6ca2b3ed0bde77fcf6b48dc3fb98ad54d",
+      "characters": 1056
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/scan/BistScanner.kt",
+      "sha": "0aec0b50572c94d7b6bba01c6ce30c00feb6b3c9",
+      "characters": 40706
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/scan/CheapStockPolicy.kt",
+      "sha": "beadb45ad567e7be427ab509666cefdaa40be68c",
+      "characters": 1660
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/scan/CheapStockTrendPolicy.kt",
+      "sha": "211e9c337796fc339039c92a6e08a45e3b8ab380",
+      "characters": 2897
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/scan/FundamentalValuationEngine.kt",
+      "sha": "96836e142b37f7d9821f1234ba4c5fab30dce56f",
+      "characters": 7695
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/scan/HistoryRecorder.kt",
+      "sha": "be1b8a6c795141c0604dd98492d0d38d0915a6d6",
+      "characters": 634
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/scan/IndependentScanAudit.kt",
+      "sha": "5ef4aaf44b22de8cd502337a93c146ba857328f5",
+      "characters": 4968
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/scan/ScanCoverageAudit.kt",
+      "sha": "c1f852b4001bfde5c1ea9e0b6ce3026f4ee9343e",
+      "characters": 1230
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/scan/ScanOrchestrator.kt",
+      "sha": "bb2392f5fc229624127b9f3d0a0176a6df982d50",
+      "characters": 1132
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/scan/ValueOpportunityScoreEngine.kt",
+      "sha": "4f1c39754a420c6ebc663f89bdce2a73297672e2",
+      "characters": 3744
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/AppSession.kt",
+      "sha": "fbf943ec419c88bde1c5c032a8bd90297826191a",
+      "characters": 578
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/BaseActivity.kt",
+      "sha": "2676d825395dc474f4f18847e9269ed3929d2fc2",
+      "characters": 2574
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/BistScanActivity.kt",
+      "sha": "d980274970816755125d503ffba461b6b10f02fd",
+      "characters": 42148
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/BistWatchlistAdapter.kt",
+      "sha": "0d381c2d42934f4c82dc1e7b9080e0878a3ec2b0",
+      "characters": 3638
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/ChartDisplayState.kt",
+      "sha": "3ec11e0809e8a0f69929fbb659bc6579ebcf8437",
+      "characters": 1262
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/ChartFinancialCards.kt",
+      "sha": "ceb7485d702e3bf83ffadcb98ef16ba7826f7cda",
+      "characters": 5007
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/ChartFinancialPanel.kt",
+      "sha": "ab7a11e0a75c9df1f480f4fce7834e569a930d16",
+      "characters": 9929
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/CheapStockScanActivity.kt",
+      "sha": "54f452d328ba8219aace4a1e378a54eef922b363",
+      "characters": 31376
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/DelayedObservationActivity.kt",
+      "sha": "c41b61a43ccfb4afe5a7cded37d20c10ec6fda51",
+      "characters": 748
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/FavoriteAdapter.kt",
+      "sha": "cdf2c82ada806905d38aa6eedc244196089e07fe",
+      "characters": 4329
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/FavoritesActivity.kt",
+      "sha": "8a3f2883e5dae8cc2e70039db459a36e642d18bf",
+      "characters": 18272
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/ForwardCurveView.kt",
+      "sha": "81ea85aa76e3155e3c3ceb5c5105896ebd7063f3",
+      "characters": 1520
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/FullUniverseScanActivity.kt",
+      "sha": "b0ed930995b61e71df2652f66b5aeefa1ad5d418",
+      "characters": 39849
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/FullUniverseScanRuntime.kt",
+      "sha": "bc8dd139f93e7b5277ba1232491df72c6a4a96bb",
+      "characters": 16851
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/FullscreenChartActivity.kt",
+      "sha": "d2ed7bafbecc436d05b21c66d044429c3538f92f",
+      "characters": 23886
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/HistoryTextAdapter.kt",
+      "sha": "4fd21838be9bddf1433d3dd7fdbd53609e88ab9d",
+      "characters": 780
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/MainActivity.kt",
+      "sha": "02243b704ba42aea3c9bf09f710bba0216a58cbd",
+      "characters": 23840
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/MarketInstrumentDetailActivity.kt",
+      "sha": "28f83eb7e22d5bdbce8c47f4283d4b19412e2de1",
+      "characters": 8745
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/MarketListOrder.kt",
+      "sha": "865dd61614f49367371adc0cde4a5176e3307da2",
+      "characters": 819
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/MarketScreenUi.kt",
+      "sha": "7c16367cb18c208eb9d963281725a3b2dfa8d3cd",
+      "characters": 4455
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/NavigationRoutes.kt",
+      "sha": "d71ab859e3d91f4b8a5882d89b290d5250f49667",
+      "characters": 1315
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/NewsActivity.kt",
+      "sha": "183df3bf7d543402507dade493f9d383fe1358f2",
+      "characters": 3579
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/NewsAdapter.kt",
+      "sha": "4d992a9b8257a6ee40abec581e281a3c1c77aea8",
+      "characters": 1523
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/NotificationsActivity.kt",
+      "sha": "c49b61dd570ecbdaebafb0fb906daceb09b60a63",
+      "characters": 4573
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/ObservedPriceChart.kt",
+      "sha": "adb2e07faa6bdbf26bfa4e218008ea545d227c97",
+      "characters": 3430
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/OpportunityActivity.kt",
+      "sha": "eb7776f41eef15a35256f23ddb52d80d0153c5f7",
+      "characters": 25660
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/OpportunityAdapter.kt",
+      "sha": "f782854bc5b7aab6ef59ea3eac2fa1a5349876ab",
+      "characters": 11145
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/PriceChartView.kt",
+      "sha": "64b8e0d4a6ecce9bf1ba0e7247a5951fe04d6e8a",
+      "characters": 34837
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/ScanResultsActivity.kt",
+      "sha": "39371de9ea4ed34be1e598b14bef5733a70eef70",
+      "characters": 10423
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/ScanResultsAdapter.kt",
+      "sha": "b30d538bac1d6349d917efbdce980aed03608dd6",
+      "characters": 11989
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/SettingsActivity.kt",
+      "sha": "3fafce169b7120628a18360841453c12c1b4f98f",
+      "characters": 15595
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/SettingsDetailActivity.kt",
+      "sha": "3a8f43ac1087641c928086a0bb5584d0e0b0c955",
+      "characters": 52939
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/SettingsSearchActivity.kt",
+      "sha": "b1d74e7f77c8dd20be9001c72e7b793500d5110f",
+      "characters": 3770
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/SignalHistoryActivity.kt",
+      "sha": "623dd9e36e67e8b08d251f5e5eebfaa5518ed270",
+      "characters": 11589
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/StockDetailActivity.kt",
+      "sha": "6650fe0270ac32d9069cae3b1fe0d8b4a473dd39",
+      "characters": 36122
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/StockSparklineView.kt",
+      "sha": "9f8fabb0e0683f40dbee6bc3d74e47e2e9d334fd",
+      "characters": 3178
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/StocksActivity.kt",
+      "sha": "69d75e2359fedde59fed7fb1599143041426ae38",
+      "characters": 22165
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/StocksCompactAdapter.kt",
+      "sha": "b8b3fecdd059aae9243ae197b08f8d05d340e0a9",
+      "characters": 7442
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/StocksScreenPresentation.kt",
+      "sha": "263c66792e4545e18a4332f53ab4a75e2549b85a",
+      "characters": 1473
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/SystemReportV2.kt",
+      "sha": "5a49bdec3257cb67f392824c5da2f3c488c91ec5",
+      "characters": 44901
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/TechnicalAnalysisActivity.kt",
+      "sha": "80cca942c0387e3ee2220eeefe6b17591bf5a365",
+      "characters": 18830
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/TradingViewChartLink.kt",
+      "sha": "5a69aefc3bccf2f494137bb8434ad71a43b90d14",
+      "characters": 543
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/TrendRowStyle.kt",
+      "sha": "333cf5d0bf0ead1aeb282b13dd756e2372655466",
+      "characters": 1225
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/ValuationResultSort.kt",
+      "sha": "a0f053eeb4e085cfa2329297a394dddae0a6a575",
+      "characters": 2153
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/ViopActivity.kt",
+      "sha": "99ac01369e8c0d8629f4046ad94b75ead36ee97a",
+      "characters": 43966
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/ViopAdapter.kt",
+      "sha": "89e415bce048f5b66a503d6adb9057920063a32e",
+      "characters": 2644
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/ViopAnalysisActivity.kt",
+      "sha": "27ba4c5bb44fc22f0d160973ef5e4a371fc82d71",
+      "characters": 11561
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/ViopContractsActivity.kt",
+      "sha": "4d3aa39968484639ff9806f957408b75185192d0",
+      "characters": 15278
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/ViopDetailActivity.kt",
+      "sha": "3c7cb2c8e41dff94a4105755ef74f3247b8a1d4f",
+      "characters": 40407
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/ViopDetailUiPolicy.kt",
+      "sha": "796ec789f4e863d55b29de614e7cc9fa593c48d3",
+      "characters": 2195
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/ViopOpportunityAdapter.kt",
+      "sha": "cd533fdb05e0b887ad92153a33e84d13ceb8912f",
+      "characters": 5652
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/ViopSparklineView.kt",
+      "sha": "1f7d18fbce33cf9dc443c0a83f03318653c7b4c4",
+      "characters": 3277
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/ViopSuggestionAdapter.kt",
+      "sha": "a54cd6435a1c63ec762560a4ad80dba0a7f03e18",
+      "characters": 2607
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/ViopUnderlyingOpportunityAdapter.kt",
+      "sha": "adec6f2c3efc5ea4f9c800aceca8aaa3056819aa",
+      "characters": 4100
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/ViopWatchlistAdapter.kt",
+      "sha": "29e045112fc7e23a6b6d140f5a945db427533074",
+      "characters": 3469
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/worker/AutoScanForegroundService.kt",
+      "sha": "ea02de50c84bec9b9e190260b7053918a03a7f42",
+      "characters": 6996
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/worker/AutoScanScheduler.kt",
+      "sha": "ae8216916993a75340ec26436abe16242fa57323",
+      "characters": 2948
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/worker/AutoScanUiPolicy.kt",
+      "sha": "5ebe338341eb06dce518927bfe9dc66780e3b1a4",
+      "characters": 2492
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/worker/AutomaticScanRunner.kt",
+      "sha": "7f3d19fab2a1e78ef9c16148977f2bbccba03428",
+      "characters": 11093
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/worker/AutomaticScanWorker.kt",
+      "sha": "ceded32ffef924a4966a1d7f487139b71a7a5057",
+      "characters": 820
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/worker/BootCompletedReceiver.kt",
+      "sha": "c129d032643911c2828d01753eae25f72bea176c",
+      "characters": 1413
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/worker/ForwardOutcomeWorker.kt",
+      "sha": "f0a6199868fb08a1074cfc3125d86587d96dfc45",
+      "characters": 678
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/worker/OpportunityWorker.kt",
+      "sha": "99eeb750093841f138ea9d98c6f2a505a349e15f",
+      "characters": 9151
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/worker/RealtimeAlertService.kt",
+      "sha": "857018565e8c1ef3c3c34e180262e01c79f4034d",
+      "characters": 11244
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/worker/UniverseObservationService.kt",
+      "sha": "1844b411abef43e92618ba5a4604657674b8f747",
+      "characters": 3075
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/worker/ViopPositionMonitorWorker.kt",
+      "sha": "b26b1e0774e0880f637969238b5dacd91de20ef1",
+      "characters": 7008
+    },
+    {
+      "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/worker/WorkScheduler.kt",
+      "sha": "bc689a2ae7a96a16bbb91144a9b29064f51f3ade",
+      "characters": 2019
+    },
+    {
+      "path": "android-v6323/app/src/main/res/drawable/bg_action_blue.xml",
+      "sha": "ef834e6483e9dcba861830b1db3746ee166d8a70",
+      "characters": 329
+    },
+    {
+      "path": "android-v6323/app/src/main/res/drawable/bg_action_cyan.xml",
+      "sha": "6d40bdc727c244ad229649e4411d7a682431f68d",
+      "characters": 329
+    },
+    {
+      "path": "android-v6323/app/src/main/res/drawable/bg_action_green.xml",
+      "sha": "52077511964330349e0a956ccd67b2db7ba9da76",
+      "characters": 329
+    },
+    {
+      "path": "android-v6323/app/src/main/res/drawable/bg_action_navy.xml",
+      "sha": "92621ec3c5fb57df53519d796b474f2d7c589a11",
+      "characters": 329
+    },
+    {
+      "path": "android-v6323/app/src/main/res/drawable/bg_action_neon.xml",
+      "sha": "4e32a156a819bf25d27b9960ac7d5dcfa7150f2c",
+      "characters": 329
+    },
+    {
+      "path": "android-v6323/app/src/main/res/drawable/bg_action_orange.xml",
+      "sha": "0620403420e1ede1c056af2069379a25983ac5a9",
+      "characters": 329
+    },
+    {
+      "path": "android-v6323/app/src/main/res/drawable/bg_action_purple.xml",
+      "sha": "fc4d85759a4bb37d8e2b38ca3e2f46b1fd5363f3",
+      "characters": 329
+    },
+    {
+      "path": "android-v6323/app/src/main/res/drawable/bg_card.xml",
+      "sha": "020d7453b0c516d48700cfbc7af9c1a420e6bf50",
+      "characters": 347
+    },
+    {
+      "path": "android-v6323/app/src/main/res/drawable/bg_card_blue.xml",
+      "sha": "9b97a4faf2d2e67ef3b08fc72e4d7c7aaff26249",
+      "characters": 347
+    },
+    {
+      "path": "android-v6323/app/src/main/res/drawable/bg_card_green.xml",
+      "sha": "9c06fc8936b9a83d9e0768c97e91126155200a32",
+      "characters": 347
+    },
+    {
+      "path": "android-v6323/app/src/main/res/drawable/bg_card_purple.xml",
+      "sha": "ca90d543b4df6b7edc6c9d092313e58999364e73",
+      "characters": 347
+    },
+    {
+      "path": "android-v6323/app/src/main/res/drawable/bg_card_red.xml",
+      "sha": "4807eae0643aac637262210fab5d343f13350077",
+      "characters": 347
+    },
+    {
+      "path": "android-v6323/app/src/main/res/drawable/bg_card_yellow.xml",
+      "sha": "2f605c8d33c1966065a30da23ed7d4e8f7d850cc",
+      "characters": 347
+    },
+    {
+      "path": "android-v6323/app/src/main/res/drawable/bg_chip.xml",
+      "sha": "0a3405540d20ca6ac25d91cce7737aa4c9daabd0",
+      "characters": 273
+    },
+    {
+      "path": "android-v6323/app/src/main/res/drawable/bg_chip_outline.xml",
+      "sha": "53449d462ed070b7e0cb54f454a47718394a48f3",
+      "characters": 276
+    },
+    {
+      "path": "android-v6323/app/src/main/res/drawable/bg_chip_selected_blue.xml",
+      "sha": "7f1e89de8c444429e8d7f0b3d5180f6a48507921",
+      "characters": 329
+    },
+    {
+      "path": "android-v6323/app/src/main/res/drawable/bg_info_compact.xml",
+      "sha": "a0967ab98203930385eb179fd04cd4df3a74ebb2",
+      "characters": 276
+    },
+    {
+      "path": "android-v6323/app/src/main/res/drawable/bg_input.xml",
+      "sha": "14233c66d4f7134cb74352a0007690a4c4b08204",
+      "characters": 306
+    },
+    {
+      "path": "android-v6323/app/src/main/res/drawable/bg_market_chip.xml",
+      "sha": "65ae1f1229f695a76ab8476758e30b1b82a806ee",
+      "characters": 231
+    },
+    {
+      "path": "android-v6323/app/src/main/res/drawable/bg_market_input.xml",
+      "sha": "0af65730550172e83e4321b01c4c62c7e5869c5e",
+      "characters": 231
+    },
+    {
+      "path": "android-v6323/app/src/main/res/drawable/bg_market_panel.xml",
+      "sha": "e554ce49265f23e9d510949c99bb79c2f8dd8a08",
+      "characters": 231
+    },
+    {
+      "path": "android-v6323/app/src/main/res/drawable/bg_market_row.xml",
+      "sha": "224483b6996ca8c33342f4cdc38c926056646552",
+      "characters": 352
+    },
+    {
+      "path": "android-v6323/app/src/main/res/drawable/bg_market_scan.xml",
+      "sha": "ce109d16e333fd7252806d8f7c8c77f79249004e",
+      "characters": 231
+    },
+    {
+      "path": "android-v6323/app/src/main/res/drawable/bg_market_tile.xml",
+      "sha": "e50be72bdf7b301f059a759ebf0adbb31fb5a4d6",
+      "characters": 331
+    },
+    {
+      "path": "android-v6323/app/src/main/res/drawable/bg_primary_scan.xml",
+      "sha": "e816cc1c7f7563bd0fbd0b97c92c9c9848af88ca",
+      "characters": 329
+    },
+    {
+      "path": "android-v6323/app/src/main/res/drawable/bg_scan_hero.xml",
+      "sha": "c88bd01057a1fcadb2be15950c97fb9b01d1eedc",
+      "characters": 359
+    },
+    {
+      "path": "android-v6323/app/src/main/res/drawable/bg_screen_gradient.xml",
+      "sha": "5483f8fb2d547618afdc1238236db6c5acd18998",
+      "characters": 264
+    },
+    {
+      "path": "android-v6323/app/src/main/res/drawable/bg_secondary_scan.xml",
+      "sha": "5aad86ef41aca2262bc0edfa45327b8155694c19",
+      "characters": 329
+    },
+    {
+      "path": "android-v6323/app/src/main/res/drawable/bg_tradingview_button.xml",
+      "sha": "ce719e144bad3df1586e5e1d831b6145baf6972b",
+      "characters": 521
+    },
+    {
+      "path": "android-v6323/app/src/main/res/drawable/bg_trend_chip_down.xml",
+      "sha": "3384fc19caad9f64669479ea91e939aa6efa3541",
+      "characters": 273
+    },
+    {
+      "path": "android-v6323/app/src/main/res/drawable/bg_trend_chip_neutral.xml",
+      "sha": "ce1afec0a64d7ebac9e959142e612e2142af58fa",
+      "characters": 273
+    },
+    {
+      "path": "android-v6323/app/src/main/res/drawable/bg_trend_chip_up.xml",
+      "sha": "eb5102849f7582622702e1f209b0037423f5bdb6",
+      "characters": 273
+    },
+    {
+      "path": "android-v6323/app/src/main/res/drawable/bg_trend_row_down.xml",
+      "sha": "6f25c9e99077341d7b7fae938f049d4cf2aaa088",
+      "characters": 273
+    },
+    {
+      "path": "android-v6323/app/src/main/res/drawable/bg_trend_row_neutral.xml",
+      "sha": "fd30c49842dba33ab5b12762134cdc19b9272d39",
+      "characters": 273
+    },
+    {
+      "path": "android-v6323/app/src/main/res/drawable/bg_trend_row_up.xml",
+      "sha": "17f29cf82bcf8ae34a828eb2e8c5e48a671b89f0",
+      "characters": 273
+    },
+    {
+      "path": "android-v6323/app/src/main/res/drawable/bg_viop_terminal_card.xml",
+      "sha": "72f44bdd39bd5f939a64409f6b18c77fa434bd4d",
+      "characters": 276
+    },
+    {
+      "path": "android-v6323/app/src/main/res/drawable/bg_viop_terminal_tab.xml",
+      "sha": "21fb25da3b9fc8e320e2979f4f08d564c80aa4e2",
+      "characters": 276
+    },
+    {
+      "path": "android-v6323/app/src/main/res/drawable/bg_viop_terminal_tab_selected.xml",
+      "sha": "ef4b85b40a1185f5b9721d7a934a90a80119b867",
+      "characters": 276
+    },
+    {
+      "path": "android-v6323/app/src/main/res/drawable/bg_viop_watch_row.xml",
+      "sha": "3470b7d8b6981b698fce9d3438358a2a3ac35734",
+      "characters": 294
+    },
+    {
+      "path": "android-v6323/app/src/main/res/drawable/ic_market_filter.xml",
+      "sha": "5572c6555cf8dbae8cc6d9780ea7e54b1caa82f9",
+      "characters": 407
+    },
+    {
+      "path": "android-v6323/app/src/main/res/drawable/ic_market_radar.xml",
+      "sha": "465b602b42c291e82fba660f715f6be41047ff8c",
+      "characters": 430
+    },
+    {
+      "path": "android-v6323/app/src/main/res/drawable/ic_market_search.xml",
+      "sha": "ac573d2200e6a409dde8e8f40928854b51001460",
+      "characters": 423
+    },
+    {
+      "path": "android-v6323/app/src/main/res/drawable/ic_open_external.xml",
+      "sha": "232d134f63c74f2367a63e47d82b9810b92ff6f0",
+      "characters": 410
+    },
+    {
+      "path": "android-v6323/app/src/main/res/layout/activity_bist_scan.xml",
+      "sha": "1420bf0a50a59aa604e4fecc3fe823a188d4d315",
+      "characters": 21717
+    },
+    {
+      "path": "android-v6323/app/src/main/res/layout/activity_favorites.xml",
+      "sha": "896bb41ce8fcea549c4f7da3db16260c9fd96444",
+      "characters": 13699
+    },
+    {
+      "path": "android-v6323/app/src/main/res/layout/activity_info_screen.xml",
+      "sha": "bd8784e82e4515e136c9245e60a5db76143f69a8",
+      "characters": 1687
+    },
+    {
+      "path": "android-v6323/app/src/main/res/layout/activity_main.xml",
+      "sha": "94f0b38894a60319ad58344c5ce53c2cc2e9d9bd",
+      "characters": 32384
+    },
+    {
+      "path": "android-v6323/app/src/main/res/layout/activity_market_instrument_detail.xml",
+      "sha": "4d0411dc9b46407ecf8b15ae597edc9fe0ea716a",
+      "characters": 3978
+    },
+    {
+      "path": "android-v6323/app/src/main/res/layout/activity_news.xml",
+      "sha": "608f235ddda00ca63a56b009b85e0e4816eae0a1",
+      "characters": 2737
+    },
+    {
+      "path": "android-v6323/app/src/main/res/layout/activity_notifications.xml",
+      "sha": "c2a3e9ae0c98b4693f6ad5f63585bcc44173e5e2",
+      "characters": 2784
+    },
+    {
+      "path": "android-v6323/app/src/main/res/layout/activity_opportunity.xml",
+      "sha": "416aa68a05e2e8e94b429c4e1d9dc1f25515cb14",
+      "characters": 17681
+    },
+    {
+      "path": "android-v6323/app/src/main/res/layout/activity_scan_results.xml",
+      "sha": "a911aee8e54e98775a0f9eb865c00aa54f6ffb42",
+      "characters": 4378
+    },
+    {
+      "path": "android-v6323/app/src/main/res/layout/activity_settings.xml",
+      "sha": "84d6a540c6b8aa36a441a5db433d4a66e888e6e5",
+      "characters": 18902
+    },
+    {
+      "path": "android-v6323/app/src/main/res/layout/activity_settings_detail.xml",
+      "sha": "cb58f86f482590df7a67582c7e9e5941d11a1c25",
+      "characters": 1699
+    },
+    {
+      "path": "android-v6323/app/src/main/res/layout/activity_settings_search.xml",
+      "sha": "5bb32e951f2e5ca42b15e1cbf40c946eb9232f25",
+      "characters": 1803
+    },
+    {
+      "path": "android-v6323/app/src/main/res/layout/activity_signal_history.xml",
+      "sha": "38221a8dcb6e5951697b91df0d1c4e22511a77bc",
+      "characters": 8089
+    },
+    {
+      "path": "android-v6323/app/src/main/res/layout/activity_stock_detail.xml",
+      "sha": "5075f0bda4ffa473c6f47510ac552ad2ca6e550e",
+      "characters": 16121
+    },
+    {
+      "path": "android-v6323/app/src/main/res/layout/activity_stocks.xml",
+      "sha": "6dd0c806c92b8a78809c7334028a9ca01c30fad4",
+      "characters": 13080
+    },
+    {
+      "path": "android-v6323/app/src/main/res/layout/activity_technical_analysis.xml",
+      "sha": "3e106be29c53414bf21a421e079f67e6d47cb1be",
+      "characters": 29202
+    },
+    {
+      "path": "android-v6323/app/src/main/res/layout/activity_viop.xml",
+      "sha": "a724cd83f21cab033a5852b092dc003429e9c294",
+      "characters": 14476
+    },
+    {
+      "path": "android-v6323/app/src/main/res/layout/activity_viop_analysis.xml",
+      "sha": "3249522cc4d2fd688733c8c49ed6e65440c3ddab",
+      "characters": 5858
+    },
+    {
+      "path": "android-v6323/app/src/main/res/layout/activity_viop_contracts.xml",
+      "sha": "c65de3bed4f8f190eec8730baf8d68c8f3167141",
+      "characters": 9568
+    },
+    {
+      "path": "android-v6323/app/src/main/res/layout/activity_viop_detail.xml",
+      "sha": "eeefc25e855d54908c5f454145b89b355f28b073",
+      "characters": 21684
+    },
+    {
+      "path": "android-v6323/app/src/main/res/layout/dialog_viop_contract.xml",
+      "sha": "97b4bf3122782f4166d1660e96d4bf5b07be3e7f",
+      "characters": 1247
+    },
+    {
+      "path": "android-v6323/app/src/main/res/layout/include_bottom_nav.xml",
+      "sha": "7d6468b23e432b118280cee5ebfccf1279040b9f",
+      "characters": 925
+    },
+    {
+      "path": "android-v6323/app/src/main/res/layout/item_bist_watchlist.xml",
+      "sha": "d80b7c6c2d721be03f677b5052b08e4ca5390d99",
+      "characters": 3120
+    },
+    {
+      "path": "android-v6323/app/src/main/res/layout/item_favorite.xml",
+      "sha": "d6943b23db0879a3652e91ac8b9e254afdc07531",
+      "characters": 1467
+    },
+    {
+      "path": "android-v6323/app/src/main/res/layout/item_history.xml",
+      "sha": "e69a1d5d43defe00ac7a701f88989fd4a4e69b56",
+      "characters": 553
+    },
+    {
+      "path": "android-v6323/app/src/main/res/layout/item_indicator.xml",
+      "sha": "a51a5a273eb5957c574946a73b10d1450ab33402",
+      "characters": 1834
+    },
+    {
+      "path": "android-v6323/app/src/main/res/layout/item_news.xml",
+      "sha": "5776c2200527735e47515de1474197d47e18a5c3",
+      "characters": 1641
+    },
+    {
+      "path": "android-v6323/app/src/main/res/layout/item_opportunity.xml",
+      "sha": "8bd62e3b870f77920e4ea4cd12e14e2320f2a909",
+      "characters": 9262
+    },
+    {
+      "path": "android-v6323/app/src/main/res/layout/item_scan_result.xml",
+      "sha": "68d2966c6d6eaee32b0d55f2312b0c68383b9982",
+      "characters": 7739
+    },
+    {
+      "path": "android-v6323/app/src/main/res/layout/item_stock_compact.xml",
+      "sha": "f81c10eb0797845eee2843d045fe9cbf3909be1e",
+      "characters": 3117
+    },
+    {
+      "path": "android-v6323/app/src/main/res/layout/item_viop.xml",
+      "sha": "31e74a6636b628c40908ac08771a25682a84e4f3",
+      "characters": 407
+    },
+    {
+      "path": "android-v6323/app/src/main/res/layout/item_viop_analysis.xml",
+      "sha": "8a364eccb746e84787571fe2f6fe93491224f986",
+      "characters": 1286
+    },
+    {
+      "path": "android-v6323/app/src/main/res/layout/item_viop_opportunity.xml",
+      "sha": "34dbf314059698085c408f508635f8c08f78fb12",
+      "characters": 3130
+    },
+    {
+      "path": "android-v6323/app/src/main/res/layout/item_viop_suggestion.xml",
+      "sha": "13b34c55b3c2023d4768f8b56a5fb84f4188770a",
+      "characters": 2429
+    },
+    {
+      "path": "android-v6323/app/src/main/res/layout/item_viop_watchlist.xml",
+      "sha": "bfa21789b9193e5c2f85b12ff561464144bcf53b",
+      "characters": 2944
+    },
+    {
+      "path": "android-v6323/app/src/main/res/values/colors.xml",
+      "sha": "01256ec74031e6fa2620e8d6a4346b2a0859018e",
+      "characters": 808
+    },
+    {
+      "path": "android-v6323/app/src/main/res/values/market_screen_styles.xml",
+      "sha": "12ae7b1dd93f8b9b39172f3ac619b0ad3e524042",
+      "characters": 2775
+    },
+    {
+      "path": "android-v6323/app/src/main/res/values/strings.xml",
+      "sha": "b5bccb67f6289590c18ce115ff92bbbb6ed9c8b3",
+      "characters": 15947
+    },
+    {
+      "path": "android-v6323/app/src/main/res/values/styles.xml",
+      "sha": "ba182d6efdff71fd040d2fd7d4c2b10a082331ce",
+      "characters": 3857
+    },
+    {
+      "path": "android-v6323/app/src/main/res/values/themes.xml",
+      "sha": "16f33a96db83e0a4738804795f9f108f527dd244",
+      "characters": 581
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/analysis/B118TemporalIntegrityTest.kt",
+      "sha": "e10921b5c16bb4cf8bc4f898d0b1b25c2fbc15a5",
+      "characters": 2142
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/analysis/B119StabilityPerformanceTest.kt",
+      "sha": "c07b6f24d9198fc470eedad0fe03a4d197e9d8cc",
+      "characters": 3570
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/analysis/BreakoutVolumeEngineTest.kt",
+      "sha": "3c766f11cdf33be51986d33ae7699b5bed7166c1",
+      "characters": 532
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/analysis/Build665IntegrityRegressionTest.kt",
+      "sha": "cb753b764faa16b9094f4b958ecb0b99d88a60ed",
+      "characters": 6646
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/analysis/ChartTimeframeTrendTest.kt",
+      "sha": "13e5e3084ce019ce2aa1d2100f63ed7fb10956d8",
+      "characters": 3147
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/analysis/DecisionSupportEngineTest.kt",
+      "sha": "1a289c6085a372eaba0bd4f672ffeb8f2afdf082",
+      "characters": 2437
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/analysis/MarketRegimeEngineTest.kt",
+      "sha": "f89e3bd08f2f28d1d1a5ca7052f7e9a2699b4b19",
+      "characters": 1015
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/analysis/MtfConsensusEngineTest.kt",
+      "sha": "3abd9cccfff82143a1a9bb897b51b4d31b99ccc5",
+      "characters": 1170
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/analysis/MultiTimeframeSignalAnalyzerTest.kt",
+      "sha": "f467809672edb12c1d2a5f4b9601c197444b790d",
+      "characters": 1837
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/analysis/Opportunity2PresentationTest.kt",
+      "sha": "788a8143ba4ab87d1162dba8e396750746a28839",
+      "characters": 1275
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/analysis/OpportunityFilterPolicyTest.kt",
+      "sha": "c3d118dee117c8b0d30ddafbd3aedee9cf2421f4",
+      "characters": 2244
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/analysis/OpportunityInsufficientDataTest.kt",
+      "sha": "e697bbfac947251b83b119f48a5421591ed1d21d",
+      "characters": 1575
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/analysis/OpportunityRankingPolicyTest.kt",
+      "sha": "2878ae30e1e66fbaacf3ed8d3c7fb11d7d1bbc03",
+      "characters": 1154
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/analysis/OpportunityTrendPresentationTest.kt",
+      "sha": "16a6a79dc9f2d460e66efac1cf2609963e748d69",
+      "characters": 4437
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/analysis/OpportunityValidityTest.kt",
+      "sha": "7bca1490e10a1f113c2106d0ad28d7741c4a28d9",
+      "characters": 2331
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/analysis/OpportunityVisibilityFilterTest.kt",
+      "sha": "412d7b80e24edca75a53f8716f911c0442277448",
+      "characters": 1913
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/analysis/ProfessionalChartMathTest.kt",
+      "sha": "32b2908b72637fd6f8a58c1f88b31c92c70423ab",
+      "characters": 3837
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/analysis/RealtimeShortPresentationTest.kt",
+      "sha": "9c8149d70ddfc57feab5c355dfbf21d306774b6d",
+      "characters": 2173
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/analysis/SessionVwapTest.kt",
+      "sha": "8ef13a35253bcddf6eafe9be78ded1488435aff5",
+      "characters": 1056
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/analysis/SignalVisualPolicyTest.kt",
+      "sha": "c024e20ed9eaa269259a30aac1babe09941f3ff1",
+      "characters": 2419
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/analysis/StrategyComparisonMathTest.kt",
+      "sha": "a70179041e9c796aa8a28ab0353e5c319fb6ffd1",
+      "characters": 920
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/analysis/StrategyOptimizationEngineTest.kt",
+      "sha": "2ef4338d99f597f541e068c0e2eb5c81d7258ec8",
+      "characters": 4186
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/analysis/StrategyProfileEngineTest.kt",
+      "sha": "f370b53719a34831f21f44526b2256d944d468b1",
+      "characters": 1179
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/analysis/TechnicalSafetyTest.kt",
+      "sha": "bb1c53b57da3318080cffc4b6fd8f508db1e7d91",
+      "characters": 4083
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/analysis/TradeForwardEngineTest.kt",
+      "sha": "417fc67b6ba3964592681804d6ab36fd187d3242",
+      "characters": 3688
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/analysis/TradeSimulationEstimateTest.kt",
+      "sha": "8096d4eac5a3319cec0350b33b4834239ec4d96e",
+      "characters": 1145
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/analysis/TrendUiPolicyTest.kt",
+      "sha": "0c6fcccecf8283a3580988f8f2b1985ea0b06a92",
+      "characters": 5922
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/analysis/ViopAnalysisCatalogTest.kt",
+      "sha": "929ca14cfa74359182dff3ec8c476cc3654b9724",
+      "characters": 3033
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/analysis/ViopBreakoutPolicyTest.kt",
+      "sha": "a9aa04449970da532c93ca3b460385070974e91e",
+      "characters": 633
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/analysis/ViopBuiltinContractCatalogTest.kt",
+      "sha": "0a7464c8507dc5eddf7e7ddeab1c09273878184c",
+      "characters": 2215
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/analysis/ViopContractCategoryPolicyTest.kt",
+      "sha": "767d640137794be4fe7e424212c6e58eda8d5027",
+      "characters": 1590
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/analysis/ViopContractSearchTest.kt",
+      "sha": "bdc7cf57958f56e69f730dcea6c8d32529483aea",
+      "characters": 2812
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/analysis/ViopFinalQuotePolicyTest.kt",
+      "sha": "9269c6ccc80308ecea2a607cd0df035fc1fa33f2",
+      "characters": 1726
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/analysis/ViopScannerPolicyTest.kt",
+      "sha": "bae23b03f977140f8b280ce6f8fd8afa14dada12",
+      "characters": 2344
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/analysis/ViopTarget1RiskPlanTest.kt",
+      "sha": "72eb764c38ce80a94d4e049ef22e4f31a7bbeb7d",
+      "characters": 2720
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/analysis/ViopV6PolicyTest.kt",
+      "sha": "390264bca07ab00a2310795dcc549faf908469a1",
+      "characters": 1273
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/analysis/ViopV6SafetyGateTest.kt",
+      "sha": "9f90fbc01d82cbb851c01fab355886c6607d7673",
+      "characters": 4701
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/analysis/v531/RemoteEngineContractTest.kt",
+      "sha": "20f13ef037fa7136a03466ab5d61b537812cf26a",
+      "characters": 3007
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/analysis/v531/V531CalculationEngineTest.kt",
+      "sha": "393ca7e7410bd736e8fbd16e506b46edc50b7eae",
+      "characters": 5353
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/analysis/v531/V532BoundaryContractsTest.kt",
+      "sha": "759bfbdfc277c77229860a3691960c6d3eee5ca2",
+      "characters": 5291
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/analysis/v531/V532DataCorruptionTest.kt",
+      "sha": "c255d90cd90e1d1ba2770961cccaa3ce122dd8b8",
+      "characters": 6629
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/analysis/v533/V533AuditHashTest.kt",
+      "sha": "64e7c8a0c35e2876179061f37f92e06e2c8884ab",
+      "characters": 2743
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/analysis/v533/V533SemanticInvariantTest.kt",
+      "sha": "7482a5a8b6e9cac4610869e981a363ad361e76f1",
+      "characters": 7041
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/analysis/v533/V533SnapshotInvariantTest.kt",
+      "sha": "a5630c5d314446981557b8d5f76498ba7b3f2373",
+      "characters": 5466
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/analysis/v533/V533TemporalCausalityTest.kt",
+      "sha": "05ee11b27ec54197266f497b4de90787fe0c0605",
+      "characters": 2960
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/analysis/v534/V534RemoteInputHashTest.kt",
+      "sha": "e718b0460d4fc96b0592a38690dcdd24411cd4e7",
+      "characters": 2044
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/analysis/v535/V535FinalIntegrityTest.kt",
+      "sha": "a9fdedb2ce4430c94394c59956eb87cd29be8afa",
+      "characters": 7515
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/analysis/v536/V536OutputHashTest.kt",
+      "sha": "65f7c1f73d557d579207db21e268cf2b3d15982f",
+      "characters": 3171
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/analysis/v536/V536ProductionHardeningTest.kt",
+      "sha": "a82aecb5ba10f320fb21f6f1dba9ed1b76dc0b5f",
+      "characters": 5758
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/analysis/v537/V537SecurityFixTest.kt",
+      "sha": "b7ed5d6b93f95ecc7445314ad5bc7313e567bd3f",
+      "characters": 8897
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/analysis/v538/V538SecurityHardeningTest.kt",
+      "sha": "cf7450f0a5ccd8e011642ef9dd99d570b32604c8",
+      "characters": 7712
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/analysis/v539/V539FinalDecisionFlowTest.kt",
+      "sha": "973c72d14f44cf8be4232713d66ff0d65253277d",
+      "characters": 5311
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/analysis/v539/V539RemoteOutputHashTest.kt",
+      "sha": "d5361f5b80248398dd2d1c8d8ac6245e784daefb",
+      "characters": 2110
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/analysis/v540/V540BacktestEngineTest.kt",
+      "sha": "fec9766bb27b502991daf9581a7dc09d8d93f0ed",
+      "characters": 5144
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/analysis/v540/V540CalculationCorrectnessTest.kt",
+      "sha": "c4dbf2db1ba3a16f1671deb8e6062b0124ceb8b6",
+      "characters": 5889
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/analysis/v541/V541BacktestExecutionCorrectnessTest.kt",
+      "sha": "fe842561517a790d6fa7b51c89b24d4e04faa741",
+      "characters": 10877
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/data/B113B114AcceptanceSourceTest.kt",
+      "sha": "b1b44d79a93146a781f5ed9e167caea3ae969ab0",
+      "characters": 6197
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/data/B114AutoScanTimeframeTrendSourceTest.kt",
+      "sha": "d945338f3d0073c6572760e8ae0100eee6a015a8",
+      "characters": 4317
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/data/B115IntradayFallbackSourceTest.kt",
+      "sha": "c4179379ecb1320775c9dd655096b4ca86878bb2",
+      "characters": 4926
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/data/B116OpportunityFallbackSourceTest.kt",
+      "sha": "9bf65270fdc4ba096d2e1863d202691cbe9efcc9",
+      "characters": 4242
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/data/B117EngineIntegritySourceTest.kt",
+      "sha": "619dd48a68af403dafb3858e4f43721fd9234890",
+      "characters": 1042
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/data/B118SourceContractTest.kt",
+      "sha": "9a6556efcf656cabbb87aeef1d6f4bc40aee389b",
+      "characters": 3061
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/data/B120WatchlistRecoveryTest.kt",
+      "sha": "b2f42d20fb2f86c7d5ed8a5182c8b0789686b162",
+      "characters": 915
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/data/B121ProviderAndMarketTilesTest.kt",
+      "sha": "704279d46d3a8f473bb81785d858dbb33d434194",
+      "characters": 3196
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/data/B122ViopProviderRecoveryTest.kt",
+      "sha": "c134dc84db72dc8d6bef20d10956847c9067c7dd",
+      "characters": 1348
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/data/B123HomeTabsAndMarketDetailsTest.kt",
+      "sha": "355b9c092bb31e80ace58580dee87f468aa75d9b",
+      "characters": 1702
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/data/B124ViopFallbackUxTest.kt",
+      "sha": "6e2e36fd5ff2d6bbc07a39d54b26439ae9eaa158",
+      "characters": 1186
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/data/B124ViopScanRecoveryTest.kt",
+      "sha": "2bc3773829047b58fa6cc0df05408c3e1b2502a8",
+      "characters": 1699
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/data/B125ViopConfigAndUiFixTest.kt",
+      "sha": "ebb311d8c3ea20756f468771db508d001e77095c",
+      "characters": 2084
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/data/B126ViopIntegrityFixTest.kt",
+      "sha": "e9579f77004a8927270ccd3e866f8f8063585e60",
+      "characters": 3527
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/data/B127MergedIntegrityAndNavigationTest.kt",
+      "sha": "00c6dfe77034c4a9b44534623bbb46e258c5292d",
+      "characters": 2068
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/data/B128SurgicalRuntimeRegressionTest.kt",
+      "sha": "832a1207d310ae30498f394d7aeb581c1f159d41",
+      "characters": 4550
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/data/B129SurgicalCancellationAndCacheTest.kt",
+      "sha": "27ea6462c67d15656e537ad2eef555799ac409a5",
+      "characters": 4471
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/data/B134SettingsControlCenterSourceTest.kt",
+      "sha": "2066898bc0db405bd30007868cec1888ade95f4a",
+      "characters": 4762
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/data/B135SettingsRegressionSourceTest.kt",
+      "sha": "e28089b5d1ef35902a9b7a55c73e5baa12387ccd",
+      "characters": 2558
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/data/BackendApiRouteFailureTest.kt",
+      "sha": "10ebb61f95f3aa54129060be6c5b95d518f47d43",
+      "characters": 1039
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/data/BackendHttpDiagnosticTest.kt",
+      "sha": "6fb692e575f1ba59e9414bb709d4d7d9d04740a1",
+      "characters": 6411
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/data/BackendUnavailableDiagnosticTest.kt",
+      "sha": "8d46397ebefa078ac235daac5797cd5ce554d6b2",
+      "characters": 1985
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/data/CandleReadinessPolicyTest.kt",
+      "sha": "4e8916527716c2a1954271f995784b9b0fb29003",
+      "characters": 1376
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/data/ChartHistoryRepositoryTest.kt",
+      "sha": "51c7c19b917c7e2c8ed433031ebe4032b1c06394",
+      "characters": 1848
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/data/DeepDiagnosticEngineTest.kt",
+      "sha": "63f8a84ab214f866b9c52c91b994f7ca78872cef",
+      "characters": 2625
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/data/DelayedIntradayRoutingTest.kt",
+      "sha": "6ec885b5ec1fcea67c4c676a05b5d08fe919ade2",
+      "characters": 2889
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/data/DelayedQuoteMergePolicyTest.kt",
+      "sha": "6305b85555af8d4f77b2531ff59024bbf431d9d5",
+      "characters": 2590
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/data/DelayedScanScopeTest.kt",
+      "sha": "14d94b7079649bfb8787e9e98ca18c550506e4af",
+      "characters": 965
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/data/DiagnosticOverlapAuditTest.kt",
+      "sha": "7da1f232771f78cde4743eb2e908d40bfd2b5842",
+      "characters": 1257
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/data/FavoriteNormalizationTest.kt",
+      "sha": "38cd7f30b256e72e26df620b2b2c54ac934fa425",
+      "characters": 837
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/data/ForwardOutcomeMatcherTest.kt",
+      "sha": "6cb0a070b9f79383f0d4693d891ea5e0453d9b15",
+      "characters": 1951
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/data/FundamentalsEndpointDiagnosticTest.kt",
+      "sha": "9b4b3a9c20df7f359d07fcaefc660746d259d7fb",
+      "characters": 1116
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/data/ManualScanPipelineSourceTest.kt",
+      "sha": "985007b50ae585a2af4cba8805f416f7fce7f2fc",
+      "characters": 2616
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/data/ObservationAnalysisTest.kt",
+      "sha": "b2a2a89534a13861a0a4b0849055ecb371a30da5",
+      "characters": 1659
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/data/ProviderProbePresentationTest.kt",
+      "sha": "0b95e897fbc430064941c57d5edff9e9952809f1",
+      "characters": 3383
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/data/ProviderReadinessServiceTest.kt",
+      "sha": "7d6bb272bcb53b3aeb1f7e452f8afc5bb34f9f0b",
+      "characters": 828
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/data/RealTimeIntegrityPolicyTest.kt",
+      "sha": "6c170b8dd4838e7b3ead8e95f492ab16c6d621ca",
+      "characters": 4249
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/data/ScanTimeframeEngineTest.kt",
+      "sha": "e5d351bdfc734911d51187d346c8002cea85cc94",
+      "characters": 4420
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/data/SignalHistoryPolicyTest.kt",
+      "sha": "b471498eaae23259d5b9acee0c9a78275e44f9b0",
+      "characters": 1236
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/data/StocksReferencePolicyTest.kt",
+      "sha": "a419aff1021719d22f79e5a5bd346b053e9acaf0",
+      "characters": 2416
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/data/SymbolUniverseToolsTest.kt",
+      "sha": "c65cf7b90cb74046114adb4a688b01891248df67",
+      "characters": 944
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/data/ValuationSourceGateTest.kt",
+      "sha": "a456b66e3b5b00f7c3f3c63f996d8b0fd9dab945",
+      "characters": 1814
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/data/ViopCategoryWatchlistPolicyTest.kt",
+      "sha": "247870d4c76d7129ebc2822d32bff5b574d9e57c",
+      "characters": 1543
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/data/ViopManualPositionMathTest.kt",
+      "sha": "32261d2a23183cc1626d6f15bc670f5c0d641dbd",
+      "characters": 1112
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/data/ViopPartialExitMathTest.kt",
+      "sha": "69c561e9cfa34ae7cbf785f6215e61c5ac933479",
+      "characters": 1541
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/data/ViopWatchlistPolicyTest.kt",
+      "sha": "a7b9115c7adbe92d7f8c1291f3ba2118befa1625",
+      "characters": 1280
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/integration/Build657UiIntegritySourceTest.kt",
+      "sha": "32b75a3397864d8af0bab3e1d309e5d0a811a905",
+      "characters": 971
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/integration/Build658OpportunitySafetySourceTest.kt",
+      "sha": "6b0c20c5dc9b067df51e39d7f2cf84242673708f",
+      "characters": 850
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/integration/Build659OpportunityDesignSourceTest.kt",
+      "sha": "d107e3bee871cbfbee5bc91425f3177993bae846",
+      "characters": 1061
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/integration/DelayedScanDialogNavigationSourceTest.kt",
+      "sha": "c12bbb1386bc8436e0868ab3145af5ea6f255b0a",
+      "characters": 2025
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/integration/FullUniverseContinuitySourceTest.kt",
+      "sha": "d4875d09b58115e0cb2e9196de540eaa4e80f879",
+      "characters": 2835
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/integration/FullUniversePolicyTest.kt",
+      "sha": "def47370638e82438d45b995db64c03734b6fdc1",
+      "characters": 3456
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/integration/OpportunityTruthSourceTest.kt",
+      "sha": "9175817a8357731d2ed9d03dbaf16dba96f6fc75",
+      "characters": 1000
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/integration/StockSignalConsistencySourceTest.kt",
+      "sha": "28d803293703e73ff88feb4ce17cb062c129afa4",
+      "characters": 1127
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/integration/V535IntegrationSourceTest.kt",
+      "sha": "a91611aaf029ca5165dbdf5ba46d53b67c608e7c",
+      "characters": 3127
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/integration/V536IntegrationSourceTest.kt",
+      "sha": "e0e71ad8186afb44128d2ddcba03aafe1b07807b",
+      "characters": 3669
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/integration/V537IntegrationSourceTest.kt",
+      "sha": "684d5c29870d47d09c68887f3fa727af4e7709d1",
+      "characters": 4132
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/integration/V538IntegrationSourceTest.kt",
+      "sha": "d5ea00d09e7b653a75bdb93cb4f4c2fd5809c106",
+      "characters": 3952
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/integration/V539CalculationFlowSourceTest.kt",
+      "sha": "9c9805d16271d104f3a0c453e8cb087dd00a2a29",
+      "characters": 3496
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/integration/V540CalculationBacktestSourceTest.kt",
+      "sha": "738ac8a5eab29b0be0f72eb04326663ee99012cc",
+      "characters": 2882
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/integration/V541ExecutionCorrectnessSourceTest.kt",
+      "sha": "c4a9a5b7c02580f383f77279aad0fa60dab937a8",
+      "characters": 3352
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/production/ProductionReadinessSourceContractTest.kt",
+      "sha": "2416d0df1e6e287db09b5be70552167c2f0b80f3",
+      "characters": 3687
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/research/ClaimEvidenceMappingTest.kt",
+      "sha": "d8252f1624c3e992bfa94a702a2941b591e8f84f",
+      "characters": 817
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/research/CrossSourceVerificationTest.kt",
+      "sha": "45825ed7e9359609d855e79060acacba5a44ae0a",
+      "characters": 1667
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/research/PointInTimeIsolationTest.kt",
+      "sha": "ec832651a91af96a982bfb59ac51ed0670486b7a",
+      "characters": 1133
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/research/ResearchFoundationSecurityTest.kt",
+      "sha": "7fb8334bd175543952fc30d1968eb9f38c3bd7ef",
+      "characters": 6886
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/research/SyndicatedNewsDeduplicationTest.kt",
+      "sha": "2439d865885a9f989c6dd89082f3d063c2399a60",
+      "characters": 1250
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/scan/BistScanGateTest.kt",
+      "sha": "6c7d294a0dc3d16406d83386eaf825d383cd93a3",
+      "characters": 2591
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/scan/BistScannerPhaseTest.kt",
+      "sha": "6e7785b5404598e6f9d97198bb0abffbef3acce3",
+      "characters": 3552
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/scan/BistScannerTest.kt",
+      "sha": "4ade423a33b2a3264658d904f08c4c6a909f23db",
+      "characters": 7288
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/scan/Build653FinancialTest.kt",
+      "sha": "8d4dc968c5813750f9295955a34e83af4def6c4e",
+      "characters": 1601
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/scan/CheapStockPolicyTest.kt",
+      "sha": "cdce3d815be10f19af89673ff715328ac8d9ff4b",
+      "characters": 1712
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/scan/FundamentalValuationEngineTest.kt",
+      "sha": "4e19a4966152cbcd1fa67cb4f96949d82694f329",
+      "characters": 3108
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/scan/MissingSymbolDiagnosticTest.kt",
+      "sha": "1dc450bb9a10f44e8fbce96710bf3652b5eae986",
+      "characters": 1337
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/scan/ScanCoverageAuditTest.kt",
+      "sha": "0af62862ba7aa705fe783f30be83ea3787b3813c",
+      "characters": 678
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/scan/ValueOpportunityScoreEngineTest.kt",
+      "sha": "e9b054a2db6c51b81ebf29dd734c3d7f3f5c2310",
+      "characters": 2308
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/ui/B130ViopDetailUiPolicyTest.kt",
+      "sha": "55093618afedf7716eec5bb83c197cfae6b5080d",
+      "characters": 3679
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/ui/B131ViopMainUiRegressionTest.kt",
+      "sha": "e60da69c068bf67b1c727fb2260cca78e7ec2431",
+      "characters": 1195
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/ui/Build660PolicyTest.kt",
+      "sha": "bf5be268e54a8be8f6cf28308598648253e05bf0",
+      "characters": 1915
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/ui/ChartDisplayStateTest.kt",
+      "sha": "18e2fe8dd26ddda59b29c06eb6b226aca950df10",
+      "characters": 1802
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/ui/ChartFinancialCardsTest.kt",
+      "sha": "55af07759dbe3a80e055e25474fe6c05ff1e143a",
+      "characters": 3898
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/ui/MarketListOrderTest.kt",
+      "sha": "0c0a9451010875425e716c8f6b44e578e720704c",
+      "characters": 2016
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/ui/TradingViewChartButtonSourceTest.kt",
+      "sha": "dc159628585b29797e0c90ffcd07fe91bb692a74",
+      "characters": 1561
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/ui/TradingViewChartLinkTest.kt",
+      "sha": "7afb9ee8099125bb71e4715ae501eb22492d22ba",
+      "characters": 739
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/ui/V621VersionAndTrendSourceTest.kt",
+      "sha": "a775682a7484eac87a6584a9297cde3ee9e01d48",
+      "characters": 1661
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/ui/VersionSynchronizationSourceTest.kt",
+      "sha": "801371554680de9886ef4535244775c6274d51d8",
+      "characters": 2152
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/worker/AutoScanUiPolicyTest.kt",
+      "sha": "eae0b1983f59452046e1951fd350d69a6427cfb3",
+      "characters": 1686
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/worker/AutomaticScanSourceContractTest.kt",
+      "sha": "d8c7fd7d48bb9f5c05e0e6a0096d7771806a30af",
+      "characters": 5073
+    },
+    {
+      "path": "android-v6323/app/src/test/java/tr/borsatakip/v5/worker/RealtimeAlertServiceSourceContractTest.kt",
+      "sha": "99d46eacfb9e77772ed2d1fdd34043b6971a36f1",
+      "characters": 3464
+    },
+    {
+      "path": "ci-verify-source-only.py",
+      "sha": "1edcf8468595ca6c2fd2e14aff774b6e7b18e6b2",
+      "characters": 1567
+    },
+    {
+      "path": "server/gateway_diagnostics.mjs",
+      "sha": "fb5973e7d58d80e35e1124f85968d300f6f396fd",
+      "characters": 4892
+    },
+    {
+      "path": "server/market_proxy.ts",
+      "sha": "cfbfff943f7c9de78ea0ceffcde443836bd90373",
+      "characters": 9970
+    },
+    {
+      "path": "server/railway_function_bundle.ts",
+      "sha": "f1d17808d887905c68bd6892151970433ef89ae5",
+      "characters": 26509
+    },
+    {
+      "path": "server/railway_gateway_function.ts",
+      "sha": "d6213d3f36a5279419a202d7ec371c9b2b98f51f",
+      "characters": 11785
+    },
+    {
+      "path": "server/tests/gateway.test.mjs",
+      "sha": "aaea8978eca83d421431921e79652a7f581a3730",
+      "characters": 7485
+    },
+    {
+      "path": "server/tests/gateway_diagnostics.test.mjs",
+      "sha": "c728774623e98f50b784809d83d6e4d44ba872f3",
+      "characters": 6656
+    },
+    {
+      "path": "server/tests/market_proxy.test.mjs",
+      "sha": "e2eee5c478d909d8c2f61bebd185f731840e2920",
+      "characters": 6175
+    },
+    {
+      "path": "server/tests/websocket.bun.test.ts",
+      "sha": "9fe72c8d421b633513e38de3b5c0256449ab473c",
+      "characters": 2554
+    }
+  ],
+  "note": "Files retrieved; automated source scans and manual critical-path review are distinct. Retrieval is not line-by-line proof of correctness."
+}

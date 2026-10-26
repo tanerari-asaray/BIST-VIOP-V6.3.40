@@ -1,0 +1,8 @@
+.gradle/
+.kotlin/
+.pytest_cache/
+**/build/
+local.properties
+*.jks
+*.keystore
+*.log

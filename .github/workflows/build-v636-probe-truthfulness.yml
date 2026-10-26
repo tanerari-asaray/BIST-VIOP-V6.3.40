@@ -1,0 +1,92 @@
+name: BIST VIOP V6.3.6 licensed upstream diagnostics
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'v636-overlay/**'
+      - '.github/workflows/build-v636-probe-truthfulness.yml'
+  workflow_dispatch:
+jobs:
+  android:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: '17'
+      - name: Android SDK
+        shell: bash
+        run: |
+          SDK_ROOT="$ANDROID_HOME"
+          SDKMGR="$(find "$SDK_ROOT/cmdline-tools" -type f -name sdkmanager | head -n 1)"
+          test -n "$SDKMGR"
+          yes | "$SDKMGR" --licenses >/dev/null || true
+          "$SDKMGR" --install 'platforms;android-35' 'build-tools;35.0.0'
+      - name: Reconstruct source and apply V6.3.4 patch
+        shell: bash
+        run: |
+          unzip -t 'BIST-VIOP-V6.2.8-BUILD628-TARAMA-CAKISMA-KORUMALI-KAYNAK.zip'
+          mkdir -p v633
+          unzip -q 'BIST-VIOP-V6.2.8-BUILD628-TARAMA-CAKISMA-KORUMALI-KAYNAK.zip' -d v633
+          cp -a v629-overlay/app/src/. v633/app/src/
+          cp -a v630-overlay/app/src/. v633/app/src/
+          cp -a v631-overlay/app/src/. v633/app/src/
+          sed -i 's/versionCode = 628/versionCode = 631/g; s/versionName = "6.2.8"/versionName = "6.3.1"/g; s/\.diagnostic\.v628audit/\.diagnostic\.v631audit/g' v633/app/build.gradle.kts
+          sed -i 's/₺  UCUZ HİSSE TARAMA  ›  (Fiyat limiti seç)/▣  TEMEL DEĞERLEME TARAMASI  ›  (Tüm BIST)/g' v633/app/src/main/res/layout/activity_bist_scan.xml
+          (cd v633 && python3 ../v632-overlay/apply_v632.py && python3 ../v633-overlay/apply_v633.py && python3 ../v634-overlay/apply_v634.py && python3 ../v635-overlay/apply_v635.py && python3 ../v636-overlay/apply_v636.py)
+          chmod +x v633/gradlew
+          grep 'versionCode = 636' v633/app/build.gradle.kts
+          grep 'versionName = "6.3.6"' v633/app/build.gradle.kts
+          test -s v633/app/src/main/java/tr/borsatakip/v5/data/ProviderProbePresentation.kt
+      - name: Assemble diagnostic APK
+        working-directory: v633
+        run: ./gradlew --no-daemon --stacktrace :app:assembleDiagnostic
+      - name: Validate APK signature and package
+        working-directory: v633
+        shell: bash
+        run: |
+          APK=app/build/outputs/apk/diagnostic/app-diagnostic.apk
+          "$ANDROID_HOME/build-tools/35.0.0/apksigner" verify --verbose --print-certs "$APK"
+          META="$("$ANDROID_HOME/build-tools/35.0.0/aapt" dump badging "$APK" | grep '^package:')"
+          echo "$META"
+          [[ "$META" == *"name='tr.borsatakip.v5.diagnostic.v636audit'"* ]]
+          [[ "$META" == *"versionCode='636'"* ]]
+          [[ "$META" == *"versionName='6.3.6'"* ]]
+      - name: Android diagnostic unit tests
+        id: tests
+        working-directory: v633
+        if: success()
+        continue-on-error: true
+        run: ./gradlew --no-daemon --stacktrace :app:testDiagnosticUnitTest
+      - name: Package exact compiled source
+        shell: bash
+        run: |
+          (cd v633 && zip -q -r ../BIST-VIOP-V6.3.6-BUILD636-ANDROID-KAYNAK.zip . -x 'app/build/*' '.gradle/*' 'build/*' '.git/*')
+      - name: Upload compiled Android source
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: BIST-VIOP-V6.3.6-COMPILED-SOURCE
+          path: BIST-VIOP-V6.3.6-BUILD636-ANDROID-KAYNAK.zip
+          if-no-files-found: warn
+      - name: Upload diagnostic APK
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: BIST-VIOP-V6.3.6-DIAGNOSTIC-APK
+          path: v633/app/build/outputs/apk/diagnostic/*.apk
+          if-no-files-found: warn
+      - name: Upload Android tests
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: BIST-VIOP-V6.3.6-ANDROID-TESTS
+          path: v633/app/build/reports/tests/
+          if-no-files-found: ignore
+      - name: Fail on unit test failure
+        if: steps.tests.outcome == 'failure'
+        run: exit 1

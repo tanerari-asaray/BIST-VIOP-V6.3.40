@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/bg_screen_gradient">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true"
+        android:clipToPadding="false">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="16dp"
+            android:paddingTop="14dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="18dp">
+
+            <!-- Header -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:gravity="center"
+                    android:text="@string/ui_label_29f5e0684482"
+                    android:textColor="@color/blue"
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:paddingStart="8dp" android:paddingEnd="0dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ui_label_54f45bb41e1f" android:textColor="@color/white" android:textSize="25sp" android:textStyle="bold" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2dp" android:text="@string/ui_label_06245830202c" android:textColor="@color/text_secondary" android:textSize="12sp" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/btnHowItWorks"
+                    android:layout_width="wrap_content"
+                    android:layout_height="46dp"
+                    android:background="@drawable/bg_chip_outline"
+                    android:gravity="center"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp"
+                    android:text="@string/ui_label_0c44e3aea1be"
+                    android:textColor="@color/blue"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <!-- Search + filter -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/scanSearch"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_input"
+                    android:hint="@string/ui_label_2f9e17b4f4ba"
+                    android:inputType="textCapCharacters"
+                    android:paddingStart="14dp"
+                    android:paddingEnd="12dp"
+                    android:singleLine="true"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/text_muted"
+                    android:textSize="13sp"  android:importantForAutofill="no"/>
+
+                <TextView
+                    android:id="@+id/btnScanFilter"
+                    android:layout_width="52dp"
+                    android:layout_height="52dp"
+                    android:layout_marginStart="10dp"
+                    android:background="@drawable/bg_card"
+                    android:gravity="center"
+                    android:text="@string/ui_label_2871c89f6aea"
+                    android:textColor="@color/blue"
+                    android:textSize="23sp"
+                    android:contentDescription="@string/ui_label_a1b0a45b7511" />
+            </LinearLayout>
+
+            <!-- Quick modes -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/quickPopular"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="5dp"
+                    android:background="@drawable/bg_chip_selected_blue"
+                    android:gravity="center"
+                    android:text="@string/ui_label_f40014ab8d98"
+                    android:textColor="@color/white"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/quickFavorites"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginHorizontal="5dp"
+                    android:background="@drawable/bg_chip_outline"
+                    android:gravity="center"
+                    android:text="@string/ui_label_ac615c9547ff"
+                    android:textColor="@color/text_primary"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/quickCustom"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginStart="5dp"
+                    android:background="@drawable/bg_chip_outline"
+                    android:gravity="center"
+                    android:text="@string/ui_label_e2ea2e93ee63"
+                    android:textColor="@color/text_primary"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <!-- Separate nominal-price universe scan, not an opportunity-only filter. -->
+            <TextView
+                android:id="@+id/btnCheapStockScan"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_chip_outline"
+                android:gravity="center_vertical"
+                android:paddingStart="16dp"
+                android:paddingEnd="12dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:text="@string/ui_label_367b5668b6b8"
+                android:textColor="@color/blue"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+
+            <!-- Single scan interval control -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/btnScanTime"
+                    android:layout_width="match_parent"
+                    android:layout_height="54dp"
+                    android:background="@drawable/bg_chip_outline"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:contentDescription="@string/ui_label_d21a932cc319">
+
+                    <TextView
+                        android:layout_width="28dp"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="@string/ui_label_f9f2b6cc304f"
+                        android:textColor="@color/blue"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:paddingStart="8dp"
+                        android:text="@string/ui_label_947b23be6d1e"
+                        android:textColor="@color/text_primary"
+                        android:textSize="13sp"
+                        android:textStyle="bold"  android:paddingEnd="0dp"/>
+
+                    <TextView
+                        android:id="@+id/txtScanTimeArrow"
+                        android:layout_width="36dp"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="@string/ui_label_a0b5b4a0487d"
+                        android:textColor="@color/blue"
+                        android:textSize="18sp" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/txtActiveScanTime"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:paddingStart="4dp"
+                    android:text="@string/ui_label_46f1b7c5b2b5"
+                    android:textColor="@color/blue"
+                    android:textSize="12sp"
+                    android:textStyle="bold"  android:paddingEnd="0dp"/>
+
+                <TextView
+                    android:id="@+id/txtActiveTimeframeDetails"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:background="@drawable/bg_card"
+                    android:padding="10dp"
+                    android:text="@string/ui_label_873afff9d479"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="12sp"
+                    android:lineSpacingExtra="2dp" />
+            </LinearLayout>
+
+            <!-- Automatic scan cadence -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_card"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="12dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/ui_label_29d0a579df4e"
+                        android:textColor="@color/white"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/txtAutoScanStatus"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:text="@string/ui_label_c5e074fa0efd"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/switchAutoScan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    app:showText="false"
+                    android:contentDescription="@string/ui_label_93cd9bc41647" />
+            </LinearLayout>
+
+            <!-- Hero scan state -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="148dp"
+                android:layout_marginTop="14dp"
+                android:background="@drawable/bg_scan_hero"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
+                <Button
+                    android:id="@+id/btnStartScan"
+                    android:layout_width="88dp"
+                    android:layout_height="88dp"
+                    android:minWidth="0dp"
+                    android:minHeight="0dp"
+                    android:padding="2dp"
+                    android:background="@drawable/bg_card_blue"
+                    android:backgroundTint="@null"
+                    android:gravity="center"
+                    android:text="@string/ui_label_5f7fb8854b0f"
+                    android:textAllCaps="false"
+                    android:contentDescription="@string/ui_label_e01f307fe12d"
+                    android:textColor="@color/white"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:maxLines="2" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:paddingStart="16dp" android:paddingEnd="0dp">
+                    <TextView android:id="@+id/txtScanHeroEyebrow" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ui_label_457aed672cea" android:textColor="@color/blue" android:textSize="12sp" android:textStyle="bold" />
+                    <TextView android:id="@+id/txtProgress" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="6dp" android:text="@string/ui_label_d2d91abfab20" android:textColor="@color/white" android:textSize="22sp" android:textStyle="bold" />
+                    <TextView android:id="@+id/txtScanHeroSubtitle" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="5dp" android:text="@string/ui_label_b88b70fca514" android:textColor="@color/text_secondary" android:textSize="12sp" />
+                    <ProgressBar android:id="@+id/progress" style="?android:attr/progressBarStyleHorizontal" android:layout_width="match_parent" android:layout_height="7dp" android:layout_marginTop="9dp" android:max="100" android:progress="0" android:visibility="gone" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Compact state row -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_card"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingHorizontal="12dp">
+
+                <TextView android:layout_width="28dp" android:layout_height="match_parent" android:gravity="center" android:text="@string/ui_label_5bd1b4c87140" android:textColor="@color/green" android:textSize="18sp" />
+                <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:minWidth="80dp" android:maxLines="1" android:ellipsize="end" android:text="@string/ui_label_a1db7dd56241" android:textColor="@color/white" android:textSize="12sp" android:textStyle="bold" />
+                <TextView android:id="@+id/txtStatus" android:layout_width="0dp" android:layout_weight="1" android:gravity="end" android:layout_height="wrap_content" android:maxLines="2" android:ellipsize="end" android:text="@string/ui_label_970dbbd01996" android:textColor="@color/blue" android:textSize="12sp" />
+                <TextView android:id="@+id/btnStatusDetail" android:layout_width="60dp" android:layout_height="match_parent" android:gravity="center" android:text="@string/ui_label_7f600115ca23" android:textColor="@color/blue" android:textSize="12sp" android:textStyle="bold" />
+            </LinearLayout>
+
+            <!-- Expandable technical detail -->
+            <LinearLayout
+                android:id="@+id/scanDetailPanel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_info_compact"
+                android:orientation="vertical"
+                android:padding="12dp"
+                android:visibility="gone">
+                <TextView android:id="@+id/txtSource" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/ui_label_bc468800d569" android:textColor="@color/text_secondary" android:textSize="12sp" />
+                <TextView android:id="@+id/txtDebugState" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="5dp" android:lineSpacingExtra="2dp" android:text="@string/ui_label_f7fe2f13e3e6" android:textColor="@color/text_muted" android:textSize="12sp" />
+            </LinearLayout>
+
+            <!-- Provider CTA -->
+            <Button
+                android:id="@+id/btnConfigureProvider"
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:layout_marginTop="9dp"
+                android:background="@drawable/bg_secondary_scan"
+                android:backgroundTint="@null"
+                android:text="@string/ui_label_63e8659a0d6f"
+                android:textColor="@color/text_secondary"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+
+            <!-- Compact info -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="9dp"
+                android:background="@drawable/bg_info_compact"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="12dp">
+                <TextView android:layout_width="36dp" android:layout_height="44dp" android:gravity="center" android:text="@string/ui_label_454e7a3e1ae1" android:textColor="@color/blue" android:textSize="21sp" />
+                <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:lineSpacingExtra="2dp" android:text="@string/ui_label_dbc4b4e5b74b" android:textColor="@color/text_secondary" android:textSize="12sp" />
+            </LinearLayout>
+
+            <!-- Quick access -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+                <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/ui_label_12d3624bf6ce" android:textColor="@color/white" android:textSize="16sp" android:textStyle="bold" />
+                <TextView android:id="@+id/btnAllTools" android:layout_width="wrap_content" android:layout_height="40dp" android:gravity="center" android:text="@string/ui_label_36b7d2946138" android:textColor="@color/blue" android:textSize="12sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="88dp"
+                android:layout_marginTop="6dp"
+                android:orientation="horizontal">
+                <TextView android:id="@+id/quickSectors" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:layout_marginEnd="4dp" android:background="@drawable/bg_card" android:gravity="center" android:text="@string/ui_label_245393186533" android:textColor="@color/text_primary" android:textSize="12sp" />
+                <TextView android:id="@+id/quickCriteria" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:layout_marginHorizontal="4dp" android:background="@drawable/bg_card" android:gravity="center" android:text="@string/ui_label_b41d773346e5" android:textColor="@color/text_primary" android:textSize="12sp" />
+                <TextView android:id="@+id/quickHistory" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:layout_marginHorizontal="4dp" android:background="@drawable/bg_card" android:gravity="center" android:text="@string/ui_label_9d3d60050f98" android:textColor="@color/text_primary" android:textSize="12sp" />
+                <TextView android:id="@+id/quickSaved" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:layout_marginStart="4dp" android:background="@drawable/bg_card" android:gravity="center" android:text="@string/ui_label_021efa57bb94" android:textColor="@color/text_primary" android:textSize="12sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <include layout="@layout/include_bottom_nav" />
+</LinearLayout>

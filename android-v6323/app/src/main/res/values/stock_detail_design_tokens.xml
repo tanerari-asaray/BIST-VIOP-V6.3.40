@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Image reference: compact 360-400dp portrait stock-detail layout. -->
+    <dimen name="sd_page_gutter">10dp</dimen>
+    <dimen name="sd_header_icon_touch">44dp</dimen>
+    <dimen name="sd_header_title_size">21sp</dimen>
+    <dimen name="sd_stock_price_size">32sp</dimen>
+    <dimen name="sd_tab_text_size">15sp</dimen>
+    <dimen name="sd_tab_height">40dp</dimen>
+    <dimen name="sd_section_heading_size">14sp</dimen>
+    <dimen name="sd_section_space">12dp</dimen>
+    <dimen name="sd_trend_card_height">62dp</dimen>
+    <dimen name="sd_technical_card_height">64dp</dimen>
+    <dimen name="sd_card_space">5dp</dimen>
+    <dimen name="sd_chip_height">36dp</dimen>
+    <dimen name="sd_small_label">11sp</dimen>
+    <dimen name="sd_card_padding">10dp</dimen>
+    <color name="sd_accent_cyan">#00E6D0</color>
+    <color name="sd_card_divider">#16465C</color>
+    <style name="StockDetailNavItem">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:drawablePadding">4dp</item>
+        <item name="android:paddingTop">9dp</item>
+        <item name="android:paddingBottom">8dp</item>
+        <item name="android:background">?attr/selectableItemBackgroundBorderless</item>
+    </style>
+</resources>

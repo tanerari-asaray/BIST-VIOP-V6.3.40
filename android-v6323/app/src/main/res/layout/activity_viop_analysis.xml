@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:background="@color/market_bg">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical" android:paddingHorizontal="8dp">
+        <TextView android:id="@+id/analysisBack" style="@style/MarketIcon" android:text="@string/ui_label_0685a836e461" android:contentDescription="@string/ui_label_b68a3150ea85"/>
+        <TextView style="@style/MarketText" android:layout_width="0dp" android:layout_weight="1" android:text="@string/ui_label_db08c149faf0" android:textColor="@color/market_ink" android:textSize="23sp" android:fontFamily="sans-serif-medium"/>
+        <TextView android:id="@+id/analysisSettings" style="@style/MarketIcon" android:text="@string/ui_label_e5235a4a75e6" android:contentDescription="@string/ui_label_bb6111a12fe3"/>
+        <TextView android:id="@+id/analysisRefresh" style="@style/MarketIcon" android:text="@string/ui_label_ad244ea43ed0" android:textColor="@color/market_mint" android:contentDescription="@string/ui_label_8a6bd01d1c6a"/>
+    </LinearLayout>
+    <androidx.coordinatorlayout.widget.CoordinatorLayout android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1">
+        <com.google.android.material.appbar.AppBarLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@color/market_bg" android:stateListAnimator="@null" app:elevation="0dp">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:paddingHorizontal="16dp" app:layout_scrollFlags="scroll|enterAlways">
+                <TextView android:id="@+id/analysisSource" style="@style/MarketText" android:layout_width="match_parent" android:text="@string/ui_label_67faaa3098e7" android:paddingBottom="8dp"/>
+                <EditText android:id="@+id/analysisSearch" style="@style/MarketSearch" android:layout_width="match_parent" android:hint="@string/ui_label_4c79e5c92915" android:importantForAutofill="no" android:inputType="textCapCharacters"/>
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical" android:paddingTop="8dp">
+                    <Button android:id="@+id/analysisAll" style="@style/MarketChip" android:text="@string/ui_label_f43a65ad8268" android:minWidth="0dp" android:paddingHorizontal="10dp"/>
+                    <Button android:id="@+id/analysisFutures" style="@style/MarketChip" android:text="@string/ui_label_7cc280ba4df6" android:minWidth="0dp" android:paddingHorizontal="10dp"/>
+                    <Button android:id="@+id/analysisOptions" style="@style/MarketChip" android:text="@string/ui_label_aae8097ed405" android:minWidth="0dp" android:paddingHorizontal="10dp"/>
+                    <Spinner android:id="@+id/analysisExpiry" android:layout_width="0dp" android:layout_weight="1" android:layout_height="48dp" android:spinnerMode="dropdown" android:popupBackground="@color/market_surface" android:backgroundTint="@color/market_mint" android:contentDescription="@string/ui_label_b8567375efdf"/>
+                </LinearLayout>
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical">
+                    <TextView android:id="@+id/analysisCount" style="@style/MarketText" android:layout_width="0dp" android:layout_weight="1" android:paddingVertical="8dp" android:accessibilityLiveRegion="polite"/>
+                    <TextView android:id="@+id/analysisClear" style="@style/MarketText" android:text="@string/ui_label_e306951c12fe" android:minHeight="44dp" android:gravity="center" android:paddingHorizontal="8dp" android:textColor="@color/market_mint" android:background="?attr/selectableItemBackground"/>
+                </LinearLayout>
+                <ProgressBar android:id="@+id/analysisProgress" style="?android:attr/progressBarStyleHorizontal" android:layout_width="match_parent" android:layout_height="3dp" android:indeterminate="true" android:indeterminateTint="@color/market_mint" android:visibility="gone" android:contentDescription="@string/ui_label_95114269906a"/>
+            </LinearLayout>
+        </com.google.android.material.appbar.AppBarLayout>
+        <FrameLayout android:layout_width="match_parent" android:layout_height="match_parent" app:layout_behavior="@string/appbar_scrolling_view_behavior">
+            <androidx.recyclerview.widget.RecyclerView android:id="@+id/analysisList" android:layout_width="match_parent" android:layout_height="match_parent" android:paddingHorizontal="16dp" android:paddingBottom="12dp" android:clipToPadding="false" android:scrollbars="vertical"/>
+            <ScrollView android:id="@+id/analysisEmpty" android:layout_width="match_parent" android:layout_height="match_parent" android:fillViewport="true" android:visibility="gone">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="24dp" android:gravity="center">
+                    <TextView android:id="@+id/analysisEmptyTitle" style="@style/MarketText" android:textColor="@color/market_ink" android:textSize="18sp" android:gravity="center"/>
+                    <TextView android:id="@+id/analysisEmptyMessage" style="@style/MarketText" android:layout_width="match_parent" android:gravity="center" android:textSize="13sp" android:paddingVertical="12dp"/>
+                    <Button android:id="@+id/analysisEmptyAction" style="@style/MarketChip" android:textColor="@color/market_mint"/>
+                </LinearLayout>
+            </ScrollView>
+        </FrameLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+    <include layout="@layout/include_bottom_nav"/>
+</LinearLayout>

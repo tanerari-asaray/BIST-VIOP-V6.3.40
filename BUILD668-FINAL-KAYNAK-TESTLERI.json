@@ -1,0 +1,33 @@
+{
+  "status": "PASS",
+  "scope": "Static source and offline model tests, NOT Android build, install, or screenshot validation",
+  "checks": {
+    "version_code_668": true,
+    "version_name_6_3_38": true,
+    "all_six_cards_in_stock_detail": true,
+    "footer_after_all_tabs": true,
+    "six_cards_in_fullscreen": true,
+    "business_not_invented": true,
+    "interest_reason_not_invented": true,
+    "no_fake_prices": true,
+    "safe_previous_candle_trends": true,
+    "clear_previous_in_footer": true,
+    "no_raw_source_error": true,
+    "monthly_ohlcv_from_source": true,
+    "30min_complete_series": true,
+    "monthly_interval_available": true,
+    "tradingview_retained": true,
+    "android_wrapper_restored": true,
+    "android_resource_xml_all_parse": true,
+    "six_cards_bound": true,
+    "no_generated_apk_claim": true
+  },
+  "passed": 19,
+  "total": 19,
+  "invalid_xml": [],
+  "android_compile": "NOT_RUN (Gradle distribution DNS unresolved)",
+  "android_lint": "NOT_RUN",
+  "emulator_capture": "NOT_RUN",
+  "apk": "NOT_PRODUCED",
+  "timestamp": "2026-10-22"
+}

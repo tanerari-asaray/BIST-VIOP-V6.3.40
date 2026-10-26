@@ -1,0 +1,1235 @@
+{
+  "version": "6.3.40",
+  "build": 670,
+  "status": "APK_BUILT_DIAGNOSTIC",
+  "SOURCE_BASE_SHA256": "b8cc08f7fef3d2ccd49dc1852f3b0f5c2fa36f25f5d65b9128c4f476eb7444f3",
+  "BUILD668_BASE_SHA256": "ee840360413df2cc982c9e93a9aaf90161ec9e495d796bd603c545955b0ba03b",
+  "GIT_COMMIT_SHA_START": "e7dce2ce9c2408b2e8447d8c8c9413dbd10851c9",
+  "GIT_COMMIT_SHA_FINAL": "8e21475d448f4dea112589b16a6b32f2741b2ff5",
+  "patches": {
+    "build668-delayed-chart-display.patch": "384415d99477bbc69495db602e03928976fac896db5a374420b63080237ba7ab",
+    "build668-delayed-chart-test-contract.patch": "f2a4052c32b441094a8b444fc292c4095039473c734e4241d31f267ca41e044e",
+    "build668-delayed-chart-side-by-side.patch": "0f14f44742f78472601ae003d9730a187389b1908ab7b1b6a0d60bbf13da7cef",
+    "build668-deep-scan-ui-audit.patch": "75ab9d520683e86a14d9d6fbe79278c56b14556ecd016f120368f11540e83eb1",
+    "build668-verified-small-screen-ui.patch": "122432394e91055acc4e0189151ba3cb5b8250e0d4d4c9e5bbd6fb12cd69d28d",
+    "build668-support-resistance-real-levels.patch": "ea23b2599be21b7c75ecfca9f4623f9fae835e5ff742f84f0b35253ea8a082a6",
+    "build670-chart-scan-fixes.patch": "b51f99c228de487abcba2081dcb0a819e8fac650db1c17c517b35c70afdf7387"
+  },
+  "note": "User-requested BUILD669 continuation; original V5 archive is provenance only, not an older replacement source.",
+  "repository": "tanerari-asaray/BIST-V-OP-V6.3.38",
+  "branch": "fix/build670-chart-scan-20261026",
+  "run_id": "40339240800",
+  "build_result": "success",
+  "lint_result": "success",
+  "tests": [
+    {
+      "name": "tr.borsatakip.v5.integration.Build657UiIntegritySourceTest",
+      "tests": "2",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.analysis.ProfessionalChartMathTest",
+      "tests": "6",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.ui.B130ViopDetailUiPolicyTest",
+      "tests": "6",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.analysis.ExtendedStockEvidenceTest",
+      "tests": "4",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.analysis.Build665IntegrityRegressionTest",
+      "tests": "15",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.data.ValuationSourceGateTest",
+      "tests": "6",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.data.ViopQuoteDisplayPolicyTest",
+      "tests": "9",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.integration.V537IntegrationSourceTest",
+      "tests": "10",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.data.StockQuoteHttpFailureRegressionTest",
+      "tests": "3",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.data.CandleReadinessPolicyTest",
+      "tests": "3",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.scan.CheapStockPolicyTest",
+      "tests": "5",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.data.SymbolUniverseToolsTest",
+      "tests": "4",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.analysis.v539.V539FinalDecisionFlowTest",
+      "tests": "9",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.analysis.v536.V536ProductionHardeningTest",
+      "tests": "14",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.analysis.v533.V533SemanticInvariantTest",
+      "tests": "40",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.integration.FullUniversePolicyTest",
+      "tests": "9",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.analysis.ViopTarget1RiskPlanTest",
+      "tests": "8",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.data.BackendUnavailableDiagnosticTest",
+      "tests": "5",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.analysis.MtfConsensusEngineTest",
+      "tests": "2",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.analysis.OpportunityFilterPolicyTest",
+      "tests": "5",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.analysis.TradeSimulationEstimateTest",
+      "tests": "2",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.scan.ScanCoverageAuditTest",
+      "tests": "3",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.integration.V536IntegrationSourceTest",
+      "tests": "9",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.analysis.B119StabilityPerformanceTest",
+      "tests": "6",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.analysis.ViopContractCategoryPolicyTest",
+      "tests": "2",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.analysis.TechnicalSafetyTest",
+      "tests": "10",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.analysis.OpportunityRankingPolicyTest",
+      "tests": "1",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.research.SyndicatedNewsDeduplicationTest",
+      "tests": "1",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.ui.ReportRedactorTest",
+      "tests": "6",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.analysis.v537.V537SecurityFixTest",
+      "tests": "23",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.scan.LeasedBistJobTest",
+      "tests": "5",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.analysis.ReadableStockAnalysisTest",
+      "tests": "9",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.analysis.v533.V533AuditHashTest",
+      "tests": "9",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.analysis.v539.V539RemoteOutputHashTest",
+      "tests": "3",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.ui.TradingViewChartButtonSourceTest",
+      "tests": "1",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.data.DelayedQuoteMergePolicyTest",
+      "tests": "4",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.data.ChartHistoryRepositoryTest",
+      "tests": "2",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.integration.DelayedScanDialogNavigationSourceTest",
+      "tests": "4",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.data.B121ProviderAndMarketTilesTest",
+      "tests": "6",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.data.FundamentalsEndpointDiagnosticTest",
+      "tests": "3",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.research.ResearchFoundationSecurityTest",
+      "tests": "9",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.analysis.v538.V538SecurityHardeningTest",
+      "tests": "17",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.research.CrossSourceVerificationTest",
+      "tests": "2",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.data.ObservationAnalysisTest",
+      "tests": "5",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.integration.Build658OpportunitySafetySourceTest",
+      "tests": "2",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.data.ScanTimeframeEngineTest",
+      "tests": "5",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.research.ClaimEvidenceMappingTest",
+      "tests": "1",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.data.ViopManualPositionMathTest",
+      "tests": "2",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.analysis.StrategyOptimizationEngineTest",
+      "tests": "5",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.analysis.v540.V540BacktestEngineTest",
+      "tests": "11",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.production.ProductionReadinessSourceContractTest",
+      "tests": "8",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.data.B122ViopProviderRecoveryTest",
+      "tests": "4",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.ui.B131ViopMainUiRegressionTest",
+      "tests": "2",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.data.RealTimeIntegrityPolicyTest",
+      "tests": "11",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.data.BackendUrlPolicyTest",
+      "tests": "5",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.worker.AutoScanCompletionTest",
+      "tests": "2",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.analysis.v534.V534RemoteInputHashTest",
+      "tests": "8",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.analysis.v531.RemoteEngineContractTest",
+      "tests": "6",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.analysis.ChartTimeframeTrendTest",
+      "tests": "6",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.ui.MarketListOrderTest",
+      "tests": "5",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.data.B124ViopScanRecoveryTest",
+      "tests": "4",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.data.ProviderReadinessServiceTest",
+      "tests": "4",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.analysis.Build668StockDetailLayoutContractTest",
+      "tests": "3",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.data.DelayedIntradayRoutingTest",
+      "tests": "2",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.ui.DelayedChartDisplaySourceTest",
+      "tests": "2",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.analysis.ViopBreakoutPolicyTest",
+      "tests": "1",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.analysis.v531.V531CalculationEngineTest",
+      "tests": "4",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.data.B126ViopIntegrityFixTest",
+      "tests": "7",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.data.BackendApiRouteFailureTest",
+      "tests": "3",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.analysis.ViopBuiltinContractCatalogTest",
+      "tests": "4",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.analysis.StrategyProfileEngineTest",
+      "tests": "1",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.data.ViopCategoryWatchlistPolicyTest",
+      "tests": "4",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.data.B115IntradayFallbackSourceTest",
+      "tests": "8",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.data.BackendHttpDiagnosticTest",
+      "tests": "18",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.ui.ChartDisplayStateTest",
+      "tests": "4",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.analysis.ViopDashboardPolicyTest",
+      "tests": "7",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.data.B114AutoScanTimeframeTrendSourceTest",
+      "tests": "7",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.analysis.OpportunityInsufficientDataTest",
+      "tests": "1",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.analysis.Build668ScreenContractTest",
+      "tests": "4",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.data.B124ViopFallbackUxTest",
+      "tests": "3",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.worker.RealtimeAlertServiceSourceContractTest",
+      "tests": "4",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.analysis.ViopV6PolicyTest",
+      "tests": "4",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.analysis.DecisionSupportEngineTest",
+      "tests": "1",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.analysis.B118TemporalIntegrityTest",
+      "tests": "4",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.data.StockQuoteRefreshDiagnosticsTest",
+      "tests": "9",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.analysis.v540.V540CalculationCorrectnessTest",
+      "tests": "14",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.analysis.OpportunityValidityTest",
+      "tests": "3",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.data.B120WatchlistRecoveryTest",
+      "tests": "4",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.data.ForwardOutcomeMatcherTest",
+      "tests": "7",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.ui.TradingViewChartLinkTest",
+      "tests": "3",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.data.B116OpportunityFallbackSourceTest",
+      "tests": "9",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.ui.V621VersionAndTrendSourceTest",
+      "tests": "3",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.analysis.StrategyComparisonMathTest",
+      "tests": "3",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.research.PointInTimeIsolationTest",
+      "tests": "1",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.analysis.v535.V535FinalIntegrityTest",
+      "tests": "34",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.data.FavoriteNormalizationTest",
+      "tests": "2",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.integration.OpportunityTruthSourceTest",
+      "tests": "3",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.data.ViopWatchlistPolicyTest",
+      "tests": "3",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.analysis.v533.V533SnapshotInvariantTest",
+      "tests": "27",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.data.Build670ObservationRetryTest",
+      "tests": "6",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.integration.V540CalculationBacktestSourceTest",
+      "tests": "6",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.integration.FullUniverseContinuitySourceTest",
+      "tests": "5",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.integration.V541ExecutionCorrectnessSourceTest",
+      "tests": "10",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.analysis.Opportunity2PresentationTest",
+      "tests": "1",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.scan.BistScanGateTest",
+      "tests": "2",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.analysis.ViopScannerPolicyTest",
+      "tests": "2",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.analysis.Build668DeepAuditRegressionTest",
+      "tests": "4",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.analysis.OpportunityVisibilityFilterTest",
+      "tests": "1",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.analysis.ViopAnalysisCatalogTest",
+      "tests": "7",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.scan.Build653FinancialTest",
+      "tests": "4",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.analysis.OpportunityTrendPresentationTest",
+      "tests": "8",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.analysis.v531.V532BoundaryContractsTest",
+      "tests": "9",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.integration.StockSignalConsistencySourceTest",
+      "tests": "2",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.analysis.Build668NewTimeframesTest",
+      "tests": "3",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.data.B117EngineIntegritySourceTest",
+      "tests": "2",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.analysis.SessionVwapTest",
+      "tests": "2",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.data.DeepDiagnosticEngineTest",
+      "tests": "6",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.data.B134SettingsControlCenterSourceTest",
+      "tests": "9",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.analysis.ViopFinalQuotePolicyTest",
+      "tests": "11",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.scan.BistScannerTest",
+      "tests": "8",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.data.BackupExclusionPolicyTest",
+      "tests": "3",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.ui.ChartFinancialCardsTest",
+      "tests": "9",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.analysis.v536.V536OutputHashTest",
+      "tests": "6",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.data.ProviderProbeGateTest",
+      "tests": "8",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.analysis.v541.V541BacktestExecutionCorrectnessTest",
+      "tests": "21",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.scan.FundamentalValuationEngineTest",
+      "tests": "9",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.analysis.ChartSupportResistanceOverlayTest",
+      "tests": "4",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.data.B125ViopConfigAndUiFixTest",
+      "tests": "3",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.analysis.RealtimeShortPresentationTest",
+      "tests": "1",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.integration.V538IntegrationSourceTest",
+      "tests": "10",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.data.BackendHttpTransportTest",
+      "tests": "12",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.ui.DeepAuditJsonRedactionTest",
+      "tests": "3",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.analysis.SignalVisualPolicyTest",
+      "tests": "11",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.analysis.MultiTimeframeSignalAnalyzerTest",
+      "tests": "4",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.integration.V535IntegrationSourceTest",
+      "tests": "7",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.data.ViopPartialExitMathTest",
+      "tests": "3",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.worker.AutomaticScanSourceContractTest",
+      "tests": "10",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.data.B123HomeTabsAndMarketDetailsTest",
+      "tests": "5",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.data.B128SurgicalRuntimeRegressionTest",
+      "tests": "6",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.analysis.Build670PivotRoleTest",
+      "tests": "4",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.data.B129SurgicalCancellationAndCacheTest",
+      "tests": "5",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.scan.ValueOpportunityScoreEngineTest",
+      "tests": "4",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.analysis.ViopContractSearchTest",
+      "tests": "8",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.data.ManualScanPipelineSourceTest",
+      "tests": "5",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.analysis.BreakoutVolumeEngineTest",
+      "tests": "1",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.analysis.ViopV6SafetyGateTest",
+      "tests": "16",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.data.StocksReferencePolicyTest",
+      "tests": "6",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.analysis.v533.V533TemporalCausalityTest",
+      "tests": "14",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.scan.BistScannerPhaseTest",
+      "tests": "2",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.analysis.v531.V532DataCorruptionTest",
+      "tests": "9",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.ui.Build660PolicyTest",
+      "tests": "4",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.analysis.MarketRegimeEngineTest",
+      "tests": "2",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.ui.VersionSynchronizationSourceTest",
+      "tests": "1",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.data.ProviderProbePresentationTest",
+      "tests": "7",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.data.ChartHistoryRepositoryDelayedTest",
+      "tests": "5",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.data.B135SettingsRegressionSourceTest",
+      "tests": "5",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.data.B127MergedIntegrityAndNavigationTest",
+      "tests": "4",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.integration.Build659OpportunityDesignSourceTest",
+      "tests": "2",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.data.ObservationSourcePolicyTest",
+      "tests": "7",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.analysis.TradeForwardEngineTest",
+      "tests": "8",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.analysis.TrendUiPolicyTest",
+      "tests": "15",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.data.DelayedScanScopeTest",
+      "tests": "4",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.worker.AutoScanUiPolicyTest",
+      "tests": "6",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.data.SignalHistoryPolicyTest",
+      "tests": "5",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.analysis.Build668SmallScreenUiRegressionTest",
+      "tests": "5",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.analysis.DeepAuditShortExcursionTest",
+      "tests": "4",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.data.B113B114AcceptanceSourceTest",
+      "tests": "10",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.scan.MissingSymbolDiagnosticTest",
+      "tests": "3",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.data.DiagnosticOverlapAuditTest",
+      "tests": "2",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.data.B118SourceContractTest",
+      "tests": "6",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "tr.borsatakip.v5.integration.V539CalculationFlowSourceTest",
+      "tests": "7",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    }
+  ],
+  "apk": [
+    {
+      "file": "BIST-VIOP-V6.3.40-BUILD670-DIAGNOSTIC.apk",
+      "bytes": 9288127,
+      "sha256": "dfb90d35efdf9e064e3b9080d04e3b16a6203c8c9e504c6ee35351170661f97b"
+    },
+    {
+      "file": "BUILD670-INSTRUMENTATION.apk",
+      "bytes": 711457,
+      "sha256": "4014ede0ee2cbe86225d62264c7a20acbdb5e5f00c3fd8a243421dce9c1dd9d1"
+    }
+  ]
+}

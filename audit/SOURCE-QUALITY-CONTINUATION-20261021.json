@@ -1,0 +1,223 @@
+{
+  "schemaVersion": "BIST-VIOP-SOURCE-QUALITY/1",
+  "date": "2026-10-21",
+  "version": "6.3.35",
+  "build": 665,
+  "status": "SOURCE_CHECKS_PASSED_WITH_WARNINGS",
+  "productionReady": false,
+  "liveTradingVerified": false,
+  "source": {
+    "repository": "ferittasbek-png/BIST-VIOP-V6.2.2",
+    "branch": "fix/deep-audit-no-apk",
+    "startCommit": "e6b075dd17e81b461ec8ee6a39ef4d01002a1080",
+    "sourceBaseSha256": "69e0a2c7909b0463653ae2df50caaacdda2e877b12f165d216d99a873001e78a",
+    "validatedCodeCommit": "335323216b3468ee40a6b7bd820f8859a56ae7b1",
+    "changedFiles": [
+      "android-v6323/app/src/main/AndroidManifest.xml",
+      "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/BistScanActivity.kt",
+      "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/MainActivity.kt",
+      "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/ObservedPriceChart.kt",
+      "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/PriceChartView.kt",
+      "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/SettingsDetailActivity.kt",
+      "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/StockSparklineView.kt",
+      "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/ViopSparklineView.kt",
+      "android-v6323/app/src/main/res/drawable/ic_launcher_foreground.xml",
+      "android-v6323/app/src/main/res/layout/activity_bist_scan.xml",
+      "android-v6323/app/src/main/res/layout/activity_favorites.xml",
+      "android-v6323/app/src/main/res/layout/activity_main.xml",
+      "android-v6323/app/src/main/res/layout/activity_market_instrument_detail.xml",
+      "android-v6323/app/src/main/res/layout/activity_notifications.xml",
+      "android-v6323/app/src/main/res/layout/activity_opportunity.xml",
+      "android-v6323/app/src/main/res/layout/activity_scan_results.xml",
+      "android-v6323/app/src/main/res/layout/activity_settings.xml",
+      "android-v6323/app/src/main/res/layout/activity_settings_detail.xml",
+      "android-v6323/app/src/main/res/layout/activity_settings_search.xml",
+      "android-v6323/app/src/main/res/layout/activity_signal_history.xml",
+      "android-v6323/app/src/main/res/layout/activity_stock_detail.xml",
+      "android-v6323/app/src/main/res/layout/activity_stocks.xml",
+      "android-v6323/app/src/main/res/layout/activity_viop.xml",
+      "android-v6323/app/src/main/res/layout/activity_viop_analysis.xml",
+      "android-v6323/app/src/main/res/layout/activity_viop_contracts.xml",
+      "android-v6323/app/src/main/res/layout/activity_viop_detail.xml",
+      "android-v6323/app/src/main/res/layout/dialog_viop_contract.xml",
+      "android-v6323/app/src/main/res/layout/item_bist_watchlist.xml",
+      "android-v6323/app/src/main/res/layout/item_favorite.xml",
+      "android-v6323/app/src/main/res/layout/item_indicator.xml",
+      "android-v6323/app/src/main/res/layout/item_news.xml",
+      "android-v6323/app/src/main/res/layout/item_opportunity.xml",
+      "android-v6323/app/src/main/res/layout/item_stock_compact.xml",
+      "android-v6323/app/src/main/res/layout/item_viop_analysis.xml",
+      "android-v6323/app/src/main/res/layout/item_viop_opportunity.xml",
+      "android-v6323/app/src/main/res/layout/item_viop_suggestion.xml",
+      "android-v6323/app/src/main/res/layout/item_viop_watchlist.xml",
+      "android-v6323/app/src/main/res/mipmap-anydpi/ic_launcher.xml",
+      "android-v6323/app/src/main/res/values/strings.xml",
+      "android-v6323/app/src/main/res/values/ui_labels.xml",
+      "android-v6323/app/src/main/res/xml/backup_rules.xml",
+      "android-v6323/app/src/main/res/xml/data_extraction_rules.xml",
+      "android-v6323/app/src/test/java/tr/borsatakip/v5/data/B122ViopProviderRecoveryTest.kt",
+      "android-v6323/app/src/test/java/tr/borsatakip/v5/data/BackupExclusionPolicyTest.kt",
+      "ci-verify-source-only.py",
+      "ci/railway-verification-report.mjs"
+    ],
+    "remoteReadbackMatched": 46
+  },
+  "validation": {
+    "jvm": {
+      "tests": 966,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "suites": 156
+    },
+    "lint": {
+      "errors": 0,
+      "warnings": 819,
+      "before": 1322,
+      "removed": 503,
+      "byId": {
+        "ApplySharedPref": 7,
+        "GradleDependency": 1,
+        "NotifyDataSetChanged": 5,
+        "ObsoleteSdkInt": 12,
+        "DisableBaselineAlignment": 15,
+        "NestedWeights": 2,
+        "Overdraw": 6,
+        "UnusedResources": 116,
+        "UselessParent": 2,
+        "TooManyViews": 2,
+        "ButtonStyle": 33,
+        "ViewConstructor": 1,
+        "SetTextI18n": 617
+      },
+      "beforeById": {
+        "ApplySharedPref": 7,
+        "UseSwitchCompatOrMaterialCode": 6,
+        "UseSwitchCompatOrMaterialXml": 1,
+        "UseCompatLoadingForDrawables": 2,
+        "DataExtractionRules": 1,
+        "DrawAllocation": 17,
+        "NotifyDataSetChanged": 5,
+        "ObsoleteSdkInt": 12,
+        "DisableBaselineAlignment": 15,
+        "InefficientWeight": 1,
+        "NestedWeights": 3,
+        "Overdraw": 6,
+        "UnusedResources": 116,
+        "UselessParent": 2,
+        "TooManyViews": 2,
+        "TypographyEllipsis": 7,
+        "MissingApplicationIcon": 1,
+        "ButtonStyle": 33,
+        "TextFields": 1,
+        "SmallSp": 87,
+        "Autofill": 12,
+        "ViewConstructor": 2,
+        "ContentDescription": 2,
+        "SetTextI18n": 617,
+        "HardcodedText": 350,
+        "RtlSymmetry": 13,
+        "RtlEnabled": 1
+      },
+      "existingWarningsResolved": 504,
+      "newAdvisories": 1
+    },
+    "androidTest": {
+      "compiledClasses": 53,
+      "executed": false
+    },
+    "resources": {
+      "movedAttributesVerified": 348,
+      "uniqueLabels": 278,
+      "ellipsisNormalizedAttributes": 4,
+      "xmlDocumentsParsed": 88,
+      "baselineLintWarnings": 1322,
+      "xmlTextSizeAttributesRaisedTo12Sp": 151
+    },
+    "stages": [
+      {
+        "name": "quality-native-final",
+        "exitCode": 0,
+        "seconds": 236.4,
+        "log": "source-checks/quality-native-final.log"
+      },
+      {
+        "name": "quality-ksp-repeat",
+        "exitCode": 0,
+        "seconds": 36,
+        "log": "source-checks/quality-ksp-repeat.log"
+      },
+      {
+        "name": "quality-native-repeat",
+        "exitCode": 0,
+        "seconds": 20,
+        "log": "source-checks/quality-native-repeat.log"
+      },
+      {
+        "name": "quality-apk-guard",
+        "exitCode": 1,
+        "seconds": 16,
+        "log": "source-checks/quality-apk-guard.log"
+      }
+    ],
+    "roomRepeat": {
+      "passed": true,
+      "sameGeneratedSourceHashes": true,
+      "generated": {
+        "kotlin/tr/borsatakip/v5/data/favorites/FavoritesDatabase_Impl.kt": "195ebedc8e957b3ee6ec6e82ebe5d051d6a3cfceac5e5ea1a5de6add898e521d",
+        "kotlin/tr/borsatakip/v5/data/favorites/FavoriteDao_Impl.kt": "707b5e321c2dbed5f486ba8a496ea17142487525db9aee9acc413da44ca2427e"
+      }
+    },
+    "sourceIntegrity": {
+      "unchangedDuringValidation": true,
+      "validatedFiles": 611,
+      "isolatedCopyMatched": true
+    },
+    "node": {
+      "passed": 64,
+      "failed": 0
+    },
+    "bunWebSocket": {
+      "passed": 1,
+      "failed": 0,
+      "assertions": 5
+    },
+    "javascriptMatrices": {
+      "health": 108,
+      "upstreamHttp": 400,
+      "failures": 0
+    },
+    "railwayBundle": "PASS_3_MODULES"
+  },
+  "apk": {
+    "allowed": false,
+    "produced": false,
+    "count": 0,
+    "guard": "PASS_EXPECTED_SOURCE_ONLY_APK_BLOCKED",
+    "signing": "NOT_PERFORMED",
+    "filename": null,
+    "sha256": null
+  },
+  "githubActions": {
+    "id": 39564382598,
+    "url": "https://github.com/ferittasbek-png/BIST-VIOP-V6.2.2/actions/runs/39564382598",
+    "conclusion": "failure",
+    "jobs": [
+      {
+        "id": 119103032136,
+        "status": "completed",
+        "conclusion": "failure",
+        "runner_id": 0,
+        "runner_name": "",
+        "steps": 0
+      }
+    ],
+    "nativeStepsExecuted": false
+  },
+  "limitations": [
+    "819 Lint warnings remain; no warning suppression/baseline was added.",
+    "Physical device, actual Keystore/SQLite lifecycle and rendered appearance were not executed.",
+    "Live licensed provider connection and production deployment were not verified.",
+    "GitHub Actions failed before runner allocation; passing native results were produced locally."
+  ]
+}
