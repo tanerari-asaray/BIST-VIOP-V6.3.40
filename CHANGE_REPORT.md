@@ -29,3 +29,6 @@ Legacy version-specific workflows/scripts are retained for history and are not t
 
 ## Device-discovered restoration race
 Android 15 real-touch tests exposed stale S/D state being reapplied on asynchronous data backfill after Activity recreation. Viewport restoration is now separate from overlay restoration in both chart hosts; display preferences are restored once, and later data loads preserve the latest user choice. Regression checks retain real click actions and test viewport-only restoration against a newer overlay choice.
+
+## Stable fullscreen controls
+Real touch in four device configurations additionally exposed clipping/layout movement while asynchronous trend cards changed height. Fullscreen S/D/indicator controls are now in a fixed 48dp toolbar outside the scrolling content. Comparison cards follow the chart/tools; provenance notice height is reserved. The toolbar remains accessible in landscape as well. Tests keep standard Espresso click constraints.

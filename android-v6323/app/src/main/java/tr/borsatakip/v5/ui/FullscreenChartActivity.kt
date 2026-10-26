@@ -218,11 +218,11 @@ class FullscreenChartActivity : BaseActivity() {
         root.addView(tabs)
         pages = ViewFlipper(this)
         root.addView(pages, LinearLayout.LayoutParams(-1, 0, 1f))
+        val chartHost = LinearLayout(this).apply { orientation = LinearLayout.VERTICAL }
         val chartPage = LinearLayout(this).apply { orientation = LinearLayout.VERTICAL }
         val chartScroll = ScrollView(this).apply { isFillViewport = false }
         chartScroll.addView(chartPage)
         trendPanel = LinearLayout(this).apply { orientation = LinearLayout.VERTICAL }
-        chartPage.addView(trendPanel)
         val periods = row()
         val choices = listOf(ChartTimeframe.ONE_MIN, ChartTimeframe.FIVE_MIN, ChartTimeframe.TEN_MIN,
             ChartTimeframe.FIFTEEN_MIN, ChartTimeframe.THIRTY_MIN, ChartTimeframe.ONE_HOUR,
@@ -274,7 +274,8 @@ class FullscreenChartActivity : BaseActivity() {
         toggle("Bollinger", { chart.showBollinger }) { chart.showBollinger = it }
         toggle("ATR14", { chart.showAtr }) { chart.showAtr = it }
         indicatorScroll = scroller(indicators)
-        chartPage.addView(indicatorScroll)
+        // Controls are outside the scrolling, asynchronously resized analysis content.
+        chartHost.addView(indicatorScroll, LinearLayout.LayoutParams(-1, dp(48)))
         val tools = row()
         tools.addView(action("+") { chart.zoomIn() }, LinearLayout.LayoutParams(0, dp(44), 1f))
         tools.addView(action("−") { chart.zoomOut() }, LinearLayout.LayoutParams(0, dp(44), 1f))
@@ -286,9 +287,11 @@ class FullscreenChartActivity : BaseActivity() {
             panelsExpanded = !panelsExpanded; applyPanels()
         }, LinearLayout.LayoutParams(0, dp(44), 1.7f))
         chartPage.addView(tools)
+        chartPage.addView(trendPanel)
         readableBottom = LinearLayout(this).apply { orientation = LinearLayout.VERTICAL }
         chartPage.addView(readableBottom)
-        pages.addView(chartScroll)
+        chartHost.addView(chartScroll, LinearLayout.LayoutParams(-1, 0, 1f))
+        pages.addView(chartHost)
         fun analysisPage(): LinearLayout {
             val panel = LinearLayout(this).apply { orientation = LinearLayout.VERTICAL; setPadding(dp(5), dp(6), dp(5), dp(10)) }
             pages.addView(ScrollView(this).apply { addView(panel) })
@@ -313,10 +316,12 @@ class FullscreenChartActivity : BaseActivity() {
     private fun adjustOrientation() {
         val landscape = resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
         panelsExpanded = !landscape
-        indicatorScroll.visibility = if (landscape) View.GONE else View.VISIBLE
+        indicatorScroll.visibility = View.VISIBLE
         periodStrip.visibility = if (landscape) View.GONE else View.VISIBLE
-        notice.maxLines = if (landscape) 1 else Int.MAX_VALUE
-        notice.ellipsize = if (landscape) android.text.TextUtils.TruncateAt.END else null
+        // Keep touch targets stationary when loading/provenance text changes.
+        notice.minLines = if (landscape) 1 else 3
+        notice.maxLines = if (landscape) 1 else 3
+        notice.ellipsize = android.text.TextUtils.TruncateAt.END
         if (landscape && navigationTabs.parent !== headerRow) {
             (navigationTabs.parent as ViewGroup).removeView(navigationTabs)
             headerRow.addView(navigationTabs, LinearLayout.LayoutParams(0, dp(44), 1.5f))
