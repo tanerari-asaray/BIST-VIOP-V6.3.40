@@ -131,13 +131,9 @@ object V540BacktestEngine {
                             return closed(signal, fill, executedPlan, V540BacktestEvent.TARGET1, c.timestamp,
                                 t1, mfe, mae, observed, estimate, resolution.verification)
                         }
-                        val exit = t2 ?: t1
-                        return if (policy.target1ExitFraction < 1.0 && t2 != null) {
-                            closedBlended(signal, fill, executedPlan, V540BacktestEvent.TARGET2, c.timestamp,
-                                t1, policy.target1ExitFraction, t2, 1.0 - policy.target1ExitFraction,
-                                mfe, mae, observed, estimate, resolution.verification)
-                        } else closed(signal, fill, executedPlan, if (t2 != null) V540BacktestEvent.TARGET2 else V540BacktestEvent.TARGET1,
-                            c.timestamp, exit, mfe, mae, observed, estimate, resolution.verification)
+                        return closedBlended(signal, fill, executedPlan, V540BacktestEvent.TARGET2, c.timestamp,
+                            t1, policy.target1ExitFraction, t2, 1.0 - policy.target1ExitFraction,
+                            mfe, mae, observed, estimate, resolution.verification)
                     }
                 }
             }

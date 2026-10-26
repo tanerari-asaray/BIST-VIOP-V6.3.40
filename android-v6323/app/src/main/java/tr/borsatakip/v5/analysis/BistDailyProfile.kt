@@ -29,7 +29,7 @@ object BistDailyProfile {
         val last=bars.lastOrNull();val atr=t.atr14;val rsi=t.rsi14
         val atrPct=if(close!=null && atr!=null) atr/close*100 else null
         val volumeContracting=history.size>=6 && history.takeLast(3).map { it.volume }.average()<history.dropLast(3).takeLast(3).map { it.volume }.average()
-        val pullback=trend && last!=null && e20!=null && atr!=null && abs(last.close-e20)<=atr && volumeContracting &&
+        val pullback=trend && last!=null && atr!=null && abs(last.close-e20)<=atr && volumeContracting &&
             rsi!=null && rsi in 45.0..60.0 && if(long) last.close>last.open else last.close<last.open
         val momentum=rsi!=null && r5!=null && r20!=null && if(long)
             rsi in 50.0..68.0 && r5>0 && r20>0 else rsi in 32.0..50.0 && r5<0 && r20<0
