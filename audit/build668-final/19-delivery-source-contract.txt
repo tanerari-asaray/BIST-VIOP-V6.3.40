@@ -1,0 +1,23 @@
+Command: python ci/verify-build668-final.py
+Exit: 0
+PASS version_code_668
+PASS version_name_6_3_38
+PASS all_six_cards_in_stock_detail
+PASS footer_after_all_tabs
+PASS six_cards_in_fullscreen
+PASS business_not_invented
+PASS interest_reason_not_invented
+PASS no_fake_prices
+PASS safe_previous_candle_trends
+PASS clear_previous_in_footer
+PASS no_raw_source_error
+PASS monthly_ohlcv_from_source
+PASS 30min_complete_series
+PASS monthly_interval_available
+PASS tradingview_retained
+PASS android_wrapper_restored
+PASS android_resource_xml_all_parse
+PASS six_cards_bound
+PASS no_generated_apk_claim
+FINAL 19 / 19
+

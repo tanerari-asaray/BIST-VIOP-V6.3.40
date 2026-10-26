@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="stock_quote_result_title">Fiyat yenileme sonucu</string>
+    <string name="stock_quote_config_url_missing">Sunucu adresi eksik. Ayarlar bölümünde HTTPS sunucu adresini kaydedip bağlantıyı test edin.</string>
+    <string name="stock_quote_config_url_invalid">Sunucu adresi geçersiz. Ayarlar bölümünde geçerli bir HTTPS adresi kaydedin.</string>
+    <string name="stock_quote_config_key_missing">Sunucu erişim anahtarı eksik. Ayarlar bölümünde bu uygulamanın API anahtarını kaydedip bağlantıyı test edin. Ayrı kurulan uygulamalar önceki uygulamanın anahtarını otomatik almaz.</string>
+    <string name="stock_quote_auth_error">Sunucu erişim anahtarı veya erişim yetkisi reddedildi. Ayarlar bölümünden bağlantıyı test edin.</string>
+    <string name="stock_quote_rate_limit">Sunucunun istek sınırı aşıldı. Bir süre sonra yeniden deneyin.</string>
+    <string name="stock_quote_timeout">Fiyat isteği zaman aşımına uğradı. İnternet bağlantısını kontrol edip yeniden deneyin.</string>
+    <string name="stock_quote_schema_error">Alınan fiyat verisinin biçimi veya değeri geçersiz. Bu veri fiyat olarak kullanılmadı.</string>
+    <string name="stock_quote_no_data">Kullanılabilir fiyat alınamadı. Sunucu bağlantısını ve veri sağlayıcısını kontrol edin.</string>
+    <string name="stock_quote_network_error">Fiyat isteği tamamlanamadı. İnternet ve sunucu bağlantısını test edin.</string>
+    <plurals name="stock_quote_failure_group">
+        <item quantity="one">%1$d hisse etkileniyor.\n%2$s\nKod: %3$s\nÖrnek: %4$s</item>
+        <item quantity="other">%1$d hisse etkileniyor.\n%2$s\nKod: %3$s\nÖrnek: %4$s</item>
+    </plurals>
+    <string name="stock_quote_more_groups">Diğer hata grubu sayısı: %1$d</string>
+    <string name="stock_quote_failure_footer">Yenilenemeyen fiyatlar güncel olarak işaretlenmedi. Analiz kararı yeniden hesaplanmadı.</string>
+    <string name="stock_quote_refresh_summary">Fiyat yenileme %1$d/%2$d • hata: %3$d • analiz kararı korunuyor</string>
+    <string name="stock_quote_refresh_failed">Fiyat yenileme başarısız • %1$s</string>
+</resources>

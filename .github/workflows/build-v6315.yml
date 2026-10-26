@@ -1,0 +1,56 @@
+name: V6.3.15 Build 645 visual diagnostic APK
+on:
+  workflow_dispatch:
+  push:
+    branches: ['build/v6.3.15-645-visual']
+    paths: ['android-v6315/**', '.github/workflows/build-v6315.yml']
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    defaults:
+      run:
+        working-directory: android-v6315
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: android-actions/setup-android@v3
+        with:
+          packages: platform-tools
+          log-accepted-android-sdk-licenses: false
+      - run: sdkmanager 'platforms;android-35' 'build-tools;35.0.0'
+      - uses: gradle/actions/wrapper-validation@v4
+      - name: Assemble diagnostic APK
+        id: build
+        run: |
+          chmod +x gradlew
+          ./gradlew --no-daemon --stacktrace :app:assembleDiagnostic
+      - name: Unit tests
+        id: tests
+        if: success()
+        run: ./gradlew --no-daemon --stacktrace :app:testDiagnosticUnitTest
+      - name: Verify APK and package evidence
+        if: always()
+        env:
+          BUILD_RESULT: ${{ steps.build.outcome }}
+          TEST_RESULT: ${{ steps.tests.outcome }}
+        run: |
+          mkdir -p ../delivery
+          python3 ../ci-v6315-report.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: BIST-VIOP-V6.3.15-BUILD645-APK-AND-REPORTS
+          path: delivery/
+          if-no-files-found: error
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: V6315-unit-test-reports
+          path: android-v6315/app/build/reports/tests/
+          if-no-files-found: ignore

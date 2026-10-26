@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ui_label_004890e5caa1" formatted="false">"En güçlü fırsatları bul"</string>
+    <string name="ui_label_007723ef4144" formatted="false">"Son Fiyat"</string>
+    <string name="ui_label_021efa57bb94" formatted="false">"▮\nKayıtlı\nAramalar"</string>
+    <string name="ui_label_06245830202c" formatted="false">"BIST hisselerini analiz edin"</string>
+    <string name="ui_label_065387c96358" formatted="false">"1D"</string>
+    <string name="ui_label_0685a836e461" formatted="false">"‹"</string>
+    <string name="ui_label_08da79ad6df9" formatted="false">"SİSTEM DURUMU"</string>
+    <string name="ui_label_095952a47de7" formatted="false">"⋮"</string>
+    <string name="ui_label_0a0e56272237" formatted="false">"PİYASA DERİNLİĞİ"</string>
+    <string name="ui_label_0b07c7d11bc0" formatted="false">"Tarama, sinyal ve analiz ayarları"</string>
+    <string name="ui_label_0c44e3aea1be" formatted="false">"▣  Nasıl Çalışır?  ›"</string>
+    <string name="ui_label_0efe9b55589e" formatted="false">"Teknoloji · ⊘"</string>
+    <string name="ui_label_0f2ccf82eba8" formatted="false">"Satış —"</string>
+    <string name="ui_label_0ff945f7f393" formatted="false">"☷  TAKİP LİSTEM  ›"</string>
+    <string name="ui_label_1008c76aa95f" formatted="false">"BIST 30"</string>
+    <string name="ui_label_124d98131d29" formatted="false">"Uygulama ve veri bağlantıları"</string>
+    <string name="ui_label_12d3624bf6ce" formatted="false">"Hızlı Erişim"</string>
+    <string name="ui_label_13e9f8c058c9" formatted="false">"Favoriler"</string>
+    <string name="ui_label_15fd4325a418" formatted="false">"ONS ALTIN"</string>
+    <string name="ui_label_162c9d8dbaab" formatted="false">"Gecikmeli dahil teknik yükseliş; işlem sinyali değildir"</string>
+    <string name="ui_label_17233932ffda" formatted="false">"Ara"</string>
+    <string name="ui_label_176abad38545" formatted="false">"‹ Geri"</string>
+    <string name="ui_label_177d681c67d6" formatted="false">"★  SİNYAL KONTROL  ›"</string>
+    <string name="ui_label_17fb3ca9b2b3" formatted="false">"Veri bekleniyor"</string>
+    <string name="ui_label_18a5ae6a414b" formatted="false">"Uygulama Hakkında"</string>
+    <string name="ui_label_1bf63c90337e" formatted="false">"SHORT"</string>
+    <string name="ui_label_1c466db79243" formatted="false">"Sistem"</string>
+    <string name="ui_label_227fcd6eaa83" formatted="false">"Taramayı aç"</string>
+    <string name="ui_label_22d8def0bf0b" formatted="false">"Teknik ↑"</string>
+    <string name="ui_label_245393186533" formatted="false">"▥\nSektörler"</string>
+    <string name="ui_label_245b6f10b625" formatted="false">"Fiyat yenile"</string>
+    <string name="ui_label_26ea918c1c58" formatted="false">"VİOP"</string>
+    <string name="ui_label_2871c89f6aea" formatted="false">"☷"</string>
+    <string name="ui_label_290d8562c955" formatted="false">"Hesap ve Bağlantılar"</string>
+    <string name="ui_label_29d0a579df4e" formatted="false">"OTOMATİK TARAMA"</string>
+    <string name="ui_label_29f5e0684482" formatted="false">"▥"</string>
+    <string name="ui_label_2ae52edcbeaa" formatted="false">"1S"</string>
+    <string name="ui_label_2bdc5998ebf7" formatted="false">"Tara  ›"</string>
+    <string name="ui_label_2c65cdef2fa1" formatted="false">"Sıralama seçenekleri"</string>
+    <string name="ui_label_2e1daec2ec82" formatted="false">"Kriterlere göre hisseleri keşfet"</string>
+    <string name="ui_label_2f9e17b4f4ba" formatted="false">"⌕  Hisse, sektör veya kriter ara…"</string>
+    <string name="ui_label_2fa2360fe6c4" formatted="false">"Sonuçlar bekleniyor"</string>
+    <string name="ui_label_2fccfa0f0ef3" formatted="false">"BIST30"</string>
+    <string name="ui_label_301ef766a15b" formatted="false">"Günlük"</string>
+    <string name="ui_label_3097d26bd2e9" formatted="false">"Vadeler"</string>
+    <string name="ui_label_34860dbd40fb" formatted="false">"Canlı SHORT"</string>
+    <string name="ui_label_34d14d6a2aa3" formatted="false">"Analiz  ›"</string>
+    <string name="ui_label_3570aca9b77e" formatted="false">"Tarama durumu; ayrıntı için dokunun"</string>
+    <string name="ui_label_367b5668b6b8" formatted="false">"▣  TEMEL DEĞERLEME TARAMASI  ›  (Tüm BIST)"</string>
+    <string name="ui_label_36b7d2946138" formatted="false">"Tüm Araçlar  ›"</string>
+    <string name="ui_label_38fb494dc5e7" formatted="false">"Long / Short sinyalleri"</string>
+    <string name="ui_label_3bf9e553a622" formatted="false">"Güçlü Sat"</string>
+    <string name="ui_label_3bfa46db4d6f" formatted="false">"Ucuz hisse tarama, fiyat limiti seç"</string>
+    <string name="ui_label_3c0f3e902f1e" formatted="false">"Liste henüz hazır değil"</string>
+    <string name="ui_label_3ca8cdfa413d" formatted="false">"Gerçek VİOP fiyatı ve geçmişi doğrulanmadan sinyal gösterilmez."</string>
+    <string name="ui_label_3d9081a8a059" formatted="false">"1 DK MOMENTUM: canlı mum bekleniyor"</string>
+    <string name="ui_label_3e436a600f3b" formatted="false">"VİOP durumu hazırlanıyor"</string>
+    <string name="ui_label_3f97c7291a8f" formatted="false">"Gerçek readiness ve cihaz testleri"</string>
+    <string name="ui_label_3fe235c0fcf9" formatted="false">"DİĞER"</string>
+    <string name="ui_label_4122c73ac156" formatted="false">"SİNYAL YOK"</string>
+    <string name="ui_label_4141b34e909d" formatted="false">"BuildConfig ve kullanılan servisler"</string>
+    <string name="ui_label_41691419379f" formatted="false">"İşlem Simülasyonu"</string>
+    <string name="ui_label_42710bc3ee8f" formatted="false">"↗  FIRSAT TARAMA  ›"</string>
+    <string name="ui_label_454e7a3e1ae1" formatted="false">"ⓘ"</string>
+    <string name="ui_label_457aed672cea" formatted="false">"BIST hisseleri taranıyor"</string>
+    <string name="ui_label_46f1b7c5b2b5" formatted="false">"Aktif Tarama: 5 DK"</string>
+    <string name="ui_label_47b3b77c1920" formatted="false">"STRATEJİ"</string>
+    <string name="ui_label_48981d0c766b" formatted="false">"Spread —"</string>
+    <string name="ui_label_49c6da8b996a" formatted="false">"Son fiyat bekleniyor"</string>
+    <string name="ui_label_4b7a81a5dcc8" formatted="false">"Sanayi · ⊘"</string>
+    <string name="ui_label_4c33175f6d20" formatted="false">"VİOP 30"</string>
+    <string name="ui_label_4c79e5c92915" formatted="false">"Kontrat kodu, dayanak veya vade ara"</string>
+    <string name="ui_label_4d5b747c3a99" formatted="false">"●  BİLDİRİMLER  ›"</string>
+    <string name="ui_label_4e3d7b10ebcb" formatted="false">"Tarama sürüyor"</string>
+    <string name="ui_label_5210ff85f7fa" formatted="false">"MACD"</string>
+    <string name="ui_label_530895931bc3" formatted="false">"Kademe bazlı piyasa derinliği mevcut backend sözleşmesinde yoksa değer üretilmez."</string>
+    <string name="ui_label_546034ca9376" formatted="false">"Kontrat Seç"</string>
+    <string name="ui_label_54f45bb41e1f" formatted="false">"BIST Tarama"</string>
+    <string name="ui_label_55974589634f" formatted="false">"Vade —"</string>
+    <string name="ui_label_56471f6306d9" formatted="false">"SİNYAL DETAYI"</string>
+    <string name="ui_label_593195f441a7" formatted="false">"Fiyat limiti seç"</string>
+    <string name="ui_label_5ad6017db306" formatted="false">"Döviz"</string>
+    <string name="ui_label_5b681c1339f0" formatted="false">"Detaylar  ›"</string>
+    <string name="ui_label_5bad96420c54" formatted="false">"V5 yalnız tarama ve karar desteği üretir. Emir, kullanıcı tarafından TradingView/broker üzerinden verilir; V5 gerçekleşmemiş bir emri gerçekleşmiş gibi göstermez."</string>
+    <string name="ui_label_5bd1b4c87140" formatted="false">"◉"</string>
+    <string name="ui_label_5ceb66c2b260" formatted="false">"V5 SKOR: — / 100"</string>
+    <string name="ui_label_5ddcdab23008" formatted="false">"TradingView Sinyallerini Yenile"</string>
+    <string name="ui_label_5f7fb8854b0f" formatted="false">"▶\nBAŞLAT"</string>
+    <string name="ui_label_5f9e6a3696c4" formatted="false">"●"</string>
+    <string name="ui_label_607c1e848120" formatted="false">"Anlık uyarılar"</string>
+    <string name="ui_label_637a6f8416d4" formatted="false">"Kontratlar  ›"</string>
+    <string name="ui_label_63e8659a0d6f" formatted="false">"⚙  VERİ SAĞLAYICIYI AYARLA  ›"</string>
+    <string name="ui_label_648a1101a068" formatted="false">"▥  VİOP TARA  ›"</string>
+    <string name="ui_label_6550d9217c08" formatted="false">"UCUZ HİSSE TARAMA"</string>
+    <string name="ui_label_663400d73362" formatted="false">"1G"</string>
+    <string name="ui_label_66d35744a5c6" formatted="false">"Veri alınıyor…"</string>
+    <string name="ui_label_67faaa3098e7" formatted="false">"Sağlayıcı sözleşmeleri · tüm vadeler"</string>
+    <string name="ui_label_6866b36953b0" formatted="false">"Mevcut desteklenen tema"</string>
+    <string name="ui_label_69d2dea53646" formatted="false">"◈ ADAYLAR"</string>
+    <string name="ui_label_6a079fd187d2" formatted="false">"RSI"</string>
+    <string name="ui_label_6ab6dc7ec62e" formatted="false">"Reddedildi"</string>
+    <string name="ui_label_6b66e5f638cf" formatted="false">"15D"</string>
+    <string name="ui_label_6b8a30835e2e" formatted="false">"VİOP gerçek OHLCV grafiği"</string>
+    <string name="ui_label_6d67cab95d71" formatted="false">"⋯"</string>
+    <string name="ui_label_6e255aa88986" formatted="false">"Kontrat / sembol ara…"</string>
+    <string name="ui_label_6e6a7acebd3c" formatted="false">"Gecikmeli dahil teknik düşüş; işlem sinyali değildir"</string>
+    <string name="ui_label_6f333e6f8906" formatted="false">"Hisseleri tara"</string>
+    <string name="ui_label_6faa30887015" formatted="false">"Endeks/üyelik"</string>
+    <string name="ui_label_7128e2b91829" formatted="false">"Kendi listeni yönet"</string>
+    <string name="ui_label_71d007d3fbaa" formatted="false">"TREND: değerlendiriliyor"</string>
+    <string name="ui_label_7309368d82e3" formatted="false">"↘ SATIŞ"</string>
+    <string name="ui_label_734823037c06" formatted="false">"● CANLI PİYASA + TRADINGVIEW"</string>
+    <string name="ui_label_755fa01685ee" formatted="false">"Keystore ile şifreli saklama\nVarsayılan görünüm: maskeli"</string>
+    <string name="ui_label_75b865da873c" formatted="false">"Henüz gerçek tarama yapılmadı."</string>
+    <string name="ui_label_762b794fc042" formatted="false">"Bağlantı ayarları"</string>
+    <string name="ui_label_76314a6cba5b" formatted="false">"Veri durumu bekleniyor"</string>
+    <string name="ui_label_76bed91c7b01" formatted="false">"Kontrat"</string>
+    <string name="ui_label_786486d8c5ae" formatted="false">"EMTİA"</string>
+    <string name="ui_label_78bfc4e4b5ff" formatted="false">"Tümünü Gör  ›"</string>
+    <string name="ui_label_79b4547e843c" formatted="false">"BIST"</string>
+    <string name="ui_label_7bb37df5cb36" formatted="false">"›"</string>
+    <string name="ui_label_7c11f72804b5" formatted="false">"Hisse veya şirket ara"</string>
+    <string name="ui_label_7c1e7cb99cda" formatted="false">"TRADINGVIEW DOĞRULAMASI"</string>
+    <string name="ui_label_7cc280ba4df6" formatted="false">"Vadeli"</string>
+    <string name="ui_label_7ec0226aa995" formatted="false">"✦  AKILLI FIRSAT TARAMA MERKEZİ"</string>
+    <string name="ui_label_7f600115ca23" formatted="false">"Detay  ˅"</string>
+    <string name="ui_label_7f8147ac93bc" formatted="false">"GRAFİK"</string>
+    <string name="ui_label_80ad54ad05fa" formatted="false">"Ayarlar"</string>
+    <string name="ui_label_811c9d7aa64e" formatted="false">"★ Favoriden çıkar"</string>
+    <string name="ui_label_816570e0a1dc" formatted="false">"Türkçe (TR) • cihaz saat dilimi"</string>
+    <string name="ui_label_82217e243b1a" formatted="false">"Teknik ↓"</string>
+    <string name="ui_label_83c27aebcfb9" formatted="false">"Bildirim ve Uyarılar"</string>
+    <string name="ui_label_83f0c1834744" formatted="false">"Sistem Tanılama"</string>
+    <string name="ui_label_8416d7938c3d" formatted="false">"₺"</string>
+    <string name="ui_label_844e7cbe15c3" formatted="false">"⌕  BIST TARA  ›"</string>
+    <string name="ui_label_84994b83c340" formatted="false">"Çalışma Modu"</string>
+    <string name="ui_label_873afff9d479" formatted="false">"BIST hisseleri 5 DK verileri üzerinden taranacak\nOHLCV: 5 DK • Teknik analiz: 5 DK\nTrend: 5 DK • Momentum: 5 DK\nHacim: 5 DK • Kırılım: 5 DK"</string>
+    <string name="ui_label_87ea6ddac730" formatted="false">"Hisse"</string>
+    <string name="ui_label_8a6bd01d1c6a" formatted="false">"Sözleşme listesini yenile"</string>
+    <string name="ui_label_8bd057388e28" formatted="false">"Durum"</string>
+    <string name="ui_label_8c847e3d8688" formatted="false">"Timeframe • cadence • otomatik tarama"</string>
+    <string name="ui_label_8d5b2108ae36" formatted="false">"VİOP Sözleşmeleri"</string>
+    <string name="ui_label_8d626bc0b2b6" formatted="false">"/v1/viop/contracts • /v1/viop/quote/{symbol} • /v1/viop/history/{symbol}"</string>
+    <string name="ui_label_8db71ed28b0f" formatted="false">"×"</string>
+    <string name="ui_label_8dfe62ff7711" formatted="false">"BIST30 Takip Listem"</string>
+    <string name="ui_label_8e005b15677d" formatted="false">"HACİM: veri bekleniyor"</string>
+    <string name="ui_label_8f3c174cf588" formatted="false">"Kaynak • Veri zamanı • Gecikme durumu"</string>
+    <string name="ui_label_9000015d0e1d" formatted="false">"TradingView alarmı bekleniyor"</string>
+    <string name="ui_label_9112c2a2ec5f" formatted="false">"API Anahtarları"</string>
+    <string name="ui_label_91452e8ffa4e" formatted="false">"Kaynak doğrulanıyor"</string>
+    <string name="ui_label_92c558791a10" formatted="false">"Endeks"</string>
+    <string name="ui_label_92e0b1524c64" formatted="false">"API / Provider ayarları"</string>
+    <string name="ui_label_93cd9bc41647" formatted="false">"Otomatik taramayı aç veya kapat"</string>
+    <string name="ui_label_943284812b4f" formatted="false">"BIST30 listeniz boş • + Ekle ile kontrat seçin."</string>
+    <string name="ui_label_947b23be6d1e" formatted="false">"TARAMA ZAMANI"</string>
+    <string name="ui_label_95114269906a" formatted="false">"Sözleşmeler yükleniyor"</string>
+    <string name="ui_label_965ab4e0b1ac" formatted="false">"TÜMÜ"</string>
+    <string name="ui_label_970dbbd01996" formatted="false">"Hazır"</string>
+    <string name="ui_label_9a7dbf2b4a1c" formatted="false">"Veri Bağlantısı"</string>
+    <string name="ui_label_9aed00e03fbb" formatted="false">"Endeks ve üyelik kaynağı; ayrıntı için dokunun"</string>
+    <string name="ui_label_9af340a83d34" formatted="false">"LONG\n—"</string>
+    <string name="ui_label_9b86842810a5" formatted="false">"Alış —"</string>
+    <string name="ui_label_9ba112ce6ad4" formatted="false">"TradingView Webhook"</string>
+    <string name="ui_label_9d3d60050f98" formatted="false">"◷\nGeçmiş\nTaramalar"</string>
+    <string name="ui_label_9e3590d0c3e5" formatted="false">"₺ UCUZDAN"</string>
+    <string name="ui_label_9efe92a604c2" formatted="false">"Bankacılık · ⊘"</string>
+    <string name="ui_label_9f6f33b35bd3" formatted="false">"SÖZLEŞME"</string>
+    <string name="ui_label_a056f899cc16" formatted="false">"Gerçek AlertEventStore kayıtları"</string>
+    <string name="ui_label_a0b5b4a0487d" formatted="false">"˅"</string>
+    <string name="ui_label_a1b0a45b7511" formatted="false">"Tarama filtresi"</string>
+    <string name="ui_label_a1db7dd56241" formatted="false">"Tarama"</string>
+    <string name="ui_label_a2b45fe1e0eb" formatted="false">"Emtia"</string>
+    <string name="ui_label_a318c24216de" formatted="false">"+"</string>
+    <string name="ui_label_a3d9193317ce" formatted="false">"ATR"</string>
+    <string name="ui_label_a42d90948d39" formatted="false">"Bildirim Geçmişi"</string>
+    <string name="ui_label_a7a6b08768ab" formatted="false">"ONAYLI 0 • ADAY 0 • RED 0 • VERİSİZ 0"</string>
+    <string name="ui_label_a7c29fd73173" formatted="false">"Faiz"</string>
+    <string name="ui_label_a8f3862b9630" formatted="false">"LONG"</string>
+    <string name="ui_label_a97cab19f638" formatted="false">"↗ ALIŞ"</string>
+    <string name="ui_label_aae8097ed405" formatted="false">"Opsiyon"</string>
+    <string name="ui_label_ab6332e37a91" formatted="false">"VİOP bağlantı durumu hazırlanıyor."</string>
+    <string name="ui_label_ac284c4a61a3" formatted="false">"ZAMAN"</string>
+    <string name="ui_label_ac615c9547ff" formatted="false">"★  Favorilerim  ›"</string>
+    <string name="ui_label_ad244ea43ed0" formatted="false">"↻"</string>
+    <string name="ui_label_ae5e8decbf26" formatted="false">"GRAFİK • VERİ BEKLENİYOR"</string>
+    <string name="ui_label_b173b68817f5" formatted="false">"Dil ve Bölge"</string>
+    <string name="ui_label_b1b75ee08d9d" formatted="false">"1 dk mum bekleniyor"</string>
+    <string name="ui_label_b41d773346e5" formatted="false">"☷\nKriterler"</string>
+    <string name="ui_label_b4417e784e4f" formatted="false">"TRADINGVIEW GRAFİĞİNİ AÇ"</string>
+    <string name="ui_label_b5b385f27098" formatted="false">"Gerçek provider durumuna göre gösterilir"</string>
+    <string name="ui_label_b68a3150ea85" formatted="false">"Geri"</string>
+    <string name="ui_label_b73df8d67bbe" formatted="false">"Analiz ve Tarama"</string>
+    <string name="ui_label_b7927b5baee9" formatted="false">"☆"</string>
+    <string name="ui_label_b8567375efdf" formatted="false">"Vade seçimi"</string>
+    <string name="ui_label_b88b70fca514" formatted="false">"Kriterlerinizi seçip taramayı başlatın."</string>
+    <string name="ui_label_b9947a4b60e6" formatted="false">"Vadeli sözleşmeler"</string>
+    <string name="ui_label_b9e101f69936" formatted="false">"Hacim —"</string>
+    <string name="ui_label_bb6111a12fe3" formatted="false">"VİOP bağlantı ayarları"</string>
+    <string name="ui_label_bc2e65dce1ec" formatted="false">"BORSA İSTANBUL  ·  PAY PİYASASI"</string>
+    <string name="ui_label_bc468800d569" formatted="false">"Kaynak hazırlanıyor…"</string>
+    <string name="ui_label_bda050585a00" formatted="false">"—"</string>
+    <string name="ui_label_be94ce1a28b7" formatted="false">"+ Ekle"</string>
+    <string name="ui_label_c19732df495e" formatted="false">"⌕"</string>
+    <string name="ui_label_c1f494543af2" formatted="false">"Favoriye ekle"</string>
+    <string name="ui_label_c23161dbe4a9" formatted="false">"DOLAR"</string>
+    <string name="ui_label_c250badacf65" formatted="false">"Yalnızca güncel ve doğrulanmış veriler işlem sinyalidir. Gecikmeli kayıtlar ayrı gösterilir."</string>
+    <string name="ui_label_c4a350cd0bd2" formatted="false">"Sinyaller  ›"</string>
+    <string name="ui_label_c4a5ff79aaca" formatted="false">"BIST / VİOP"</string>
+    <string name="ui_label_c56311a11c88" formatted="false">"VERİ YOK"</string>
+    <string name="ui_label_c5785b4f583b" formatted="false">"SÖZLEŞME BİLGİSİ"</string>
+    <string name="ui_label_c58ca88a3e45" formatted="false">"Endeks verisi bekleniyor"</string>
+    <string name="ui_label_c5ac6168ca0c" formatted="false">"DÖVİZ"</string>
+    <string name="ui_label_c5e074fa0efd" formatted="false">"Kapalı • Manuel tarama"</string>
+    <string name="ui_label_c619b9bad598" formatted="false">"Uygulama ve Görünüm"</string>
+    <string name="ui_label_c77c3829943a" formatted="false">"▤"</string>
+    <string name="ui_label_c822529b2756" formatted="false">"Veri kaynaklarını ve API ayarlarını yönet"</string>
+    <string name="ui_label_c8e3fa32485f" formatted="false">"Canlı kanal hazırlanıyor…"</string>
+    <string name="ui_label_ca3de0f736ed" formatted="false">"5D"</string>
+    <string name="ui_label_ca49a145c838" formatted="false">"✓ TEYİTLİ"</string>
+    <string name="ui_label_ca4afe3d0d11" formatted="false">"TÜM AYARLARI SIFIRLA"</string>
+    <string name="ui_label_cb3d82b6ff65" formatted="false">"Teknik tarama"</string>
+    <string name="ui_label_cc4fc93de392" formatted="false">"Miktar • komisyon • slippage\nGerçek emir göndermez"</string>
+    <string name="ui_label_cee0e443904f" formatted="false">"BIST TÜM"</string>
+    <string name="ui_label_cef735d4e445" formatted="false">"ÖNBELLEK TEMİZLE"</string>
+    <string name="ui_label_d21a932cc319" formatted="false">"Tarama zamanı seç"</string>
+    <string name="ui_label_d2d91abfab20" formatted="false">"TARAMA BAŞLAMADI"</string>
+    <string name="ui_label_d3003d4bb609" formatted="false">"Bildirim"</string>
+    <string name="ui_label_d4550fa1ebdc" formatted="false">"BIST 30 · ⊘"</string>
+    <string name="ui_label_d64d788b6b4a" formatted="false">"EMA20"</string>
+    <string name="ui_label_d7021e10239e" formatted="false">"Ayar Ara"</string>
+    <string name="ui_label_d9a4f7e4f569" formatted="false">"Hızlı İşlemler"</string>
+    <string name="ui_label_db08c149faf0" formatted="false">"VİOP Analiz"</string>
+    <string name="ui_label_dbc4b4e5b74b" formatted="false">"Tarama ilerlemesi gerçek işlem durumundan hesaplanır.\nVeri sağlayıcı hazır değilse tarama başlatılamaz."</string>
+    <string name="ui_label_dd48d0455fdc" formatted="false">"SİNYAL ÖZETİ"</string>
+    <string name="ui_label_df1b3f94e399" formatted="false">"VİOP tarama"</string>
+    <string name="ui_label_df462b806c94" formatted="false">"Kontrat, dayanak veya kod ara"</string>
+    <string name="ui_label_dfea495b2079" formatted="false">"4S"</string>
+    <string name="ui_label_e01f307fe12d" formatted="false">"BIST taramasını başlat veya durdur"</string>
+    <string name="ui_label_e07b35f4062c" formatted="false">"TEKNİK GÖSTERGELER"</string>
+    <string name="ui_label_e1442244ab11" formatted="false">"SİNYAL"</string>
+    <string name="ui_label_e1b0af0c144d" formatted="false">"Görünüm"</string>
+    <string name="ui_label_e1e8ba7b4f26" formatted="false">"VERİYİ YENİLE"</string>
+    <string name="ui_label_e2d492ce527a" formatted="false">"Doğru veri • Doğru zaman"</string>
+    <string name="ui_label_e2ea2e93ee63" formatted="false">"☷  Özel Tarama  ›"</string>
+    <string name="ui_label_e306951c12fe" formatted="false">"Temizle"</string>
+    <string name="ui_label_e3ee7aa7da46" formatted="false">"Sözleşme verisi bekleniyor"</string>
+    <string name="ui_label_e4d420b43391" formatted="false">"Yetersiz Veri"</string>
+    <string name="ui_label_e5235a4a75e6" formatted="false">"⚙"</string>
+    <string name="ui_label_e6a342e9efb6" formatted="false">"↗  Günün Fırsatları • Sinyal Durumu"</string>
+    <string name="ui_label_e6e558fd6e4f" formatted="false">"Hisseler"</string>
+    <string name="ui_label_e813df49d76e" formatted="false">"BIST 100"</string>
+    <string name="ui_label_e974c810d4dd" formatted="false">"Canlı LONG"</string>
+    <string name="ui_label_ea0eebee66d0" formatted="false">"Hisse fiyatlarını yenile"</string>
+    <string name="ui_label_eaa042ba2fe9" formatted="false">"VERİ MODU • Doğrulanıyor"</string>
+    <string name="ui_label_ebb2e502fd2f" formatted="false">"SHORT\n—"</string>
+    <string name="ui_label_ed3d3ceb42b4" formatted="false">"VERİ SAĞLAYICIYI AYARLA"</string>
+    <string name="ui_label_ed99b41a7503" formatted="false">"0/20"</string>
+    <string name="ui_label_eeda07647267" formatted="false">"☆ TAKİP"</string>
+    <string name="ui_label_ef38042b60bb" formatted="false">"İZLEME\n0"</string>
+    <string name="ui_label_efd58f08cc2e" formatted="false">"Açık Poz. —"</string>
+    <string name="ui_label_efe91c2a2749" formatted="false">"Taramayı aç  ›"</string>
+    <string name="ui_label_f03be4b5d457" formatted="false">"Tarama sonuçları burada görünecek."</string>
+    <string name="ui_label_f094b91eace6" formatted="false">"V5 KARARI: veri bekleniyor"</string>
+    <string name="ui_label_f1c3ff1a11b7" formatted="false">"Sinyal, fiyat ve sistem bildirimleri"</string>
+    <string name="ui_label_f3d2e20b8da6" formatted="false">"Veri durumuna göre tara"</string>
+    <string name="ui_label_f40014ab8d98" formatted="false">"🔥  Popüler  ›"</string>
+    <string name="ui_label_f43a65ad8268" formatted="false">"Tümü"</string>
+    <string name="ui_label_f45e4240438e" formatted="false">"Piyasa Detayı"</string>
+    <string name="ui_label_f560a85f28c0" formatted="false">"Ekle"</string>
+    <string name="ui_label_f7fe2f13e3e6" formatted="false">"Tarama ilerlemesi ile başarılı analiz sayısı ayrı gösterilir."</string>
+    <string name="ui_label_f8564107da40" formatted="false">"Piyasa Özeti"</string>
+    <string name="ui_label_f9f2b6cc304f" formatted="false">"◷"</string>
+    <string name="ui_label_fba963be39dd" formatted="false">"Veri zamanı —"</string>
+    <string name="ui_label_fc1fb2652693" formatted="false">"DERİNLİK"</string>
+    <string name="ui_label_fc2cbca9acbe" formatted="false">"Bildirimler"</string>
+    <string name="ui_label_fcd31bf76016" formatted="false">"Sonuç durumu; ayrıntı için dokunun"</string>
+    <string name="ui_label_fcffba982815" formatted="false">"3D"</string>
+    <string name="ui_label_fe477dc4fe9f" formatted="false">"Tarama sonuçları"</string>
+</resources>

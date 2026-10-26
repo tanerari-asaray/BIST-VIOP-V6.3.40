@@ -1,0 +1,46 @@
+name: BIST VIOP APK (ZIP Kaynak)
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'BIST-VIOP-ANA-EKRAN-VIOP-KART-DUZELTME-KAYNAK.zip'
+      - '.github/workflows/build-from-zip.yml'
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: android-actions/setup-android@v3
+      - name: Install Android SDK 35
+        run: sdkmanager 'platforms;android-35' 'build-tools;35.0.0'
+      - name: Extract verified source ZIP
+        run: |
+          test -s BIST-VIOP-ANA-EKRAN-VIOP-KART-DUZELTME-KAYNAK.zip
+          mkdir -p source
+          unzip -q BIST-VIOP-ANA-EKRAN-VIOP-KART-DUZELTME-KAYNAK.zip -d source
+          test -f source/settings.gradle.kts
+          test -f source/gradlew
+          test -f source/gradle/wrapper/gradle-wrapper.jar
+      - name: Verify corrected interface is present
+        run: |
+          grep -q 'actionCheapStock' source/app/src/main/res/layout/activity_main.xml
+          grep -q 'marketViopValue' source/app/src/main/res/layout/activity_main.xml
+          grep -q 'BIST / VİOP' source/app/src/main/res/layout/activity_main.xml
+      - name: Build diagnostic APK
+        working-directory: source
+        run: |
+          chmod +x gradlew
+          ./gradlew --no-daemon --stacktrace :app:assembleDiagnostic
+      - uses: actions/upload-artifact@v4
+        with:
+          name: BIST-VIOP-ANA-EKRAN-DIAGNOSTIC-APK
+          path: source/app/build/outputs/apk/diagnostic/*.apk
+          if-no-files-found: error

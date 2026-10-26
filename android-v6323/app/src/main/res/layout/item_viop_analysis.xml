@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:background="?attr/selectableItemBackground" android:paddingVertical="12dp" android:clickable="true" android:focusable="true">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical">
+        <TextView android:id="@+id/analysisSymbol" style="@style/MarketText" android:layout_width="0dp" android:layout_weight="1" android:textColor="@color/market_ink" android:textSize="15sp" android:fontFamily="sans-serif-medium"/>
+        <TextView style="@style/MarketText" android:text="@string/ui_label_7bb37df5cb36" android:textColor="@color/market_mint" android:textSize="25sp" android:paddingStart="8dp" android:importantForAccessibility="no" android:paddingEnd="0dp"/>
+    </LinearLayout>
+    <TextView android:id="@+id/analysisContractMeta" style="@style/MarketText" android:layout_width="match_parent" android:paddingTop="4dp" android:textSize="12sp"/>
+    <TextView android:id="@+id/analysisContractState" style="@style/MarketText" android:layout_width="match_parent" android:paddingTop="5dp" android:textColor="@color/market_amber"/>
+</LinearLayout>

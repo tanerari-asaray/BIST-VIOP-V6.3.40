@@ -1,0 +1,323 @@
+package tr.borsatakip.v5.ui
+
+import android.os.Bundle
+import android.content.Intent
+import androidx.activity.result.contract.ActivityResultContracts
+import android.net.Uri
+import android.graphics.Color
+import android.view.ViewGroup
+import android.widget.Button
+import android.widget.LinearLayout
+import android.widget.ScrollView
+import android.widget.TextView
+import androidx.lifecycle.lifecycleScope
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import kotlinx.coroutines.CancellationException
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
+import tr.borsatakip.v5.R
+import tr.borsatakip.v5.data.ProviderRouter
+import tr.borsatakip.v5.data.FundamentalsBatchClient
+import tr.borsatakip.v5.data.SettingsStore
+import tr.borsatakip.v5.data.ValuationSourceGate
+import tr.borsatakip.v5.scan.FundamentalValuationEngine as Engine
+import java.text.NumberFormat
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
+import kotlin.math.abs
+
+/** Auditable cross-sectional valuation: NO price ceiling and NO unverified BUY signals. */
+class CheapStockScanActivity:BaseActivity() {
+ private val tr=Locale("tr","TR")
+ private var job:Job?=null
+ private val importPicker=registerForActivityResult(ActivityResultContracts.OpenDocument()){uri->
+  if(uri!=null && job?.isActive!=true){
+   job=lifecycleScope.launch {
+    status.text="Yerel dosya doğrulanıyor…"
+    try{
+     val batch=FundamentalsBatchClient(this@CheapStockScanActivity).importJson(uri)
+     status.text="Dosya kaydedildi: "+batch.reportedCount+" kayıt; "+batch.items.size+
+      " okunabilir; "+batch.invalidItems+" bozuk satır. Değerleme otomatik başlatılıyor. "+
+      "Rakamlar bağımsız KAP doğrulamasından geçmedi."
+     AppSession.lastCheapScanReport=status.text.toString()
+     updateSourceStatus()
+     runScan()
+    }catch(e:Exception){
+     status.text="İçe aktarma başarısız: "+e.message.orEmpty().take(220)+". Önceki veri korundu."
+    }
+   }
+  }
+ }
+ private var rows:List<Engine.Assessment> = emptyList()
+ private var selected="İSKONTO"
+ private var page=40
+ private lateinit var status:TextView
+ private lateinit var sourceStatus:TextView
+ private lateinit var list:LinearLayout
+ private lateinit var tabs:LinearLayout
+ private lateinit var go:Button
+ private fun dp(n:Int)=(resources.displayMetrics.density*n).toInt()
+ private fun fmt(x:Double)=NumberFormat.getNumberInstance(tr).apply {
+   maximumFractionDigits=2;minimumFractionDigits=2
+ }.format(x)
+ private fun time(x:Long)=SimpleDateFormat("dd.MM.yyyy",tr).format(Date(x))
+ private fun text(v:LinearLayout,s:String,sz:Float=13f)=TextView(this).apply {
+   text=s;textSize=sz;setTextColor(getColor(R.color.text_secondary))
+   setPadding(dp(4),dp(8),dp(4),dp(8))
+   v.addView(this,LinearLayout.LayoutParams(-1,-2))
+ }
+ private fun button(v:LinearLayout,s:String,click:()->Unit)=Button(this).apply {
+  text=s;isAllCaps=false;setOnClickListener{click()}
+  minHeight=dp(48);setPadding(dp(8),dp(10),dp(8),dp(10))
+  v.addView(this,LinearLayout.LayoutParams(-1,-2))
+ }
+ override fun onCreate(savedInstanceState:Bundle?) {
+  super.onCreate(savedInstanceState)
+  val scroll=ScrollView(this)
+  val root=LinearLayout(this).apply {
+   orientation=LinearLayout.VERTICAL;setPadding(dp(16),dp(20),dp(16),dp(24))
+   setBackgroundResource(R.drawable.bg_screen_gradient)
+  }
+  scroll.addView(root);setContentView(scroll)
+  ViewCompat.setOnApplyWindowInsetsListener(scroll) { view, insets ->
+   val bars = insets.getInsets(WindowInsetsCompat.Type.systemBars() or WindowInsetsCompat.Type.displayCutout())
+   view.setPadding(bars.left, bars.top, bars.right, bars.bottom)
+   insets
+  }
+  ViewCompat.requestApplyInsets(scroll)
+  text(root,"← BIST TARAMAYA DÖN").apply{
+   setTextColor(getColor(R.color.blue));setOnClickListener{finish()}
+  }
+  text(root,"BIST SEMBOL EVRENİ • TEMEL DEĞERLEME",23f).setTextColor(Color.WHITE)
+  text(root,"Fiyat sınırı yok. Erişilen BIST sembolleri; F/K, PD/DD, finans dışı şirketlerde FD/FAVÖK, ROE, serbest nakit akışı ve borç riskiyle analiz edilir. Sadece aynı sektör, şirket türü ve muhasebe bazındaki en az 5 emsal karşılaştırılır.")
+  text(root,"Metodoloji: en az 2 değerleme çarpanında %20+ sektörel göreli iskonto, pozitif kâr, yeterli ROE ve sağlıklı nakit akışı/borç kontrolü. Sektörel ucuzluk içsel değer, kesin getiri veya AL/SAT sinyali değildir.",12f)
+  go=Button(this).apply{
+   text="MEVCUT BIST SEMBOL EVRENİNİ DEĞERLE";isAllCaps=false
+   setOnClickListener{if(job?.isActive==true)job?.cancel()else beginValuation()}
+  }
+  go.minHeight=dp(54);go.setPadding(dp(10),dp(10),dp(10),dp(10))
+  root.addView(go,LinearLayout.LayoutParams(-1,-2))
+  button(root,"KAP FİNANSALLARINDAN HAZIRLANMIŞ JSON DOSYASI SEÇ") {
+   importPicker.launch(arrayOf("application/json","text/plain","application/octet-stream"))
+  }
+  button(root,"KAP RESMİ FİNANSAL TABLOLAR") {
+   startActivity(Intent(Intent.ACTION_VIEW,Uri.parse("https://www.kap.org.tr/tr/")))
+  }
+  sourceStatus=text(root,"Finansal veri kaynağı kontrol ediliyor.",12f)
+  text(root,"Veri kaynağı: yapılandırılmış (henüz doğrulanmamış) finansal backend veya kullanıcıdan içe aktarılan şema-v1 JSON. "+
+   "KAP .rar ve PDF dosyaları bu sürümde otomatik ayrıştırılmaz. "+
+   "Yüklenen dosyanın doğru finansalları içerdiği bağımsız olarak doğrulanamaz. "+
+   "MKK API Portalı ayrı kayıt ve entegrasyon gerektirir.",12f)
+  button(root,"İÇE AKTARILMIŞ DOSYAYI SİL") {
+   if(job?.isActive!=true){
+    val deleted=FundamentalsBatchClient(this@CheapStockScanActivity).deleteLocalImport()
+    status.text=if(deleted)"Yerel finansal tablo dosyası silindi" else "Yerel dosya bulunamadı"
+    rows=emptyList();list.removeAllViews();tabs.removeAllViews()
+    AppSession.lastCheapScanReport=status.text.toString()
+    updateSourceStatus()
+   }
+  }
+  status=text(root,"Finansal tablo verileri olmadan hisseye 'ucuz' denmez.")
+  tabs=LinearLayout(this).apply{orientation=LinearLayout.VERTICAL};root.addView(tabs)
+  list=LinearLayout(this).apply{orientation=LinearLayout.VERTICAL};root.addView(list)
+ }
+ override fun onResume() {
+  super.onResume()
+  if(::sourceStatus.isInitialized) updateSourceStatus()
+ }
+ private fun sourceMode():ValuationSourceGate.Mode {
+  val financial=FundamentalsBatchClient(this)
+  val config=SettingsStore(this)
+  return ValuationSourceGate.decide(financial.hasLocalImport(),config.baseUrl,config.apiKey.isNotBlank())
+ }
+ private fun updateSourceStatus(){
+  sourceStatus.text=when(sourceMode()){
+   ValuationSourceGate.Mode.LOCAL_JSON ->
+    "Yerel JSON hazır (KAP rakamları ve dosya içeriği bağımsız teyitsiz)."
+   ValuationSourceGate.Mode.CONFIGURED_HTTPS ->
+    "HTTPS adresi ve API anahtarı girilmiş; canlı servis yanıtı henüz doğrulanmamış."
+   ValuationSourceGate.Mode.MISSING_API_KEY ->
+    "Finansal veri eksik: HTTPS adresi var fakat API anahtarı yok."
+   ValuationSourceGate.Mode.MISSING_FINANCIAL_SOURCE ->
+    "Finansal veri yok: JSON yüklenmemiş, finansal HTTPS servis yapılandırılmamış."
+  }
+ }
+ private fun beginValuation(){
+  val mode=sourceMode()
+  if(ValuationSourceGate.canCalculate(mode)){runScan();return}
+  rows=emptyList();tabs.removeAllViews();list.removeAllViews()
+  val msg=if(mode==ValuationSourceGate.Mode.MISSING_API_KEY)
+   "HTTPS finansal servis adresi var ama API anahtarı yok. KAP kaynaklarından " +
+    "hazırlanmış JSON dosyası seçebilir veya veri bağlantısını tamamlayabilirsiniz."
+  else
+   "Fiyat taramasında 632 sembol görülmesi bilanço bulunduğu anlamına gelmiyor. " +
+    "F/K, PD/DD ve FD/FAVÖK için gerçek finansal tablolar gerekli. " +
+    "Şu anda JSON dosyası veya yetkili finansal HTTPS servis yok. " +
+    "Uydurma ucuz hisse sonucu oluşturulmadı."
+  status.text="DEĞERLEME BAŞLATILAMADI • FİNANSAL VERİ KAYNAĞI YOK\n"+msg
+  AppSession.lastCheapScanReport=status.text.toString()
+  updateSourceStatus()
+  android.app.AlertDialog.Builder(this).setTitle("Finansal tablo verisi gerekli")
+   .setMessage(msg)
+   .setPositiveButton("JSON DOSYASI SEÇ"){_,_->
+    importPicker.launch(arrayOf("application/json","text/plain","application/octet-stream"))
+   }
+   .setNeutralButton("VERİ BAĞLANTISI"){_,_->
+    startActivity(Intent(this,SettingsDetailActivity::class.java)
+     .putExtra(SettingsDetailActivity.EXTRA_MODE,SettingsDetailActivity.MODE_DATA_CONNECTION))
+   }
+   .setNegativeButton("KAPAT",null).show()
+ }
+ private fun filtered():List<Engine.Assessment> = rows.filter{
+   when(selected){
+    "İSKONTO"->it.status==Engine.Status.RELATIVE_DISCOUNT
+    "RİSK"->it.status==Engine.Status.FINANCIAL_RISK
+    "DİĞER"->it.status!=Engine.Status.RELATIVE_DISCOUNT && it.status!=Engine.Status.FINANCIAL_RISK
+    else->true
+   }
+ }.sortedWith(compareBy<Engine.Assessment>{
+    when(it.status){
+     Engine.Status.RELATIVE_DISCOUNT->0;Engine.Status.FINANCIAL_RISK->1
+     Engine.Status.NOT_DISCOUNT->2;Engine.Status.INSUFFICIENT_PEERS->3
+     Engine.Status.INVALID_OR_STALE->4;Engine.Status.NO_FINANCIALS->5
+    }
+ }.thenByDescending{it.evidenceCount}.thenBy{it.symbol})
+ private fun label(s:Engine.Status)=when(s){
+  Engine.Status.RELATIVE_DISCOUNT->"MODEL: GÖRELİ İSKONTO • BAĞIMSIZ TEYİTSİZ"
+  Engine.Status.FINANCIAL_RISK->"FİNANSAL RİSK / DEĞER TUZAĞI"
+  Engine.Status.NOT_DISCOUNT->"İSKONTO KANITI YOK"
+  Engine.Status.INSUFFICIENT_PEERS->"YETERSİZ EMSAL"
+  Engine.Status.INVALID_OR_STALE->"GEÇERSİZ / ESKİ VERİ"
+  Engine.Status.NO_FINANCIALS->"BİLANÇO VERİSİ YOK"
+ }
+ private fun runScan(){
+  go.text="TARAMAYI DURDUR";rows=emptyList();list.removeAllViews()
+  status.text="BIST evreni ve finansal veriler kontrol ediliyor…"
+  job=lifecycleScope.launch {
+   try {
+    val universe=ProviderRouter(this@CheapStockScanActivity,experimentalFallbackOverride=true)
+     .listSymbols().map{it.trim().uppercase(Locale.ROOT)}
+     .filter{it.matches(Regex("[A-Z0-9]{3,10}"))}.distinct()
+    if(universe.isEmpty()){status.text="BIST sembol listesi yok; sonuç uydurulmadı";return@launch}
+    status.text="BIST: "+universe.size+" sembol • Bilanço ve emsal verisi aranıyor"
+    val fundamentals=FundamentalsBatchClient(this@CheapStockScanActivity)
+    val batch=try{if(fundamentals.hasLocalImport()) fundamentals.loadLocal() else fundamentals.load()}
+       catch(c:CancellationException){throw c}
+       catch(e:Exception){
+        status.text="BIST evreni: "+universe.size+
+         " • Değerleme yapılamadı: "+e.message.orEmpty().take(220)+
+         "\nYahoo fiyatı bilanço yerine geçmez. Ayarlar → Veri Bağlantısı bölümünde lisanslı HTTPS finansal servis gerekir."
+        AppSession.lastCheapScanReport=status.text.toString();return@launch
+       }
+    rows=Engine.scan(universe,batch.items,System.currentTimeMillis())
+    val counts=Engine.Status.values().associateWith{s->rows.count{it.status==s}}
+    val summary="BIST ERİŞİLEBİLİR SEMBOL EVRENİ • Evren "+universe.size+
+       " • Sektörel göreli iskontolu: "+counts[Engine.Status.RELATIVE_DISCOUNT]+
+       " • Risk: "+counts[Engine.Status.FINANCIAL_RISK]+
+       " • İskonto kanıtı yok: "+counts[Engine.Status.NOT_DISCOUNT]+
+       " • Emsal yetersiz: "+counts[Engine.Status.INSUFFICIENT_PEERS]+
+       " • Finansal veri yok: "+counts[Engine.Status.NO_FINANCIALS]+
+       " • Geçersiz/eski: "+counts[Engine.Status.INVALID_OR_STALE]+
+       " • Geçersiz finansal satırlar: "+batch.invalidItems+
+       "\n"+batch.sourceNote+
+       "\nFiyat limiti uygulanmadı. KAP bağlantıları ayrıca kontrol edilmelidir. Gerçek değer ve AL/SAT sonucu doğrulanmadı."
+    status.text=summary;AppSession.lastCheapScanReport=summary
+    selected="İSKONTO";page=40;render()
+   }catch(_:CancellationException){
+     rows=emptyList();list.removeAllViews();status.text="Tarama iptal edildi; kısmi sonuç sunulmadı"
+   }catch(e:Exception){
+     rows=emptyList();list.removeAllViews()
+     status.text="Finansal tarama hatası: "+e.message.orEmpty().take(180)
+   }finally{go.text="MEVCUT BIST SEMBOL EVRENİNİ DEĞERLE"}
+  }
+ }
+ private fun render(){
+  tabs.removeAllViews();list.removeAllViews()
+  for((id,name) in listOf("İSKONTO" to "GÖRELİ İSKONTOLU",
+                           "RİSK" to "FİNANSAL RİSK",
+                           "DİĞER" to "VERİ YOK / DİĞER",
+                           "TÜMÜ" to "TÜM SEMBOLLER")) {
+   val count=rows.count{
+    when(id){
+     "İSKONTO"->it.status==Engine.Status.RELATIVE_DISCOUNT
+     "RİSK"->it.status==Engine.Status.FINANCIAL_RISK
+     "DİĞER"->it.status!=Engine.Status.RELATIVE_DISCOUNT && it.status!=Engine.Status.FINANCIAL_RISK
+     else->true
+    }
+   }
+   button(tabs,name+" ("+count+")"+if (selected == id) " ✓" else ""){
+    selected=id;page=40;render()
+   }
+  }
+  val items=filtered()
+  text(list,"SONUÇ: "+items.size+" sembol",17f).setTextColor(Color.WHITE)
+  if (items.isEmpty()) {text(list,"Bu grupta kanıtlı aday yok. Eksik veri olumlu ya da olumsuz değerleme değildir.");return}
+  items.take(page).forEach{a->
+   val s=a.snapshot
+   val ratios=a.comparisons.joinToString("\n"){c->
+    c.metric+": "+fmt(c.own)+" / sektör medyan "+fmt(c.median)+
+     " • "+if (c.discountPct>=0) "İskonto %"+fmt(c.discountPct)
+             else "Prim %"+fmt(abs(c.discountPct))
+   }
+   text(list,a.symbol+" • "+label(a.status)+(s?.let{" • "+fmt(it.priceTry)+" TL"}?:"")+
+    "\n"+(s?.companyName?:"")+" • "+(s?.sector?:"")+
+    "\n"+a.reason+"\nEmsal: "+a.peerCount+
+    (if (ratios.isBlank()) "" else "\n"+ratios)+
+    "\nDETAY VE KAP BAĞLANTISI İÇİN DOKUNUN • AL/SAT DEĞİL",12.5f).apply{
+     setPadding(dp(10),dp(14),dp(10),dp(14));setBackgroundResource(R.drawable.bg_card)
+     if(a.status==Engine.Status.RELATIVE_DISCOUNT)setTextColor(Color.rgb(112,234,185))
+     else if(a.status==Engine.Status.FINANCIAL_RISK)setTextColor(Color.rgb(247,181,127))
+     setOnClickListener{details(a)}
+   }
+  }
+  if(items.size>page)button(list,"DAHA FAZLA GÖSTER ("+(items.size-page)+")"){page+=40;render()}
+ }
+ private fun details(a:Engine.Assessment) {
+  val s=a.snapshot
+  val panel=LinearLayout(this).apply{orientation=LinearLayout.VERTICAL;setPadding(dp(14),dp(14),dp(14),dp(14))}
+  text(panel,a.symbol+" • "+label(a.status)+"\n"+a.reason)
+  text(panel,"NASIL HESAPLANIR?\n"+
+   "1 • F/K = Piyasa Değeri / Son 12 Ay Net Kâr (veya Hisse Fiyatı / Pay Başına Kâr). "+
+   "Pozitif kârda, sektördeki benzerlerinden düşük olması görece iskontoyu gösterebilir; tek başına yeterli değildir.\n\n"+
+   "2 • PD/DD = Piyasa Değeri / Ana ortaklık özkaynağı. "+
+   "Özkaynak kalitesi, enflasyon muhasebesi, aktif kârlılığı ve sektör farkları değerlendirilmeden düşük PD/DD 'ucuz' değildir.\n\n"+
+   "3 • Net Borç/FAVÖK = (Finansal Borçlar − Nakit Benzerleri) / Son 12 Ay FAVÖK. "+
+   "Borcun faaliyet kazancına göre yükünü yaklaşık gösterir; gerçek geri ödeme süresi değildir. "+
+   "Banka ve finans kuruluşlarında sanayi şirketi borç ölçütü uygulanmaz.\n\n"+
+   "4 • FD/FAVÖK = (Piyasa Değeri + Net Borç) / Son 12 Ay FAVÖK. "+
+   "İşletme değerini faaliyet kârlılığına göre kıyaslar; finans dışı şirketlerde kullanılır.\n\n"+
+   "5 • SEKTÖR KIYASI = (1 − Şirket Çarpanı / Emsal Medyanı) × 100. "+
+   "Şirket, yalnız aynı sektördeki, benzer iş modelindeki ve aynı muhasebe bazındaki geçerli en az 5 emsale göre incelenir. "+
+   "Medyan tek bir aşırı değerden daha az etkilenir. İki çarpanda en az %20 iskonto + kârlılık ve borç/nakit akışı filtresi gerekir.\n\n"+
+   "ÖNEMLİ: Çarpan iskontosu gelecekteki kârı, adil değeri veya hisse fiyatının yükseleceğini ispatlamaz.",12f)
+  if(s!=null){
+   val m=a.multiples
+   text(panel,"Şirket: "+(s.companyName?:"")+"\nSektör: "+s.sector+
+    "\nİş türü: "+s.businessType+" • Muhasebe: "+s.accountingBasis+
+    "\nDönem: "+time(s.financialPeriodEndMs)+" • KAP yayın: "+time(s.disclosurePublishedAtMs)+
+    "\nFiyat ölçümü: "+time(s.marketObservedAtMs)+
+    "\nPiyasa değeri: "+fmt(s.marketCapTry)+" TRY"+
+    "\nTTM net kâr: "+(s.netIncomeTtmTry?.let{fmt(it)}?:"YOK")+
+    "\nÖzkaynak: "+(s.equityTry?.let{fmt(it)}?:"YOK")+
+    "\nFAVÖK: "+(s.ebitdaTtmTry?.let{fmt(it)}?:"YOK")+
+    "\nNet borç: "+(s.netDebtTry?.let{fmt(it)}?:"YOK")+
+    "\nSerbest nakit akımı: "+(s.freeCashFlowTtmTry?.let{fmt(it)}?:"YOK")+
+    "\nF/K: "+(m?.pe?.let{fmt(it)}?:"—")+
+    "\nPD/DD: "+(m?.pb?.let{fmt(it)}?:"—")+
+    "\nFD/FAVÖK: "+(m?.evEbitda?.let{fmt(it)}?:"—")+
+    "\nROE: "+(m?.roe?.let{fmt(it*100)}?:"—")+"%"+
+    "\nNet borç/FAVÖK: "+(m?.netDebtToEbitda?.let{fmt(it)}?:"—")+
+    "\nEmsal sayısı: "+a.peerCount)
+   if(s.disclosureUrl.startsWith("https://www.kap.org.tr/")||s.disclosureUrl.startsWith("https://kap.org.tr/"))
+    button(panel,"KAP KAYNAK BAĞLANTISINI AÇ"){
+     startActivity(Intent(Intent.ACTION_VIEW,Uri.parse(s.disclosureUrl)))
+    }
+  }
+  text(panel,"KAP rakamları bağımsız doğrulanmadıkça sonuç kesin ucuzluk, içsel değer veya AL/SAT sinyali değildir.",12f)
+  val scroll=ScrollView(this);scroll.addView(panel)
+  android.app.AlertDialog.Builder(this).setTitle("DEĞERLEME KANITI").setView(scroll).setPositiveButton("Kapat",null).show()
+ }
+ override fun onDestroy(){job?.cancel();super.onDestroy()}
+}

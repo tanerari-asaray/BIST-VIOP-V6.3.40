@@ -1,0 +1,12 @@
+BIST / VİOP V6.2.1 — Kaynak kod sürümü ve sınırlamalar
+
+Uygulama sürümü: 6.2.1 (build 621). Kaynak ağacı, V5.4.2-alpha
+üzerine marka/sürüm senkronizasyonu ve VİOP trend/sayaç/tarama tanılama
+düzeltmeleri uygular.
+
+V6 işlem doğrulama politikası, 250 TL işlem başı risk tavanı ve manuel emir
+şartı korunmuştur. Lisanslı ve yapılandırılmış VİOP canlı backend paketle
+birlikte verilmez. Eksik veriyle gerçek LONG/SHORT iddia edilmez.
+
+Bu kaynak kod bir APK DEĞİLDİR; Android SDK/Gradle ortamında inşa ve
+Android cihaz üzerinde regresyon/doğrulama testleri gerektirir.

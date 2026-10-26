@@ -1,0 +1,132 @@
+{
+  "auditedSourceCommit": "e9f32f7c9a84e89ae4c0b16006d0196f2b17d0b5",
+  "nativeRegressionCommit": "8640eb01b7b1de777f6b2edeb2e78e6415f3c35a",
+  "executionEnvironment": "V8",
+  "exactExistingDiagnosticTests": {
+    "tests": 27,
+    "passed": 27,
+    "failed": []
+  },
+  "jsDiagnostics": {
+    "marketScenarios": 108,
+    "upstreamHttpScenarios": 400,
+    "failures": []
+  },
+  "kotlinSourceExpressions": {
+    "execution": "V8 expression reproduction only; NOT Kotlin/JVM execution",
+    "redaction": [
+      {
+        "name": "ordinary JSON",
+        "input": "{\"message\":\"HTTP 503\",\"status\":\"PARTIAL\"}",
+        "output": "{\"message\":\"HTTP 503\",\"status\":\"PARTIAL\"}",
+        "jsonValid": true
+      },
+      {
+        "name": "Authorization in JSON message",
+        "input": "{\"message\":\"Authorization: Bearer SYNTHETIC_AUDIT_TOKEN_123\"}",
+        "output": "{\"message\":\"Authorization: [GİZLENDİ]",
+        "jsonValid": false
+      },
+      {
+        "name": "API key label in JSON message",
+        "input": "{\"message\":\"api_key=synthetic_audit_key_123\"}",
+        "output": "{\"message\":\"api_key=[GİZLENDİ]",
+        "jsonValid": false
+      },
+      {
+        "name": "configured key in JSON",
+        "input": "{\"message\":\"SYNTHETIC_AUDIT_TOKEN_123\"}",
+        "output": "{\"message\":\"[GİZLENDİ]\"}",
+        "jsonValid": true
+      }
+    ],
+    "shortExcursion": [
+      {
+        "path": "analysis/TradeForwardEngine.kt",
+        "entry": 100,
+        "low": 80,
+        "expectedPct": 20,
+        "actualPct": 25,
+        "conventionalEntryNotionalCorrect": false
+      },
+      {
+        "path": "analysis/v540/backtest/V540BacktestEngine.kt",
+        "entry": 100,
+        "low": 80,
+        "expectedPct": 20,
+        "actualPct": 25,
+        "conventionalEntryNotionalCorrect": false
+      }
+    ]
+  },
+  "kotlinSourceContracts": {
+    "automaticSuccess": {
+      "reportExpected": "COMPLETE",
+      "workerOutcomes": [
+        "COMPLETED",
+        "PARTIAL",
+        "NO_DATA",
+        "RETRYABLE_ERROR",
+        "CONFIG_ERROR",
+        "STOPPED",
+        "SKIPPED_BUSY"
+      ],
+      "reportAcceptsAWorkerOutcome": false
+    }
+  },
+  "nativeAndroidTests": "NOT_EXECUTED_BY_THIS_SCRIPT",
+  "apkBuildRequested": false,
+  "sourceReviewInventory": {
+    "textFiles": 498,
+    "mainKotlinFiles": 244,
+    "jvmTestFiles": 145,
+    "androidTestFiles": 14,
+    "jvmTestDeclarationsBeforeAudit": 905,
+    "newJvmRegressionTests": 5,
+    "sourceReadingTestFiles": 39,
+    "testDeclarationsInSourceReadingFiles": 210
+  },
+  "staticNavigationAndResources": {
+    "activityReferences": 88,
+    "registeredActivities": 23,
+    "missingActivityRegistration": [],
+    "missingOwnResources": [],
+    "generatedAppNameConfirmed": true
+  },
+  "nativeJvmExecution": "NOT_EXECUTED_JOB_FAILED_BEFORE_STEPS",
+  "androidCompilation": "NOT_EXECUTED_JOB_FAILED_BEFORE_STEPS",
+  "deviceExecution": "NOT_PERFORMED",
+  "liveProviderE2E": "NOT_PERFORMED",
+  "apkProduced": false,
+  "nativeAttempt": {
+    "githubRunId": 39498021427,
+    "sourceCommit": "b9b10c213cba96bb8254b5c13539120bf5ec2cf6",
+    "jobs": [
+      {
+        "id": 118888032463,
+        "conclusion": "failure",
+        "runnerName": "",
+        "steps": []
+      }
+    ]
+  },
+  "railwayAttempt": {
+    "serviceId": "d2832e5d-c636-4e25-9e78-3d8e7c1ef8c4",
+    "serviceCreated": true,
+    "sourceAttachment": "REJECTED",
+    "error": "User does not have access to the repo",
+    "deployments": 0,
+    "applicationSecretsConfigured": false,
+    "restartPolicy": "NEVER"
+  },
+  "mainGateway": {
+    "liveVersion": "6.3.4-route-fix",
+    "stagedPatch": "75c20020-6f91-494d-879a-e5dcffbb9555",
+    "stagedMatchesReviewedBundle": true,
+    "newDeployment": false
+  },
+  "providers": {
+    "bistUpstreamConfigured": false,
+    "viopUpstreamConfigured": false
+  }
+}

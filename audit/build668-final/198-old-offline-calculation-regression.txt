@@ -1,0 +1,4 @@
+Command: java -jar /mnt/data/b668-new-source-analysis-tests.jar
+Exit: 0
+RESULT 198 PASS 0 FAIL
+

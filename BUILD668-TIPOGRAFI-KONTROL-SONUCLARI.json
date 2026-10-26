@@ -1,0 +1,104 @@
+{
+  "source": "Build 668 post-typography changes",
+  "checks": 23,
+  "passed": 23,
+  "failed": 0,
+  "items": [
+    {
+      "test": "No UI IDs removed",
+      "pass": true
+    },
+    {
+      "test": "No duplicate screen ids",
+      "pass": true
+    },
+    {
+      "test": "Page remains vertically scrollable and has bottom navigation",
+      "pass": true
+    },
+    {
+      "test": "Typography uses shared reference scale",
+      "pass": true
+    },
+    {
+      "test": "Selected tabs use cyan underline vector and match bold type",
+      "pass": true
+    },
+    {
+      "test": "Stock detail has consistent back and fullscreen vector icons",
+      "pass": true
+    },
+    {
+      "test": "Favorite icon preserves dynamic state",
+      "pass": true
+    },
+    {
+      "test": "All trend rows use compact measured heights",
+      "pass": true
+    },
+    {
+      "test": "Technical cards have uniform paddings",
+      "pass": true
+    },
+    {
+      "test": "Technical card right chevrons still present",
+      "pass": true
+    },
+    {
+      "test": "TradingView and four chart periods retained",
+      "pass": true
+    },
+    {
+      "test": "Indicator row and all six indicators retained",
+      "pass": true
+    },
+    {
+      "test": "One-line detailed commentary label",
+      "pass": true
+    },
+    {
+      "test": "Warnings use vector, not OEM warning font",
+      "pass": true
+    },
+    {
+      "test": "Stock detail only nav has five clickable named ids",
+      "pass": true
+    },
+    {
+      "test": "Hisseler selected cyan and vector",
+      "pass": true
+    },
+    {
+      "test": "Previous bottom nav remains unchanged elsewhere",
+      "pass": true
+    },
+    {
+      "test": "Quote / timestamp data rendering still wired",
+      "pass": true
+    },
+    {
+      "test": "Local XML resource references resolve",
+      "pass": true
+    },
+    {
+      "test": "All SVG resources parse, filled bars use valid colors",
+      "pass": true
+    },
+    {
+      "test": "No layout invalid XML",
+      "pass": true
+    },
+    {
+      "test": "No fake price or fabricated market data added",
+      "pass": true
+    },
+    {
+      "test": "Prior real-data calculation regression tests 198 pass",
+      "pass": true
+    }
+  ],
+  "resource_missing": [],
+  "calculation_result": "RESULT 198 PASS 0 FAIL",
+  "android_apk_test": "Gradle wrapper restored; Gradle distribution download blocked by DNS",
+  "device_pixel_match": "not verified: no emulator or capture available"
+}

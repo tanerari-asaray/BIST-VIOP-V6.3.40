@@ -1,0 +1,25 @@
+name: BIST VIOP Railway API route smoke test
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/verify-bist-api.yml'
+jobs:
+  routes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - name: Probe independent HTTPS API routes (no credentials)
+        shell: bash
+        run: |
+          set -euo pipefail
+          BASE="https://bist-viop-gateway-v1-production.up.railway.app"
+          for pair in "/v1/service-info 200" "/v1/health 401" "/v1/bist/fundamentals 401" "/v1/bist/symbols 401" "/v1/viop/contracts 401" "/v1/does-not-exist 401"; do
+            read -r path expected <<< "$pair"
+            response="$(curl --silent --show-error --location-trusted --max-time 15 --output /tmp/bist-response --write-out '%{http_code}' "$BASE$path")"
+            echo "$path -> HTTP $response (expected $expected)"
+            test "$response" = "$expected" || { cat /tmp/bist-response; exit 1; }
+          done
+          grep -q '"apiContract":"v1"' <(curl --silent --show-error --max-time 15 "$BASE/v1/service-info")
+          echo "PASS: Required endpoints exist; unauthorized access denied. Unknown path also denied before route disclosure."

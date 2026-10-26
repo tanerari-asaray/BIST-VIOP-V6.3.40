@@ -1,0 +1,1 @@
+Android APK henüz üretilmedi: Gradle 8.10.2 indirme DNS hatası + Android SDK yok. APK veya gerçek ekran görüntüsü olarak hiçbir dosya sunulmuyor.

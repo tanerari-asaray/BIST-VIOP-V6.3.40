@@ -1,0 +1,181 @@
+{
+  "schemaVersion": "BIST-VIOP-SOURCE-VALIDATION/2",
+  "generatedAt": "2026-10-21T14:10:38+03:00",
+  "version": "6.3.35",
+  "build": 665,
+  "status": "SOURCE_CHECKS_PASSED_WITH_WARNINGS",
+  "productionReady": false,
+  "liveTradingVerified": false,
+  "deviceExecutionVerified": false,
+  "repository": "ferittasbek-png/BIST-VIOP-V6.2.2",
+  "branch": "fix/deep-audit-no-apk",
+  "sourceBaseCommit": "4201b7160d96ed2d35c7f1842d8611b5cc8fe2fc",
+  "sourceCodeCommit": "3e84542353ad1ddd0641c579d5636ac6103c0e42",
+  "sourceBaseSha256": "84ba19017248e374b1087fa37667ae75ef90927cd2358c3786681bcd7ec40da3",
+  "matchedSourceFiles": 618,
+  "changedFilesReadBack": 25,
+  "changedFiles": [
+    ".gitignore",
+    "README.md",
+    "android-v6323/app/src/main/java/tr/borsatakip/v5/analysis/TrendUiPolicy.kt",
+    "android-v6323/app/src/main/java/tr/borsatakip/v5/analysis/ViopV6Policy.kt",
+    "android-v6323/app/src/main/java/tr/borsatakip/v5/data/ViopQuoteDisplayPolicy.kt",
+    "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/StocksCompactAdapter.kt",
+    "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/ViopOpportunityAdapter.kt",
+    "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/ViopUnderlyingOpportunityAdapter.kt",
+    "android-v6323/app/src/main/java/tr/borsatakip/v5/worker/AutoScanForegroundService.kt",
+    "android-v6323/app/src/main/java/tr/borsatakip/v5/worker/OpportunityWorker.kt",
+    "android-v6323/app/src/main/java/tr/borsatakip/v5/worker/RealtimeAlertService.kt",
+    "android-v6323/app/src/main/res/layout/activity_main.xml",
+    "android-v6323/app/src/main/res/layout/activity_opportunity.xml",
+    "android-v6323/app/src/main/res/layout/activity_settings.xml",
+    "android-v6323/app/src/main/res/layout/activity_stocks.xml",
+    "android-v6323/app/src/main/res/layout/activity_viop_detail.xml",
+    "android-v6323/app/src/main/res/values/market_rows.xml",
+    "android-v6323/app/src/test/java/tr/borsatakip/v5/analysis/TrendUiPolicyTest.kt",
+    "android-v6323/app/src/test/java/tr/borsatakip/v5/analysis/ViopDashboardPolicyTest.kt",
+    "android-v6323/app/src/test/java/tr/borsatakip/v5/analysis/ViopV6SafetyGateTest.kt",
+    "android-v6323/app/src/test/java/tr/borsatakip/v5/data/B125ViopConfigAndUiFixTest.kt",
+    "android-v6323/app/src/test/java/tr/borsatakip/v5/data/ViopQuoteDisplayPolicyTest.kt",
+    "android-v6323/app/src/test/java/tr/borsatakip/v5/ui/B131ViopMainUiRegressionTest.kt",
+    "ci-verify-source-only.py",
+    "ci/railway-verification-report.mjs"
+  ],
+  "jvm": {
+    "tests": 983,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "jvmSuites": 157,
+  "newRegressionTests": 17,
+  "beforeFixRegressionRun": {
+    "counts": {
+      "tests": 23,
+      "failures": 4,
+      "errors": 0,
+      "skipped": 0
+    },
+    "failedTests": [
+      "nonFiniteOrMissingVolumeCannotVerifyLiquidity",
+      "unverifiedCurrentSessionCannotPassQualityGate",
+      "invalidLastPriceCannotPassWithAnOtherwiseValidExecutableAsk",
+      "invalidQuoteEvidenceCannotProduceVerifiedRowsOrSideCounts"
+    ]
+  },
+  "lint": {
+    "errors": 0,
+    "warnings": 774,
+    "previousWarnings": 819,
+    "codeWarningsResolved": 44,
+    "dependencyAdvisoryNotReproduced": 1,
+    "dependencyUpgradeApplied": false,
+    "categories": {
+      "ApplySharedPref": 7,
+      "NotifyDataSetChanged": 5,
+      "ObsoleteSdkInt": 3,
+      "NestedWeights": 2,
+      "Overdraw": 6,
+      "UnusedResources": 116,
+      "UselessParent": 2,
+      "TooManyViews": 2,
+      "ButtonStyle": 33,
+      "ViewConstructor": 1,
+      "SetTextI18n": 597
+    }
+  },
+  "compiledAndroidTestClasses": 53,
+  "androidTestsExecuted": false,
+  "node": {
+    "tests": 64,
+    "passed": 64,
+    "failed": 0
+  },
+  "bun": {
+    "version": "1.4.3",
+    "tests": 1,
+    "passed": 1,
+    "failed": 0,
+    "assertions": 5,
+    "evidence": "observed real local tool execution; not device or licensed-provider execution"
+  },
+  "resourceFormats": {
+    "resourceStrings": 44,
+    "checks": 108,
+    "locales": [
+      "en-US",
+      "tr-TR"
+    ],
+    "failures": 0
+  },
+  "nativeStages": [
+    {
+      "name": "native-final",
+      "exitCode": 0,
+      "expected": 0,
+      "seconds": 431.73
+    },
+    {
+      "name": "native-repeat",
+      "exitCode": 0,
+      "expected": 0,
+      "seconds": 15.06
+    },
+    {
+      "name": "apk-guard",
+      "exitCode": 1,
+      "expected": 1,
+      "seconds": 14.02
+    },
+    {
+      "name": "source-verifier",
+      "exitCode": 0,
+      "expected": 0,
+      "seconds": 0.19
+    },
+    {
+      "name": "node-tests",
+      "exitCode": 0,
+      "expected": 0,
+      "seconds": 0.39
+    },
+    {
+      "name": "bundle-check",
+      "exitCode": 0,
+      "expected": 0,
+      "seconds": 0.04
+    }
+  ],
+  "projectWrapper": {
+    "exitCode": 0,
+    "seconds": 19.32,
+    "gradleVersion": "8.10.2",
+    "gradleDistributionSha256": "31c55713e40233a8303827ceb42ca48a47267a0ad4bab9177123121e71524c26",
+    "projectWrapperExecuted": true
+  },
+  "githubActions": {
+    "runId": 39588492586,
+    "codeCommit": "3e84542353ad1ddd0641c579d5636ac6103c0e42",
+    "jobs": [
+      {
+        "id": 119183255104,
+        "name": "source-checks",
+        "conclusion": "failure",
+        "runnerId": 0,
+        "runnerName": "",
+        "steps": 0,
+        "url": "https://github.com/ferittasbek-png/BIST-VIOP-V6.2.2/actions/runs/39588492586/job/119183255104"
+      }
+    ]
+  },
+  "apkProduced": false,
+  "aabProduced": false,
+  "signing": "NOT_PERFORMED",
+  "limits": [
+    "774 Android Lint warnings remain",
+    "Physical-device execution not performed",
+    "Licensed live provider connection not verified",
+    "GitHub Actions runner not assigned; zero steps ran",
+    "No production deployment or main-branch merge performed"
+  ]
+}

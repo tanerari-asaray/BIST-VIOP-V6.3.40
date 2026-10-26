@@ -1,0 +1,202 @@
+{
+  "schemaVersion": "BIST-VIOP-SOURCE-VALIDATION/2",
+  "date": "2026-10-21",
+  "version": "6.3.35",
+  "build": 665,
+  "status": "SOURCE_CHECKS_PASSED_WITH_WARNINGS",
+  "sourceValidationPassed": true,
+  "productionReady": false,
+  "liveTradingVerified": false,
+  "source": {
+    "repository": "ferittasbek-png/BIST-VIOP-V6.2.2",
+    "branch": "fix/deep-audit-no-apk",
+    "startCommit": "4d8e097eee767ef000a0fa0edd8224b685fe4260",
+    "validatedCommit": "e78aa12b20a212475213d46f3c027a08e2935ee4",
+    "sourceBaseSha256": "a9f553e6088f6f183b06b2b9f44b5fb03c13a3c79fef2250baa6cbaf1d56f4d0",
+    "verifiedInitialBlobs": 600,
+    "sourceReadbackVerified": true,
+    "changedFilesThisStage": [
+      ".github/workflows/build-v6323.yml",
+      "android-v6323/app/build.gradle.kts",
+      "android-v6323/app/src/main/AndroidManifest.xml",
+      "android-v6323/app/src/main/java/tr/borsatakip/v5/data/BackendFailurePolicy.kt",
+      "android-v6323/app/src/main/java/tr/borsatakip/v5/data/BackendHealthClient.kt",
+      "android-v6323/app/src/main/java/tr/borsatakip/v5/data/BackendPreflightClient.kt",
+      "android-v6323/app/src/main/java/tr/borsatakip/v5/data/MobileMarketDataProvider.kt",
+      "android-v6323/app/src/main/java/tr/borsatakip/v5/data/favorites/FavoriteRepository.kt",
+      "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/FullUniverseScanActivity.kt",
+      "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/ViopActivity.kt",
+      "android-v6323/app/src/main/res/layout/activity_stocks.xml",
+      "android-v6323/app/src/main/res/layout/activity_viop.xml",
+      "android-v6323/app/src/test/java/tr/borsatakip/v5/data/B115IntradayFallbackSourceTest.kt",
+      "android-v6323/app/src/test/java/tr/borsatakip/v5/data/B116OpportunityFallbackSourceTest.kt",
+      "android-v6323/app/src/test/java/tr/borsatakip/v5/data/BackendHttpTransportTest.kt",
+      "ci-verify-source-only.py",
+      "ci/railway-source-checks.sh",
+      "ci/railway-verification-report.mjs"
+    ]
+  },
+  "validation": {
+    "jvm": {
+      "tests": 963,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "suites": 155
+    },
+    "lint": {
+      "errors": 0,
+      "warnings": 1322,
+      "warningCounts": {
+        "ApplySharedPref": 7,
+        "UseSwitchCompatOrMaterialCode": 6,
+        "UseSwitchCompatOrMaterialXml": 1,
+        "UseCompatLoadingForDrawables": 2,
+        "DataExtractionRules": 1,
+        "DrawAllocation": 17,
+        "NotifyDataSetChanged": 5,
+        "ObsoleteSdkInt": 12,
+        "DisableBaselineAlignment": 15,
+        "InefficientWeight": 1,
+        "NestedWeights": 3,
+        "Overdraw": 6,
+        "UnusedResources": 116,
+        "UselessParent": 2,
+        "TooManyViews": 2,
+        "TypographyEllipsis": 7,
+        "MissingApplicationIcon": 1,
+        "ButtonStyle": 33,
+        "TextFields": 1,
+        "SmallSp": 87,
+        "Autofill": 12,
+        "ViewConstructor": 2,
+        "ContentDescription": 2,
+        "SetTextI18n": 617,
+        "HardcodedText": 350,
+        "RtlSymmetry": 13,
+        "RtlEnabled": 1
+      }
+    },
+    "androidTest": {
+      "compiledClasses": 53,
+      "executed": false,
+      "newLifecycleMethods": 5
+    },
+    "stages": [
+      {
+        "name": "native-clean-final",
+        "exitCode": 0,
+        "seconds": 351.5,
+        "log": "source-checks/native-clean-final.log"
+      },
+      {
+        "name": "ksp-repeat-final",
+        "exitCode": 0,
+        "seconds": 39.1,
+        "log": "source-checks/ksp-repeat-final.log"
+      },
+      {
+        "name": "native-default-final",
+        "exitCode": 0,
+        "seconds": 18,
+        "log": "source-checks/native-default-final.log"
+      },
+      {
+        "name": "apk-guard-final",
+        "exitCode": 1,
+        "seconds": 15,
+        "log": "source-checks/apk-guard-final.log"
+      }
+    ],
+    "roomRepeat": {
+      "passed": true,
+      "sameGeneratedSourceHashes": true,
+      "generated": {
+        "kotlin/tr/borsatakip/v5/data/favorites/FavoritesDatabase_Impl.kt": "195ebedc8e957b3ee6ec6e82ebe5d051d6a3cfceac5e5ea1a5de6add898e521d",
+        "kotlin/tr/borsatakip/v5/data/favorites/FavoriteDao_Impl.kt": "707b5e321c2dbed5f486ba8a496ea17142487525db9aee9acc413da44ca2427e"
+      }
+    },
+    "node": {
+      "tests": 64,
+      "passed": 64,
+      "failed": 0,
+      "skipped": 0
+    },
+    "bun": {
+      "tests": 1,
+      "passed": 1,
+      "failed": 0,
+      "assertions": 5,
+      "scope": "actual local WebSocket handshake"
+    },
+    "javascriptMatrices": {
+      "marketScenarios": 108,
+      "upstreamHttpScenarios": 400,
+      "failures": []
+    },
+    "releaseUrlCases": [
+      {
+        "case": "query",
+        "exitCode": 1,
+        "expectedFailureObserved": true
+      },
+      {
+        "case": "port-zero",
+        "exitCode": 1,
+        "expectedFailureObserved": true
+      },
+      {
+        "case": "traversal",
+        "exitCode": 1,
+        "expectedFailureObserved": true
+      },
+      {
+        "case": "local-host",
+        "exitCode": 1,
+        "expectedFailureObserved": true
+      },
+      {
+        "case": "canonical-valid",
+        "exitCode": 1,
+        "expectedFailureObserved": true
+      }
+    ],
+    "sourceIntegrity": {
+      "unchangedDuringValidation": true,
+      "validatedFiles": 513
+    },
+    "bundleReproducibility": "PASS"
+  },
+  "apk": {
+    "allowed": false,
+    "produced": false,
+    "apkOrAabCount": 0,
+    "guard": "PASS_EXPECTED_REJECTION",
+    "signing": "NOT_PERFORMED",
+    "filename": null,
+    "sha256": null
+  },
+  "githubActions": {
+    "id": 39556552967,
+    "url": "https://github.com/ferittasbek-png/BIST-VIOP-V6.2.2/actions/runs/39556552967",
+    "sourceCommit": "e78aa12b20a212475213d46f3c027a08e2935ee4",
+    "conclusion": "failure",
+    "jobs": [
+      {
+        "id": 119077550282,
+        "status": "completed",
+        "conclusion": "failure",
+        "runner_id": 0,
+        "runner_name": "",
+        "steps": 0
+      }
+    ],
+    "nativeStepsExecuted": false
+  },
+  "limitations": [
+    "1322 Android Lint warnings remain; none were hidden or baseline-suppressed in this change.",
+    "Device tests compiled but were not executed; APK creation remains prohibited.",
+    "Live licensed provider connectivity and production readiness were not verified.",
+    "GitHub Actions ended before a runner was assigned; the passing native evidence is from the local JDK/Android SDK environment."
+  ]
+}

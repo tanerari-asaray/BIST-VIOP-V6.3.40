@@ -1,0 +1,96 @@
+name: BIST VIOP V6.3.2 API 404 diagnostics Android
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'v632-overlay/**'
+      - '.github/workflows/build-v632-api-route.yml'
+  workflow_dispatch:
+jobs:
+  android:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: '17'
+      - name: Android SDK
+        shell: bash
+        run: |
+          SDK_ROOT="$ANDROID_HOME"
+          SDKMGR="$(find "$SDK_ROOT/cmdline-tools" -type f -name sdkmanager | head -n 1)"
+          test -n "$SDKMGR"
+          yes | "$SDKMGR" --licenses >/dev/null || true
+          "$SDKMGR" --install 'platforms;android-35' 'build-tools;35.0.0'
+      - name: Reconstruct V6.3.1 and apply route diagnostic fixes
+        shell: bash
+        run: |
+          unzip -t 'BIST-VIOP-V6.2.8-BUILD628-TARAMA-CAKISMA-KORUMALI-KAYNAK.zip'
+          mkdir -p v632
+          unzip -q 'BIST-VIOP-V6.2.8-BUILD628-TARAMA-CAKISMA-KORUMALI-KAYNAK.zip' -d v632
+          cp -a v629-overlay/app/src/. v632/app/src/
+          cp -a v630-overlay/app/src/. v632/app/src/
+          cp -a v631-overlay/app/src/. v632/app/src/
+          sed -i 's/versionCode = 628/versionCode = 631/g; s/versionName = "6.2.8"/versionName = "6.3.1"/g; s/\.diagnostic\.v628audit/\.diagnostic\.v631audit/g' v632/app/build.gradle.kts
+          sed -i 's/₺  UCUZ HİSSE TARAMA  ›  (Fiyat limiti seç)/▣  TEMEL DEĞERLEME TARAMASI  ›  (Tüm BIST)/g' v632/app/src/main/res/layout/activity_bist_scan.xml
+          cd v632
+          python3 ../v632-overlay/apply_v632.py
+          chmod +x gradlew
+          grep 'versionCode = 632' app/build.gradle.kts
+          grep 'versionName = "6.3.2"' app/build.gradle.kts
+          test -s app/src/main/java/tr/borsatakip/v5/data/BackendApiRouteFailure.kt
+      - name: Assemble signed diagnostic APK
+        working-directory: v632
+        run: ./gradlew --no-daemon --stacktrace :app:assembleDiagnostic
+      - name: Verify APK signature/package
+        working-directory: v632
+        shell: bash
+        run: |
+          APK=app/build/outputs/apk/diagnostic/app-diagnostic.apk
+          "$ANDROID_HOME/build-tools/35.0.0/apksigner" verify --verbose --print-certs "$APK"
+          META="$("$ANDROID_HOME/build-tools/35.0.0/aapt" dump badging "$APK" | grep '^package:')"
+          echo "$META"
+          [[ "$META" == *"name='tr.borsatakip.v5.diagnostic.v632audit'"* ]]
+          [[ "$META" == *"versionCode='632'"* ]]
+          [[ "$META" == *"versionName='6.3.2'"* ]]
+      - name: Android JUnit tests
+        id: tests
+        working-directory: v632
+        if: success()
+        continue-on-error: true
+        run: ./gradlew --no-daemon --stacktrace :app:testDiagnosticUnitTest
+      - name: Package exact compiled source
+        if: always()
+        run: |
+          if [ -d v632/app/src ]; then
+            cd v632
+            zip -q -r ../BIST-VIOP-V6.3.2-CI-SOURCE.zip . -x '*/build/*' '*.gradle-cache*'
+          fi
+      - name: Upload diagnostic APK
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: BIST-VIOP-V6.3.2-DIAGNOSTIC-APK
+          path: v632/app/build/outputs/apk/diagnostic/*.apk
+          if-no-files-found: warn
+      - name: Upload unit test evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: BIST-VIOP-V6.3.2-ANDROID-TESTS
+          path: v632/app/build/reports/tests/
+          if-no-files-found: ignore
+      - name: Upload source snapshot
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: BIST-VIOP-V6.3.2-SOURCE
+          path: BIST-VIOP-V6.3.2-CI-SOURCE.zip
+          if-no-files-found: ignore
+      - name: Enforce tests
+        if: steps.tests.outcome == 'failure'
+        run: exit 1

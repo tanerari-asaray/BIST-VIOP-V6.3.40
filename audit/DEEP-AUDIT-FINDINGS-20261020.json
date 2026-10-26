@@ -1,0 +1,235 @@
+{
+  "sourceCommit": "e9f32f7c9a84e89ae4c0b16006d0196f2b17d0b5",
+  "status": "FINDINGS_PRESENT_NATIVE_UNVERIFIED",
+  "total": 11,
+  "priorityCounts": {
+    "P1": 4,
+    "P2": 7
+  },
+  "findings": [
+    {
+      "id": "F01",
+      "priority": "P1",
+      "title": "İş başlamadan iptal edilen evren taraması global kilidi bırakmıyor",
+      "locations": [
+        {
+          "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/FullUniverseScanRuntime.kt",
+          "lines": "29, 36-43, 187-190"
+        },
+        {
+          "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/scan/BistScanGate.kt",
+          "lines": "20-32"
+        }
+      ],
+      "evidence": "STATIC_CONTROL_FLOW_AND_KOTLIN_1_9_CONTRACT",
+      "nativeRuntimeReproduced": false,
+      "fixStatus": "OPEN"
+    },
+    {
+      "id": "F02",
+      "priority": "P1",
+      "title": "BIST yanıt gövdesi okunurken hata oluşursa coroutine tamamlanmayabiliyor",
+      "locations": [
+        {
+          "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/data/MobileMarketDataProvider.kt",
+          "lines": "59-62, 198-201, 286-315"
+        },
+        {
+          "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/scan/BistScanner.kt",
+          "lines": "137, 185, 482-484"
+        }
+      ],
+      "evidence": "STATIC_CALLBACK_PATH",
+      "nativeRuntimeReproduced": false,
+      "fixStatus": "OPEN"
+    },
+    {
+      "id": "F03",
+      "priority": "P1",
+      "title": "İptal edilen bağlantı testi PROVIDER_TESTING durumunu kalıcı bırakıyor",
+      "locations": [
+        {
+          "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/data/ProviderReadinessService.kt",
+          "lines": "124-130, 146-196"
+        },
+        {
+          "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/ViopActivity.kt",
+          "lines": "231-257, 347-364"
+        }
+      ],
+      "evidence": "STATIC_PERSISTENCE_AND_LIFECYCLE",
+      "nativeRuntimeReproduced": false,
+      "fixStatus": "OPEN"
+    },
+    {
+      "id": "F04",
+      "priority": "P1",
+      "title": "Ayar değişikliği ile bağlantı testi arasında yapılandırma yarışı",
+      "locations": [
+        {
+          "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/data/BackendPreflightClient.kt",
+          "lines": "115-128, 212"
+        },
+        {
+          "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/data/ProviderReadinessService.kt",
+          "lines": "155-196, 202-212"
+        },
+        {
+          "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/data/SettingsStore.kt",
+          "lines": "26-56, 316-327"
+        }
+      ],
+      "evidence": "STATIC_INTERLEAVING_TRACE",
+      "nativeRuntimeReproduced": false,
+      "fixStatus": "OPEN"
+    },
+    {
+      "id": "F05",
+      "priority": "P2",
+      "title": "COMPLETED/COMPLETE uyuşmazlığı başarılı otomatik turu hatalı raporluyor",
+      "locations": [
+        {
+          "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/worker/AutomaticScanRunner.kt",
+          "lines": "29, 58, 61"
+        },
+        {
+          "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/SettingsDetailActivity.kt",
+          "lines": "189-190"
+        },
+        {
+          "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/SystemReportV2.kt",
+          "lines": "86-88"
+        }
+      ],
+      "evidence": "EXECUTED_SOURCE_CONTRACT",
+      "nativeRuntimeReproduced": false,
+      "fixStatus": "OPEN"
+    },
+    {
+      "id": "F06",
+      "priority": "P2",
+      "title": "Metinsel maskeleme JSON raporunun kapanışını silebiliyor",
+      "locations": [
+        {
+          "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/SystemReportV2.kt",
+          "lines": "596-611"
+        },
+        {
+          "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/SettingsDetailActivity.kt",
+          "lines": "252-253, 397-401"
+        }
+      ],
+      "evidence": "EXACT_REGEX_REPRODUCTION_IN_V8",
+      "nativeRegressionTestsAdded": 3,
+      "nativeRuntimeReproduced": false,
+      "fixStatus": "OPEN"
+    },
+    {
+      "id": "F07",
+      "priority": "P2",
+      "title": "SHORT MFE yüzdesi iki hesap motorunda şişiriliyor",
+      "locations": [
+        {
+          "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/analysis/TradeForwardEngine.kt",
+          "lines": "94-96"
+        },
+        {
+          "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/analysis/v540/backtest/V540BacktestEngine.kt",
+          "lines": "390, 396"
+        },
+        {
+          "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/data/SignalHistoryStore.kt",
+          "lines": "265-271"
+        }
+      ],
+      "evidence": "EXACT_ARITHMETIC_EXPRESSION_REPRODUCTION_IN_V8",
+      "nativeRegressionTestsAdded": 2,
+      "nativeRuntimeReproduced": false,
+      "fixStatus": "OPEN"
+    },
+    {
+      "id": "F08",
+      "priority": "P2",
+      "title": "Gerçek BIST istemcisi sağlayıcı ile gateway kimlik doğrulama hatasını ayırmıyor",
+      "locations": [
+        {
+          "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/data/MobileMarketDataProvider.kt",
+          "lines": "302-313"
+        },
+        {
+          "path": "server/market_proxy.ts",
+          "lines": "90-95"
+        }
+      ],
+      "evidence": "STATIC_CROSS_LAYER_ERROR_TRACE",
+      "nativeRuntimeReproduced": false,
+      "fixStatus": "OPEN"
+    },
+    {
+      "id": "F09",
+      "priority": "P2",
+      "title": "VİOP özet sayaçları fiyat güncelliği dolduğunda yenilenmiyor",
+      "locations": [
+        {
+          "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/ViopActivity.kt",
+          "lines": "55-61, 585-586, 653-669, 685-687"
+        },
+        {
+          "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/ViopOpportunityAdapter.kt",
+          "lines": "49-57, 78-90"
+        }
+      ],
+      "evidence": "STATIC_UI_REFRESH_TRACE",
+      "nativeRuntimeReproduced": false,
+      "fixStatus": "OPEN"
+    },
+    {
+      "id": "F10",
+      "priority": "P2",
+      "title": "Backend URL kabul kuralları istemcilerle tutarsız",
+      "locations": [
+        {
+          "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/data/ProviderReadinessService.kt",
+          "lines": "216-220"
+        },
+        {
+          "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/data/BackendPreflightClient.kt",
+          "lines": "305-310"
+        },
+        {
+          "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/data/BackendProvider.kt",
+          "lines": "79-83"
+        },
+        {
+          "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/data/ProviderRouter.kt",
+          "lines": "46, 94"
+        }
+      ],
+      "evidence": "STATIC_VALIDATION_AND_URL_COMPOSITION",
+      "nativeRuntimeReproduced": false,
+      "fixStatus": "OPEN"
+    },
+    {
+      "id": "F11",
+      "priority": "P2",
+      "title": "Devam kaydı backend/kimlik bilgisi değişikliğine bağlanmamış",
+      "locations": [
+        {
+          "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/data/ObservationCheckpoint.kt",
+          "lines": "13-16, 51"
+        },
+        {
+          "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/FullUniverseScanRuntime.kt",
+          "lines": "62, 99-106"
+        },
+        {
+          "path": "android-v6323/app/src/main/java/tr/borsatakip/v5/data/SettingsStore.kt",
+          "lines": "316-327"
+        }
+      ],
+      "evidence": "STATIC_CHECKPOINT_IDENTITY_TRACE",
+      "nativeRuntimeReproduced": false,
+      "fixStatus": "OPEN"
+    }
+  ]
+}

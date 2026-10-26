@@ -1,0 +1,8 @@
+V6.2.6 / build 626 — veri akışı düzeltmesi
+
+JDK 17, Android SDK 35, Gradle 8.10.2.
+Derleme: ./gradlew :app:testDiagnosticUnitTest :app:assembleDiagnostic
+Tanılama kimliği: tr.borsatakip.v5.diagnostic.v626fix
+Özgün V6.2.4 imza anahtarı verilmediğinden ayrı uygulama kimliği kullanılır.
+V6.2.5 finansal değerleme çalışması bu pakete birleştirilmedi; bu paketin tabanı V6.2.4 build624'tür.
+Gerçek test/derleme sonuçları BUILD_REPORT.md içindedir.

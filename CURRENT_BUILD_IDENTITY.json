@@ -1,0 +1,10 @@
+{
+  "version": "6.3.40",
+  "build": 670,
+  "status": "SOURCE_MODIFIED_NOT_BUILT",
+  "SOURCE_BASE_SHA256": "bd0b06774b0405e7c3883d8e26280893e1a6c8097a4d8b7c48c3e51f653a9e18",
+  "GIT_COMMIT_SHA_START": "a57ef88e10c7053af4e526044753ecbf3a342cfc",
+  "repository": "tanerari-asaray/BIST-VIOP-V6.3.40",
+  "branch": "fix/build670-audit-20261026",
+  "note": "Final SHA and real test/APK results are generated in the Actions artifact, never copied from historical runs."
+}

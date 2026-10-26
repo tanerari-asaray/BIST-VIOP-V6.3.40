@@ -1,0 +1,15 @@
+// Fail before executing any task if its graph could produce or install an APK/AAB.
+gradle.taskGraph.whenReady { graph ->
+    def blocked = graph.allTasks.findAll { task ->
+        def forbiddenName = task.name ==~ /(?i)(assemble.*|install.*|uninstall.*|connected.*|device.*|managedDevice.*|package(?!.*Resources).*|bundle(?:Diagnostic|Debug|Release))/
+        def forbiddenType = task.class.name =~ /(?i)(PackageAndroidArtifact|PackageApplication|PackageBundleTask|SignBundleTask)/
+        def binaryOutput = task.outputs.files.files.any { f -> f.name.toLowerCase().endsWith('.apk') || f.name.toLowerCase().endsWith('.aab') }
+        forbiddenName || forbiddenType.find() || binaryOutput
+    }
+    if (!blocked.empty) {
+        throw new GradleException('SOURCE_ONLY_APK_BLOCKED: ' + blocked.collect { it.path }.join(', '))
+    }
+    def evidence = new File(gradle.rootProject.projectDir, '../source-checks/gradle-tasks.txt')
+    evidence.parentFile.mkdirs()
+    evidence.text = graph.allTasks.collect { it.path }.join('\n') + '\n'
+}
