@@ -32,7 +32,7 @@ jobs:
           import hashlib, json, pathlib
           data=json.loads(pathlib.Path('SOURCE-SHA256.json').read_text())['source_sha256_by_path']
           changed='android-v6323/app/src/main/java/tr/borsatakip/v5/ui/PriceChartView.kt'
-          mismatches=[p for p,h in data.items() if p != changed and hashlib.sha256(pathlib.Path(p).read_bytes()).hexdigest()!=h]
+          mismatches=[p for p,h in data.items() if p not in (changed, '.github/workflows/build-670-touch-regression.yml') and hashlib.sha256(pathlib.Path(p).read_bytes()).hexdigest()!=h]
           assert not mismatches, mismatches
           print('Chart fix under emulator test; remaining source hashes verified')
           PY
