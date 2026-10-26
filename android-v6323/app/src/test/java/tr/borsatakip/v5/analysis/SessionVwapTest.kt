@@ -11,7 +11,10 @@ import java.time.ZoneId
 class SessionVwapTest {
     @Test fun dailySeriesDoesNotPretendToBeSessionVwap() {
         val base=1_700_000_000_000L
-        val c=List(30){i->Candle(base+i*86_400_000L,100.0,101.0,99.0,100.0+i*0.1,1000.0)}
+        val c=List(30){i->
+            val px=100.0+i*0.1
+            Candle(base+i*86_400_000L,px,px+1.0,px-1.0,px,1000.0)
+        }
         val t=TechnicalAnalyzer.analyze(c)
         assertNotNull(t.vwma20)
         assertNull(t.sessionVwap)

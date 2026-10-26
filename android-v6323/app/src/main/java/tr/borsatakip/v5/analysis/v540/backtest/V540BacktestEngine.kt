@@ -69,6 +69,20 @@ object V540BacktestEngine {
             val isLimitFillBar = policy.entryMode == V540EntryExecutionMode.LIMIT_AT_ENTRY && index == fill.startIndex
             val hasIntrabar = intrabarsFor(signal, c).isNotEmpty()
 
+            val gapThroughStop = if (isLong) c.open < stop else c.open > stop
+            val positionOpenAtBarStart = index > fill.startIndex || policy.entryMode == V540EntryExecutionMode.SIGNAL_PRICE
+            if (gapThroughStop && positionOpenAtBarStart && !isLimitFillBar) {
+                val openingReturn = directionalReturn(signal.direction, fill.price, c.open)
+                mfe = maxOf(mfe, openingReturn)
+                mae = minOf(mae, openingReturn)
+                return if (target1Seen && policy.target1ExitFraction < 1.0) {
+                    closedBlended(signal, fill, executedPlan, V540BacktestEvent.TARGET1_THEN_STOP, c.timestamp,
+                        t1, policy.target1ExitFraction, c.open, 1.0 - policy.target1ExitFraction,
+                        mfe, mae, observed, estimate, "STOP_MARKET_GAP_OPEN_REFERENCE")
+                } else closed(signal, fill, executedPlan, V540BacktestEvent.STOP, c.timestamp,
+                    c.open, mfe, mae, observed, estimate, "STOP_MARKET_GAP_OPEN_REFERENCE")
+            }
+
             // A limit can be touched after the bar's earlier extreme. Without intrabar evidence we must
             // not attribute the whole fill-bar excursion to the executed trade.
             if (!isLimitFillBar || hasIntrabar) {
@@ -79,16 +93,6 @@ object V540BacktestEngine {
                 }
             }
 
-            val gapThroughStop = if (isLong) c.open < stop else c.open > stop
-            val positionOpenAtBarStart = index > fill.startIndex || policy.entryMode == V540EntryExecutionMode.SIGNAL_PRICE
-            if (gapThroughStop && positionOpenAtBarStart && !isLimitFillBar) {
-                return if (target1Seen && policy.target1ExitFraction < 1.0) {
-                    closedBlended(signal, fill, executedPlan, V540BacktestEvent.TARGET1_THEN_STOP, c.timestamp,
-                        t1, policy.target1ExitFraction, c.open, 1.0 - policy.target1ExitFraction,
-                        mfe, mae, observed, estimate, "STOP_MARKET_GAP_OPEN_REFERENCE")
-                } else closed(signal, fill, executedPlan, V540BacktestEvent.STOP, c.timestamp,
-                    c.open, mfe, mae, observed, estimate, "STOP_MARKET_GAP_OPEN_REFERENCE")
-            }
 
             val stopHit = if (isLong) c.low <= stop else c.high >= stop
             val t1Hit = if (isLong) c.high >= t1 else c.low <= t1
@@ -130,6 +134,11 @@ object V540BacktestEngine {
                         if (policy.target1ExitFraction >= 1.0 || t2 == null) {
                             return closed(signal, fill, executedPlan, V540BacktestEvent.TARGET1, c.timestamp,
                                 t1, mfe, mae, observed, estimate, resolution.verification)
+                        }
+                        if (!t2Hit) {
+                            return closedBlended(signal, fill, executedPlan, V540BacktestEvent.TARGET1_THEN_STOP, c.timestamp,
+                                t1, policy.target1ExitFraction, stop, 1.0 - policy.target1ExitFraction,
+                                mfe, mae, observed, estimate, resolution.verification)
                         }
                         return closedBlended(signal, fill, executedPlan, V540BacktestEvent.TARGET2, c.timestamp,
                             t1, policy.target1ExitFraction, t2, 1.0 - policy.target1ExitFraction,

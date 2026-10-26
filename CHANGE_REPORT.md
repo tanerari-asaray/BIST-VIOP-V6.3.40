@@ -3,9 +3,9 @@
 ## Production changes
 - F01: Preserve independent scan cadence in scheduler, runner, service and BIST UI. Add an editable 1..1440-minute cadence in scan settings; correct labels and describe completion-to-next-run delay.
 - F02: Measure drawdown from the initial equity of 100, including the first losing trade.
-- F03: Honor full/partial T1 exits before T2 in the same bar, also in explicit collision policies.
-- F04: Existing stop-market positions gapping through their stop use the observed bar open as a fill reference, not an untraded stop level. Costs remain explicit; real liquidity is not guaranteed.
-- F05: Walk-forward train/validation/test slices require an exit known before the split boundary, excluding open or invalid-timed outcomes.
+- F03: Honor full/partial T1 exits before T2 in the same bar, also in explicit collision policies. An optimistic T1-before-stop policy cannot fill a T2 price the bar never touched.
+- F04: Existing stop-market positions gapping through their stop use the observed bar open as a fill reference, not an untraded stop level. Costs remain explicit; real liquidity is not guaranteed. Gap-stop excursions do not include the rest of the already-exited bar.
+- F05: Walk-forward train/validation/test slices require an exit known before the split boundary, excluding open or invalid-timed outcomes. OHLC outcomes become known at bar close, not the opening timestamp; gap-open stop references use their observed open time.
 - F06/F07: Reject malformed, stale/future or mismatched live candles; ignore finalized-bar revisions and older bars. Separate per-connection sequence maps; callbacks delivered on the main thread only if generation and connection settings still match. Bound text messages and avoid publishing raw server errors.
 - F08: Add provider-reviewed point-in-time news-risk contract. Unknown/missing/unverified coverage and CRITICAL risk block trade publication. Empty headlines never mean CLEAR. New proxy endpoint delegates to NEWS upstream; provider integration is still required.
 - F09: Detail decision text uses the shared verified-signal gate and expires to WATCH when stale.

@@ -7,7 +7,7 @@ import kotlin.random.Random
  */
 object V540WalkForwardEngine {
     private fun outcomeKnownBefore(trade: V540BacktestTrade, boundary: Long): Boolean =
-        trade.exitTime?.let { it >= trade.entryTime && it < boundary } == true
+        trade.outcomeKnownAt?.let { it < boundary } == true
 
     fun evaluate(
         trades: List<V540BacktestTrade>,

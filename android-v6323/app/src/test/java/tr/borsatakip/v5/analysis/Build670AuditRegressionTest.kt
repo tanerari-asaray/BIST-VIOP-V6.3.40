@@ -38,6 +38,8 @@ class Build670AuditRegressionTest {
     @Test fun longGapStopUsesObservedOpenInsteadOfUntradedStop() {
         val out = eval(listOf(bar(1, 90.0, 92.0, 88.0, 91.0)))
         assertEquals(90.0, out.exitPrice!!, 0.0)
+        assertEquals(-10.0, out.maePct!!, 1e-9)
+        assertEquals(0.0, out.mfePct!!, 1e-9)
         assertEquals("STOP_MARKET_GAP_OPEN_REFERENCE", out.verification)
     }
     @Test fun shortGapStopUsesObservedOpen() {
@@ -49,11 +51,11 @@ class Build670AuditRegressionTest {
     }
     @Test fun trainingSelectionCannotUseOutcomeBeyondItsBoundary() {
         val base = eval(listOf(bar(1, 100.0, 106.0, 99.0, 105.0)))
-        fun trade(id: String, entry: Long, exit: Long, result: Double) = base.copy(signalId=id, entryTime=t+entry, exitTime=t+exit, netReturnPct=result)
+        fun trade(id: String, entry: Long, exit: Long, result: Double) = base.copy(signalId=id, entryTime=t+entry*1000, exitTime=t+exit*1000, netReturnPct=result, timeframeMinutes=1)
         val known = listOf(trade("a",0,1,1.0), trade("v",110,111,1.0), trade("o",210,211,1.0), trade("end",310,311,1.0))
         fun select(value: Double) = V540WalkForwardEngine.optimizeAndEvaluate(
             listOf(V541ModelCandidate("A",known+trade("future",90,150,value)), V541ModelCandidate("B",known.map { it.copy(netReturnPct=0.5) })),
-            100,100,100,100,1,1).first()
+            100_000,100_000,100_000,100_000,1,1).first()
         assertEquals("A", select(-1000.0).selectedModelId)
         assertEquals(select(-1000.0).train.expectancyPct, select(1000.0).train.expectancyPct)
     }
@@ -93,5 +95,18 @@ class Build670AuditRegressionTest {
         assertTrue(result.market)
         assertTrue(result.return5Pct!!>0)
         assertTrue(result.return20Pct!!>0)
+    }
+    @Test fun optimisticCollisionCannotFillAnUntouchedSecondTarget() {
+        val out = V540BacktestEngine.evaluate(signal(listOf(bar(1,100.0,106.0,94.0,100.0))),
+            V540ExecutionCostConfig(), V540ExecutionPolicy(target1ExitFraction=0.5,
+                intrabarResolutionMode=V540IntrabarResolutionMode.OPTIMISTIC_TARGET_FIRST))
+        assertEquals(V540BacktestEvent.TARGET1_THEN_STOP,out.event)
+        assertEquals(0.0,out.grossReturnPct!!,1e-9)
+    }
+    @Test fun barOpenTimestampIsNotTheTimeTheExitOutcomeBecomesKnown() {
+        val trade = eval(listOf(bar(1,100.0,106.0,99.0,105.0)))
+        assertEquals(trade.exitTime!!+300_000L,trade.outcomeKnownAt!!)
+        val gap = eval(listOf(bar(1,90.0,92.0,88.0,91.0)))
+        assertEquals(gap.exitTime,gap.outcomeKnownAt)
     }
 }

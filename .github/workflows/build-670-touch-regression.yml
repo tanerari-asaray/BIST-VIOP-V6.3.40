@@ -31,6 +31,7 @@ jobs:
       - name: Gateway and point-in-time news contract tests
         run: node --experimental-strip-types --test server/tests/gateway.test.mjs server/tests/gateway_diagnostics.test.mjs server/tests/market_proxy.test.mjs
       - uses: actions/cache@v5
+        id: gradle-cache
         with:
           path: |
             ~/.gradle/caches
@@ -48,6 +49,13 @@ jobs:
             android-v6323/app/build/outputs/apk/diagnostic/*.apk
             android-v6323/app/build/outputs/apk/androidTest/diagnostic/*.apk
           if-no-files-found: error
+      - uses: actions/cache/save@v5
+        if: always() && steps.gradle-cache.outputs.cache-hit != 'true'
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ steps.gradle-cache.outputs.cache-primary-key }}
       - uses: actions/upload-artifact@v6
         if: always()
         with:

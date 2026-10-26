@@ -205,7 +205,17 @@ data class V540BacktestTrade(
     val costEvidence: String = "UNKNOWN",
     val rr1: Double? = executedRiskPlan?.rr1,
     val rr2: Double? = executedRiskPlan?.rr2
-)
+) {
+    /** OHLC exit timestamps identify the bar opening; its extrema are known at bar close.
+     * Gap-open stop references are the explicit exception. Computed to remain correct after copy(). */
+    val outcomeKnownAt: Long? get() {
+        val time = exitTime ?: return null
+        if (time < entryTime || timeframeMinutes <= 0) return null
+        if (verification == "STOP_MARKET_GAP_OPEN_REFERENCE") return time
+        val intervalMs = timeframeMinutes.toLong() * 60_000L
+        return if (time <= Long.MAX_VALUE - intervalMs) time + intervalMs else null
+    }
+}
 
 data class V540BacktestMetrics(
     val sampleCount: Int,
