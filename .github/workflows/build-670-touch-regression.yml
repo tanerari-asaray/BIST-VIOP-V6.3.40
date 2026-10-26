@@ -26,16 +26,8 @@ jobs:
           test -x "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager"
           echo "$ANDROID_HOME/cmdline-tools/latest/bin" >> "$GITHUB_PATH"
       - run: sdkmanager 'platforms;android-35' 'build-tools;35.0.0'
-      - name: Verify source identity (except chart fix pending manifest update)
-        run: |
-          python3 - <<'PY'
-          import hashlib, json, pathlib
-          data=json.loads(pathlib.Path('SOURCE-SHA256.json').read_text())['source_sha256_by_path']
-          changed='android-v6323/app/src/main/java/tr/borsatakip/v5/ui/PriceChartView.kt'
-          mismatches=[p for p,h in data.items() if p not in (changed, '.github/workflows/build-670-touch-regression.yml') and hashlib.sha256(pathlib.Path(p).read_bytes()).hexdigest()!=h]
-          assert not mismatches, mismatches
-          print('Chart fix under emulator test; remaining source hashes verified')
-          PY
+      - name: Verify exact source identity
+        run: python3 ci/verify-source-manifest.py
       - name: Gateway and point-in-time news contract tests
         run: node --experimental-strip-types --test server/tests/gateway.test.mjs server/tests/gateway_diagnostics.test.mjs server/tests/market_proxy.test.mjs
       - uses: actions/cache@v5
@@ -120,4 +112,34 @@ jobs:
         with:
           name: BUILD670-DEVICE-REPORTS-${{ matrix.width }}-${{ matrix.scale }}
           path: build670-device/
+          if-no-files-found: error
+  tested-diagnostic:
+    needs: [native-quality, android15]
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/download-artifact@v7
+        with:
+          name: BUILD670-UNAPPROVED-TEST-INPUT
+          path: tested-input
+      - name: Use Android SDK supplied by GitHub hosted runner
+        run: |
+          test -x "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager"
+          echo "$ANDROID_HOME/cmdline-tools/latest/bin" >> "$GITHUB_PATH"
+      - run: sdkmanager 'build-tools;35.0.0'
+      - name: Package only the exact APK that passed every matrix job
+        run: |
+          set -euo pipefail
+          mkdir -p build670-tested
+          apk=$(find tested-input -name '*.apk' ! -name '*androidTest*' -print -quit)
+          test -n "$apk"
+          "$ANDROID_HOME/build-tools/35.0.0/apksigner" verify --verbose --print-certs "$apk" > build670-tested/SIGNATURE_REPORT.txt
+          cp "$apk" build670-tested/BIST-VIOP-V6.3.40-BUILD670-AUDITED-DIAGNOSTIC.apk
+          git archive --format=zip HEAD -o build670-tested/BIST-VIOP-V6.3.40-BUILD670-AUDITED-SOURCE.zip
+          python3 ci/build670-evidence.py package
+      - uses: actions/upload-artifact@v6
+        with:
+          name: BUILD670-TESTED-DIAGNOSTIC-NOT-PRODUCTION
+          path: build670-tested/
           if-no-files-found: error
