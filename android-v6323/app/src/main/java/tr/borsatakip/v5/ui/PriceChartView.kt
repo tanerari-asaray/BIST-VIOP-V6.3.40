@@ -115,10 +115,17 @@ class PriceChartView(c: Context, a: AttributeSet? = null) : View(c, a) {
         putBoolean("supportResistance", showSupportResistance)
         putBoolean("atr", showAtr); putBoolean("trendLines", showTrendLines); putBoolean("channel", showChannel)
     }
-    fun restoreDisplayState(saved: android.os.Bundle) {
+    /** Data can arrive after a user changes an overlay. Restore only data-dependent
+     * viewport coordinates on backfill, never a stale copy of the overlay preferences. */
+    fun restoreViewportState(saved: android.os.Bundle) {
         zoomScale = saved.getFloat("zoom", 1f).coerceIn(1f, 100f)
         panBars = saved.getInt("pan", 0).coerceIn(0, max(0, candles.size - 1))
         selectedAbsoluteIndex = candles.indexOfFirst { it.timestamp == saved.getLong("selectedTime") }.takeIf { it >= 0 }
+        onCandleSelected?.invoke(selectedCandle); invalidate()
+    }
+
+    fun restoreDisplayState(saved: android.os.Bundle) {
+        restoreViewportState(saved)
         showEma9 = saved.getBoolean("ema9", showEma9); showEma21 = saved.getBoolean("ema21", showEma21)
         showSma50 = saved.getBoolean("sma50", showSma50); showSma200 = saved.getBoolean("sma200", showSma200)
         showEma20 = saved.getBoolean("ema20", showEma20); showEma50 = saved.getBoolean("ema50", showEma50)

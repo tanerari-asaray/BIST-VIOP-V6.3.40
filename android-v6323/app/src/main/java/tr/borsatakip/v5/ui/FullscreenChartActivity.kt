@@ -158,9 +158,6 @@ class FullscreenChartActivity : BaseActivity() {
             render()
             refreshTrendComparisons()
         } else load(period)
-        (savedInstanceState?.getBundle("viewState") ?: intent.getBundleExtra("viewState"))?.let {
-            if (state.candles.isNotEmpty()) chart.restoreDisplayState(it)
-        }
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 while (true) { updateNotice(); delay(30_000) }
@@ -393,7 +390,7 @@ class FullscreenChartActivity : BaseActivity() {
         chart.signalPrice = null; chart.signalTime = null; chart.trendAnalysis = null
         heading.text = "${symbol.ifBlank { "Grafik" }} · ${if (market == "VIOP") "VİOP" else "BIST"} · ${period.label} ▾"
         periodButtons.forEach { (tf, button) -> button.alpha = if (tf == period) 1f else 0.55f }
-        if(state.candles.isNotEmpty()) { pendingViewState?.let { chart.restoreDisplayState(it) }; pendingViewState = null }
+        if(state.candles.isNotEmpty()) { pendingViewState?.let { chart.restoreViewportState(it) }; pendingViewState = null }
         indicatorRefreshers.forEach { it() }
         updateSelection(chart.selectedCandle ?: state.candles.lastOrNull())
         updateNotice(); renderAnalysis()

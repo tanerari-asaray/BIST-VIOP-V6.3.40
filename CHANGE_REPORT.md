@@ -26,3 +26,6 @@ No licensed provider, KAP content classifier, real trading fills, physical devic
 NEWS upstream must implement /v1/bist/news-risk/{symbol}?asOf=... with verified symbol/state/coverageThrough/availableAt/source. Absent evidence intentionally yields WATCH, potentially reducing published candidates to zero.
 Daily-profile math is not proof of trading profitability. A dedicated daily 5+5 report UI, next-session execution confirmation, full corporate-action datasets and portfolio backtest remain separate product work.
 Legacy version-specific workflows/scripts are retained for history and are not the BUILD670 acceptance pipeline.
+
+## Device-discovered restoration race
+Android 15 real-touch tests exposed stale S/D state being reapplied on asynchronous data backfill after Activity recreation. Viewport restoration is now separate from overlay restoration in both chart hosts; display preferences are restored once, and later data loads preserve the latest user choice. Regression checks retain real click actions and test viewport-only restoration against a newer overlay choice.

@@ -2,7 +2,7 @@ name: BUILD 670 audited source, Android 15 and tested diagnostic
 on:
   workflow_dispatch:
   push:
-    branches: ['fix/build670-audit-20261026']
+    branches: ['main', 'fix/build670-audit-20261026']
 permissions:
   contents: read
 concurrency:
@@ -55,7 +55,7 @@ jobs:
           path: |
             ~/.gradle/caches
             ~/.gradle/wrapper
-          key: ${{ steps.gradle-cache.outputs.cache-primary-key }}
+          key: build670-gradle-${{ runner.os }}-${{ hashFiles('android-v6323/**/*.gradle.kts', 'android-v6323/gradle/wrapper/gradle-wrapper.properties') }}
       - uses: actions/upload-artifact@v6
         if: always()
         with:

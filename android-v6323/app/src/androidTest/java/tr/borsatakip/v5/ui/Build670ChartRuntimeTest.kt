@@ -36,25 +36,25 @@ class Build670ChartRuntimeTest {
         .putExtra("symbol", "ASELS").putExtra("market", "BIST").putExtra("timeframe", "FIVE_MIN")
         .putExtra("source", "TEST FIXTURE — NOT MARKET DATA").putExtra("candles", fixture())
 
-    private fun assertSd(scenario: ActivityScenario<out android.app.Activity>, active: Boolean) {
+    private fun assertSd(scenario: ActivityScenario<out android.app.Activity>, active: Boolean, stage: String = "embedded") {
         scenario.onActivity { activity ->
             val chart = activity.findViewById<PriceChartView>(R.id.chart)
             val button = activity.findViewById<Button>(R.id.toggleSupportResistance)
-            assertEquals(active, chart.showSupportResistance)
-            assertEquals(active, button.isSelected)
+            assertEquals("$stage chart state", active, chart.showSupportResistance)
+            assertEquals("$stage selected state", active, button.isSelected)
             assertEquals(activity.getColor(if (active) R.color.green else R.color.chip_bg), button.backgroundTintList!!.defaultColor)
         }
     }
 
     @Test fun fullscreenButtonTogglesAndRestoresAfterActivityRecreation() {
         ActivityScenario.launch<FullscreenChartActivity>(intent()).use { scenario ->
-            assertSd(scenario, true)
+            assertSd(scenario, true, "fullscreen initial")
             onView(withId(R.id.toggleSupportResistance)).perform(scrollTo(), click())
-            assertSd(scenario, false)
+            assertSd(scenario, false, "fullscreen off")
             scenario.recreate()
-            assertSd(scenario, false)
+            assertSd(scenario, false, "fullscreen recreated")
             onView(withId(R.id.toggleSupportResistance)).perform(scrollTo(), click())
-            assertSd(scenario, true)
+            assertSd(scenario, true, "fullscreen retoggled")
         }
     }
 
@@ -113,6 +113,9 @@ class Build670ChartRuntimeTest {
                 chart.showSupportResistance = true
                 chart.restoreDisplayState(saved)
                 assertFalse(chart.showSupportResistance)
+                chart.showSupportResistance = true
+                chart.restoreViewportState(saved)
+                assertTrue("Delayed viewport restoration must preserve the latest overlay choice", chart.showSupportResistance)
                 on.recycle(); off.recycle()
             }
         }

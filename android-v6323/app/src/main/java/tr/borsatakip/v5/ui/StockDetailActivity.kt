@@ -653,7 +653,7 @@ class StockDetailActivity : BaseActivity() {
                 chart.candles = candles
                 chart.supportResistance = ChartSupportResistance.fromConfirmed(candles.dropLast(1))
                 chart.trendAnalysis = trend
-                pendingChartViewState?.let { chart.restoreDisplayState(it) }; pendingChartViewState = null
+                pendingChartViewState?.let { chart.restoreViewportState(it) }; pendingChartViewState = null
                 chartToggleRefreshers.forEach { it() }
                 chartStatus.text = when {
                     candles.isEmpty() -> "${timeframe.label}: gerçek OHLCV verisi bulunamadı. Sahte veri üretilmedi."
