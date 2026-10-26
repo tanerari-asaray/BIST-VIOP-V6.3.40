@@ -321,7 +321,7 @@
     "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/ScanResultsActivity.kt": "023605c76e5205347914ab456447735a8dd9649723f98000a0da1fd4ab73fb0a",
     "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/ScanResultsAdapter.kt": "1f0f7b6921fbf039aa1e902f09b8d3a7a58b8effbff9d19a27b8d4176cecbd56",
     "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/SettingsActivity.kt": "6f685fd2c849f009ed7123d469e18e23461abe03cd9fa0ecf7b370a2401fda9b",
-    "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/SettingsDetailActivity.kt": "c5e8c2eb2e5a9c259b493ff547b589cb2f673480b30a23f4f11ea22a0cfff718",
+    "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/SettingsDetailActivity.kt": "ff03a4bdc3964ee4b7d025a302dfd048cb17ebcb55615a8311b840c751a156bc",
     "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/SettingsSearchActivity.kt": "e7b0615eca04bb92876bb362c3d3ccf5c771e2674429c4aa74d781ed1e64b5fb",
     "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/SignalHistoryActivity.kt": "518a6605e8b4f836cac92bf22fe26d8142dd0d7c3b3e8a7edaa3d3419594e04d",
     "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/StockDetailActivity.kt": "059d5d5f06b773a6e3033b7fab81461a1a97894c4951b440f4643268d1be9986",
