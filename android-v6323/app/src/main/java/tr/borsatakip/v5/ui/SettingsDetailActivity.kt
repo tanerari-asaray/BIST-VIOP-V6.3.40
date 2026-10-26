@@ -184,6 +184,12 @@ class SettingsDetailActivity : BaseActivity() {
             issues.put(JSONObject().put("code", code).put("message", message).put("action", action))
         }
         if (!providerOk) issue("PROVIDER_NOT_READY", "Yetkili veri kaynağı doğrulanmadı", "Bağlantı ayarlarını ve sağlık testini kontrol edin")
+        if (provider.failureCode == tr.borsatakip.v5.data.ProviderFailureCode.BACKEND_URL_MISSING)
+            issue("BACKEND_URL_MISSING", "Production Backend HTTPS adresi eksik", "Ayarlar bölümünden doğrulanmış HTTPS adresini girin")
+        if (provider.failureCode == tr.borsatakip.v5.data.ProviderFailureCode.API_KEY_MISSING)
+            issue("API_KEY_MISSING", "Production Backend erişim anahtarı eksik", "Yetkili anahtarı güvenli bağlantı ayarlarından yapılandırın")
+        if (universe == null && scan != null)
+            issue("LEGACY_SCAN_UNVERIFIED", "Eski BIST taraması tam evren/fiyat doğrulaması değildir", "Tam evren taraması ve sağlayıcı testini çalıştırın")
         if (universe?.status == "PARTIAL" || universe?.status == "FAILED" || universe?.status == "CANCELLED")
             issue("SCAN_INCOMPLETE", "Son evren taraması tamamlanmadı", "Taramayı yeniden başlatın")
         if (runtime.autoScanEnabled && !tr.borsatakip.v5.worker.AutoScanUiPolicy.isCompleted(runtime.lastAutoScanStatus))
@@ -225,6 +231,19 @@ class SettingsDetailActivity : BaseActivity() {
                 put("bistSuccessful", universe?.successfulBist ?: JSONObject.NULL)
                 put("bistNoData", universe?.noDataBist ?: JSONObject.NULL)
                 put("bistErrors", universe?.errorsBist ?: JSONObject.NULL)
+                // Legacy counters belong to different stages; never sum as a partition.
+                put("bistCountersAdditive", false)
+                put("bistCounterSource", if (universe != null) "FULL_UNIVERSE" else "NOT_AVAILABLE")
+                put("legacyAnalyzed", if (universe == null && scan != null) scan.successful else JSONObject.NULL)
+                put("legacyProviderNoData", if (universe == null && scan != null) scan.noData else JSONObject.NULL)
+                put("legacyProviderErrors", if (universe == null && scan != null) scan.errors else JSONObject.NULL)
+                put("bistCountersRangeValid", if (universe != null)
+                    universe.triedBist >= 0 && universe.discoveredBist >= 0 &&
+                    universe.triedBist <= universe.discoveredBist &&
+                    universe.successfulBist in 0..universe.discoveredBist &&
+                    universe.noDataBist in 0..universe.discoveredBist &&
+                    universe.errorsBist in 0..universe.discoveredBist
+                    else JSONObject.NULL)
                 put("bistPriceCoverage", if (universe == null) "NOT_VERIFIED" else if (universe.bistListComplete) "LIST_COMPLETE" else "PARTIAL")
                 put("viopProcessed", universe?.triedViop ?: 0)
                 put("viopDiscovered", universe?.discoveredViop ?: 0)
