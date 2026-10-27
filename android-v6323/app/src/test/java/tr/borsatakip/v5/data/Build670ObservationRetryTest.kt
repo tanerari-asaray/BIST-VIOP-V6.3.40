@@ -60,11 +60,23 @@ class Build670ObservationRetryTest {
         assertEquals(632, visited.size); assertEquals(universe.toSet(), visited.toSet())
     }
 
-    @Test fun incompleteHistoryIsRetriedAndLastObservationIsRetained() = runBlocking {
+    @Test fun unsuccessfulQuoteValidationCannotLeakPriceIntoResults() = runBlocking {
+        val result = ObservationRetryPolicy.execute(
+            fetch = { 0.50 },
+            validate = { price: Double -> if (price > 1.0) null else "PRICE_UNVERIFIED" },
+            classify = { "NETWORK_ERROR" },
+            pause = {}
+        )
+        assertNull(result.value)
+        assertEquals("PRICE_UNVERIFIED", result.error)
+        assertEquals(1, result.attempts)
+    }
+
+    @Test fun incompleteHistoryIsRetriedWithoutAcceptingUnvalidatedObservation() = runBlocking {
         var attempt = 0
         val result = ObservationRetryPolicy.execute(fetch = { if (++attempt == 1) "quote" else null },
             validate = { "HISTORY_EMPTY" }, classify = { "PROVIDER_ERROR" }, pause = {})
-        assertEquals("quote", result.value); assertEquals(3, result.attempts)
+        assertNull(result.value); assertEquals("EMPTY_DATA", result.error); assertEquals(3, result.attempts)
         assertEquals(listOf("HISTORY_EMPTY", "EMPTY_DATA", "EMPTY_DATA"), result.errors)
     }
 }
