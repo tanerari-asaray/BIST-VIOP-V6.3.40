@@ -315,10 +315,17 @@ class FullUniverseScanActivity : BaseActivity() {
         lifecycleScope.launch {
             val saved = withContext(Dispatchers.IO) { ObservationCheckpoint(applicationContext).read() }
             if (!FullUniverseScanRuntime.isRunning && saved != null && entries.isEmpty()) {
-                entries.addAll(saved.rows)
-                // These are persisted observations, never evidence of a fresh provider request.
-                displayingSavedCheckpoint = true
-                updateList()
+                if (saved.runId.isNotBlank() && scanId.isNotBlank() && saved.runId != scanId) {
+                    displayingSavedCheckpoint = true
+                    discoveryFailure = "Özet ve kayıt tarama kimliği farklı; eski sonuçlar birleştirilmedi."
+                    updateStatus()
+                    updateList()
+                } else {
+                    entries.addAll(saved.rows)
+                    // Restored observations are not fresh network responses.
+                    displayingSavedCheckpoint = true
+                    updateList()
+                }
             }
         }
         lifecycleScope.launch {
