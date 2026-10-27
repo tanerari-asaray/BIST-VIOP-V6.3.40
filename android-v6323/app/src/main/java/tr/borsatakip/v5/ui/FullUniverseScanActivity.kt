@@ -316,6 +316,9 @@ class FullUniverseScanActivity : BaseActivity() {
             val saved = withContext(Dispatchers.IO) { ObservationCheckpoint(applicationContext).read() }
             if (!FullUniverseScanRuntime.isRunning && saved != null && entries.isEmpty()) {
                 entries.addAll(saved.rows)
+                // These are persisted observations, never evidence of a fresh provider request.
+                sourceNote.text = "ESKİ KAYIT / CHECKPOINT • Yeniden sorgulanmadı. " +
+                    "Yeni sonuç için GECİKMELİ TARAMAYI BAŞLAT seçin."
                 updateList()
             }
         }
