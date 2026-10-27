@@ -204,7 +204,7 @@
     "android-v6323/app/src/main/java/tr/borsatakip/v5/data/DiagnosticOverlapAudit.kt": "d514898bdcc31a0acbfe0612452e363afa9c4494c2db3bff3e0dabb0371d945f",
     "android-v6323/app/src/main/java/tr/borsatakip/v5/data/DiagnosticStallPolicy.kt": "c921516c510d035bdf2cc532523a68a2b921789d91f7acdda9fdc43c14519640",
     "android-v6323/app/src/main/java/tr/borsatakip/v5/data/ForwardOutcomeMatcher.kt": "3519732c152cc5d77d51d722a90447971743a20c0f002bad76b139b75d9c5ef8",
-    "android-v6323/app/src/main/java/tr/borsatakip/v5/data/FullUniversePolicy.kt": "4cad01a170e383c73a00ea154c56491ea3bd851c79fb813c2e517f71e2058639",
+    "android-v6323/app/src/main/java/tr/borsatakip/v5/data/FullUniversePolicy.kt": "2791c4725eef306804a811aeacce9a4453bc00cad91ba5f8e9c8a281e20ece64",
     "android-v6323/app/src/main/java/tr/borsatakip/v5/data/FullUniverseScanSnapshotStore.kt": "c3b92502bc9dfd04e9d2010546446eeba0a371d0f1b8f491bfdbc481876581f4",
     "android-v6323/app/src/main/java/tr/borsatakip/v5/data/FundamentalsBatchClient.kt": "26cdf98837329f2804bbdc1f0d4aeaddce8da8792751ba1007ab6259ffb44ce0",
     "android-v6323/app/src/main/java/tr/borsatakip/v5/data/FundamentalsEndpointDiagnostic.kt": "0776a5a2afd8c80559c9d9c6c8af61d5e13673dd4fe75f8f63f8e49cbaade3f0",
@@ -218,7 +218,7 @@
     "android-v6323/app/src/main/java/tr/borsatakip/v5/data/MtfHistoryCache.kt": "e826b5efcd02378a7ab656f42dc67bc80faa3afe5035d98b1321c11d4a5c961e",
     "android-v6323/app/src/main/java/tr/borsatakip/v5/data/NewsRepository.kt": "f58ce09de9b5bf6c923af0f2b31993662b2a6c8f090ccf479fa811d8f0643771",
     "android-v6323/app/src/main/java/tr/borsatakip/v5/data/ObservationAnalysis.kt": "4069bf24e081bae3dd51e1e5ba825355e2e30386ac2b6254121ba3f8d0c7f355",
-    "android-v6323/app/src/main/java/tr/borsatakip/v5/data/ObservationCheckpoint.kt": "cfee31f7b4a3682c181eed2c6092102f2af4c26ded3d14f12180f855386ad401",
+    "android-v6323/app/src/main/java/tr/borsatakip/v5/data/ObservationCheckpoint.kt": "ff4d7be10b998fec8f2b88529439cec67fd2ea83640d4140aeb2c5c7c639feed",
     "android-v6323/app/src/main/java/tr/borsatakip/v5/data/ObservationRetryPolicy.kt": "999b0f52e72aa812664ee742903a6f4b1a0cbdac91096ac212a667104b3f0390",
     "android-v6323/app/src/main/java/tr/borsatakip/v5/data/ObservationSourcePolicy.kt": "e9e1d95894b1169df032f2cb3ee50ff8c2fcff2dfac5ff20479a8fbd41b3dcd5",
     "android-v6323/app/src/main/java/tr/borsatakip/v5/data/ProviderProbeGate.kt": "65d03db504a5bf2dd16656ab69e936cb667ff6305a62d287cd008c02d96178e5",
@@ -302,7 +302,7 @@
     "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/FavoritesActivity.kt": "0791e04e85edcad852896b5bcd37b50b5c806682533b474b56fbe37ef7ec0b87",
     "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/ForwardCurveView.kt": "da44a7c75ba5cbce29788a4d3a12e4f619f1c33d1fbb078f40a9721da556bab6",
     "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/FullUniverseScanActivity.kt": "b341ff44a355f05278441210271b1e1967eb6e0248fb143dc5a2819e4e64624a",
-    "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/FullUniverseScanRuntime.kt": "51b5b9c05a731f38590777fd88b2f9941687e20a6f41064b13929271b03bea78",
+    "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/FullUniverseScanRuntime.kt": "d5a6d3d7088eb02737747462ca9c0e56673b02f9ad14f1c5d19ba8a6e21b63f1",
     "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/FullscreenChartActivity.kt": "4d97b199f34041e21a6ddc4aa90dc6c308721e611fd4524c16e2985b3f130c7c",
     "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/HistoryTextAdapter.kt": "d801735c8547552c90025e29f2fcfaea36aa99fde6c7c6ce27f344b862948849",
     "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/MainActivity.kt": "dc459f0990ca5e6ddec928a347c1b097ebd59979de4f3a58e6e1588d8a21fb58",
@@ -745,6 +745,6 @@
     "android-v6323/app/src/main/java/tr/borsatakip/v5/data/ViopContractDuplicatePolicy.kt": "f05ac81da7e3bae47dce12a027ae503aebb0db7dfb5c5e2d434f12d321bb18cc",
     "android-v6323/app/src/test/java/tr/borsatakip/v5/data/Build670ViopDuplicatePolicyTest.kt": "6ee45139a2cd2b9462882e262fe4031758382e896049ee04d0175c8048aa8ca1",
     "android-v6323/app/src/androidTest/java/tr/borsatakip/v5/ui/Build670CheckpointRuntimeTest.kt": "1fbb90f77a5ac32e3a98251f8236ee6141874ff60fac6d36c12a5a5f9b692c60",
-    "android-v6323/app/src/test/java/tr/borsatakip/v5/data/Build670StageCountersTest.kt": "524e78825669ed6bc941de128d1759f5ddde4ce59386180449c6f0d0b24aa6f1"
+    "android-v6323/app/src/test/java/tr/borsatakip/v5/data/Build670StageCountersTest.kt": "d605dc4804085c29f01740a5d0085e812214368268681b5039bd6e4b77830e0c"
   }
 }
