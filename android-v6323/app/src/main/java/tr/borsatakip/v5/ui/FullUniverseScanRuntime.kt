@@ -247,7 +247,7 @@ object FullUniverseScanRuntime {
             prior?.takeIf { it>0 }?.let { price?.let { p -> (p/it-1)*100 } })
     }
     private fun contractEntry(c:ViopContract):FullUniversePolicy.Entry {
-        val p=c.lastPrice?.takeIf { it.isFinite()&&it>0&&c.validity!=SignalValidity.REJECTED }
+        val p: Double? = null // Catalog value is not a successful quote response
         return FullUniversePolicy.Entry(FullUniversePolicy.Market.VIOP,c.symbol,"${c.underlying} • ${c.expiry} • ${c.contractType}",p,c.currency,
             FullUniversePolicy.Trend.UNKNOWN,if(p==null)FullUniversePolicy.Quality.NO_DATA else FullUniversePolicy.Quality.UNVERIFIED,
             c.providerLabel,c.dataTimestamp,c.receivedAt,"Çarpan ${c.multiplier?:"—"} • Açık pozisyon ${c.openInterest?:"—"}. Sözleşme fiyatı hisse ucuzluğu değildir.",
