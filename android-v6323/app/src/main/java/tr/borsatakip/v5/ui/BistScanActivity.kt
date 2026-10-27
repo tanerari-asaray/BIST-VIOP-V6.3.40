@@ -580,9 +580,17 @@ class BistScanActivity : BaseActivity() {
     }
 
     private fun focusSearch() {
-        search.requestFocus()
-        search.post {
-            (getSystemService(INPUT_METHOD_SERVICE) as? InputMethodManager)?.showSoftInput(search, InputMethodManager.SHOW_IMPLICIT)
+        // Bring the search field into view when the bottom shortcut is tapped.
+        val scroll = findViewById<android.widget.ScrollView>(R.id.scanScroll)
+        scroll.post {
+            scroll.smoothScrollTo(0, 0)
+            search.requestFocus()
+            search.postDelayed({
+                if (!isFinishing && !isDestroyed && search.hasFocus()) {
+                    (getSystemService(INPUT_METHOD_SERVICE) as? InputMethodManager)
+                        ?.showSoftInput(search, InputMethodManager.SHOW_IMPLICIT)
+                }
+            }, 220L)
         }
     }
 
