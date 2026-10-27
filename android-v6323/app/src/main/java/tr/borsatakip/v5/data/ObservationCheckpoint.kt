@@ -42,6 +42,7 @@ class ObservationCheckpoint(context: Context) {
         val universeArray=root.getJSONArray("universe")
         if (array.length()>10000 || universeArray.length()>10000) return null
         if (root.optString("runId").length>128 || root.optString("sourceIdentity").length>512) return null
+        if (root.optInt("schemaVersion") == 4 && root.optString("runId").isBlank()) return null
         val rows=(0 until array.length()).map { i ->
             val r=array.getJSONObject(i)
             fun num(key:String)=if(r.isNull(key)) null else r.optDouble(key).takeIf(Double::isFinite)
