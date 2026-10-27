@@ -18,7 +18,6 @@ object ObservationRetryPolicy {
         pause: suspend (Long) -> Unit = { delay(it) }
     ): Result<T> {
         val errors = mutableListOf<String>()
-        var lastValue: T? = null
         for (attempt in 1..3) {
             var value: T? = null
             val error = try {
@@ -27,10 +26,9 @@ object ObservationRetryPolicy {
             } catch (_: TimeoutCancellationException) { "NETWORK_TIMEOUT" }
             catch (cancel: CancellationException) { throw cancel }
             catch (error: Exception) { classify(error) }
-            if (value != null) lastValue = value
             if (error == null) return Result(value, null, attempt, errors)
             errors += error
-            if (error !in transient || attempt == 3) return Result(lastValue, error, attempt, errors)
+            if (error !in transient || attempt == 3) return Result(null, error, attempt, errors)
             pause((if (error == "RATE_LIMIT") 2_000L else 500L) * attempt)
         }
         error("Unreachable retry state")
