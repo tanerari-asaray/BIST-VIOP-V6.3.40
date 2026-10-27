@@ -740,6 +740,7 @@
     "server/tests/websocket.bun.test.ts": "677328311581fac66eaff2ca0ddddeb1aa30da9fe3df188db443a3adc08fbebd",
     "source-checks/apk-absence.json": "dacafa8ad55965dd33bf10eac1a61aeaf73b7c92e5514276fd4b0e06a65abbbf",
     "verify_source668.py": "837aa0b906c085e5729fba8b24a2c51d4e507d4cba03672219e99b55f7c13b65",
-    "android-v6323/app/src/androidTest/java/tr/borsatakip/v5/ui/WindowFocusAwaiter.kt": "c85ec462d747e43e5b8bb867137028ba08fb358b18dc7e17156e3639c810c957"
+    "android-v6323/app/src/androidTest/java/tr/borsatakip/v5/ui/WindowFocusAwaiter.kt": "c85ec462d747e43e5b8bb867137028ba08fb358b18dc7e17156e3639c810c957",
+    "android-v6323/app/src/test/java/tr/borsatakip/v5/data/Build670ViopStageRetryTest.kt": "da398e49c243d64ba5454a590f4fb7321cb0c30c82171c15886196da102d3c32"
   }
 }
