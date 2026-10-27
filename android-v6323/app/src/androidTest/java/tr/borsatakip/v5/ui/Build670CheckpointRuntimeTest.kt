@@ -65,4 +65,10 @@ class Build670CheckpointRuntimeTest {
         assertNull(store.read())
     }
 
+    @Test fun modernCheckpointWithoutRunIdCannotBeRestored() = isolated { store,dir ->
+        val file=File(dir,"universe-observation-v648.json")
+        file.writeText("""{"schemaVersion":4,"local":true,"runId":"","sourceIdentity":"LOCAL_DELAYED|YAHOO","savedAt":123,"universe":[],"rows":[]}""")
+        assertNull(store.read())
+    }
+
 }
