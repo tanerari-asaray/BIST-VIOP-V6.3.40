@@ -301,7 +301,7 @@
     "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/FavoriteAdapter.kt": "7e8f6a77cdc8a9b253be861122f6aa51b2ec66d129142844f889b9cc9df0d3e5",
     "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/FavoritesActivity.kt": "0791e04e85edcad852896b5bcd37b50b5c806682533b474b56fbe37ef7ec0b87",
     "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/ForwardCurveView.kt": "da44a7c75ba5cbce29788a4d3a12e4f619f1c33d1fbb078f40a9721da556bab6",
-    "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/FullUniverseScanActivity.kt": "2446f3e3f5f3145ff520f76426029c7d3cf31e53b52090acd7579d818a03718f",
+    "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/FullUniverseScanActivity.kt": "fbed0166b5f107469c37c66fa6132f30709fc0b386dfd82b4df948e07081068d",
     "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/FullUniverseScanRuntime.kt": "24d64e4123c6c0387ce25ca04be1cda6e8a560efea750146806572a32a162241",
     "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/FullscreenChartActivity.kt": "4d97b199f34041e21a6ddc4aa90dc6c308721e611fd4524c16e2985b3f130c7c",
     "android-v6323/app/src/main/java/tr/borsatakip/v5/ui/HistoryTextAdapter.kt": "d801735c8547552c90025e29f2fcfaea36aa99fde6c7c6ce27f344b862948849",
