@@ -29,7 +29,7 @@ adb install -r "$test_apk"
 adb shell am force-stop "$package"
 adb shell run-as "$package" mkdir -p files/build670-screens
 adb shell dumpsys window > build670-device/window-before.txt
-classes='tr.borsatakip.v5.ui.MarketTouchRuntimeTest#stocksHeaderButtonsOpenRealDestinationsWithTouch,tr.borsatakip.v5.ui.MarketTouchRuntimeTest#stocksTouchFiltersSearchSortFavoriteAndDetail,tr.borsatakip.v5.ui.MarketTouchRuntimeTest#stocksUnavailableFiltersGiveVisibleReasonsWithoutChangingRows,tr.borsatakip.v5.ui.MarketTouchRuntimeTest#stocksEmptyScanAndBottomNavigationReceiveTouch,tr.borsatakip.v5.ui.Build670ChartRuntimeTest'
+classes='tr.borsatakip.v5.ui.MarketTouchRuntimeTest#compactBistQuickActionsHaveReadableTwoLineLabelsAndWorkingTouchTargets,tr.borsatakip.v5.ui.MarketTouchRuntimeTest#stocksHeaderButtonsOpenRealDestinationsWithTouch,tr.borsatakip.v5.ui.MarketTouchRuntimeTest#stocksTouchFiltersSearchSortFavoriteAndDetail,tr.borsatakip.v5.ui.MarketTouchRuntimeTest#stocksUnavailableFiltersGiveVisibleReasonsWithoutChangingRows,tr.borsatakip.v5.ui.MarketTouchRuntimeTest#stocksEmptyScanAndBottomNavigationReceiveTouch,tr.borsatakip.v5.ui.Build670ChartRuntimeTest'
 adb logcat -c
 adb shell am instrument -w -r -e class "$classes" "$package.test/androidx.test.runner.AndroidJUnitRunner" | tee build670-device/instrumentation.txt
 python3 ci/build670-evidence.py device
