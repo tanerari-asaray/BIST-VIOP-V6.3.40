@@ -9,7 +9,8 @@ import android.widget.Button
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.action.ViewActions.scrollTo
-import androidx.test.espresso.matcher.ViewMatchers.withId
+import androidx.test.espresso.matcher.ViewMatchers.*
+import androidx.test.espresso.assertion.ViewAssertions.matches
 import tr.borsatakip.v5.analysis.TechnicalAnalyzer
 import tr.borsatakip.v5.model.Opportunity
 import androidx.test.core.app.ActivityScenario
@@ -48,12 +49,15 @@ class Build670ChartRuntimeTest {
 
     @Test fun fullscreenButtonTogglesAndRestoresAfterActivityRecreation() {
         ActivityScenario.launch<FullscreenChartActivity>(intent()).use { scenario ->
+            WindowFocusAwaiter.await(FullscreenChartActivity::class.java)
             assertSd(scenario, true, "fullscreen initial")
-            onView(withId(R.id.toggleSupportResistance)).perform(scrollTo(), click())
+            onView(withId(R.id.toggleSupportResistance)).perform(scrollTo()).check(matches(isCompletelyDisplayed())).check(matches(isEnabled())).perform(click())
             assertSd(scenario, false, "fullscreen off")
             scenario.recreate()
+            WindowFocusAwaiter.await(FullscreenChartActivity::class.java)
+            scenario.onActivity { assertEquals("Recreation must preserve offline candles", fixture(), it.findViewById<PriceChartView>(R.id.chart).candles) }
             assertSd(scenario, false, "fullscreen recreated")
-            onView(withId(R.id.toggleSupportResistance)).perform(scrollTo(), click())
+            onView(withId(R.id.toggleSupportResistance)).perform(scrollTo()).check(matches(isCompletelyDisplayed())).check(matches(isEnabled())).perform(click())
             assertSd(scenario, true, "fullscreen retoggled")
         }
     }
@@ -68,11 +72,21 @@ class Build670ChartRuntimeTest {
         try {
             ActivityScenario.launch<StockDetailActivity>(Intent(context, StockDetailActivity::class.java)
                 .putExtra("opportunity", item)).use { scenario ->
+                WindowFocusAwaiter.await(StockDetailActivity::class.java)
                 assertSd(scenario, true)
-                onView(withId(R.id.toggleSupportResistance)).perform(scrollTo(), click())
+                onView(withId(R.id.toggleSupportResistance)).perform(scrollTo()).check(matches(isCompletelyDisplayed())).check(matches(isEnabled())).perform(click())
                 assertSd(scenario, false)
-                onView(withId(R.id.toggleSupportResistance)).perform(scrollTo(), click())
+                scenario.recreate()
+                WindowFocusAwaiter.await(StockDetailActivity::class.java)
+                assertSd(scenario, false, "embedded recreated")
+                onView(withId(R.id.toggleSupportResistance)).perform(scrollTo()).check(matches(isCompletelyDisplayed())).check(matches(isEnabled())).perform(click())
                 assertSd(scenario, true)
+                onView(withId(R.id.chartFullscreen)).perform(scrollTo(), click())
+                WindowFocusAwaiter.await(FullscreenChartActivity::class.java)
+                onView(withId(R.id.toggleSupportResistance)).perform(scrollTo()).check(matches(isSelected()))
+                androidx.test.espresso.Espresso.pressBack()
+                WindowFocusAwaiter.await(StockDetailActivity::class.java)
+                assertSd(scenario, true, "returned from fullscreen")
             }
         } finally { AppSession.selected = previous }
     }

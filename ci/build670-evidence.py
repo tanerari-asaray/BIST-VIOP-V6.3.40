@@ -13,9 +13,13 @@ if mode=='jvm':
 elif mode=='device':
     text=Path('build670-device/instrumentation.txt').read_text()
     matched=re.search(r'OK \((\d+) tests?\)',text)
-    assert matched and int(matched[1])>=7, text[-2000:]
-    assert not any(x in text for x in ['FAILURES!!!','INSTRUMENTATION_FAILED','Process crashed'])
-    Path('build670-device/result.json').write_text(json.dumps({'passed':int(matched[1]),'status':'PASS','commit':os.getenv('GITHUB_SHA')}))
+    passed = bool(matched and int(matched[1]) >= 7 and not any(
+        x in text for x in ['FAILURES!!!', 'INSTRUMENTATION_FAILED', 'Process crashed', 'INSTRUMENTATION_ABORTED']))
+    result = {'passed': int(matched[1]) if matched else 0,
+              'status': 'PASS' if passed else 'FAIL', 'commit': os.getenv('GITHUB_SHA')}
+    Path('build670-device/result.json').write_text(json.dumps(result))
+    if not passed:
+        raise SystemExit('Device tests failed; inspect instrumentation.txt, logcat.txt, window.txt and screens.tar')
 elif mode=='package':
     root=Path('build670-tested'); files=list(root.iterdir())
     data={p.name:{'bytes':p.stat().st_size,'sha256':hashlib.sha256(p.read_bytes()).hexdigest()} for p in files if p.is_file()}

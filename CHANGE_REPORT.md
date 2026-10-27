@@ -1,34 +1,10 @@
-# BUILD 670 — audit corrections
+# BUILD 670 focus and recreation correction — 27 October 2026
 
-## Production changes
-- F01: Preserve independent scan cadence in scheduler, runner, service and BIST UI. Add an editable 1..1440-minute cadence in scan settings; correct labels and describe completion-to-next-run delay.
-- F02: Measure drawdown from the initial equity of 100, including the first losing trade.
-- F03: Honor full/partial T1 exits before T2 in the same bar, also in explicit collision policies. An optimistic T1-before-stop policy cannot fill a T2 price the bar never touched.
-- F04: Existing stop-market positions gapping through their stop use the observed bar open as a fill reference, not an untraded stop level. Costs remain explicit; real liquidity is not guaranteed. Gap-stop excursions do not include the rest of the already-exited bar.
-- F05: Walk-forward train/validation/test slices require an exit known before the split boundary, excluding open or invalid-timed outcomes. OHLC outcomes become known at bar close, not the opening timestamp; gap-open stop references use their observed open time.
-- F06/F07: Reject malformed, stale/future or mismatched live candles; ignore finalized-bar revisions and older bars. Separate per-connection sequence maps; callbacks delivered on the main thread only if generation and connection settings still match. Bound text messages and avoid publishing raw server errors.
-- F08: Add provider-reviewed point-in-time news-risk contract. Unknown/missing/unverified coverage and CRITICAL risk block trade publication. Empty headlines never mean CLEAR. New proxy endpoint delegates to NEWS upstream; provider integration is still required.
-- F09: Detail decision text uses the shared verified-signal gate and expires to WATCH when stale.
-- F10: General technical analyzer fails closed on malformed OHLCV, duplicate or reversed series instead of silently repairing it.
-- F11: Separate unapproved test input/report artifacts from the tested diagnostic package. Packaging depends on native quality and all four Android 15 jobs, copies the same tested APK, verifies the signature and writes runtime hashes.
-- F12: Preserve old evidence under audit/history, regenerate current source hashes, and replace stale APK-built claims with source-modified status.
-- F13: Fullscreen and embedded S/D tests use actual Espresso click and check active/inactive tint plus chart state. Both S/D touch targets are at least 48dp high. Existing overlay pixel test retained.
-- F14: Introduce a versioned daily-only profile: EMA20/50 slope, close-based 10/20 breakout, pullback/continuation models, SMA200 context, RSI 50..68 / 32..50, CLV 0.70 / 0.30, ATR up to 6%, obstacle distance and daily returns. Keep intraday policy explicitly separate. Export profile/model/RS20/SMA/returns in the assessment.
+- Await two consecutive ready-window observations after Activity launch/recreation and navigation; keep Espresso touch/visibility assertions intact. A timeout remains a test failure and captures its window state.
+- Keep the CI emulator awake and dismiss its test-device keyguard before instrumentation.
+- Collect logcat, windows, activities, power state, screenshot and app-private evidence in an EXIT trap, even when instrumentation fails. Use one build670-screens path.
+- Report failed instrumentation explicitly in result.json without confusing normal runner termination with test success.
+- Preserve the displayed fullscreen candle series across Activity recreation, alongside the existing overlay/viewport state. Restored data remains marked recorded, never certified live.
+- Extend touch regression assertions for S/D visibility/enabled state, embedded recreation, fullscreen entry/return and retained candles.
 
-## Regression coverage
-New JVM tests cover first losses, full/partial LONG/SHORT target exits, gap stops, walk-forward leakage, live candle validation, analyzer validation, temporal news coverage/veto and the daily SMA/close-breakout profile.
-Gateway regressions cover explicit provider-reviewed news risk, malformed/future evidence and missing upstream.
-Android matrix runs four stock interaction tests and three S/D/overlay tests at 320dp/1.0, 320dp/1.3, 411dp/1.0 and 411dp/1.5.
-The previous source test requiring timeframe/cadence coupling was updated to assert the corrected independence contract.
-
-## Limits and required external evidence
-No licensed provider, KAP content classifier, real trading fills, physical device behavior or in-place signer compatibility is certified by fixture tests.
-NEWS upstream must implement /v1/bist/news-risk/{symbol}?asOf=... with verified symbol/state/coverageThrough/availableAt/source. Absent evidence intentionally yields WATCH, potentially reducing published candidates to zero.
-Daily-profile math is not proof of trading profitability. A dedicated daily 5+5 report UI, next-session execution confirmation, full corporate-action datasets and portfolio backtest remain separate product work.
-Legacy version-specific workflows/scripts are retained for history and are not the BUILD670 acceptance pipeline.
-
-## Device-discovered restoration race
-Android 15 real-touch tests exposed stale S/D state being reapplied on asynchronous data backfill after Activity recreation. Viewport restoration is now separate from overlay restoration in both chart hosts; display preferences are restored once, and later data loads preserve the latest user choice. Regression checks retain real click actions and test viewport-only restoration against a newer overlay choice.
-
-## Stable fullscreen controls
-Real touch in four device configurations additionally exposed clipping/layout movement while asynchronous trend cards changed height. Fullscreen S/D/indicator controls are now in a fixed 48dp toolbar outside the scrolling content. Comparison cards follow the chart/tools; provenance notice height is reserved. The toolbar remains accessible in landscape as well. Tests keep standard Espresso click constraints.
+Local validation: 67 gateway/news/proxy tests passed; shell syntax checked. Android compilation, lint and device results are supplied by the current Actions run; no pass is assumed here.

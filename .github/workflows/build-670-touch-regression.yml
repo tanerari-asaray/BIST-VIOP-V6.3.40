@@ -2,7 +2,7 @@ name: BUILD 670 audited source, Android 15 and tested diagnostic
 on:
   workflow_dispatch:
   push:
-    branches: ['main', 'fix/build670-audit-20261026', 'fix/build670-chart-jump-20261026']
+    branches: ['main', 'fix/build670-audit-20261026', 'fix/build670-chart-jump-20261026', 'fix/build670-focus-20261027']
 permissions:
   contents: read
 concurrency:

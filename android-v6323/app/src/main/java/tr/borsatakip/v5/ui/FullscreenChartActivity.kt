@@ -149,12 +149,15 @@ class FullscreenChartActivity : BaseActivity() {
             @Suppress("DEPRECATION", "UNCHECKED_CAST")
             intent.getSerializableExtra("candles") as? ArrayList<Candle>
         }.orEmpty()
+        @Suppress("DEPRECATION", "UNCHECKED_CAST")
+        val restoredCandles = savedInstanceState?.getSerializable("chartCandles") as? ArrayList<Candle>
+        val visibleCandles = restoredCandles ?: initial
         pendingViewState = savedInstanceState?.getBundle("viewState") ?: intent.getBundleExtra("viewState")
         buildContent()
         pendingViewState?.let { chart.restoreDisplayState(it) }
         indicatorRefreshers.forEach { it() }
-        if (savedInstanceState == null && initial.isNotEmpty()) {
-            state.complete(state.begin(), initial.takeLast(2000), recorded = true)
+        if (visibleCandles.isNotEmpty()) {
+            state.complete(state.begin(), visibleCandles.takeLast(2000), recorded = true)
             render()
             refreshTrendComparisons()
         } else load(period)
@@ -639,6 +642,7 @@ class FullscreenChartActivity : BaseActivity() {
         renderEverydayExplanation(details, state.candles)
     }
     override fun onSaveInstanceState(outState: Bundle) {
+        outState.putSerializable("chartCandles", ArrayList(state.candles.takeLast(2000)))
         outState.putString("period", period.name); outState.putBundle("viewState", chart.saveDisplayState()); super.onSaveInstanceState(outState)
     }
 }

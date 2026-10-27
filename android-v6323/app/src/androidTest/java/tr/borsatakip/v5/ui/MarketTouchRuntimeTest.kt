@@ -3,7 +3,6 @@ package tr.borsatakip.v5.ui
 import android.app.Activity
 import android.content.Context
 import android.graphics.Bitmap
-import android.os.ParcelFileDescriptor
 import android.os.SystemClock
 import android.view.View
 import android.widget.Button
@@ -125,16 +124,7 @@ class MarketTouchRuntimeTest {
         error("Touch action did not produce its expected visible result")
     }
     private fun awaitActivity(type: Class<out Activity>) {
-        repeat(80) {
-            var active = false
-            inst.runOnMainSync {
-                active = ActivityLifecycleMonitorRegistry.getInstance().getActivitiesInStage(Stage.RESUMED)
-                    .any { type.isInstance(it) && it.window.decorView.isShown && it.window.decorView.hasWindowFocus() }
-            }
-            if (active) { inst.waitForIdleSync(); return }
-            SystemClock.sleep(50)
-        }
-        error("Touch failed to open initialized ${type.simpleName}")
+        WindowFocusAwaiter.await(type)
     }
     private fun navigate(id: Int, target: Class<out Activity>, source: Class<out Activity>) {
         if (id == R.id.stocksEmptyAction) onView(withId(id)).perform(scrollTo(), click())
@@ -179,20 +169,16 @@ class MarketTouchRuntimeTest {
         inst.waitForIdleSync()
         SystemClock.sleep(400)
         val bitmap = inst.uiAutomation.takeScreenshot() ?: error("Missing touch evidence screenshot")
-        val file = File(context.filesDir, "build660-screens/$name.png")
+        val file = File(context.filesDir, "build670-screens/$name.png")
         file.parentFile!!.mkdirs()
         file.outputStream().use { assertTrue(bitmap.compress(Bitmap.CompressFormat.PNG, 100, it)) }
         bitmap.recycle()
-        val streams = inst.uiAutomation.executeShellCommandRw("sh")
-        ParcelFileDescriptor.AutoCloseOutputStream(streams[1]).use {
-            it.write(("mkdir -p /data/local/tmp/build660-screens && run-as ${context.packageName} cat files/build660-screens/$name.png > /data/local/tmp/build660-screens/$name.png && echo EXPORTED\n").toByteArray())
-        }
-        assertEquals("EXPORTED", ParcelFileDescriptor.AutoCloseInputStream(streams[0]).bufferedReader().use { it.readText().trim() })
         scene.onActivity { it.window.decorView.setLayerType(View.LAYER_TYPE_NONE, null) }
     }
 
     @Test fun stocksHeaderButtonsOpenRealDestinationsWithTouch() {
         ActivityScenario.launch(StocksActivity::class.java).use { scene ->
+            WindowFocusAwaiter.await(Activity::class.java)
             waitFor(scene) { it.findViewById<RecyclerView>(R.id.stocksList).adapter?.itemCount == 4 }
             for ((id, type) in listOf(R.id.stocksFavorites to FavoritesActivity::class.java,
                 R.id.stocksSettings to SettingsActivity::class.java, R.id.stocksNotifications to NotificationsActivity::class.java,
@@ -208,6 +194,7 @@ class MarketTouchRuntimeTest {
         val wasFavorite = runBlocking { repo.isFavorite("TESTZ") }
         try {
             ActivityScenario.launch(StocksActivity::class.java).use { scene ->
+            WindowFocusAwaiter.await(Activity::class.java)
                 waitFor(scene) { it.findViewById<RecyclerView>(R.id.stocksList).adapter?.itemCount == 4 }
                 waitFor(scene) { it.window.decorView.hasWindowFocus() }
                 onView(withId(R.id.stocksFilterLong)).perform(click())
@@ -239,6 +226,7 @@ class MarketTouchRuntimeTest {
                 assertEquals(!wasFavorite, runBlocking { repo.isFavorite("TESTZ") })
                 capture("21-stocks-touch-result", scene)
                 scene.recreate()
+                WindowFocusAwaiter.await(StocksActivity::class.java)
                 waitFor(scene) { it.findViewById<RecyclerView>(R.id.stocksList).adapter?.itemCount == 1 }
                 revealStockRow(scene)
                 onView(withId(R.id.stockFavorite)).check(matches(withText(if (wasFavorite) "☆" else "★")))
@@ -256,6 +244,7 @@ class MarketTouchRuntimeTest {
 
     @Test fun stocksUnavailableFiltersGiveVisibleReasonsWithoutChangingRows() {
         ActivityScenario.launch(StocksActivity::class.java).use { scene ->
+            WindowFocusAwaiter.await(Activity::class.java)
             waitFor(scene) { it.findViewById<RecyclerView>(R.id.stocksList).adapter?.itemCount == 4 }
             for ((id, label) in listOf(R.id.stocksFilterBist30 to "BIST 30", R.id.stocksFilterBank to "Bankacılık",
                 R.id.stocksFilterIndustry to "Sanayi", R.id.stocksFilterTech to "Teknoloji")) {
@@ -270,6 +259,7 @@ class MarketTouchRuntimeTest {
     @Test fun stocksEmptyScanAndBottomNavigationReceiveTouch() {
         AppSession.lastOpportunities = emptyList()
         ActivityScenario.launch(StocksActivity::class.java).use { scene ->
+            WindowFocusAwaiter.await(Activity::class.java)
             waitFor(scene) { it.findViewById<View>(R.id.stocksEmptyState).isShown }
             navigate(R.id.stocksEmptyAction, BistScanActivity::class.java, StocksActivity::class.java)
             navigate(R.id.navViop, ViopActivity::class.java, StocksActivity::class.java)
@@ -283,6 +273,7 @@ class MarketTouchRuntimeTest {
 
     @Test fun viopHeaderButtonsOpenRealDestinationsWithTouch() {
         ActivityScenario.launch(ViopActivity::class.java).use { scene ->
+            WindowFocusAwaiter.await(Activity::class.java)
             scene.onActivity { inject(it) }
             for ((id, type) in listOf(R.id.openFavorites to FavoritesActivity::class.java,
                 R.id.openSettings to SettingsActivity::class.java, R.id.openNotifications to NotificationsActivity::class.java,
@@ -295,6 +286,7 @@ class MarketTouchRuntimeTest {
 
     @Test fun viopTouchFiltersSearchSortAndContractAnalysis() {
         ActivityScenario.launch(ViopActivity::class.java).use { scene ->
+            WindowFocusAwaiter.await(Activity::class.java)
             scene.onActivity { inject(it) }
             onView(withId(R.id.summaryLong)).perform(click())
             waitFor(scene) { it.findViewById<RecyclerView>(R.id.list).adapter?.itemCount == 2 }
@@ -346,6 +338,7 @@ class MarketTouchRuntimeTest {
     @Test fun viopRefreshShowsBusyRejectsDuplicatesAndRecoversForRetry() {
         val provider = GatedProvider()
         ActivityScenario.launch(ViopActivity::class.java).use { scene ->
+            WindowFocusAwaiter.await(Activity::class.java)
             scene.onActivity { a -> inject(a); set(a, "underlyingScanner", ViopUnderlyingScanner(provider)) }
             onView(withId(R.id.refresh)).perform(click())
             waitFor(scene) { !it.findViewById<Button>(R.id.refresh).isEnabled && provider.calls.get() == 4 }
@@ -377,6 +370,7 @@ class MarketTouchRuntimeTest {
 
     @Test fun viopAnalysisClearsOldContractAndOffersWorkingSettingsAction() {
         ActivityScenario.launch(ViopActivity::class.java).use { scene ->
+            WindowFocusAwaiter.await(Activity::class.java)
             scene.onActivity { a ->
                 inject(a)
                 set(a, "underlyingItems", emptyList<ViopUnderlyingScanner.Candidate>())
