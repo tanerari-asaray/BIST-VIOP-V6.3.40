@@ -357,8 +357,8 @@ class CheapStockScanActivity:BaseActivity() {
   when(selected){
    "ÖNE" -> item.score?.group==Scores.Group.FEATURED
    "İZLE" -> item.score?.group==Scores.Group.WATCH
-   "RİSK" -> item.score?.group==Scores.Group.VALUE_TRAP
-   "EKSİK" -> item.score==null
+   "RİSK" -> item.assessment.status==Engine.Status.FINANCIAL_RISK || item.score?.group==Scores.Group.VALUE_TRAP
+   "EKSİK" -> item.score==null && item.assessment.status!=Engine.Status.FINANCIAL_RISK
    else -> true
   }
  }
