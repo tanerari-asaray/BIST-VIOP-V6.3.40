@@ -106,6 +106,17 @@ jobs:
             adb shell wm size ${{ matrix.width }}x800
             adb shell wm density 160
             adb shell settings put system font_scale ${{ matrix.scale }}
+            # Some Android 15 CI emulators boot with the display visible but non-interactive.
+            # Bring up the display/keyguard before Espresso (without bypassing any assertions).
+            adb shell svc power stayon true
+            adb shell settings put system screen_off_timeout 1800000
+            adb shell input keyevent KEYCODE_WAKEUP
+            adb shell wm dismiss-keyguard
+            adb shell input keyevent KEYCODE_MENU
+            adb shell input keyevent KEYCODE_HOME
+            sleep 3
+            adb shell dumpsys power | grep -E 'mWakefulness=Awake|Display Power: state=ON|mHoldingDisplaySuspendBlocker=true' || true
+            adb shell dumpsys window | grep -E 'mCurrentFocus|mFocusedApp|mDreamingLockscreen' || true
             bash ci/run-build670-device.sh
       - uses: actions/upload-artifact@v6
         if: always()
