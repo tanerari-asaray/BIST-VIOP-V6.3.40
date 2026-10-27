@@ -43,13 +43,17 @@ object FundamentalValuationEngine {
   if(!s.symbol.matches(Regex("[A-Z0-9]{3,10}"))||s.sector.isBlank()||s.sector.length>90||
     s.accountingBasis !in setOf("TMS29","IFRS","LOCAL_GAAP")||s.financialCurrency!="TRY")
     return "Sektör, muhasebe veya para birimi geçersiz"
-  if(!s.disclosureUrl.startsWith("https://www.kap.org.tr/")&&
-     !s.disclosureUrl.startsWith("https://kap.org.tr/")) return "KAP kaynak bağlantısı eksik"
+  // Require a publication-specific reference. The KAP homepage is not evidence of a filing.
+  val kapPath = runCatching { java.net.URI(s.disclosureUrl) }.getOrNull()
+  if (kapPath?.scheme != "https" || kapPath.host !in setOf("www.kap.org.tr", "kap.org.tr") ||
+      kapPath.path.isNullOrBlank() || kapPath.path == "/")
+      return "KAP bildirim bağlantısı eksik"
   if(s.financialPeriodEndMs !in 1000000000000L..now||
      s.disclosurePublishedAtMs !in s.financialPeriodEndMs..(now+120000L)||
-     now-s.disclosurePublishedAtMs>210L*86400000L) return "Finansal rapor tarihi eski/geçersiz"
+     now-s.disclosurePublishedAtMs>210L*86400000L ||
+     now-s.financialPeriodEndMs>450L*86400000L) return "Finansal rapor tarihi eski/geçersiz"
   if(s.marketObservedAtMs !in 1000000000000L..(now+120000L)||
-     now-s.marketObservedAtMs>10L*86400000L) return "Piyasa değeri eski/geçersiz"
+     now-s.marketObservedAtMs>3L*86400000L) return "Piyasa değeri eski/geçersiz"
   if(!s.priceTry.isFinite()||!s.marketCapTry.isFinite()||!s.sharesOutstanding.isFinite()||
      s.priceTry<=0||s.marketCapTry<=0||s.sharesOutstanding<=0||
      abs(s.priceTry*s.sharesOutstanding/s.marketCapTry-1.0)>0.05)
