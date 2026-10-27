@@ -205,6 +205,13 @@ object FullUniverseScanRuntime {
                         }
                     }catch(e:CancellationException){throw e}catch(e:Exception){note+=" Temel veri yüklenemedi: ${reason(e)}"}
                 }
+                val stages=FullUniversePolicy.stages(entries)
+                note+=" AŞAMALAR: fiyat=" + stages.priceOk +
+                    " geçmiş=" + stages.historyOk +
+                    " teknik=" + stages.technicalOk +
+                    " kanıtlı_finansal_iskonto=" + stages.financialAssessed +
+                    " iskontolu=" + stages.discounted +
+                    " hata=" + stages.errors + "."
                 state=when {
                     counts.triedBist != counts.discoveredBist -> FullUniversePolicy.State.PARTIAL
                     counts.failures>0 || entries.any { it.market==FullUniversePolicy.Market.BIST && it.reasonCode!=null } -> FullUniversePolicy.State.PARTIAL
