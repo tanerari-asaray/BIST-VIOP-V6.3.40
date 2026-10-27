@@ -27,6 +27,8 @@ class ObservationCheckpoint(context: Context) {
                     } })
                 }) }
             })
+        require(universe.size <= 10000 && rows.size <= 10000) { "Checkpoint row limit exceeded" }
+        require(runId.length <= 128 && sourceIdentity.length <= 512) { "Invalid checkpoint provenance" }
         val stream=file.startWrite()
         try { stream.write(root.toString().toByteArray(Charsets.UTF_8));file.finishWrite(stream) }
         catch (e:Exception) { file.failWrite(stream);throw e }
@@ -36,10 +38,14 @@ class ObservationCheckpoint(context: Context) {
         val root=JSONObject(file.openRead().bufferedReader().use { it.readText() })
         if(root.optInt("schemaVersion",0) !in 3..4) return null
         val array=root.getJSONArray("rows")
+        val universeArray=root.getJSONArray("universe")
+        if (array.length()>10000 || universeArray.length()>10000) return null
+        if (root.optString("runId").length>128 || root.optString("sourceIdentity").length>512) return null
         val rows=(0 until array.length()).map { i ->
             val r=array.getJSONObject(i)
             fun num(key:String)=if(r.isNull(key)) null else r.optDouble(key).takeIf(Double::isFinite)
             val a=r.getJSONArray("candles")
+            if(a.length()>400) return null
             val bars=(0 until a.length()).map { k -> val b=a.getJSONArray(k)
                 Candle(b.getLong(0),b.getDouble(1),b.getDouble(2),b.getDouble(3),b.getDouble(4),b.getDouble(5)) }
             FullUniversePolicy.Entry(FullUniversePolicy.Market.valueOf(r.getString("market")),r.getString("symbol"),
@@ -52,7 +58,7 @@ class ObservationCheckpoint(context: Context) {
                     (0 until errors.length()).map { errors.getString(it) }
                 }.orEmpty())
         }
-        val u=root.getJSONArray("universe")
+        val u=universeArray
         Saved(root.getBoolean("local"),(0 until u.length()).map { u.getString(it) },rows,root.getLong("savedAt"),root.optString("sourceIdentity"),root.optString("runId"))
     }.getOrNull()
 }
