@@ -317,8 +317,7 @@ class FullUniverseScanActivity : BaseActivity() {
             if (!FullUniverseScanRuntime.isRunning && saved != null && entries.isEmpty()) {
                 entries.addAll(saved.rows)
                 // These are persisted observations, never evidence of a fresh provider request.
-                sourceNote.text = "ESKİ KAYIT / CHECKPOINT • Yeniden sorgulanmadı. " +
-                    "Yeni sonuç için GECİKMELİ TARAMAYI BAŞLAT seçin."
+                displayingSavedCheckpoint = true
                 updateList()
             }
         }
@@ -326,6 +325,7 @@ class FullUniverseScanActivity : BaseActivity() {
             FullUniverseScanRuntime.snapshots.collect { snapshot ->
                 if (snapshot.runId.isNotBlank()) {
                     // Do not mislabel a continuation as a new scan when returning to this screen.
+                    displayingSavedCheckpoint = false
                     localMode = snapshot.localMode
                     state = snapshot.state
                     counts = snapshot.counters
@@ -350,11 +350,14 @@ class FullUniverseScanActivity : BaseActivity() {
         }
     }
 
+    private var displayingSavedCheckpoint = false
+
     private fun updateList() {
         if (!::adapter.isInitialized) return
         val filtered = FullUniversePolicy.visible(entries, selected, query)
         adapter.replace(ValuationResultSort.sort(filtered, valuationBySymbol, ordering, valuationMode))
         sourceNote.text = when {
+            displayingSavedCheckpoint -> "ESKİ KAYIT / CHECKPOINT • Yeni piyasa verisi alınmadı. Devam et veya yeni tarama başlat."
             localMode && selected == FullUniversePolicy.Market.VIOP -> "VİOP TARANMADI • Gecikmeli modda yetkili VİOP sözleşme/fiyat sağlayıcısı yok. Bağlantı ayarlarından yetkili sağlayıcı tanımlayın."
             localMode -> "YALNIZCA BIST TEKNİK GÖZLEMİ • VİOP sözleşmeleri taranmadı. TÜMÜ sekmesi gerçek VİOP kapsamı değildir."
             selected == FullUniversePolicy.Market.VIOP && filtered.isEmpty() -> "VİOP sonucu yok • Bağlantı/keşif durumunu kontrol edin; boş liste tam tarama kanıtı değildir."
@@ -377,7 +380,10 @@ class FullUniverseScanActivity : BaseActivity() {
             else -> state.name
         }
         status.text = "$label • $progress • $viop\nBIST başarılı: ${counts.successfulBist} • Verisiz: ${counts.noDataBist} • Hata: ${counts.errorsBist}\nVİOP başarılı: ${counts.successfulViop} • Verisiz: ${counts.noDataViop} • Hata: ${counts.errorsViop}\nTam borsa kapsamı doğrulanmadı." +
-            if (discoveryFailure.isNotBlank()) "\nBilgi: " + discoveryFailure.trim().trimStart('|', ' ') else ""
+            (if (discoveryFailure.isNotBlank()) "\nBilgi: " + discoveryFailure.trim().trimStart('|', ' ') else "") +
+            "\nTarama kimliği: " + (scanId.ifBlank { "YOK" }) +
+            " • Başlangıç: " + (if (startedAt > 0L) java.text.SimpleDateFormat("dd.MM.yyyy HH:mm:ss", java.util.Locale("tr", "TR")).format(java.util.Date(startedAt)) else "YOK") +
+            (if (displayingSavedCheckpoint) "\nESKİ KAYIT: Bu ekran yeni istek yapıldığını kanıtlamaz." else "")
     }
 
     private fun openConnectionSettings() {
