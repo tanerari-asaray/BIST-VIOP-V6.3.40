@@ -29,26 +29,28 @@ object FullUniversePolicy {
         val relativeDiscountPct: Double? = null,
         val durationMs: Long = 0L,
         val attempts: Int = 1,
-        val attemptErrors: List<String> = emptyList()
+        val attemptErrors: List<String> = emptyList(),
+        val financialStatus: String = "NOT_EVALUATED"
     )
 
     /** Stage-specific observations; a quote is not proof that history or valuation succeeded. */
     data class StageCounters(
         val priceOk: Int, val historyOk: Int, val technicalOk: Int,
-        val financialAssessed: Int, val discounted: Int, val errors: Int
+        val financialAssessed: Int, val discounted: Int, val errors: Int,
+        val financialMissing: Int, val financialRisk: Int, val financialInvalid: Int
     )
 
     fun stages(entries: List<Entry>): StageCounters = StageCounters(
         priceOk = entries.count { it.price?.let { p -> p.isFinite() && p > 0.0 } == true },
         historyOk = entries.count { it.candles.isNotEmpty() },
         technicalOk = entries.count { it.trend != Trend.UNKNOWN && it.candles.size >= 10 },
-        financialAssessed = entries.count { it.market == Market.BIST &&
-            it.financialNote.isNotBlank() &&
-            !it.financialNote.startsWith("Temel veri yok") &&
-            it.relativeDiscountPct?.isFinite() == true },
-        discounted = entries.count { it.market == Market.BIST &&
+        financialAssessed = entries.count { it.market == Market.BIST && it.financialStatus in setOf("RELATIVE_DISCOUNT", "NOT_DISCOUNT", "FINANCIAL_RISK", "INSUFFICIENT_PEERS") },
+        discounted = entries.count { it.market == Market.BIST && it.financialStatus == "RELATIVE_DISCOUNT" &&
             it.relativeDiscountPct?.isFinite() == true && it.relativeDiscountPct > 0.0 },
-        errors = entries.count { it.reasonCode != null }
+        errors = entries.count { it.reasonCode != null },
+        financialMissing = entries.count { it.market == Market.BIST && it.financialStatus in setOf("NOT_EVALUATED", "NO_FINANCIALS") },
+        financialRisk = entries.count { it.market == Market.BIST && it.financialStatus == "FINANCIAL_RISK" },
+        financialInvalid = entries.count { it.market == Market.BIST && it.financialStatus == "INVALID_OR_STALE" }
     )
 
     data class Counters(
