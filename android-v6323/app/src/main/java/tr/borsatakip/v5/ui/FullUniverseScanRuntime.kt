@@ -66,6 +66,7 @@ object FullUniverseScanRuntime {
             try {
                 journal.record("SCAN","START","SCAN_STARTED_UNIVERSE",runId)
                 publish()
+                val priorObservations=checkpoint.read()?.takeIf { it.sourceIdentity == sourceIdentity && it.local == localMode }?.rows.orEmpty().associateBy { it.market to it.symbol }
                 val saved=if(resume || retryFailuresOnly)checkpoint.read()?.takeIf { ObservationSourcePolicy.canResume(localMode,it.local,it.sourceIdentity,sourceIdentity,it.savedAt,System.currentTimeMillis()) } else null
                 if(retryFailuresOnly && saved==null) error("RETRY_CHECKPOINT_NOT_AVAILABLE")
                 universe=saved?.universe.orEmpty()
@@ -181,7 +182,15 @@ object FullUniverseScanRuntime {
                         finally { results.close() }
                     }
                     for(row in results) {
-                        symbolNow=row.symbol;entries+=row
+                        val prior=priorObservations[FullUniversePolicy.Market.BIST to row.symbol]
+                        val repeated=if(prior != null && row.price != null && prior.price == row.price) {
+                            when {
+                                row.dataTimeMs > prior.dataTimeMs -> "FİYAT AYNI / YENİ PİYASA ZAMANI"
+                                row.dataTimeMs == prior.dataTimeMs -> "FİYAT AYNI / PİYASA ZAMANI DEĞİŞMEDİ (ÖNBELLEK KANITLANMADI)"
+                                else -> "FİYAT AYNI / ESKİ PİYASA ZAMANINA GERİ DÖNÜLDÜ"
+                            }
+                        } else if(prior != null && row.price != null) "FİYAT DEĞİŞTİ" else ""
+                        symbolNow=row.symbol;entries+=if(repeated.isNotBlank()) row.copy(detail=row.detail+" • "+repeated) else row
                         counts=counts.copy(triedBist=counts.triedBist+1,
                             successfulBist=counts.successfulBist+if(row.price!=null)1 else 0,
                             noDataBist=counts.noDataBist+if(row.price==null&&row.reasonCode=="EMPTY_DATA")1 else 0,
