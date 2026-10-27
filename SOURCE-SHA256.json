@@ -421,7 +421,7 @@
     "android-v6323/app/src/main/res/drawable/ic_stock_detail_chevron.xml": "5ed5fc7697245a0e5d5efd3180b93e7b1aa1ebb51738094ce15ea82fe2d316b6",
     "android-v6323/app/src/main/res/drawable/ic_stock_detail_fullscreen.xml": "13f31fc68d01f23f35bf27703df7df6b2ffcee3f05fdd1776447354d7f08f7b6",
     "android-v6323/app/src/main/res/drawable/ic_stock_detail_warning.xml": "17d1ed6c652a9986dc16e1fe03f1b765ba709eb2a11e53f316048569332aefff",
-    "android-v6323/app/src/main/res/layout/activity_bist_scan.xml": "02924cb92d5505a3e447a753badf36b0b6e377570dc657645d5c7ece210033ea",
+    "android-v6323/app/src/main/res/layout/activity_bist_scan.xml": "e765f85ce6bfed1bec66fdd9ec94b5d928dc128b4a7ef5d841c057a761fb59e5",
     "android-v6323/app/src/main/res/layout/activity_favorites.xml": "c43849f6251d9c138cbf77699d4988ccc8cb5018e310fc294bca172ceef9e8fa",
     "android-v6323/app/src/main/res/layout/activity_info_screen.xml": "c8d485d5d2dd78fc8678347a64242dc92f029d9e8e85c1093124790904edf080",
     "android-v6323/app/src/main/res/layout/activity_main.xml": "dfe2916a36975d8ee0019232fd6d35dc66b8820100f8e285f8f9094210c56430",
