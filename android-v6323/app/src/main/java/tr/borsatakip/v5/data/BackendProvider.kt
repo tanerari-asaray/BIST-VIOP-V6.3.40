@@ -64,10 +64,10 @@ class BackendProvider(context: Context, private val connectionOverride: BackendC
                     require(symbol.matches(Regex("[FO]_[A-Z0-9_.:-]+"))) { "SCHEMA_ERROR: Geçersiz VİOP sembolü." }
                     val signature=listOf(x.optString("contractType"),x.optString("underlying"),x.optString("expiry"),
                         x.optString("tickSize"),x.optString("multiplier"),x.optString("lastTradableAt"),x.optString("expiryAt")).joinToString("|")
-                    val previous=seen.putIfAbsent(symbol,signature)
-                    if(previous!=null) {
-                        require(previous==signature) { "SCHEMA_ERROR: Çelişkili VİOP sözleşmesi: $symbol" }
-                        continue
+                    when(ViopContractDuplicatePolicy.register(seen,symbol,signature)) {
+                        ViopContractDuplicatePolicy.Decision.FIRST -> Unit
+                        ViopContractDuplicatePolicy.Decision.IDENTICAL_REPEAT -> continue
+                        ViopContractDuplicatePolicy.Decision.CONFLICT -> error("SCHEMA_ERROR: Çelişkili VİOP sözleşmesi: $symbol")
                     }
                     require(x.optString("contractType").isNotBlank()) { "SCHEMA_ERROR: Sözleşme türü eksik." }
                     val underlying = x.optString("underlying").trim().uppercase()
