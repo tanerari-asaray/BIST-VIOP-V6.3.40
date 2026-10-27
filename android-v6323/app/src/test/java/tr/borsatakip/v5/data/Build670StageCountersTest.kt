@@ -28,4 +28,20 @@ class Build670StageCountersTest {
         assertEquals(0,c.priceOk)
         assertEquals(1,c.errors)
     }
+    @Test fun valuationStatusIsCountedWithoutDiscountAndRiskIsNotMissing() {
+        fun e(symbol: String, status: String) = FullUniversePolicy.Entry(
+            FullUniversePolicy.Market.BIST, symbol, "fixture", 12.0, "TRY",
+            FullUniversePolicy.Trend.UNKNOWN, FullUniversePolicy.Quality.DELAYED,
+            "FIXTURE", 1800000000000L, 1800000000000L, "fixture",
+            financialStatus=status)
+        val c=FullUniversePolicy.stages(listOf(
+            e("RISK", "FINANCIAL_RISK"), e("BAD", "INVALID_OR_STALE"),
+            e("MISSING", "NO_FINANCIALS"), e("NOPE", "NOT_DISCOUNT")))
+        assertEquals(2,c.financialAssessed)
+        assertEquals(1,c.financialRisk)
+        assertEquals(1,c.financialInvalid)
+        assertEquals(1,c.financialMissing)
+        assertEquals(0,c.discounted)
+    }
+
 }
