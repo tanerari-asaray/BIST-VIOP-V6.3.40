@@ -55,4 +55,19 @@ class Build670CheckpointRuntimeTest {
         file.writeText("""{"schemaVersion":999,"local":true,"rows":[],"universe":[],"savedAt":123}""")
         assertNull(store.read())
     }
+    @Test fun viopOnlyCheckpointSurvivesBeforeBistDiscovery() = isolated { store,_ ->
+        val t=1_800_000_000_000L
+        val quote=FullUniversePolicy.Entry(
+            FullUniversePolicy.Market.VIOP,"F_XU0301026","VIOP only",14200.0,"TRY",
+            FullUniversePolicy.Trend.UNKNOWN,FullUniversePolicy.Quality.UNVERIFIED,
+            "BACKEND_TEST",t,t,"VIOP was fetched independently")
+        store.write(false,emptyList(),listOf(quote),"BACKEND|fixture","run-viop-only")
+        val saved=store.read()
+        assertNotNull(saved)
+        assertEquals("run-viop-only",saved!!.runId)
+        assertTrue(saved.universe.isEmpty())
+        assertEquals(1,saved.rows.size)
+        assertEquals(14200.0,saved.rows.single().price!!,0.001)
+    }
+
 }
