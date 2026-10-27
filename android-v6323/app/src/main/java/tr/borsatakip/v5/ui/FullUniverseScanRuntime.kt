@@ -126,15 +126,6 @@ object FullUniverseScanRuntime {
                             publish(save=counts.triedViop%4==0)
                         }
                     } catch(e:CancellationException) { throw e }
-                            catch(e:Exception) { row=row.copy(price=null,quality=FullUniversePolicy.Quality.NO_DATA,reasonCode=reason(e)) }
-                            entries+=row
-                            counts=counts.copy(triedViop=counts.triedViop+1,
-                                successfulViop=counts.successfulViop+if(row.price!=null)1 else 0,
-                                noDataViop=counts.noDataViop+if(row.price==null&&row.reasonCode=="EMPTY_DATA")1 else 0,
-                                errorsViop=counts.errorsViop+if(row.price==null&&row.reasonCode!="EMPTY_DATA")1 else 0)
-                            publish()
-                        }
-                    } catch(e:CancellationException) { throw e }
                     catch(e:Exception) { note+=" VİOP_KEŞİF_HATASI: ${reason(e)}";journal.record("SCAN","VIOP_DISCOVERY",reason(e),runId) }
                 }
                 universe=try { saved?.universe ?: if(localMode) DelayedScanScope.select(UserSymbolListStore(context).loadSymbols(),SettingsStore(context).cachedBistSymbols.toList())
