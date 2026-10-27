@@ -102,7 +102,7 @@ object FullUniverseScanRuntime {
                                         validate={bars -> if(bars.isEmpty()) "HISTORY_EMPTY" else null},
                                         classify=::reason)
                                     else null
-                                var row=contractEntry(contract).copy(price=null)
+                                var row=contractEntry(contract).copy(price=null, quality=FullUniversePolicy.Quality.NO_DATA, reasonCode="QUOTE_NOT_FETCHED")
                                 val q=quote.value.takeIf {quote.error==null}
                                 if(q!=null) {
                                     val bars=history?.value.orEmpty()
