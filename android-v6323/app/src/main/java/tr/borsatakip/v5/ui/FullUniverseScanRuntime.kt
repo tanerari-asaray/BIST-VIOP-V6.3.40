@@ -69,6 +69,7 @@ object FullUniverseScanRuntime {
                 val saved=if(resume || retryFailuresOnly)checkpoint.read()?.takeIf { ObservationSourcePolicy.canResume(localMode,it.local,it.sourceIdentity,sourceIdentity,it.savedAt,System.currentTimeMillis()) } else null
                 if(retryFailuresOnly && saved==null) error("RETRY_CHECKPOINT_NOT_AVAILABLE")
                 universe=saved?.universe.orEmpty()
+                if(universe.isEmpty() && !localMode) universe=runCatching { ProviderRouter(context,experimentalFallbackOverride=false,connectionOverride=connection).listSymbols() }.getOrDefault(emptyList())
                 if(saved!=null) entries.addAll(saved.rows.filter { it.market==FullUniversePolicy.Market.BIST }.distinctBy{it.symbol}.map { it.copy(detail="ESKİ CHECKPOINT / YENİDEN SORGULANMADI • "+it.detail) })
                 val provider:MarketDataProvider=if(localMode)YahooFallbackProvider(context) else ProviderRouter(context,experimentalFallbackOverride=false,connectionOverride=connection)
                 // VIOP discovery is independent: a BIST outage must not prevent it.
