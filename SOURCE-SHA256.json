@@ -189,7 +189,7 @@
     "android-v6323/app/src/main/java/tr/borsatakip/v5/data/BackendHttpDiagnostic.kt": "5c05e8199eed4bf55c6dcdc85f3ac334216940f74c3d753faba3788b0b4fe9c4",
     "android-v6323/app/src/main/java/tr/borsatakip/v5/data/BackendHttpTransport.kt": "953cc79f6fdd78ecf873405f7b649ed4f22d1625f00b955d630f66cb46c279ed",
     "android-v6323/app/src/main/java/tr/borsatakip/v5/data/BackendPreflightClient.kt": "3ceca19e28847d25ddba7cf631926a78922e1141f4439347e17e86ffa2477323",
-    "android-v6323/app/src/main/java/tr/borsatakip/v5/data/BackendProvider.kt": "6229d10a103b4e39b0f1905579b7bc04947faa3c2c257452edc79d991d8e0987",
+    "android-v6323/app/src/main/java/tr/borsatakip/v5/data/BackendProvider.kt": "8e81da8fced4057c13b3e407768ba2263358e1c677d4de07e325ec8e43c36b00",
     "android-v6323/app/src/main/java/tr/borsatakip/v5/data/BackendUnavailableDiagnostic.kt": "a8bd2df8065572615b5d760cbc386a6d9640996f7d3816f3e29c96ce205bd869",
     "android-v6323/app/src/main/java/tr/borsatakip/v5/data/BistBootstrapCatalog.kt": "73db4abc8be34f2edc5a775c590fed66d312b1e24ad9b689f8b9b9bdc41d441f",
     "android-v6323/app/src/main/java/tr/borsatakip/v5/data/BistSymbolMatcher.kt": "5e189ae849d34b86da85ec8f6a832abd4a199cc405ab8abf1cde6dd6167b0c2c",
@@ -741,6 +741,8 @@
     "source-checks/apk-absence.json": "dacafa8ad55965dd33bf10eac1a61aeaf73b7c92e5514276fd4b0e06a65abbbf",
     "verify_source668.py": "837aa0b906c085e5729fba8b24a2c51d4e507d4cba03672219e99b55f7c13b65",
     "android-v6323/app/src/androidTest/java/tr/borsatakip/v5/ui/WindowFocusAwaiter.kt": "c85ec462d747e43e5b8bb867137028ba08fb358b18dc7e17156e3639c810c957",
-    "android-v6323/app/src/test/java/tr/borsatakip/v5/data/Build670ViopStageRetryTest.kt": "da398e49c243d64ba5454a590f4fb7321cb0c30c82171c15886196da102d3c32"
+    "android-v6323/app/src/test/java/tr/borsatakip/v5/data/Build670ViopStageRetryTest.kt": "da398e49c243d64ba5454a590f4fb7321cb0c30c82171c15886196da102d3c32",
+    "android-v6323/app/src/main/java/tr/borsatakip/v5/data/ViopContractDuplicatePolicy.kt": "f05ac81da7e3bae47dce12a027ae503aebb0db7dfb5c5e2d434f12d321bb18cc",
+    "android-v6323/app/src/test/java/tr/borsatakip/v5/data/Build670ViopDuplicatePolicyTest.kt": "6ee45139a2cd2b9462882e262fe4031758382e896049ee04d0175c8048aa8ca1"
   }
 }
