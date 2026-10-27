@@ -10,9 +10,9 @@ import java.io.File
 /** App-private atomic checkpoint; no credentials. Run once on IO, never on UI. */
 class ObservationCheckpoint(context: Context) {
     private val file = AtomicFile(File(context.filesDir,"universe-observation-v648.json"))
-    data class Saved(val local: Boolean, val universe: List<String>, val rows: List<FullUniversePolicy.Entry>, val savedAt: Long, val sourceIdentity: String = "")
-    fun write(local: Boolean, universe: List<String>, rows: List<FullUniversePolicy.Entry>, sourceIdentity: String = "") {
-        val root=JSONObject().put("schemaVersion", 3).put("sourceIdentity", sourceIdentity)
+    data class Saved(val local: Boolean, val universe: List<String>, val rows: List<FullUniversePolicy.Entry>, val savedAt: Long, val sourceIdentity: String = "", val runId: String = "")
+    fun write(local: Boolean, universe: List<String>, rows: List<FullUniversePolicy.Entry>, sourceIdentity: String = "", runId: String = "") {
+        val root=JSONObject().put("schemaVersion", 4).put("sourceIdentity", sourceIdentity).put("runId",runId)
             .put("local",local).put("savedAt",System.currentTimeMillis())
             .put("universe",JSONArray(universe)).put("rows",JSONArray().apply {
                 rows.forEach { row -> put(JSONObject().apply {
@@ -34,6 +34,7 @@ class ObservationCheckpoint(context: Context) {
     fun read(): Saved? = runCatching {
         if (!file.baseFile.exists() || file.baseFile.length()>24*1024*1024) return null
         val root=JSONObject(file.openRead().bufferedReader().use { it.readText() })
+        if(root.optInt("schemaVersion",0) !in 3..4) return null
         val array=root.getJSONArray("rows")
         val rows=(0 until array.length()).map { i ->
             val r=array.getJSONObject(i)
@@ -52,6 +53,6 @@ class ObservationCheckpoint(context: Context) {
                 }.orEmpty())
         }
         val u=root.getJSONArray("universe")
-        Saved(root.getBoolean("local"),(0 until u.length()).map { u.getString(it) },rows,root.getLong("savedAt"),root.optString("sourceIdentity"))
+        Saved(root.getBoolean("local"),(0 until u.length()).map { u.getString(it) },rows,root.getLong("savedAt"),root.optString("sourceIdentity"),root.optString("runId"))
     }.getOrNull()
 }
