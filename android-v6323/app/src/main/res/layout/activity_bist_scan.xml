@@ -17,9 +17,9 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:paddingStart="16dp"
-            android:paddingTop="14dp"
+            android:paddingTop="8dp"
             android:paddingEnd="16dp"
-            android:paddingBottom="18dp">
+            android:paddingBottom="10dp">
 
             <!-- Header -->
             <LinearLayout
@@ -43,7 +43,7 @@
                     android:layout_weight="1"
                     android:orientation="vertical"
                     android:paddingStart="8dp" android:paddingEnd="0dp">
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ui_label_54f45bb41e1f" android:textColor="@color/white" android:textSize="25sp" android:textStyle="bold" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ui_label_54f45bb41e1f" android:textColor="@color/white" android:textSize="21sp" android:textStyle="bold" />
                     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2dp" android:text="@string/ui_label_06245830202c" android:textColor="@color/text_secondary" android:textSize="12sp" />
                 </LinearLayout>
 
@@ -63,8 +63,8 @@
             <!-- Search + filter -->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="52dp"
-                android:layout_marginTop="16dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="9dp"
                 android:orientation="horizontal">
 
                 <EditText
@@ -85,7 +85,7 @@
                 <TextView
                     android:id="@+id/btnScanFilter"
                     android:layout_width="52dp"
-                    android:layout_height="52dp"
+                    android:layout_height="50dp"
                     android:layout_marginStart="10dp"
                     android:background="@drawable/bg_card"
                     android:gravity="center"
@@ -99,7 +99,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="7dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -146,8 +146,8 @@
             <TextView
                 android:id="@+id/btnCheapStockScan"
                 android:layout_width="match_parent"
-                android:layout_height="52dp"
-                android:layout_marginTop="10dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="7dp"
                 android:background="@drawable/bg_chip_outline"
                 android:gravity="center_vertical"
                 android:paddingStart="16dp"
@@ -163,13 +163,13 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="8dp"
                 android:orientation="vertical">
 
                 <LinearLayout
                     android:id="@+id/btnScanTime"
                     android:layout_width="match_parent"
-                    android:layout_height="54dp"
+                    android:layout_height="50dp"
                     android:background="@drawable/bg_chip_outline"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
@@ -275,17 +275,17 @@
             <!-- Hero scan state -->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="148dp"
-                android:layout_marginTop="14dp"
+                android:layout_height="116dp"
+                android:layout_marginTop="8dp"
                 android:background="@drawable/bg_scan_hero"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
-                android:padding="16dp">
+                android:padding="11dp">
 
                 <Button
                     android:id="@+id/btnStartScan"
-                    android:layout_width="88dp"
-                    android:layout_height="88dp"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
                     android:minWidth="0dp"
                     android:minHeight="0dp"
                     android:padding="2dp"
@@ -317,7 +317,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="58dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="7dp"
                 android:background="@drawable/bg_card"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
@@ -347,7 +347,7 @@
             <Button
                 android:id="@+id/btnConfigureProvider"
                 android:layout_width="match_parent"
-                android:layout_height="54dp"
+                android:layout_height="50dp"
                 android:layout_marginTop="9dp"
                 android:background="@drawable/bg_secondary_scan"
                 android:backgroundTint="@null"
