@@ -315,7 +315,7 @@ class FullUniverseScanActivity : BaseActivity() {
         lifecycleScope.launch {
             val saved = withContext(Dispatchers.IO) { ObservationCheckpoint(applicationContext).read() }
             if (!FullUniverseScanRuntime.isRunning && saved != null && entries.isEmpty()) {
-                if (saved.runId.isNotBlank() && scanId.isNotBlank() && saved.runId != scanId) {
+                if (saved.runId.isBlank() || scanId.isBlank() || saved.runId != scanId) {
                     displayingSavedCheckpoint = true
                     discoveryFailure = "Özet ve kayıt tarama kimliği farklı; eski sonuçlar birleştirilmedi."
                     updateStatus()
