@@ -707,7 +707,7 @@
     "ci/railway-source-checks.Dockerfile": "d5772d9c84ef90a5cd895e0a3c362109e72e5f1cafd66d182cbdb264b1c1b254",
     "ci/railway-source-checks.sh": "1c2fb7a12d70bca970a0da6b7fce9c814e911305a3ff9f89d52fda5a92d64ed6",
     "ci/railway-verification-report.mjs": "508cb84939bb8147c11e7290b8a12d92d5638529c2a190fde66ec945496d9cd5",
-    "ci/run-build670-device.sh": "d967e98f96c850b8d7d49e0b4885dba64c5870e911429efa1831d14682371ba6",
+    "ci/run-build670-device.sh": "6ef68ab6c7e4aa576db18f6e5bb99e80bcef89f8755c50952cb80965e4ea60d2",
     "ci/verify-build668-final.py": "4b1cd75d62c8b69d310d25e46763bab27143064549d5165f0059bb4c98f7a53f",
     "ci/verify-source-manifest.py": "c67a87bb0d3fd73c20d17fe53a0ded0d7cb7913b9256b61fb20c853c5e854dce",
     "ci/verify_hisse_detail_pixel_contract.py": "4f4ac4f597967ca8468c145a6dc38ceaee80050c4350688237b70034c476622f",
@@ -743,6 +743,7 @@
     "android-v6323/app/src/androidTest/java/tr/borsatakip/v5/ui/WindowFocusAwaiter.kt": "c85ec462d747e43e5b8bb867137028ba08fb358b18dc7e17156e3639c810c957",
     "android-v6323/app/src/test/java/tr/borsatakip/v5/data/Build670ViopStageRetryTest.kt": "da398e49c243d64ba5454a590f4fb7321cb0c30c82171c15886196da102d3c32",
     "android-v6323/app/src/main/java/tr/borsatakip/v5/data/ViopContractDuplicatePolicy.kt": "f05ac81da7e3bae47dce12a027ae503aebb0db7dfb5c5e2d434f12d321bb18cc",
-    "android-v6323/app/src/test/java/tr/borsatakip/v5/data/Build670ViopDuplicatePolicyTest.kt": "6ee45139a2cd2b9462882e262fe4031758382e896049ee04d0175c8048aa8ca1"
+    "android-v6323/app/src/test/java/tr/borsatakip/v5/data/Build670ViopDuplicatePolicyTest.kt": "6ee45139a2cd2b9462882e262fe4031758382e896049ee04d0175c8048aa8ca1",
+    "android-v6323/app/src/androidTest/java/tr/borsatakip/v5/ui/Build670CheckpointRuntimeTest.kt": "cac830342446435c8fb8e49adda09db308eb6aafb130680ddf74d0531d98b821"
   }
 }
