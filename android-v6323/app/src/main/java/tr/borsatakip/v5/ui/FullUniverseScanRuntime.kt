@@ -116,7 +116,8 @@ object FullUniverseScanRuntime {
                                         trend=FullUniversePolicy.trend(bars.map{it.close}),
                                         detail=row.detail+" • Gecikme: ${q.delaySeconds?:-1} sn")
                                 }
-                                row=row.copy(reasonCode=quote.error,\n                                    detail=row.detail + (history?.error?.let { " • GEÇMİŞ_VERİSİ_HATASI: $it" } ?: ""),
+                                row=row.copy(reasonCode=quote.error,
+                                    detail=row.detail + (history?.error?.let { " • GEÇMİŞ_VERİSİ_HATASI: $it" } ?: ""),
                                     attempts=quote.attempts+(history?.attempts?:0),
                                     attemptErrors=quote.errors+history?.errors.orEmpty(),
                                     durationMs=(System.nanoTime()-tick)/1_000_000L)
