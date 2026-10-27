@@ -68,6 +68,8 @@ object FullUniverseScanRuntime {
                 publish()
                 val saved=if(resume || retryFailuresOnly)checkpoint.read()?.takeIf { ObservationSourcePolicy.canResume(localMode,it.local,it.sourceIdentity,sourceIdentity,it.savedAt,System.currentTimeMillis()) } else null
                 if(retryFailuresOnly && saved==null) error("RETRY_CHECKPOINT_NOT_AVAILABLE")
+                universe=saved?.universe.orEmpty()
+                if(saved!=null) entries.addAll(saved.rows.filter { it.market==FullUniversePolicy.Market.BIST }.distinctBy{it.symbol})
                 val provider:MarketDataProvider=if(localMode)YahooFallbackProvider(context) else ProviderRouter(context,experimentalFallbackOverride=false,connectionOverride=connection)
                 // VIOP discovery is independent: a BIST outage must not prevent it.
                 if (!localMode) {
@@ -90,31 +92,32 @@ object FullUniverseScanRuntime {
                                 entries+=old
                             } else {
                                 val tick=System.nanoTime()
-                                val result=ObservationRetryPolicy.execute(
-                                    fetch={
-                                        val q=backend.loadViopQuote(contract.symbol,observationOnly=true).getOrThrow()
-                                        val bars=backend.loadViopHistoryFlexible(contract.symbol,"1y","1d",0).getOrThrow()
-                                        Pair(q,bars)
-                                    },
-                                    validate={ pair -> if(pair.first.price<=0.0) "EMPTY_DATA"
-                                        else if(pair.second.isEmpty()) "HISTORY_EMPTY" else null },
+                                val quote=ObservationRetryPolicy.execute(
+                                    fetch={backend.loadViopQuote(contract.symbol,observationOnly=true).getOrThrow()},
+                                    validate={q -> if(q.price.isFinite()&&q.price>0.0) null else "EMPTY_DATA"},
                                     classify=::reason)
-                                var row=contractEntry(contract)
-                                val pair=result.value
-                                if(pair!=null) {
-                                    val q=pair.first
-                                    val bars=pair.second
-                                    row=row.copy(price=q.price.takeIf { it.isFinite() && it>0.0 },
+                                val history=if(quote.value!=null && quote.error==null)
+                                    ObservationRetryPolicy.execute(
+                                        fetch={backend.loadViopHistoryFlexible(contract.symbol,"1y","1d",0).getOrThrow()},
+                                        validate={bars -> if(bars.isEmpty()) "HISTORY_EMPTY" else null},
+                                        classify=::reason)
+                                    else null
+                                var row=contractEntry(contract).copy(price=null)
+                                val q=quote.value.takeIf {quote.error==null}
+                                if(q!=null) {
+                                    val bars=history?.value.orEmpty()
+                                    row=row.copy(price=q.price.takeIf {it.isFinite()&&it>0.0},
                                         source=q.source,dataTimeMs=q.exchangeTimestamp,receivedMs=q.receivedAt,
                                         changePct=q.dailyChangePct,
-                                        quality=if(!q.realtime || (q.delaySeconds?:0)>0)
+                                        quality=if(!q.realtime||(q.delaySeconds?:0)>0)
                                             FullUniversePolicy.Quality.DELAYED else FullUniversePolicy.Quality.UNVERIFIED,
                                         candles=bars,closes=bars.map{it.close},
                                         trend=FullUniversePolicy.trend(bars.map{it.close}),
                                         detail=row.detail+" • Gecikme: ${q.delaySeconds?:-1} sn")
                                 }
-                                row=row.copy(reasonCode=result.error,
-                                    attempts=result.attempts,attemptErrors=result.errors,
+                                row=row.copy(reasonCode=quote.error?:history?.error,
+                                    attempts=quote.attempts+(history?.attempts?:0),
+                                    attemptErrors=quote.errors+history?.errors.orEmpty(),
                                     durationMs=(System.nanoTime()-tick)/1_000_000L)
                                 entries+=row
                             }
@@ -134,7 +137,7 @@ object FullUniverseScanRuntime {
                     catch(e:Exception){note+=" BIST_KEŞİF_HATASI: ${reason(e)}";emptyList()}
                 universe=FullUniversePolicy.normalizeSymbols(universe)
                 if(universe.isEmpty()) note+=" BIST: sembol listesi alınamadı veya boş."
-                entries.addAll(saved?.rows.orEmpty().filter { it.market==FullUniversePolicy.Market.BIST && it.symbol in universe && (!retryFailuresOnly || (it.price!=null && it.reasonCode==null && it.candles.isNotEmpty())) }.distinctBy { it.symbol })
+                entries.removeAll { it.market==FullUniversePolicy.Market.BIST && (it.symbol !in universe || (retryFailuresOnly && (it.price==null || it.reasonCode!=null || it.candles.isEmpty()))) }
                 if(retryFailuresOnly) note+=" Yalnız önceki taramada başarısız/verisiz semboller tekrar denenecek."
                 counts=counts.copy(discoveredBist=universe.size,bistDiscoveryOk=!localMode&&universe.isNotEmpty(),
                     triedBist=entries.count { it.market==FullUniversePolicy.Market.BIST },successfulBist=entries.count { it.market==FullUniversePolicy.Market.BIST&&it.price!=null },
