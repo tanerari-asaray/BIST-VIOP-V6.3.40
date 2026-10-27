@@ -73,25 +73,59 @@ object FullUniverseScanRuntime {
                 if (!localMode) {
                     val backend=BackendProvider(context,connection)
                     try {
-                        val contracts=backend.loadViop().getOrThrow().distinctBy { it.symbol }
-                        counts=counts.copy(discoveredViop=contracts.size,viopDiscoveryOk=true)
-                        if (contracts.isEmpty()) note+=" VİOP: sağlayıcı sözleşme listesi boş."
+                        val discovered=backend.loadViop().getOrThrow()
+                        val contracts=discovered.filter { it.symbol.isNotBlank() && it.validity != SignalValidity.REJECTED }
+                            .distinctBy { it.symbol }
+                        if (contracts.size != discovered.size)
+                            note+=" VİOP: ${discovered.size-contracts.size} mükerrer/geçersiz sözleşme dışlandı."
+                        counts=counts.copy(discoveredViop=contracts.size,viopDiscoveryOk=contracts.isNotEmpty())
+                        if (contracts.isEmpty()) note+=" VİOP: yetkili sağlayıcı sözleşme listesi boş/geçersiz."
+                        val savedViop=saved?.rows.orEmpty().filter { it.market==FullUniversePolicy.Market.VIOP }
+                            .associateBy { it.symbol }
                         for (contract in contracts) {
                             ensureActive()
-                            var row=contractEntry(contract)
-                            try {
-                                val q=backend.loadViopQuote(contract.symbol, observationOnly=true).getOrThrow()
-                                val barsResult=backend.loadViopHistoryFlexible(contract.symbol,"1y","1d",0)
-                                val bars=barsResult.getOrNull().orEmpty()
-                                val validPrice=q.price.takeIf { contract.validity!=SignalValidity.REJECTED }
-                                row=row.copy(price=validPrice,source=q.source,dataTimeMs=q.exchangeTimestamp,
-                                    receivedMs=q.receivedAt,changePct=q.dailyChangePct,
-                                    quality=if(validPrice==null)FullUniversePolicy.Quality.NO_DATA else if(!q.realtime || (q.delaySeconds?:0)>0)FullUniversePolicy.Quality.DELAYED else FullUniversePolicy.Quality.UNVERIFIED,
-                                    reasonCode=if(validPrice==null)"CONTRACT_REJECTED" else null,
-                                    candles=bars,closes=bars.map { it.close },trend=FullUniversePolicy.trend(bars.map { it.close }),
-                                    detail=row.detail+" • Bildirilen gecikme: ${q.delaySeconds?.let { "$it sn" }?:"bilinmiyor"}"+
-                                        (barsResult.exceptionOrNull()?.let { " • Grafik alınamadı: ${reason(it as? Exception ?: Exception(it))}" }?:""))
-                            } catch(e:CancellationException) { throw e }
+                            val old=savedViop[contract.symbol]
+                            val alreadyDone=old!=null && old.price!=null && old.reasonCode==null && old.candles.isNotEmpty()
+                            if (old!=null && (alreadyDone || (!retryFailuresOnly && resume))) {
+                                entries+=old
+                            } else {
+                                val tick=System.nanoTime()
+                                val result=ObservationRetryPolicy.execute(
+                                    fetch={
+                                        val q=backend.loadViopQuote(contract.symbol,observationOnly=true).getOrThrow()
+                                        val bars=backend.loadViopHistoryFlexible(contract.symbol,"1y","1d",0).getOrThrow()
+                                        Pair(q,bars)
+                                    },
+                                    validate={ pair -> if(pair.first.price<=0.0) "EMPTY_DATA"
+                                        else if(pair.second.isEmpty()) "HISTORY_EMPTY" else null },
+                                    classify=::reason)
+                                var row=contractEntry(contract)
+                                val pair=result.value
+                                if(pair!=null) {
+                                    val q=pair.first
+                                    val bars=pair.second
+                                    row=row.copy(price=q.price.takeIf { it.isFinite() && it>0.0 },
+                                        source=q.source,dataTimeMs=q.exchangeTimestamp,receivedMs=q.receivedAt,
+                                        changePct=q.dailyChangePct,
+                                        quality=if(!q.realtime || (q.delaySeconds?:0)>0)
+                                            FullUniversePolicy.Quality.DELAYED else FullUniversePolicy.Quality.UNVERIFIED,
+                                        candles=bars,closes=bars.map{it.close},
+                                        trend=FullUniversePolicy.trend(bars.map{it.close}),
+                                        detail=row.detail+" • Gecikme: ${q.delaySeconds?:-1} sn")
+                                }
+                                row=row.copy(reasonCode=result.error,
+                                    attempts=result.attempts,attemptErrors=result.errors,
+                                    durationMs=(System.nanoTime()-tick)/1_000_000L)
+                                entries+=row
+                            }
+                            val v=entries.filter { it.market==FullUniversePolicy.Market.VIOP }
+                            counts=counts.copy(triedViop=v.size,
+                                successfulViop=v.count { it.price!=null },
+                                noDataViop=v.count { it.price==null && it.reasonCode=="EMPTY_DATA" },
+                                errorsViop=v.count { it.price==null && it.reasonCode!="EMPTY_DATA" })
+                            publish(save=counts.triedViop%4==0)
+                        }
+                    } catch(e:CancellationException) { throw e }
                             catch(e:Exception) { row=row.copy(price=null,quality=FullUniversePolicy.Quality.NO_DATA,reasonCode=reason(e)) }
                             entries+=row
                             counts=counts.copy(triedViop=counts.triedViop+1,
