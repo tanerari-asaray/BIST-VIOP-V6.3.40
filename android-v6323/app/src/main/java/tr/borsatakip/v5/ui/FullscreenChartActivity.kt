@@ -152,6 +152,10 @@ class FullscreenChartActivity : BaseActivity() {
         @Suppress("DEPRECATION", "UNCHECKED_CAST")
         val restoredCandles = savedInstanceState?.getSerializable("chartCandles") as? ArrayList<Candle>
         val visibleCandles = restoredCandles ?: initial
+        if (restoredCandles != null) {
+            source = savedInstanceState?.getString("chartSource") ?: source
+            delayedSource = savedInstanceState?.getBoolean("chartDelayed", delayedSource) ?: delayedSource
+        }
         pendingViewState = savedInstanceState?.getBundle("viewState") ?: intent.getBundleExtra("viewState")
         buildContent()
         pendingViewState?.let { chart.restoreDisplayState(it) }
@@ -643,6 +647,8 @@ class FullscreenChartActivity : BaseActivity() {
     }
     override fun onSaveInstanceState(outState: Bundle) {
         outState.putSerializable("chartCandles", ArrayList(state.candles.takeLast(2000)))
+        outState.putString("chartSource", source)
+        outState.putBoolean("chartDelayed", delayedSource)
         outState.putString("period", period.name); outState.putBundle("viewState", chart.saveDisplayState()); super.onSaveInstanceState(outState)
     }
 }
