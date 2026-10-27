@@ -390,4 +390,33 @@ class MarketTouchRuntimeTest {
             awaitActivity(ViopActivity::class.java)
         }
     }
+    @Test fun compactBistQuickActionsHaveReadableTwoLineLabelsAndWorkingTouchTargets() {
+        ActivityScenario.launch(BistScanActivity::class.java).use { scene ->
+            WindowFocusAwaiter.await(BistScanActivity::class.java)
+            scene.onActivity { activity ->
+                val actions = listOf(
+                    Triple(R.id.quickSectors, "Sektörler", "Sektörler"),
+                    Triple(R.id.quickCriteria, "Kriterler", "Kriterler"),
+                    Triple(R.id.quickHistory, "Geçmiş", "Geçmiş Taramalar"),
+                    Triple(R.id.quickSaved, "Kayıtlılar", "Kayıtlı Aramalar")
+                )
+                for ((id, label, spokenName) in actions) {
+                    val button = activity.findViewById<TextView>(id)
+                    assertNotNull("Missing quick access action: $label", button)
+                    assertTrue("$label must remain clickable", button.isClickable)
+                    assertEquals("$label accessible label", spokenName, button.contentDescription.toString())
+                    assertTrue("$label visible label", button.text.toString().contains(label))
+                    button.measure(
+                        View.MeasureSpec.makeMeasureSpec(button.width, View.MeasureSpec.EXACTLY),
+                        View.MeasureSpec.makeMeasureSpec(button.height, View.MeasureSpec.EXACTLY)
+                    )
+                    val layout = button.layout
+                    assertNotNull("$label text layout", layout)
+                    assertTrue("$label must fit into two lines", layout.lineCount <= 2)
+                    assertFalse("$label must not be truncated", layout.getEllipsisCount(layout.lineCount - 1) > 0)
+                }
+            }
+        }
+    }
+
 }
