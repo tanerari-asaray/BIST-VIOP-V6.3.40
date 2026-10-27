@@ -388,10 +388,14 @@ class FullUniverseScanActivity : BaseActivity() {
             else -> state.name
         }
         val priceCount = entries.count { it.price != null }
-        val historyCount = entries.count { it.candles.isNotEmpty() }
+        val bistHistory = entries.count { it.market == FullUniversePolicy.Market.BIST && it.candles.isNotEmpty() }
+        val viopHistory = entries.count { it.market == FullUniversePolicy.Market.VIOP && it.candles.isNotEmpty() }
+        val historyCount = bistHistory + viopHistory
         val analysisCount = entries.count { it.candles.size >= 10 && it.reasonCode == null }
+        val bistAnalyzed = entries.count { it.market == FullUniversePolicy.Market.BIST && it.candles.size >= 10 && it.reasonCode == null }
+        val viopAnalyzed = entries.count { it.market == FullUniversePolicy.Market.VIOP && it.candles.size >= 10 && it.reasonCode == null }
         val financialCount = entries.count { it.relativeDiscountPct != null }
-        status.text = "$label • $progress • $viop\nBIST başarılı: ${counts.successfulBist} • Verisiz: ${counts.noDataBist} • Hata: ${counts.errorsBist}\nVİOP başarılı: ${counts.successfulViop} • Verisiz: ${counts.noDataViop} • Hata: ${counts.errorsViop}\nFiyat: $priceCount • Geçmiş: $historyCount • Teknik analiz: $analysisCount • Finansal iskonto: $financialCount\nBekleyen BIST: ${(counts.discoveredBist-counts.triedBist).coerceAtLeast(0)} • VİOP: ${(counts.discoveredViop-counts.triedViop).coerceAtLeast(0)}\nTam borsa kapsamı doğrulanmadı." +
+        status.text = "$label • $progress • $viop\nBIST fiyat alınan: ${counts.successfulBist} • Verisiz: ${counts.noDataBist} • Hata: ${counts.errorsBist}\nVİOP fiyat alınan: ${counts.successfulViop} • Verisiz: ${counts.noDataViop} • Hata: ${counts.errorsViop}\nFiyat: $priceCount • Geçmiş: $historyCount (BIST $bistHistory / VİOP $viopHistory) • Teknik gösterge koşulu: $analysisCount (BIST $bistAnalyzed / VİOP $viopAnalyzed) • Finansal iskonto: $financialCount\nBekleyen BIST: ${(counts.discoveredBist-counts.triedBist).coerceAtLeast(0)} • VİOP: ${(counts.discoveredViop-counts.triedViop).coerceAtLeast(0)}\nTam borsa kapsamı doğrulanmadı." +
             (if (discoveryFailure.isNotBlank()) "\nBilgi: " + discoveryFailure.trim().trimStart('|', ' ') else "") +
             "\nTarama kimliği: " + (scanId.ifBlank { "YOK" }) +
             " • Başlangıç: " + (if (startedAt > 0L) java.text.SimpleDateFormat("dd.MM.yyyy HH:mm:ss", java.util.Locale("tr", "TR")).format(java.util.Date(startedAt)) else "YOK") +
