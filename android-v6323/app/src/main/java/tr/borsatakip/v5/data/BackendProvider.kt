@@ -61,7 +61,8 @@ class BackendProvider(context: Context, private val connectionOverride: BackendC
                 for (i in 0 until array.length()) {
                     val x = array.optJSONObject(i) ?: error("SCHEMA_ERROR: Sözleşme nesnesi geçersiz.")
                     val symbol = x.optString("symbol").trim().uppercase()
-                    require(symbol.matches(Regex("[FO]_[A-Z0-9_.:-]+")) && seen.add(symbol)) { "SCHEMA_ERROR: Geçersiz veya tekrarlanan VİOP sözleşmesi." }
+                    require(symbol.matches(Regex("[FO]_[A-Z0-9_.:-]+"))) { "SCHEMA_ERROR: Geçersiz VİOP sembolü." }
+                    if(!seen.add(symbol)) continue
                     require(x.optString("contractType").isNotBlank()) { "SCHEMA_ERROR: Sözleşme türü eksik." }
                     val underlying = x.optString("underlying").trim().uppercase()
                     val expiry = x.optString("expiry").trim()
