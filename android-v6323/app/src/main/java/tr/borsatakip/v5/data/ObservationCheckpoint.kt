@@ -21,6 +21,7 @@ class ObservationCheckpoint(context: Context) {
                     put("quality",row.quality.name);put("source",row.source);put("dataTime",row.dataTimeMs)
                     put("received",row.receivedMs);put("detail",row.detail);put("reason",row.reasonCode)
                     put("change",row.changePct);put("financial",row.financialNote);put("discount",row.relativeDiscountPct)
+                    put("financialStatus",row.financialStatus)
                     put("duration",row.durationMs);put("attempts",row.attempts);put("attemptErrors",JSONArray(row.attemptErrors))
                     put("candles",JSONArray().apply { row.candles.takeLast(400).forEach { c ->
                         put(JSONArray(listOf(c.timestamp,c.open,c.high,c.low,c.close,c.volume)))
@@ -56,7 +57,7 @@ class ObservationCheckpoint(context: Context) {
                 r.optString("financial"),num("discount"),r.optLong("duration"),
                 r.optInt("attempts",1).coerceAtLeast(1),r.optJSONArray("attemptErrors")?.let { errors ->
                     (0 until errors.length()).map { errors.getString(it) }
-                }.orEmpty())
+                }.orEmpty(),r.optString("financialStatus","NOT_EVALUATED"))
         }
         val u=universeArray
         Saved(root.getBoolean("local"),(0 until u.length()).map { u.getString(it) },rows,root.getLong("savedAt"),root.optString("sourceIdentity"),root.optString("runId"))
