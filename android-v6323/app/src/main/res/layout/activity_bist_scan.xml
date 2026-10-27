@@ -6,6 +6,7 @@
     android:background="@drawable/bg_screen_gradient">
 
     <ScrollView
+        android:id="@+id/scanScroll"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
