@@ -32,6 +32,25 @@ object FullUniversePolicy {
         val attemptErrors: List<String> = emptyList()
     )
 
+    /** Stage-specific observations; a quote is not proof that history or valuation succeeded. */
+    data class StageCounters(
+        val priceOk: Int, val historyOk: Int, val technicalOk: Int,
+        val financialAssessed: Int, val discounted: Int, val errors: Int
+    )
+
+    fun stages(entries: List<Entry>): StageCounters = StageCounters(
+        priceOk = entries.count { it.price?.let { p -> p.isFinite() && p > 0.0 } == true },
+        historyOk = entries.count { it.candles.isNotEmpty() },
+        technicalOk = entries.count { it.trend != Trend.UNKNOWN && it.candles.size >= 10 },
+        financialAssessed = entries.count { it.market == Market.BIST &&
+            it.financialNote.isNotBlank() &&
+            !it.financialNote.startsWith("Temel veri yok") &&
+            it.relativeDiscountPct?.isFinite() == true },
+        discounted = entries.count { it.market == Market.BIST &&
+            it.relativeDiscountPct?.isFinite() == true && it.relativeDiscountPct > 0.0 },
+        errors = entries.count { it.reasonCode != null }
+    )
+
     data class Counters(
         val discoveredBist: Int = 0,
         val discoveredViop: Int = 0,
