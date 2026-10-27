@@ -54,4 +54,23 @@ class FundamentalValuationEngineTest {
     e.scan(listOf("BANK"),listOf(bank),now).single().status)
  }
 
+ @Test fun twoYearOldFinancialPeriodWithRecentPublicationIsRejected(){
+  val old=row("OLDPERIOD").copy(financialPeriodEndMs=now-730L*86400000L,
+   disclosurePublishedAtMs=now-2L*86400000L)
+  assertEquals(FundamentalValuationEngine.Status.INVALID_OR_STALE,
+   e.scan(listOf("OLDPERIOD"),listOf(old),now).single().status)
+ }
+ @Test fun kapHomepageIsNotPublicationEvidence(){
+  val old=row("HOME").copy(disclosureUrl="https://www.kap.org.tr/")
+  assertEquals(FundamentalValuationEngine.Status.INVALID_OR_STALE,
+   e.scan(listOf("HOME"),listOf(old),now).single().status)
+ }
+ @Test fun nineDayOldMarketPriceCannotProduceDiscount(){
+  val rows=(listOf(row("TEST",cap=500.0))+(1..6).map{row("PEER"+it,cap=1200.0)})
+    .map{it.copy(marketObservedAtMs=now-9L*86400000L)}
+  assertTrue(e.scan(rows.map{it.symbol},rows,now).all{
+   it.status==FundamentalValuationEngine.Status.INVALID_OR_STALE
+  })
+ }
+
 }
