@@ -56,13 +56,19 @@ class BackendProvider(context: Context, private val connectionOverride: BackendC
             val root = readJson("/v1/viop/contracts", "VİOP veri sağlayıcısı")
             val array = root.optJSONArray("items") ?: error("SCHEMA_ERROR: items alanı yok.")
             require(array.length() <= 10000) { "SCHEMA_ERROR: Sözleşme listesi sınırı aşıldı." }
-            val seen=mutableSetOf<String>()
+            val seen=mutableMapOf<String,String>()
             buildList {
                 for (i in 0 until array.length()) {
                     val x = array.optJSONObject(i) ?: error("SCHEMA_ERROR: Sözleşme nesnesi geçersiz.")
                     val symbol = x.optString("symbol").trim().uppercase()
                     require(symbol.matches(Regex("[FO]_[A-Z0-9_.:-]+"))) { "SCHEMA_ERROR: Geçersiz VİOP sembolü." }
-                    if(!seen.add(symbol)) continue
+                    val signature=listOf(x.optString("contractType"),x.optString("underlying"),x.optString("expiry"),
+                        x.optString("tickSize"),x.optString("multiplier"),x.optString("lastTradableAt"),x.optString("expiryAt")).joinToString("|")
+                    val previous=seen.putIfAbsent(symbol,signature)
+                    if(previous!=null) {
+                        require(previous==signature) { "SCHEMA_ERROR: Çelişkili VİOP sözleşmesi: $symbol" }
+                        continue
+                    }
                     require(x.optString("contractType").isNotBlank()) { "SCHEMA_ERROR: Sözleşme türü eksik." }
                     val underlying = x.optString("underlying").trim().uppercase()
                     val expiry = x.optString("expiry").trim()
