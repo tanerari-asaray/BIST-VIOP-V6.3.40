@@ -201,7 +201,8 @@ object FullUniverseScanRuntime {
                         for(i in entries.indices) { if(entries[i].market!=FullUniversePolicy.Market.BIST)continue;val a=assessed[entries[i].symbol]?:continue
                             entries[i]=entries[i].copy(financialNote=batch.sourceNote+"\n"+a.reason+"\n"+a.comparisons.joinToString("\n") {
                                 "${it.metric}: ${"%.2f".format(Locale.ROOT,it.own)} • sektör medyanı ${"%.2f".format(Locale.ROOT,it.median)} • ${it.peerCount} emsal"
-                            }, relativeDiscountPct=if(a.status==FundamentalValuationEngine.Status.RELATIVE_DISCOUNT)a.comparisons.map { it.discountPct }.average()else null)
+                            }, relativeDiscountPct=if(a.status==FundamentalValuationEngine.Status.RELATIVE_DISCOUNT)a.comparisons.map { it.discountPct }.average()else null,
+                                financialStatus=a.status.name)
                         }
                     }catch(e:CancellationException){throw e}catch(e:Exception){note+=" Temel veri yüklenemedi: ${reason(e)}"}
                 }
@@ -211,6 +212,9 @@ object FullUniverseScanRuntime {
                     " teknik=" + stages.technicalOk +
                     " kanıtlı_finansal_iskonto=" + stages.financialAssessed +
                     " iskontolu=" + stages.discounted +
+                    " finansal_eksik=" + stages.financialMissing +
+                    " finansal_risk=" + stages.financialRisk +
+                    " finansal_gecersiz=" + stages.financialInvalid +
                     " hata=" + stages.errors + "."
                 state=when {
                     counts.triedBist != counts.discoveredBist -> FullUniversePolicy.State.PARTIAL
