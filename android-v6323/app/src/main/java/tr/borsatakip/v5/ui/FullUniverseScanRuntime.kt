@@ -61,7 +61,7 @@ object FullUniverseScanRuntime {
                     throw CancellationException("Bağlantı ayarları değişti; tarama yeni ayarlarla başlatılmalı.")
                 mutable.value=Progress(runId,localMode,started,state,counts,entries.toList(),note,symbolNow)
                 store.write(runId,if(localMode)"LOCAL_DELAYED" else "BACKEND_AUTHORIZED",state.name,counts,note,started,System.currentTimeMillis())
-                if(save && universe.isNotEmpty()) checkpoint.write(localMode,universe,entries,sourceIdentity,runId)
+                if(save && (universe.isNotEmpty() || entries.isNotEmpty())) checkpoint.write(localMode,universe,entries,sourceIdentity,runId)
             }
             try {
                 journal.record("SCAN","START","SCAN_STARTED_UNIVERSE",runId)
