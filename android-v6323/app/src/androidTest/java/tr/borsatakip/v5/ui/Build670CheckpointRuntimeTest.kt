@@ -55,4 +55,14 @@ class Build670CheckpointRuntimeTest {
         file.writeText("""{"schemaVersion":999,"local":true,"rows":[],"universe":[],"savedAt":123}""")
         assertNull(store.read())
     }
+    @Test fun overlyLargeCheckpointCollectionsAreRejected() = isolated { store,dir ->
+        val file=File(dir,"universe-observation-v648.json")
+        val many = (0..10000).joinToString(",") { "\"ASELS\"" }
+        file.writeText("""{"schemaVersion":4,"local":true,"runId":"test","sourceIdentity":"TEST","savedAt":123,"universe":[$many],"rows":[]}""")
+        assertNull(store.read())
+        val candles=(0..400).joinToString(",") { "[123,1,1,1,1,1]" }
+        file.writeText("""{"schemaVersion":4,"local":true,"runId":"test","sourceIdentity":"TEST","savedAt":123,"universe":[],"rows":[{"candles":[$candles]}]}""")
+        assertNull(store.read())
+    }
+
 }
